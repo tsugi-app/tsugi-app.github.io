@@ -14,8 +14,13 @@ describe('encodeKeep / parseKeep', () => {
     expect(parseKeep(raw)).toEqual([{ placeId: 'omotesando-a' }, { placeId: 'shibuya-b', visitDate: '2026-12-10' }]);
   });
 
-  it('잘못된 id·날짜·중복은 버린다', () => {
-    expect(parseKeep('ok-1,BAD,../x,ok-1,ok-2@2026,ok-3@20261301x')).toEqual([{ placeId: 'ok-1' }, { placeId: 'ok-2' }]);
+  it('잘못된 id와 중복은 버리고, 잘못된 날짜는 날짜만 버린다', () => {
+    expect(parseKeep('ok-1,BAD,../x,ok-1,ok-2@2026,ok-3@20261301,ok-4@20261231')).toEqual([
+      { placeId: 'ok-1' },
+      { placeId: 'ok-2' },
+      { placeId: 'ok-3' },
+      { placeId: 'ok-4', visitDate: '2026-12-31' },
+    ]);
     expect(parseKeep('')).toEqual([]);
     expect(parseKeep(null)).toEqual([]);
   });

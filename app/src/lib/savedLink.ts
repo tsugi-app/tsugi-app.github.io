@@ -27,7 +27,10 @@ export function parseKeep(raw: string | null | undefined): KeepItem[] {
     const [id, d] = part.trim().split('@');
     if (!ID.test(id) || seen.has(id)) continue;
     seen.add(id);
-    const visitDate = d && /^\d{8}$/.test(d) ? `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}` : undefined;
+    const iso = d && /^\d{8}$/.test(d) ? `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}` : undefined;
+    // 형식이 맞아도 13월·32일 같은 날짜는 버린다. 장소는 살린다.
+    const t = iso ? Date.parse(`${iso}T00:00:00Z`) : NaN;
+    const visitDate = iso && !Number.isNaN(t) && new Date(t).toISOString().startsWith(iso) ? iso : undefined;
     out.push(visitDate ? { placeId: id, visitDate } : { placeId: id });
   }
   return out;
