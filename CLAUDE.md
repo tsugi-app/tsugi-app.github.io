@@ -34,4 +34,7 @@
 - 이미지는 `credit`·`license` 없이 넣지 않는다.
 
 ## 커밋
+- 커밋은 사용자 본인의 git 계정(erabi-pecu)으로 한다. GitHub 예약 실행은 워크플로의 cron 줄을 마지막으로 수정한 사용자 기준으로 돌기 때문에, 리포 권한이 없는 계정(예: `noreply@anthropic.com` → `claude` 계정)으로 cron 줄을 커밋하면 레이더·재빌드가 멈춘다. `git config user.email`이 `306176449+erabi-pecu@users.noreply.github.com`인지 확인하고 시작한다.
+- 남은 작업 목록은 GitHub 이슈 `next` 라벨에 있다. 시작할 때 `gh issue list --label next`로 확인한다.
+
 작업 브랜치 → PR → CI 통과 → main 병합. main 병합이 곧 웹 배포다. 앱인토스는 `VITE_CHANNEL=toss npm run build`로 만든 번들을 콘솔에 수동 업로드한다.
