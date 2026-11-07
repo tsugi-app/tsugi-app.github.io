@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from 'react';
+import { countNew, type KeepItem, mergeKeep } from './savedLink';
 import type { Saved } from './types';
 
 // 저장은 기기에만 있다. 계정·동기화가 생기면 이 파일의 구현만 바꾼다.
@@ -49,6 +50,17 @@ export function toggleSaved(placeId: string): boolean {
   }
   write([...cur, { placeId, savedAt: new Date().toISOString() }]);
   return true;
+}
+
+export function importKeep(items: KeepItem[]): number {
+  const cur = read();
+  const added = countNew(cur, items);
+  write(mergeKeep(cur, items, new Date().toISOString()));
+  return added;
+}
+
+export function getSaved(): Saved[] {
+  return read();
 }
 
 export function setVisitDate(placeId: string, visitDate?: string): void {

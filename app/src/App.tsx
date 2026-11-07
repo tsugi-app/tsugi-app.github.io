@@ -21,7 +21,7 @@ export function App() {
         {route.name === 'discover' && <Discover content={content} query={route.query} />}
         {route.name === 'place' && <Place content={content} id={route.id} />}
         {route.name === 'map' && <MapScreen content={content} />}
-        {route.name === 'saved' && <Saved content={content} />}
+        {route.name === 'saved' && <Saved content={content} query={route.query} />}
       </main>
       <Tabs route={route} />
     </div>

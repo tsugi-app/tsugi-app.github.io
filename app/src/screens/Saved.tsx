@@ -1,17 +1,26 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { track } from '../lib/analytics';
-import { googleMapsUrl, openExternal } from '../lib/channel';
+import { googleMapsUrl, openExternal, shareOrCopy, shareUrl } from '../lib/channel';
 import { viewOf } from '../lib/content';
 import { isUpdateEnded, needsRecheck, todayTokyo } from '../lib/dates';
-import { hrefTo } from '../lib/router';
-import { setVisitDate, toggleSaved, useSaved } from '../lib/storage';
-import { type Content, HOOD_LABEL, type Hood } from '../lib/types';
+import { go, hrefTo } from '../lib/router';
+import { countNew, encodeKeep, parseKeep } from '../lib/savedLink';
+import { importKeep, setVisitDate, toggleSaved, useSaved } from '../lib/storage';
+import { type Content, HOOD_LABEL, type Hood, type Saved as SavedItem } from '../lib/types';
 
 const LAST_VISIT = 'tsugi:saved-visited';
 
-export function Saved({ content }: { content: Content }) {
+interface Props {
+  content: Content;
+  query: URLSearchParams;
+}
+
+export function Saved({ content, query }: Props) {
   const saved = useSaved();
   const today = todayTokyo();
+  const [msg, setMsg] = useState('');
+  const incoming = useMemo(() => parseKeep(query.get('keep')), [query]);
+  const incomingNew = countNew(saved, incoming);
 
   // 다른 날짜에 다시 왔을 때만 재방문으로 센다.
   useEffect(() => {
@@ -23,31 +32,93 @@ export function Saved({ content }: { content: Content }) {
       /* ignore */
     }
     if (last && last !== today) track('saved_list_revisited', { count: saved.length });
-  }, [today, saved.length]);
+    // 진입 시 한 번만 센다 (저장 개수가 바뀔 때마다 다시 세지 않는다).
+  }, []);
 
-  if (saved.length === 0) {
-    return <p className="empty">다음 여행에 넣을 한 곳을 저장해 보세요.</p>;
-  }
+  const keepLink = async () => {
+    const m = await shareOrCopy(shareUrl(`/saved?keep=${encodeKeep(saved)}`), '츠기 — 내 저장 목록');
+    setMsg(m);
+  };
 
-  const byHood = new Map<Hood, typeof saved>();
+  return (
+    <section>
+      {incoming.length > 0 && (
+        <div className="notice">
+          {incomingNew > 0 ? (
+            <>
+              <p>
+                보관 링크에 <strong>{incoming.length}곳</strong>이 들어 있어요. 이 기기에 없는 {incomingNew}곳을 저장에 더할까요?
+              </p>
+              <div className="row">
+                <button
+                  className="save"
+                  onClick={() => {
+                    const n = importKeep(incoming);
+                    setMsg(`${n}곳을 저장에 더했어요.`);
+                    go('/saved');
+                  }}
+                >
+                  저장에 더하기
+                </button>
+                <button className="muted" onClick={() => go('/saved')}>
+                  닫기
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="row">
+              <p>보관 링크의 장소는 이미 모두 저장되어 있어요.</p>
+              <button className="muted" onClick={() => go('/saved')}>
+                닫기
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {saved.length === 0 ? (
+        <p className="empty">다음 여행에 넣을 한 곳을 저장해 보세요.</p>
+      ) : (
+        <>
+          <div className="notice keep">
+            <p className="muted">
+              저장은 이 기기 브라우저에만 남아요. 아이폰 사파리는 7일 넘게 열지 않으면 지울 수 있으니, 링크로 보관해 두세요.
+            </p>
+            <button className="save" onClick={keepLink}>
+              링크로 보관하기
+            </button>
+          </div>
+          {msg && (
+            <p className="muted" role="status">
+              {msg}
+            </p>
+          )}
+          <SavedList content={content} saved={saved} today={today} />
+        </>
+      )}
+    </section>
+  );
+}
+
+function SavedList({ content, saved, today }: { content: Content; saved: SavedItem[]; today: string }) {
+  const byHood = new Map<Hood | 'unknown', SavedItem[]>();
   for (const s of saved) {
-    const p = content.places.find((x) => x.id === s.placeId);
-    const hood = p?.hood ?? 'shibuya';
+    const hood = content.places.find((x) => x.id === s.placeId)?.hood ?? 'unknown';
     byHood.set(hood, [...(byHood.get(hood) ?? []), s]);
   }
 
   return (
-    <section>
+    <>
       {[...byHood.entries()].map(([hood, items]) => (
         <div key={hood}>
-          <h2 className="section-title">{HOOD_LABEL[hood]}</h2>
+          <h2 className="section-title">{hood === 'unknown' ? '정보 없음' : HOOD_LABEL[hood]}</h2>
           <ul className="list-plain">
             {items.map((s) => {
               const v = viewOf(content, s.placeId);
               if (!v) {
                 return (
                   <li key={s.placeId} className="row">
-                    <span className="muted">정보 없음 ({s.placeId})</span>
+                    <span className="muted">더 이상 소개하지 않는 장소 ({s.placeId})</span>
                     <button className="muted" onClick={() => toggleSaved(s.placeId)}>
                       삭제
                     </button>
@@ -92,6 +163,6 @@ export function Saved({ content }: { content: Content }) {
           </ul>
         </div>
       ))}
-    </section>
+    </>
   );
 }
