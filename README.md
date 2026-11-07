@@ -31,6 +31,17 @@ npm run build      # 검사 → 타입 체크 → dist/
 
 `content/places/sample-*.json`은 화면 확인용 샘플이다. 첫 실제 카드가 들어오면 지운다.
 
+## 후보 레이더
+
+매시간 PR TIMES 공식 RSS에서 시부야·하라주쿠·오모테산도의 새로 오픈·기간 한정·리뉴얼 보도자료를 골라 이번 주 [`radar` 이슈](../../issues?q=label%3Aradar)에 댓글로 쌓는다. 카드로 만들 후보에 체크하고 Claude에게 초안을 요청한다.
+
+```sh
+node scripts/radar.mjs                 # 지금 후보를 콘솔에 출력 (이슈는 안 건드림)
+node --test scripts/radar.test.mjs     # 판정 규칙 테스트
+```
+
+엉뚱한 항목이 자주 섞이면 `scripts/radar-lib.mjs`의 `EXCLUDE`에 단어를 추가한다.
+
 ## 배포
 
 - `main`에 병합되면 GitHub Actions가 Pages에 배포한다. 매일 03:00 KST에도 재빌드한다.
