@@ -35,6 +35,17 @@ test('오피스 이전, 지역 밖, OpenAI 같은 단어는 걸러진다', () =>
   assert.ok(!titles.some((t) => t.includes('OpenAI')));
 });
 
+test('온라인 스토어 개점은 여행 후보가 아니다 (실제 피드 오탐 사례)', () => {
+  const item = {
+    title: 'PIZZA OF DEATH RECORDSのオフィシャルオンラインストアがリニューアルオープン！',
+    description: '渋谷のレーベルが運営する公式ストア。',
+    link: 'https://prtimes.jp/x',
+    corp: '',
+    date: '',
+  };
+  assert.equal(classify(item), null);
+});
+
 test('이미 알고 있는 링크는 다시 올리지 않는다', () => {
   const known = new Set([items[0].link]);
   assert.equal(pickCandidates(items, known).length, 3);
