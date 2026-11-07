@@ -2,8 +2,8 @@ name: Candidate radar
 
 on:
   schedule:
-    # 매시간 17분 (PR TIMES RSS는 최신 200건이라 몇 시간치만 담긴다)
-    - cron: '17 * * * *'
+    # 매시간 23분 (PR TIMES RSS는 최신 200건이라 몇 시간치만 담긴다)
+    - cron: '23 * * * *'
   workflow_dispatch:
 
 permissions:
