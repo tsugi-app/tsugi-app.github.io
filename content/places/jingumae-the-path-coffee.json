@@ -1,0 +1,18 @@
+{
+  "id": "jingumae-the-path-coffee",
+  "name": {
+    "ko": "더 패스 커피",
+    "ja": "THE PATH COFFEE"
+  },
+  "hood": "harajuku",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 35.6731,
+    "lng": 139.7097
+  },
+  "address": "東京都渋谷区神宮前2-30-32 パークレーンプラザ1F",
+  "official": "https://www.instagram.com/the_path_coffee/"
+}

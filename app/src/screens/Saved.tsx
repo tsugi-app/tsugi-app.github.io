@@ -151,7 +151,7 @@ function SavedList({ content, saved, today }: { content: Content; saved: SavedIt
                       className="muted"
                       onClick={() => {
                         track('map_opened', { placeId: v.place.id, from: 'saved' });
-                        openExternal(googleMapsUrl(v.place.geo.lat, v.place.geo.lng, v.place.name.ja ?? v.place.name.ko));
+                        openExternal(googleMapsUrl(v.place));
                       }}
                     >
                       지도 열기

@@ -1,0 +1,19 @@
+{
+  "id": "shibuya-parco-kankyo-records-kiosk",
+  "name": {
+    "ko": "칸쿄 레코드 키오스크",
+    "ja": "Kankyō Records KIOSK"
+  },
+  "hood": "shibuya",
+  "category": "goods",
+  "tags": [
+    "goods",
+    "design"
+  ],
+  "geo": {
+    "lat": 35.6619,
+    "lng": 139.6987
+  },
+  "address": "東京都渋谷区宇田川町15-1 渋谷PARCO 2F",
+  "official": "https://shibuya.parco.jp/page/2026new-renewal/"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "harajuku-ota-memorial-museum",
+  "name": {
+    "ko": "오타 기념 미술관",
+    "ja": "太田記念美術館"
+  },
+  "hood": "harajuku",
+  "category": "gallery",
+  "tags": [
+    "design"
+  ],
+  "geo": {
+    "lat": 35.6699,
+    "lng": 139.7049
+  },
+  "address": "東京都渋谷区神宮前1-10-10",
+  "official": "https://www.ukiyoe-ota-muse.jp/"
+}

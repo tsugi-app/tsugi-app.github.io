@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -12,6 +12,7 @@ export const UPDATE_TYPES = ['new', 'limited', 'changed'];
 
 export function readDir(kind) {
   const dir = join(CONTENT, kind);
+  if (!existsSync(dir)) return []; // 비어 있는 폴더는 git에 남지 않는다
   return readdirSync(dir)
     .filter((f) => f.endsWith('.json'))
     .sort()

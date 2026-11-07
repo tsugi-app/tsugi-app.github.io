@@ -25,15 +25,22 @@ export function PlaceCard({ view, today, trip, pairName }: Props) {
   const { place, take, check } = view;
   const { type, ended } = cardTypeOf(view, today, trip);
   const update = view.updates.find((u) => isUpdateActive(u, today, trip));
-  const left = update ? daysLeft(update, today) : null;
+  const upcoming = !!update && update.start > today;
+  const left = update && !upcoming ? daysLeft(update, today) : null;
   const saved = isSaved(place.id);
   const recheck = needsRecheck(check, today);
 
-  const condition = update?.end
-    ? `${formatDate(update.end)}까지`
-    : update?.type === 'new'
-      ? `${formatDate(update.start)} 오픈`
-      : '상시';
+  const condition = !update
+    ? '상시'
+    : upcoming
+      ? update.type === 'new'
+        ? `${formatDate(update.start)} 오픈 예정`
+        : `${formatDate(update.start)}부터${update.end ? ` ${formatDate(update.end)}까지` : ''}`
+      : update.end
+        ? `${formatDate(update.end)}까지`
+        : update.type === 'new'
+          ? `${formatDate(update.start)} 오픈`
+          : '상시';
 
   return (
     <article
@@ -54,6 +61,7 @@ export function PlaceCard({ view, today, trip, pairName }: Props) {
               <span className="dot" />
               {TYPE_LABEL[type]}
               {left !== null && left >= 0 && ` D-${left}`}
+              {upcoming && ' · 예정'}
               {ended && ' · 종료됨'}
             </span>
             <span className="muted">{HOOD_LABEL[place.hood]}</span>

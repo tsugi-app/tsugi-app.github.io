@@ -1,0 +1,19 @@
+{
+  "id": "aoyama-nezu-museum",
+  "name": {
+    "ko": "네즈 미술관",
+    "ja": "根津美術館"
+  },
+  "hood": "omotesando",
+  "category": "gallery",
+  "tags": [
+    "design",
+    "walk"
+  ],
+  "geo": {
+    "lat": 35.6622,
+    "lng": 139.7173
+  },
+  "address": "東京都港区南青山6-5-1",
+  "official": "https://www.nezu-muse.or.jp/"
+}

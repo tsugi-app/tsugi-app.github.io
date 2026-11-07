@@ -1,0 +1,18 @@
+{
+  "id": "shibuya-river-street",
+  "name": {
+    "ko": "시부야 리버 스트리트",
+    "ja": "渋谷リバーストリート"
+  },
+  "hood": "shibuya",
+  "category": "walk",
+  "tags": [
+    "walk"
+  ],
+  "geo": {
+    "lat": 35.6573,
+    "lng": 139.7027
+  },
+  "address": "東京都渋谷区渋谷3-21-3 渋谷ストリーム前",
+  "official": "https://www.tokyu.co.jp/company/information/detail/60581.html"
+}
