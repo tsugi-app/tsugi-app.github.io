@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # 매일 03:00 KST (18:00 UTC) 재빌드 — 만료·재확인 상태를 번들 내장본에도 반영
+    - cron: '0 18 * * *'
+  workflow_dispatch:
+
+# 리포 기본 권한은 읽기 전용. 배포에 필요한 권한만 여기서 연다.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # package-lock.json이 생기면 `npm ci`로 바꾼다 (로컬에서 npm install 후 커밋)
+      - run: npm install --no-audit --no-fund
+      - run: npm run validate
+      - run: npm run build
+        env:
+          VITE_CHANNEL: web
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

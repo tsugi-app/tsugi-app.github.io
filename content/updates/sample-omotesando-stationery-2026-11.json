@@ -1,0 +1,9 @@
+{
+  "id": "sample-omotesando-stationery-2026-11",
+  "placeId": "sample-omotesando-stationery",
+  "type": "limited",
+  "start": "2026-11-20",
+  "end": "2026-12-31",
+  "source": "https://example.jp/news/sample",
+  "note": "예약 없음"
+}

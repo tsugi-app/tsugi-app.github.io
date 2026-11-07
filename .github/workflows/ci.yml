@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # package-lock.json이 생기면 `npm ci`로 바꾼다 (로컬에서 npm install 후 커밋)
+      - run: npm install --no-audit --no-fund
+      - name: 콘텐츠 검증
+        run: npm run validate
+      - name: 테스트
+        run: npm test
+      - name: 빌드 (web)
+        run: npm run build
+        env:
+          VITE_CHANNEL: web
