@@ -29,8 +29,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      # package-lock.json이 생기면 `npm ci`로 바꾼다 (로컬에서 npm install 후 커밋)
-      - run: npm install --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund
       - run: npm run validate
       - run: npm run build
         env:
