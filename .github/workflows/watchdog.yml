@@ -3,7 +3,7 @@ name: Watchdog
 on:
   schedule:
     # 매일 09:43 KST (00:43 UTC) — 다른 예약 작업과 겹치지 않는 시각
-    - cron: '43 0 * * *'
+    - cron: '47 0 * * *'
   workflow_dispatch:
 
 permissions:
