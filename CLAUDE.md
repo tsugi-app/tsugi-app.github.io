@@ -28,8 +28,13 @@
 ## 콘텐츠 규칙 (scripts/validate.mjs가 강제)
 - place마다 check(확인일)가 있어야 발행된다. 없으면 빌드 실패.
 - `limited` 소식은 `end` 필수. 종료된 소식은 클라이언트에서 자동으로 피드에서 빠진다.
+- `new`·`changed` 소식에 `end`가 없으면 시작 후 60일(`FRESH_DAYS`)까지만 새 소식이다. 그 뒤엔 take에 `evergreen: true`가 있으면 편집 추천으로 남고, 없으면 피드에서 빠진다. 계속 영업하는 가게는 `evergreen: true`.
+- Claude가 쓴 초안 카드는 check의 `checkedBy`를 `claude-draft`로 둔다. 편집자가 공식 페이지를 다시 확인하면 자기 이름과 날짜로 바꾼다.
 - take의 `why`는 80자 이내, "핫한·인생·현지인만" 금지.
 - 이미지는 `credit`·`license` 없이 넣지 않는다.
 
 ## 커밋
+- 커밋은 사용자 본인의 git 계정(erabi-pecu)으로 한다. GitHub 예약 실행은 워크플로의 cron 줄을 마지막으로 수정한 사용자 기준으로 돌기 때문에, 리포 권한이 없는 계정(예: `noreply@anthropic.com` → `claude` 계정)으로 cron 줄을 커밋하면 레이더·재빌드가 멈춘다. `git config user.email`이 `306176449+erabi-pecu@users.noreply.github.com`인지 확인하고 시작한다.
+- 남은 작업 목록은 GitHub 이슈 `next` 라벨에 있다. 시작할 때 `gh issue list --label next`로 확인한다.
+
 작업 브랜치 → PR → CI 통과 → main 병합. main 병합이 곧 웹 배포다. 앱인토스는 `VITE_CHANNEL=toss npm run build`로 만든 번들을 콘솔에 수동 업로드한다.

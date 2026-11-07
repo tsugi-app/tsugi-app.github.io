@@ -19,7 +19,7 @@ export function MapScreen({ content }: { content: Content }) {
               className="muted"
               onClick={() => {
                 track('map_opened', { placeId: p.id, from: 'map' });
-                openExternal(googleMapsUrl(p.geo.lat, p.geo.lng, p.name.ja ?? p.name.ko));
+                openExternal(googleMapsUrl(p));
               }}
             >
               지도 열기

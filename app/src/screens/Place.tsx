@@ -5,7 +5,7 @@ import { type PlaceView, viewOf } from '../lib/content';
 import { daysLeft, formatDate, isUpdateActive, needsRecheck, todayTokyo } from '../lib/dates';
 import { hrefTo } from '../lib/router';
 import { isSaved, toggleSaved, useSaved } from '../lib/storage';
-import { type Content, HOOD_LABEL, TYPE_LABEL } from '../lib/types';
+import { type Content, HOOD_LABEL, TYPE_LABEL, type Update } from '../lib/types';
 
 interface Props {
   content: Content;
@@ -45,17 +45,34 @@ function Block({ title, children }: { title: string; children?: ReactNode }) {
 function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
   const today = todayTokyo();
   const { place, take, check } = view;
-  const active = view.updates.find((u) => isUpdateActive(u, today));
+  // 끝나지 않은 소식을 시작일 순으로 모두 보여 준다 (예: 지금 전시 + 다음 전시).
+  const current = view.updates.filter((u) => isUpdateActive(u, today)).sort((a, b) => a.start.localeCompare(b.start));
   const pair = take?.pairWith ? content.places.find((p) => p.id === take.pairWith) : undefined;
   const saved = isSaved(place.id);
 
-  const when = active
-    ? `${TYPE_LABEL[active.type]} · ${formatDate(active.start)}${active.end ? ` ~ ${formatDate(active.end)}` : ''}${
-        active.end ? ` (D-${daysLeft(active, today)})` : ''
-      }${active.note ? ` · ${active.note}` : ''}`
-    : take?.evergreen
-      ? '상시 방문 가능'
-      : undefined;
+  const line = (u: Update) =>
+    `${TYPE_LABEL[u.type]} · ${formatDate(u.start)}${u.end ? ` ~ ${formatDate(u.end)}` : ''}${
+      u.start > today ? ' (시작 전)' : u.end ? ` (D-${daysLeft(u, today)})` : ''
+    }${u.note ? ` · ${u.note}` : ''}`;
+  const when =
+    current.length > 0 ? (
+      <>
+        {current.map((u, i) => (
+          <span key={u.id}>
+            {i > 0 && <br />}
+            {line(u)}
+          </span>
+        ))}
+        {take?.evergreen && (
+          <>
+            <br />
+            <span className="muted">소식이 끝난 뒤에도 방문할 수 있어요.</span>
+          </>
+        )}
+      </>
+    ) : take?.evergreen ? (
+      '상시 방문 가능'
+    ) : undefined;
 
   return (
     <section className="detail">
@@ -133,7 +150,7 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
           className="btn"
           onClick={() => {
             track('map_opened', { placeId: place.id, from: 'detail' });
-            openExternal(googleMapsUrl(place.geo.lat, place.geo.lng, place.name.ja ?? place.name.ko));
+            openExternal(googleMapsUrl(place));
           }}
         >
           지도 열기

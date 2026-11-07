@@ -38,7 +38,9 @@ export function openExternal(url: string): void {
   window.open(url, '_blank', 'noopener');
 }
 
-export function googleMapsUrl(lat: number, lng: number, name: string): string {
-  const q = encodeURIComponent(`${name} ${lat},${lng}`);
-  return `https://www.google.com/maps/search/?api=1&query=${q}`;
+// 지도는 이름+주소로 검색한다. 좌표는 근사값일 수 있어 주소가 없을 때만 쓴다.
+export function googleMapsUrl(place: { name: { ko: string; ja?: string }; address?: string; geo: { lat: number; lng: number } }): string {
+  const name = place.name.ja ?? place.name.ko;
+  const q = place.address ? `${name} ${place.address}` : `${name} ${place.geo.lat},${place.geo.lng}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 }

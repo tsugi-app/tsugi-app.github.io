@@ -15,15 +15,27 @@ export interface Trip {
   to: string;
 }
 
+// 끝나는 날이 없는 "새로 오픈·최근 변화" 소식은 시작 후 이 기간만 새 소식으로 본다.
+// 그 뒤에는 장소가 남아 있어도(take.evergreen) 편집 추천으로 넘어간다.
+export const FRESH_DAYS = 60;
+
+export function addDays(d: string, n: number): string {
+  return new Date(Date.parse(`${d}T00:00:00Z`) + n * 86_400_000).toISOString().slice(0, 10);
+}
+
+export function effectiveEnd(u: Update): string {
+  return u.end ?? addDays(u.start, FRESH_DAYS);
+}
+
 // 소식이 지금(또는 여행 기간에) 유효한가.
 export function isUpdateActive(u: Update, today: string, trip?: Trip): boolean {
-  const end = u.end ?? '9999-12-31';
+  const end = effectiveEnd(u);
   if (trip) return u.start <= trip.to && end >= trip.from;
   return end >= today;
 }
 
 export function isUpdateEnded(u: Update, today: string): boolean {
-  return (u.end ?? '9999-12-31') < today;
+  return effectiveEnd(u) < today;
 }
 
 export function needsRecheck(c: Check | undefined, today: string): boolean {
