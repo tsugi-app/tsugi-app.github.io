@@ -6,7 +6,13 @@
 - `app/` — Vite + React 18 + TypeScript. 화면 4개(`screens/`), 공용 로직은 `lib/`.
 - `content/` — 장소·소식·편집 판단·확인 기록 JSON. 장소 1개 = 파일 1개.
 - `scripts/` — `validate.mjs`(규칙 검사), `build-content.mjs`(→ `app/public/content.json`). 의존성 없는 Node 스크립트.
-- `.github/workflows/` — `ci.yml`(PR 검사), `deploy-pages.yml`(main → Pages, 매일 03:00 KST 재빌드), `recheck.yml`(매주 월 재확인 이슈).
+- `.github/workflows/` — `ci.yml`(PR 검사), `deploy-pages.yml`(main → Pages, 매일 03:00 KST 재빌드), `recheck.yml`(매주 월 재확인 이슈), `radar.yml`(매시간 후보 레이더).
+
+## 후보 레이더
+- `scripts/radar.mjs`가 PR TIMES 공식 RSS를 매시간 읽어, 지역어(渋谷·原宿·表参道…)와 소식어(オープン·期間限定…)가 함께 있는 보도자료를 이번 주 `radar` 라벨 이슈에 댓글로 쌓는다. 판정 규칙은 `scripts/radar-lib.mjs` 한 곳.
+- 레이더는 후보만 모은다. 카드(content/)를 자동으로 만들거나 바꾸지 않는다.
+- "레이더에서 체크한 후보로 카드 초안"을 요청받으면: 이번 주 레이더 이슈의 체크된 항목을 읽고, 각 보도자료와 공식 페이지에서 날짜·장소를 확인해 place·update·take·check 초안을 쓰고 PR을 연다. 확인 못 한 값은 비우고 `uncertain`에 적는다.
+- X·야후 리얼타임 검색·LINE은 자동 수집하지 않는다(API 유료·비공개·약관 위험). 편집자가 직접 열어 참고만 한다.
 
 ## 하지 않는 것
 - 백엔드 서버, DB, 계정, 알림을 추가하지 않는다. 저장은 `lib/storage.ts`의 localStorage뿐이다.
@@ -17,7 +23,7 @@
 - 다크 모드를 만들지 않는다 (앱인토스 미지원, 웹도 라이트만).
 
 ## 검사
-모든 PR은 `cd app && npm run validate && npm test && npm run build`가 통과해야 한다. 단위 테스트는 날짜 필터·만료·저장 로직에만 쓴다.
+모든 PR은 `cd app && npm run validate && npm test && npm run build`와 `node --test scripts/radar.test.mjs`가 통과해야 한다. 단위 테스트는 날짜 필터·만료·저장 로직과 레이더 판정 규칙에만 쓴다.
 
 ## 콘텐츠 규칙 (scripts/validate.mjs가 강제)
 - place마다 check(확인일)가 있어야 발행된다. 없으면 빌드 실패.

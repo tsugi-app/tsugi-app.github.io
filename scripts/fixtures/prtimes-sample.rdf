@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel rdf:about="https://prtimes.jp/"><title>PR TIMES</title><link>https://prtimes.jp/</link></channel>
+<item rdf:about="https://prtimes.jp/main/html/rd/p/000000001.000000001.html">
+<title>表参道に文具の期間限定ストアが登場</title>
+<link>https://prtimes.jp/main/html/rd/p/000000001.000000001.html</link>
+<description>&amp;lt;p&amp;gt;サンプル株式会社は、東京・表参道で12月14日まで期間限定ストアを開催します。&amp;lt;/p&amp;gt;</description>
+<dc:corp>サンプル株式会社</dc:corp>
+<dc:date>2026-11-07T10:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://prtimes.jp/main/html/rd/p/000000002.000000002.html">
+<title>渋谷に新業態カフェ「Sample Coffee」がグランドオープン</title>
+<link>https://prtimes.jp/main/html/rd/p/000000002.000000002.html</link>
+<description>11月20日、渋谷駅徒歩5分にオープン。</description>
+<dc:corp>サンプルカフェ株式会社</dc:corp>
+<dc:date>2026-11-07T11:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://prtimes.jp/main/html/rd/p/000000003.000000003.html">
+<title>原宿でアパレル POP-UP を開催</title>
+<link>https://prtimes.jp/main/html/rd/p/000000003.000000003.html</link>
+<description>神宮前のギャラリーにて。</description>
+<dc:corp>サンプルアパレル</dc:corp>
+<dc:date>2026-11-07T12:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://prtimes.jp/main/html/rd/p/000000004.000000004.html">
+<title>渋谷オフィス移転のお知らせ</title>
+<link>https://prtimes.jp/main/html/rd/p/000000004.000000004.html</link>
+<description>本社を渋谷に移転し、新オフィスをオープンしました。</description>
+<dc:corp>サンプルIT株式会社</dc:corp>
+<dc:date>2026-11-07T13:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://prtimes.jp/main/html/rd/p/000000005.000000005.html">
+<title>大阪・梅田に新店舗オープン</title>
+<link>https://prtimes.jp/main/html/rd/p/000000005.000000005.html</link>
+<description>関西初出店。</description>
+<dc:corp>サンプル大阪</dc:corp>
+<dc:date>2026-11-07T14:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://prtimes.jp/main/html/rd/p/000000006.000000006.html">
+<title>渋谷でOpenAI活用セミナーを開催</title>
+<link>https://prtimes.jp/main/html/rd/p/000000006.000000006.html</link>
+<description>企業向け勉強会。</description>
+<dc:corp>サンプル研修</dc:corp>
+<dc:date>2026-11-07T15:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://prtimes.jp/main/html/rd/p/000000007.000000007.html">
+<title>&lt;![CDATA[南青山の雑貨店がリニューアル]]&gt;</title>
+<link>https://prtimes.jp/main/html/rd/p/000000007.000000007.html</link>
+<description><![CDATA[店内を一新しました。]]></description>
+<dc:corp>サンプル雑貨</dc:corp>
+<dc:date>2026-11-07T16:00:00+09:00</dc:date>
+</item>
+</rdf:RDF>

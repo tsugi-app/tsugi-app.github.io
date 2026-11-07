@@ -23,9 +23,14 @@ jobs:
       - run: npm install --no-audit --no-fund
       - name: 콘텐츠 검증
         run: npm run validate
-      - name: 테스트
+      - name: 테스트 (앱)
         run: npm test
+      - name: 테스트 (스크립트)
+        run: node --test ../scripts/radar.test.mjs
       - name: 빌드 (web)
         run: npm run build
         env:
           VITE_CHANNEL: web
+      - name: 레이더 미리보기 (실제 RSS, 이슈는 건드리지 않음)
+        run: node ../scripts/radar.mjs
+        continue-on-error: true

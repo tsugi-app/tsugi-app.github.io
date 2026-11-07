@@ -1,0 +1,29 @@
+name: Candidate radar
+
+on:
+  schedule:
+    # 매시간 17분 (PR TIMES RSS는 최신 200건이라 몇 시간치만 담긴다)
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: radar
+  cancel-in-progress: false
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: PR TIMES에서 후보 수집 → 이번 주 레이더 이슈에 추가
+        run: node scripts/radar.mjs --issue
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
