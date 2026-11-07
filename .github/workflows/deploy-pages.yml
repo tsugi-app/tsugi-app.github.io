@@ -5,7 +5,7 @@ on:
     branches: [main]
   schedule:
     # 매일 03:00 KST (18:00 UTC) 재빌드 — 만료·재확인 상태를 번들 내장본에도 반영
-    - cron: '0 18 * * *'
+    - cron: '7 18 * * *'
   workflow_dispatch:
 
 # 리포 기본 권한은 읽기 전용. 배포에 필요한 권한만 여기서 연다.
