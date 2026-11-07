@@ -1,0 +1,56 @@
+import { useSyncExternalStore } from 'react';
+import type { Saved } from './types';
+
+// 저장은 기기에만 있다. 계정·동기화가 생기면 이 파일의 구현만 바꾼다.
+const KEY = 'tsugi:saved';
+const listeners = new Set<() => void>();
+let cache: Saved[] | null = null;
+
+function read(): Saved[] {
+  if (cache) return cache;
+  try {
+    cache = JSON.parse(localStorage.getItem(KEY) ?? '[]') as Saved[];
+  } catch {
+    cache = [];
+  }
+  return cache;
+}
+
+function write(next: Saved[]): void {
+  cache = next;
+  try {
+    localStorage.setItem(KEY, JSON.stringify(next));
+  } catch {
+    // 저장 공간이 없거나 접근 불가 — 메모리에만 유지
+  }
+  listeners.forEach((l) => l());
+}
+
+export function useSaved(): Saved[] {
+  return useSyncExternalStore(
+    (l) => {
+      listeners.add(l);
+      return () => listeners.delete(l);
+    },
+    read,
+    () => [],
+  );
+}
+
+export function isSaved(placeId: string): boolean {
+  return read().some((s) => s.placeId === placeId);
+}
+
+export function toggleSaved(placeId: string): boolean {
+  const cur = read();
+  if (cur.some((s) => s.placeId === placeId)) {
+    write(cur.filter((s) => s.placeId !== placeId));
+    return false;
+  }
+  write([...cur, { placeId, savedAt: new Date().toISOString() }]);
+  return true;
+}
+
+export function setVisitDate(placeId: string, visitDate?: string): void {
+  write(read().map((s) => (s.placeId === placeId ? { ...s, visitDate } : s)));
+}

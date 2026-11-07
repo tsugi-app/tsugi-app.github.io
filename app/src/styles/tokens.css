@@ -1,0 +1,40 @@
+/* 츠기 디자인 토큰 — 색과 글꼴은 여기서만 정의한다. 컴포넌트에 색 코드 직접 기입 금지. */
+:root {
+  /* 바탕·표면·글자 */
+  --bg: #f6f4ef; /* 와시 */
+  --surface: #ffffff;
+  --ink: #1f2125; /* 스미 */
+  --ink-2: #6b6b70; /* 회묵 */
+  --line: #e4e1da;
+
+  /* 브랜드 */
+  --brand: #2d4b8e; /* 아이(藍) */
+  --brand-soft: rgba(45, 75, 142, 0.1);
+
+  /* 유형(노선색) */
+  --type-new: #3f8f5b; /* 신록 */
+  --type-limited: #d9542c; /* 슈(朱) */
+  --type-changed: #c9922e; /* 야마부키 */
+  --type-editorial: #55575c; /* 스미 그레이 */
+
+  /* 글꼴 */
+  --font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-ja: 'Noto Sans JP', var(--font);
+  --fs-name: 20px;
+  --fs-h: 17px;
+  --fs-body: 16px;
+  --fs-meta: 13px;
+  --fs-badge: 12px;
+
+  /* 간격·모양 */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --radius: 12px;
+  --radius-pill: 999px;
+  --tab-h: 56px;
+}

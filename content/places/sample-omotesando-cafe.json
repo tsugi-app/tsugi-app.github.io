@@ -1,0 +1,10 @@
+{
+  "id": "sample-omotesando-cafe",
+  "name": { "ko": "예시 카페 (샘플)", "ja": "サンプルカフェ" },
+  "hood": "omotesando",
+  "category": "cafe",
+  "tags": ["cafe", "walk"],
+  "geo": { "lat": 35.6668, "lng": 139.7105 },
+  "official": "https://example.jp/cafe",
+  "_note": "pairWith 연계 확인용 샘플."
+}

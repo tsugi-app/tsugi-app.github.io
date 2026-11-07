@@ -1,0 +1,38 @@
+name: Weekly recheck list
+
+on:
+  schedule:
+    # 매주 월요일 09:00 KST (00:00 UTC)
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 재확인 대상 수집
+        id: list
+        run: |
+          node scripts/validate.mjs 2> warnings.txt || true
+          grep '재확인 필요' warnings.txt > due.txt || true
+          echo "count=$(wc -l < due.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
+      - name: 이슈 생성
+        if: steps.list.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "이번 주 재확인이 필요한 카드입니다. 공식 출처를 다시 확인하고 checks/의 checkedAt·recheckBy를 갱신해 주세요."
+            echo
+            sed 's/^/- /' due.txt
+          } > body.md
+          gh issue create --title "재확인 필요 ($(date -u +%Y-%m-%d))" --body-file body.md --label recheck || \
+          gh issue create --title "재확인 필요 ($(date -u +%Y-%m-%d))" --body-file body.md
