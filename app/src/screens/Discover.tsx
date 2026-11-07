@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { PlaceCard, cardTypeOf } from '../components/PlaceCard';
+import { TripDates } from '../components/TripDates';
 import { track } from '../lib/analytics';
 import { type PlaceView, viewOf } from '../lib/content';
 import { isUpdateActive, todayTokyo, type Trip } from '../lib/dates';
@@ -35,12 +36,15 @@ export function Discover({ content, query }: Props) {
   const fresh = views.filter((v) => v.updates.some((u) => isUpdateActive(u, today, trip)));
   const editorial = views.filter((v) => !fresh.includes(v));
 
-  const setParam = (k: string, v: string) => {
+  const setParams = (patch: Record<string, string>) => {
     const q = new URLSearchParams(query);
-    if (v) q.set(k, v);
-    else q.delete(k);
+    for (const [k, v] of Object.entries(patch)) {
+      if (v) q.set(k, v);
+      else q.delete(k);
+    }
     go(`/?${q.toString()}`);
   };
+  const setParam = (k: string, v: string) => setParams({ [k]: v });
 
   const pairName = (v: PlaceView) =>
     v.take?.pairWith ? content.places.find((p) => p.id === v.take!.pairWith)?.name.ko : undefined;
@@ -61,15 +65,19 @@ export function Discover({ content, query }: Props) {
           </button>
         ))}
       </div>
-      <p className="muted">
-        {trip ? `여행 ${from} ~ ${to} 기준으로 걸렀습니다.` : '여행 날짜를 넣으면 그 기간에 갈 수 없는 기간 한정 후보를 걸러냅니다.'}
-      </p>
+      <TripDates
+        from={from}
+        to={to}
+        today={today}
+        onChange={(f, t) => setParams({ from: f, to: t })}
+        onClear={() => setParams({ from: '', to: '' })}
+      />
 
       {views.length === 0 && (
         <p className="empty">이 조건엔 아직 후보가 없어요. 동네를 하나 더 넣어 볼까요?</p>
       )}
 
-      {fresh.length > 0 && <h2 className="section-title">이번 주 새 소식</h2>}
+      {fresh.length > 0 && <h2 className="section-title">{trip ? '여행 기간 중 새 소식' : '지금 새 소식'}</h2>}
       {fresh.map((v) => (
         <PlaceCard key={v.place.id} view={v} today={today} trip={trip} pairName={pairName(v)} />
       ))}

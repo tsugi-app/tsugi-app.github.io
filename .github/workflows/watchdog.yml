@@ -1,0 +1,25 @@
+name: Watchdog
+
+on:
+  schedule:
+    # 매일 09:43 KST (00:43 UTC) — 다른 예약 작업과 겹치지 않는 시각
+    - cron: '43 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/watchdog.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

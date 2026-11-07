@@ -96,6 +96,62 @@ button {
   color: var(--brand);
   font-weight: 600;
 }
+/* 안내 상자 (보관 링크) */
+.notice {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-3) var(--sp-4);
+  margin-bottom: var(--sp-3);
+}
+.notice p {
+  margin: 0 0 var(--sp-2);
+}
+.notice.keep {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.notice.keep p {
+  margin: 0;
+  flex: 1;
+}
+.notice .save {
+  white-space: nowrap;
+}
+
+/* 여행 날짜 */
+.trip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--sp-2);
+  margin: var(--sp-2) 0 var(--sp-3);
+}
+.trip label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.trip input[type='date'] {
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  min-width: 140px;
+}
+.trip-clear {
+  padding: 8px 4px;
+  text-decoration: underline;
+}
+.trip-note {
+  flex-basis: 100%;
+  margin: 0;
+}
+
 .section-title {
   font-size: var(--fs-h);
   font-weight: 700;
