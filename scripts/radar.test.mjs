@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { classify, decodeEntities, formatComment, isoWeekTokyo, parseRdf, pickCandidates } from './radar-lib.mjs';
+import { classify, decodeEntities, formatComment, isoWeekTokyo, mergeItems, parseNewsSitemap, parseRdf, pickCandidates, stripCompanyInfo } from './radar-lib.mjs';
 
 const xml = readFileSync(new URL('./fixtures/prtimes-sample.rdf', import.meta.url), 'utf8');
 const items = parseRdf(xml);
@@ -64,4 +64,38 @@ test('댓글은 체크박스 목록과 보도자료 링크를 담는다', () => 
   assert.match(body, /수집 — 4건/);
   assert.match(body, /- \[ \] \*\*表参道に文具の期間限定ストアが登場\*\*/);
   assert.match(body, /\[보도자료\]\(https:\/\/prtimes\.jp\/main\/html\/rd\/p\/000000001\.000000001\.html\)/);
+});
+
+test('본사 주소의 지역어는 장소로 치지 않는다 (실제 피드 오탐 원인)', () => {
+  const item = {
+    title: '新ブランドのポップアップストアを福岡でオープン',
+    description: '[株式会社サンプル] 株式会社サンプル（本社：東京都渋谷区、代表取締役：山田太郎）は、福岡で期間限定ストアを開催します。',
+    link: 'https://prtimes.jp/y',
+    corp: '',
+    date: '',
+  };
+  assert.equal(classify(item), null);
+  assert.ok(!stripCompanyInfo('（所長：井上岳久／東京都渋谷区）は').includes('渋谷'));
+  assert.ok(!stripCompanyInfo('所在地：東京都渋谷区千駄ヶ谷、代表').includes('渋谷'));
+  // 본문에 장소로 나오면 그대로 잡는다
+  assert.deepEqual(
+    classify({ ...item, description: '株式会社サンプル（本社：大阪市）は、渋谷パルコにポップアップストアをオープンします。' })?.hood,
+    'shibuya',
+  );
+});
+
+test('뉴스 사이트맵 키워드로 RSS 발췌에 없는 장소를 보완한다', () => {
+  const news = parseNewsSitemap(readFileSync(new URL('./fixtures/prtimes-news-sample.xml', import.meta.url), 'utf8'));
+  assert.equal(news.length, 2);
+  assert.equal(news[1].keywords, '雑貨,インテリア,神宮前,原宿');
+  const merged = mergeItems(items, news);
+  assert.equal(merged.length, items.length + 1); // 첫 항목은 RSS와 같은 링크라 합쳐진다
+  assert.equal(merged[0].keywords, '文具,期間限定,表参道');
+  const extra = pickCandidates(merged).find((c) => c.link.includes('000000099'));
+  assert.deepEqual([extra?.hood, extra?.type], ['harajuku', 'new']);
+});
+
+test('「～13日限定」 같은 날짜 한정도 기간 한정 소식이다 (실제 피드 누락 사례)', () => {
+  const item = { title: '【11月7日～13日限定】天然石ブランド表参道店でブレスレットのメンテナンスが無料に', description: '', link: 'https://prtimes.jp/z', corp: '', date: '' };
+  assert.deepEqual([classify(item)?.hood, classify(item)?.type], ['omotesando', 'limited']);
 });
