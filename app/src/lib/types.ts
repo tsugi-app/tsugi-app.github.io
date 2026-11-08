@@ -1,3 +1,5 @@
+import labels from './labels.json';
+
 // content/ 폴더의 JSON과 1:1로 대응한다. 규칙은 scripts/validate.mjs가 검사한다.
 
 export type Hood = 'shibuya' | 'harajuku' | 'omotesando';
@@ -60,18 +62,10 @@ export interface Saved {
   visitDate?: string;
 }
 
-export const HOOD_LABEL: Record<Hood, string> = {
-  shibuya: '시부야',
-  harajuku: '하라주쿠',
-  omotesando: '오모테산도',
-};
+// 동네·취향 이름은 labels.json 한 곳에 둔다 (공유 페이지 스크립트도 같은 파일을 읽는다).
+export const HOOD_LABEL: Record<Hood, string> = labels.hood;
 
-export const TAG_LABEL: Record<Tag, string> = {
-  cafe: '카페',
-  design: '디자인',
-  goods: '생활용품',
-  walk: '산책',
-};
+export const TAG_LABEL: Record<Tag, string> = labels.tag;
 
 export const TYPE_LABEL: Record<CardType, string> = {
   new: '새로 오픈',

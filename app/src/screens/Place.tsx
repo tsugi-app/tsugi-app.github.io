@@ -1,6 +1,6 @@
-import { type ReactNode, useEffect } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import { track } from '../lib/analytics';
-import { googleMapsUrl, openExternal } from '../lib/channel';
+import { googleMapsUrl, openExternal, sharePageUrl, shareOrCopy } from '../lib/channel';
 import { type PlaceView, viewOf } from '../lib/content';
 import { daysLeft, formatDate, isUpdateActive, needsRecheck, todayTokyo } from '../lib/dates';
 import { hrefTo } from '../lib/router';
@@ -49,6 +49,7 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
   const current = view.updates.filter((u) => isUpdateActive(u, today)).sort((a, b) => a.start.localeCompare(b.start));
   const pair = take?.pairWith ? content.places.find((p) => p.id === take.pairWith) : undefined;
   const saved = isSaved(place.id);
+  const [msg, setMsg] = useState('');
 
   const line = (u: Update) =>
     `${TYPE_LABEL[u.type]} · ${formatDate(u.start)}${u.end ? ` ~ ${formatDate(u.end)}` : ''}${
@@ -155,7 +156,20 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
         >
           지도 열기
         </button>
+        <button
+          className="btn"
+          onClick={async () => {
+            setMsg(await shareOrCopy(sharePageUrl(`/p/${place.id}/`), `${place.name.ko} — 츠기`));
+          }}
+        >
+          공유
+        </button>
       </div>
+      {msg && (
+        <p className="muted" role="status">
+          {msg}
+        </p>
+      )}
     </section>
   );
 }

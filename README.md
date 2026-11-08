@@ -42,6 +42,15 @@ node --test scripts/radar.test.mjs     # 판정 규칙 테스트
 
 엉뚱한 항목이 자주 섞이면 `scripts/radar-lib.mjs`의 `EXCLUDE`에 단어를 추가한다.
 
+## 공유 링크
+
+카톡·X에 붙이면 미리보기가 뜨는 주소. 열면 앱 화면으로 바로 넘어가고, `?c=` 캠페인 값도 넘어간다.
+
+- 장소: `https://tsugi-app.github.io/p/<placeId>/` (상세 화면 「공유」 버튼이 이 주소를 쓴다)
+- 주제: `https://tsugi-app.github.io/c/<동네|취향>/` — 예: `/c/omotesando/?c=insta`
+
+미리보기 이미지는 장소 `image`가 있으면 그 사진, 없으면 `app/public/og.png`(1200×630, 원본은 `scripts/og/og.html` — 다시 만드는 명령은 파일 맨 위 주석)를 쓴다. 둘 다 없으면 글자만 있는 카드가 된다.
+
 ## 배포
 
 - `main`에 병합되면 GitHub Actions가 Pages에 배포한다. 매일 03:00 KST에도 재빌드한다.
