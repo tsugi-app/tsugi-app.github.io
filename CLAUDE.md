@@ -5,7 +5,7 @@
 ## 구조
 - `app/` — Vite + React 18 + TypeScript. 화면 4개(`screens/`), 공용 로직은 `lib/`.
 - `content/` — 장소·소식·편집 판단·확인 기록 JSON. 장소 1개 = 파일 1개.
-- `scripts/` — `validate.mjs`(규칙 검사), `build-content.mjs`(→ `app/public/content.json`). 의존성 없는 Node 스크립트.
+- `scripts/` — `validate.mjs`(규칙 검사), `build-content.mjs`(→ `app/public/content.json`), `build-share.mjs`(vite build 뒤 `dist/p/<id>/`·`dist/c/<동네|취향>/`에 OG 미리보기 페이지 생성, 웹 채널만). 의존성 없는 Node 스크립트.
 - `.github/workflows/` — `ci.yml`(PR 검사), `deploy-pages.yml`(main → Pages, 매일 03:00 KST 재빌드), `recheck.yml`(매주 월 재확인 이슈), `radar.yml`(매시간 후보 레이더), `watchdog.yml`(매일: 레이더 24시간 무실행·리포 50일 무활동이면 이슈).
 
 ## 후보 레이더

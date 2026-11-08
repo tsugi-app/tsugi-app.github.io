@@ -14,6 +14,12 @@ export function shareUrl(hashPath: string): string {
   return `${base}/#${hashPath}`;
 }
 
+// 장소·주제 공유는 미리보기(OG)가 붙는 정적 페이지 주소로 만든다 (scripts/build-share.mjs가 생성).
+//   /p/<placeId>/ , /c/<동네|취향>/
+export function sharePageUrl(path: string): string {
+  return `${WEB_BASE_URL}${path}`;
+}
+
 // 공유 시트가 있으면 쓰고, 없으면 클립보드에 복사한다. 결과를 사람이 읽을 문장으로 돌려준다.
 export async function shareOrCopy(url: string, title: string): Promise<string> {
   try {
