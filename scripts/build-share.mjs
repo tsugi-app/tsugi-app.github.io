@@ -21,6 +21,8 @@ const SAFE_ID = /^[a-z0-9][a-z0-9-]{0,79}$/;
 
 if (!existsSync(DIST)) throw new Error('app/dist가 없다 — vite build 뒤에 실행한다');
 
+const DEFAULT_OG = existsSync(join(DIST, 'og.png')); // vite가 app/public/og.png를 dist로 복사한다
+
 const content = JSON.parse(readFileSync(join(APP_PUBLIC, 'content.json'), 'utf8'));
 const labels = JSON.parse(readFileSync(join(ROOT, 'app', 'src', 'lib', 'labels.json'), 'utf8'));
 
@@ -29,7 +31,8 @@ const esc = (s) =>
 
 function page({ path, title, description, image, hash }) {
   const url = `${BASE}${path}`;
-  const img = image ? `${BASE}/images/${image.file}` : undefined;
+  // 장소 사진이 없으면 기본 이미지(app/public/og.png)를 쓴다. 그것도 없으면 이미지 없이 만든다.
+  const img = image ? `${BASE}/images/${image.file}` : DEFAULT_OG ? `${BASE}/og.png` : undefined;
   // hash에 이미 ?가 있으면 &로 이어 붙인다.
   const sep = hash.includes('?') ? '&' : '?';
   return `<!doctype html>

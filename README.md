@@ -49,7 +49,7 @@ node --test scripts/radar.test.mjs     # 판정 규칙 테스트
 - 장소: `https://tsugi-app.github.io/p/<placeId>/` (상세 화면 「공유」 버튼이 이 주소를 쓴다)
 - 주제: `https://tsugi-app.github.io/c/<동네|취향>/` — 예: `/c/omotesando/?c=insta`
 
-미리보기 이미지는 장소 `image`가 있을 때만 붙는다.
+미리보기 이미지는 장소 `image`가 있으면 그 사진, 없으면 `app/public/og.png`(1200×630 PNG, 직접 만든 이미지)를 쓴다. 둘 다 없으면 글자만 있는 카드가 된다.
 
 ## 배포
 
