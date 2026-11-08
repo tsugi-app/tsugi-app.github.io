@@ -16,6 +16,8 @@ export const AREAS = [
 // 소식어: 하나라도 있어야 후보. 값은 updates의 type 추정치.
 export const SIGNALS = [
   ['期間限定', 'limited'],
+  ['日間限定', 'limited'], // 「3日間限定」
+  ['日限定', 'limited'], // 「11月7日～13日限定」 (실제 피드: 표참도 매장 한정 행사)
   ['ポップアップ', 'limited'],
   ['POPUP', 'limited'], // POP UP / POP-UP / pop-up 은 normalize()가 POPUP으로 바꾼다
   ['限定ストア', 'limited'],
@@ -82,11 +84,48 @@ export function parseRdf(xml) {
   return items;
 }
 
+// 보도자료 첫머리의 회사 소개(「本社：東京都渋谷区…」)를 지운다.
+// 시부야에 본사를 둔 회사가 많아, 그대로 두면 지역어가 장소가 아닌 본사 주소에 걸린다 (실제 피드 200건 중 12건).
+export function stripCompanyInfo(text) {
+  return text
+    .replace(/[（(][^（）()]*(?:本社|本店|本部|所在地|代表|所長|理事長)[^（）()]*[）)]/g, ' ')
+    .replace(/(?:本社|本店|本部|所在地)\s*[:：]\s*[^、，,。／/]{0,40}/g, ' ');
+}
+
+// 뉴스 사이트맵(sitemap-news.xml) → 항목 배열. 제목과 발표사 지정 키워드만 있다.
+export function parseNewsSitemap(xml) {
+  const items = [];
+  for (const m of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+    const b = m[1];
+    const link = tag(b, 'loc');
+    if (!link) continue;
+    items.push({
+      title: tag(b, 'news:title'),
+      link,
+      description: '',
+      keywords: tag(b, 'news:keywords'),
+      corp: '',
+      date: tag(b, 'news:publication_date'),
+    });
+  }
+  return items;
+}
+
+// RSS 항목에 사이트맵 키워드를 붙이고, RSS에 없는 사이트맵 항목은 그대로 더한다.
+export function mergeItems(rss, news) {
+  const byLink = new Map(news.map((n) => [n.link, n]));
+  const out = rss.map((r) => (byLink.has(r.link) ? { ...r, keywords: byLink.get(r.link).keywords } : r));
+  const have = new Set(rss.map((r) => r.link));
+  for (const n of news) if (!have.has(n.link)) out.push(n);
+  return out;
+}
+
 const firstHit = (text, list) => list.find(([w]) => text.includes(w));
 
 // 항목 하나를 판정한다. 후보면 { hood, type, area, signal }을, 아니면 null.
+// keywords는 뉴스 사이트맵에서 온 발표사 지정 키워드 (RSS 본문 발췌가 짧아 장소가 빠질 때 보완).
 export function classify(item) {
-  const text = normalize(`${item.title} ${item.description}`);
+  const text = normalize(`${item.title} ${stripCompanyInfo(item.description ?? '')} ${item.keywords ?? ''}`);
   if (EXCLUDE.some((w) => text.includes(w))) return null;
   const area = firstHit(text, AREAS);
   const signal = firstHit(text, SIGNALS);
@@ -129,12 +168,12 @@ export function formatComment(cands, now = new Date()) {
     lines.push(`- [ ] **${title}**`);
     lines.push(`  ${HOOD_KO[c.hood]} · ${TYPE_KO[c.type]}(추정: "${c.signal}") · ${c.corp || '발표사 미상'} · ${c.date.slice(0, 10)} · [보도자료](${c.link})`);
   }
-  lines.push('', '<sub>자동 수집 · PR TIMES RSS · 지역어+소식어 키워드 일치. 카드로 만들 항목에 체크하고 Claude에게 "체크한 후보로 카드 초안" 요청.</sub>');
+  lines.push('', '<sub>자동 수집 · PR TIMES RSS·뉴스 사이트맵 · 지역어+소식어 키워드 일치. 카드로 만들 항목에 체크하고 Claude에게 "체크한 후보로 카드 초안" 요청.</sub>');
   return lines.join('\n');
 }
 
 export const ISSUE_BODY = [
-  '이번 주 PR TIMES 보도자료 중 시부야·하라주쿠·오모테산도의 새로 오픈·기간 한정·리뉴얼 소식을 매시간 자동으로 모읍니다. 새 후보는 댓글로 추가됩니다.',
+  '이번 주 PR TIMES 보도자료(RSS·뉴스 사이트맵) 중 시부야·하라주쿠·오모테산도의 새로 오픈·기간 한정·리뉴얼 소식을 매시간 자동으로 모읍니다. 새 후보는 댓글로 추가됩니다.',
   '',
   '**쓰는 법**',
   '1. 댓글의 후보 중 카드로 만들 만한 곳에 체크합니다. 여행자가 가 볼 이유가 없는 곳은 무시합니다.',

@@ -1,22 +1,39 @@
 // 후보 레이더 실행기.
 //   node scripts/radar.mjs              → 후보를 콘솔에 출력 (GitHub 토큰 없으면 항상 이 모드)
 //   node scripts/radar.mjs --issue      → 이번 주 레이더 이슈에 새 후보만 댓글로 추가
-//   node scripts/radar.mjs --file x.rdf → 네트워크 대신 파일에서 읽기 (테스트용)
+//   node scripts/radar.mjs --file x.rdf [--news y.xml] → 네트워크 대신 파일에서 읽기 (테스트용)
 import { readFileSync } from 'node:fs';
-import { ISSUE_BODY, formatComment, isoWeekTokyo, parseRdf, pickCandidates } from './radar-lib.mjs';
+import { ISSUE_BODY, formatComment, isoWeekTokyo, mergeItems, parseNewsSitemap, parseRdf, pickCandidates } from './radar-lib.mjs';
 import { readDir } from './lib.mjs';
 
 const FEED = 'https://prtimes.jp/index.rdf';
+// 공식 뉴스 사이트맵 (robots.txt에 공개). 제목과 발표사 지정 키워드가 있어 RSS 발췌에 없는 장소를 보완한다.
+const NEWS = 'https://prtimes.jp/sitemap-news.xml';
+const UA = { 'User-Agent': 'tsugi-radar (+https://tsugi-app.github.io)' };
 const LABEL = 'radar';
 const args = process.argv.slice(2);
 const fileArg = args.includes('--file') ? args[args.indexOf('--file') + 1] : null;
+const newsArg = args.includes('--news') ? args[args.indexOf('--news') + 1] : null;
 const issueMode = args.includes('--issue');
 
 async function loadFeed() {
   if (fileArg) return readFileSync(fileArg, 'utf8');
-  const res = await fetch(FEED, { headers: { 'User-Agent': 'tsugi-radar (+https://tsugi-app.github.io)' } });
+  const res = await fetch(FEED, { headers: UA });
   if (!res.ok) throw new Error(`PR TIMES RSS 응답 ${res.status}`);
   return res.text();
+}
+
+// 사이트맵은 보조 자료라 실패해도 RSS만으로 계속한다.
+async function loadNews() {
+  if (fileArg) return newsArg ? readFileSync(newsArg, 'utf8') : '';
+  try {
+    const res = await fetch(NEWS, { headers: UA });
+    if (res.ok) return res.text();
+    console.log(`뉴스 사이트맵 응답 ${res.status} — RSS만 사용`);
+  } catch (e) {
+    console.log(`뉴스 사이트맵 실패 (${e.message}) — RSS만 사용`);
+  }
+  return '';
 }
 
 // 이미 카드에 쓰인 보도자료는 다시 올리지 않는다.
@@ -72,12 +89,12 @@ async function linksInIssue(number) {
   return links;
 }
 
-const items = parseRdf(await loadFeed());
+const items = mergeItems(parseRdf(await loadFeed()), parseNewsSitemap(await loadNews()));
 const known = knownFromContent();
 
 if (!issueMode || !token || !repo) {
   const cands = pickCandidates(items, known);
-  console.log(`RSS 항목 ${items.length}건 중 후보 ${cands.length}건`);
+  console.log(`보도자료 ${items.length}건 중 후보 ${cands.length}건`);
   for (const c of cands) console.log(`- [${c.hood}/${c.type}] ${c.title} (${c.corp}) ${c.link}`);
   if (issueMode) console.log('GITHUB_TOKEN/GITHUB_REPOSITORY가 없어 이슈를 갱신하지 않았습니다.');
   process.exit(0);
@@ -86,7 +103,7 @@ if (!issueMode || !token || !repo) {
 const issue = await ensureWeeklyIssue(isoWeekTokyo());
 for (const l of await linksInIssue(issue.number)) known.add(l);
 const cands = pickCandidates(items, known);
-console.log(`RSS 항목 ${items.length}건 → 새 후보 ${cands.length}건 (이슈 #${issue.number})`);
+console.log(`보도자료 ${items.length}건 → 새 후보 ${cands.length}건 (이슈 #${issue.number})`);
 if (cands.length > 0) {
   await gh(`/issues/${issue.number}/comments`, { method: 'POST', body: JSON.stringify({ body: formatComment(cands) }) });
 }
