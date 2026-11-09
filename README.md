@@ -33,7 +33,7 @@ npm run build      # 검사 → 타입 체크 → dist/
 
 ## 후보 레이더
 
-10분마다 PR TIMES 공식 RSS와 뉴스 사이트맵(발표사 지정 키워드)에서 시부야·하라주쿠·오모테산도의 새로 오픈·기간 한정·리뉴얼 보도자료를 골라 이번 주 [`radar` 이슈](../../issues?q=label%3Aradar)에 댓글로 쌓는다. 카드로 만들 후보에 체크하고 Claude에게 초안을 요청한다.
+10분마다 PR TIMES 공식 RSS와 뉴스 사이트맵(발표사 지정 키워드)에서 시부야·하라주쿠·오모테산도의 새로 오픈·기간 한정·리뉴얼 보도자료를 골라 이번 주 [`radar` 이슈](../../issues?q=label%3Aradar)에 댓글로 쌓는다. 카드로 만들 후보에 체크하고 Claude에게 초안을 요청한다. Claude가 출처를 대조해 검토를 마친 카드는 CI 통과 후 바로 병합·발행된다(`checkedBy: "claude"`).
 
 ```sh
 node scripts/radar.mjs                 # 지금 후보를 콘솔에 출력 (이슈는 안 건드림)
