@@ -8,11 +8,13 @@
     "좌표는 지리원 주소 검색이 정(大深町) 단위까지만 일치",
     "숲 구역만의 개방 시간(공원 전체는 일부 시설 빼고 24시간)",
     "입장료 표기 없음",
-    "면적: 2026-04 발표는 약 0.9ha, 2026-10-27 발표는 약 8,400㎡(최신 값 사용)"
+    "면적: 2026-04 발표는 약 0.9ha, 2026-10-27 발표는 약 8,400㎡(최신 값 사용)",
+    "GRAND GREEN HOLIDAY 시간·요금·숲 구역 포함 여부(공식 일정 목록에 기간·장소만)"
   ],
   "sources": [
     "https://www.obayashi.co.jp/news/detail/news20261027_1.html",
     "https://umekita.com/faq/",
-    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+    "https://msearch.gsi.go.jp/address-search/AddressSearch",
+    "https://umekita.com/"
   ]
 }
