@@ -133,7 +133,7 @@ SEED 컴포넌트를 츠기에 필요한 만큼만 CSS 클래스로 옮긴다. �
 | **Badge** | `.badge` + `--{type}` | 높이 20(t2)·r1, weak 톤 | 소식 유형, 재확인 필요, 종료됨 |
 | **List Header** | `.list-header` | t6 700, 위 24 아래 8 | "지금 새 소식", "편집 추천", 동네 묶음 |
 | **List Item** | `.place-item` | 썸네일 88 r2 + 본문, 세로 16, 구분선 | 발견 피드, 저장 목록 |
-| **Image Frame** | `.thumb` | 88·64·48 정사각(목록), 4:3(상세, 사진 없으면 5:2), 1px 안쪽 외곽선 | 장소 사진. 없으면 유형 톤 자리표시+취향 아이콘 |
+| **Image Frame** | `.thumb` | 88·64·48 정사각(목록), 4:3(상세, 사진 없으면 5:2), 1px 안쪽 외곽선 | 장소 대표 이미지(Claude가 그린 SVG, 규칙은 `docs/IMAGES.md`). 없으면 유형 톤 자리표시+취향 아이콘 |
 | **Callout** | `.callout` + `--neutral`/`--informative` | 패딩 14, r2_5, t4 | 날짜 안내, 보관 링크 안내 |
 | **Text Field** | `.field` | 높이 44, r2, stroke-weak, 라벨 t3 | 여행 날짜, 방문 예정일 |
 | **Snackbar** | `.snackbar` | neutral-solid, r2, min 44, 화면 아래 | 저장·공유·복사 결과 |
