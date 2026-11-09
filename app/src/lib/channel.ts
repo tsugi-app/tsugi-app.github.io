@@ -5,6 +5,22 @@ export const CHANNEL: Channel = import.meta.env.VITE_CHANNEL === 'toss' ? 'toss'
 
 export const WEB_BASE_URL = 'https://tsugi-app.github.io';
 
+// 다크 모드는 웹만 기기 설정을 따른다. 앱인토스는 다크 모드를 지원하지 않아 라이트로 고정한다.
+// 브라우저 상단 색(theme-color)은 tokens.css의 바탕색을 읽어 맞춘다 (색 코드를 여기 쓰지 않는다).
+export function applyColorMode(): void {
+  if (CHANNEL !== 'web') return;
+  const root = document.documentElement;
+  root.dataset.colorMode = 'system';
+  document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', 'light dark');
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const sync = () => {
+    const bg = getComputedStyle(root).getPropertyValue('--color-bg-layer-floating').trim();
+    if (meta && bg) meta.setAttribute('content', bg);
+  };
+  sync();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync);
+}
+
 // 빌드 시점에 번들된 content.json보다 새 파일이 Pages에 있으면 그걸 쓴다.
 export const CONTENT_URL = `${WEB_BASE_URL}/content.json`;
 

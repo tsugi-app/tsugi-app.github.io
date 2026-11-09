@@ -70,7 +70,11 @@
 
 - 유형 색은 **배지·썸네일 자리표시·상세 기간 블록**에만 쓴다. 버튼·링크에 쓰지 않는다.
 - "재확인 필요"는 warning 톤 배지, "종료됨"은 neutral 톤 배지 + 흐림(opacity .4 금지 → `fg-disabled`).
-- 다크 모드는 만들지 않는다 (CLAUDE.md). `color-scheme: light`.
+- **다크 모드 (웹만)**: 기기 설정을 자동으로 따른다. 토글은 두지 않는다. 앱인토스는 라이트로 고정한다.
+  - 웹에서만 `lib/channel.ts`의 `applyColorMode()`가 `<html data-color-mode="system">`을 단다. 속성이 없으면 언제나 라이트다.
+  - 다크 값은 `tokens.css`의 `@media (prefers-color-scheme: dark)` 안 `[data-color-mode='system']` 블록에서 **시맨틱 토큰만** 덮어쓴다. 컴포넌트는 손대지 않는다.
+  - 값은 SEED 다크 테마 기준: 바탕 `#16171b`, 앱 바·탭 바 `#1d2025`, 섹션 띠 `#000`. 유형 색은 밝은 글자 + 어두운 바탕 쌍으로 바꾼다. 브랜드 글자는 밝은 남색 `#94a9e2`.
+  - 새 시맨틱 토큰을 만들면 다크 값도 같이 정한다. 빠뜨리면 다크에서 라이트 값이 그대로 보인다.
 
 ### 1.2 타이포그래피
 글꼴: Pretendard Variable → 시스템 고딕. 일본어 표기는 `.ja`(Noto Sans JP 우선).
