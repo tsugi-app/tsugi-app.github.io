@@ -4,11 +4,13 @@
   "checkedBy": "claude",
   "recheckBy": "2026-12-01",
   "uncertain": [
-    "전시 기간 중 정원·카페 운영 시간",
-    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+    "좌표는 번지(6-5) 단위 위치"
   ],
   "sources": [
     "https://www.nezu-muse.or.jp/jp/exhibitions/upcoming/",
-    "https://www.nezu-muse.or.jp/jp/access/"
+    "https://www.nezu-muse.or.jp/jp/access/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch",
+    "https://www.nezu-muse.or.jp/jp/visit/",
+    "https://www.nezu-muse.or.jp/jp/visit/cafe/"
   ]
 }

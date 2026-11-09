@@ -4,10 +4,10 @@
   "checkedBy": "claude",
   "recheckBy": "2026-11-29",
   "uncertain": [
-    "이벤트 등으로 인한 부정기 휴무일",
-    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+    "이벤트 등으로 인한 부정기 휴무일"
   ],
   "sources": [
-    "https://prtimes.jp/main/html/rd/p/000000116.000023861.html"
+    "https://prtimes.jp/main/html/rd/p/000000116.000023861.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]
 }
