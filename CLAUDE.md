@@ -18,7 +18,7 @@
 
 ## 하지 않는 것
 - 백엔드 서버, DB, 계정, 알림을 추가하지 않는다. 저장은 `lib/storage.ts`의 localStorage뿐이다. 사파리가 7일 미방문 시 지울 수 있어서, 저장 목록은 `#/saved?keep=…` 보관 링크(`lib/savedLink.ts`)로 옮길 수 있게 한다.
-- 라이브러리를 늘리지 않는다. 허용: react, react-dom, vite, typescript, vitest. 지도는 D6에 leaflet만 추가.
+- 라이브러리를 늘리지 않는다. 허용: react, react-dom, vite, typescript, vitest. 지도는 maplibre-gl만(OpenFreeMap 타일, 2026-11-09 leaflet에서 교체 — 사용자 결정). 지도 서비스는 상업 이용 무료·한도 없음인 곳만 쓴다(docs/MAP_PLAN.md).
 - 콘텐츠의 날짜·가격·예약 조건을 출처 없이 채우지 않는다. 모르면 비우고 `checks/*.json`의 `uncertain`에 적는다.
 - 컴포넌트에 색 코드를 직접 쓰지 않는다. 색·글꼴·간격·모서리는 `app/src/styles/tokens.css`에서만, 컴포넌트는 `--color-*` 시맨틱 토큰만 쓴다. 아이콘은 `components/Icon.tsx`의 인라인 SVG.
 - 분석 호출은 `lib/analytics.ts`의 `track()`을 통해서만. 채널 분기는 `lib/channel.ts`와 `lib/analytics.ts` 두 곳에서만.

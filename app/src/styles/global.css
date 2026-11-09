@@ -1160,8 +1160,11 @@ p {
 }
 
 /* 마커 — 이미지 없이 유형색 원. 누르는 영역은 44px(.map-pin-hit).
-   leaflet.css가 나중에 들어와 .leaflet-marker-icon을 덮으므로 .map-canvas로 한 단계 올린다 */
+   maplibre-gl.css가 지도 청크와 함께 나중에 들어오므로 .map-canvas로 한 단계 올린다 */
 .map-canvas .map-pin-hit {
+  width: var(--x11);
+  height: var(--x11);
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1202,41 +1205,38 @@ p {
   box-shadow: var(--shadow-s2);
 }
 
-/* Leaflet 1.9.4는 타일에 mix-blend-mode: plus-lighter를 줘서 밝은 바탕 위에서 지도가 바랜다 */
-.map-canvas .leaflet-tile {
-  mix-blend-mode: normal;
-}
-/* Leaflet 기본 컨트롤을 츠기 토큰으로 */
-.map-canvas.leaflet-container {
+/* MapLibre 기본 컨트롤(확대·축소, 출처)을 츠기 토큰으로 */
+/* maplibre-gl.css의 .maplibregl-map { position: relative }가 나중에 들어와 지도가 납작해진다 */
+.map-wrap .map-canvas.maplibregl-map {
+  position: absolute;
+  inset: 0;
   font-family: var(--font);
 }
-.map-canvas .leaflet-control-zoom {
-  border: 0;
-  box-shadow: var(--shadow-s1);
+.map-canvas .maplibregl-ctrl-group {
   border-radius: var(--r2);
   overflow: hidden;
+  background: var(--color-bg-layer-floating);
+  box-shadow: var(--shadow-s1);
 }
-.map-canvas .leaflet-control-zoom a {
+.map-canvas .maplibregl-ctrl-group button {
   width: var(--x10);
   height: var(--x10);
-  line-height: var(--x10);
-  font-size: var(--fs-t6);
-  color: var(--color-fg-neutral);
-  background: var(--color-bg-layer-floating);
-  border-bottom-color: var(--color-stroke-neutral-muted);
 }
-.map-canvas .leaflet-control-zoom a.leaflet-disabled {
-  color: var(--color-fg-disabled);
-  background: var(--color-bg-layer-floating);
+.map-canvas .maplibregl-ctrl-group button + button {
+  border-top-color: var(--color-stroke-neutral-muted);
 }
-.map-canvas .leaflet-control-attribution {
+:root[data-theme='dark'] .map-canvas .maplibregl-ctrl-icon,
+:root[data-theme='dark'] .map-canvas .maplibregl-ctrl-attrib-button {
+  filter: invert(1);
+}
+.map-canvas .maplibregl-ctrl-attrib,
+.map-canvas .maplibregl-ctrl-attrib.maplibregl-compact {
   font-size: var(--fs-t1);
   line-height: var(--lh-t1);
   color: var(--color-fg-neutral-muted);
   background: var(--color-bg-layer-floating);
-  border-top-left-radius: var(--r1);
 }
-.map-canvas .leaflet-control-attribution a {
+.map-canvas .maplibregl-ctrl-attrib a {
   color: var(--color-fg-brand);
 }
 
@@ -1327,6 +1327,55 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
+/* 마커 옆 이름 라벨 — 화면을 덜 가리게 작은 알약, 겹치면 왼쪽으로 돌리거나 숨긴다(MapView layoutLabels) */
+.map-pin-label {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 14px);
+  transform: translateY(-50%);
+  max-width: 132px;
+  padding: 3px var(--x1_5);
+  border-radius: var(--r1_5);
+  background: var(--color-bg-layer-floating);
+  color: var(--color-fg-neutral);
+  box-shadow: var(--shadow-s1);
+  font-size: var(--fs-t2);
+  line-height: var(--lh-t2);
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  display: flex;
+  gap: var(--x1);
+  pointer-events: auto;
+}
+.map-pin-label-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.map-pin-label-more {
+  flex-shrink: 0;
+  color: var(--color-fg-neutral-subtle);
+}
+.map-pin-label.selected .map-pin-label-more {
+  color: inherit;
+}
+.map-pin-label.is-left {
+  left: auto;
+  right: calc(50% + 14px);
+}
+.map-pin-label.selected {
+  left: calc(50% + 20px);
+  background: var(--color-bg-neutral-solid);
+  color: var(--color-fg-on-neutral-solid);
+}
+.map-pin-label.selected.is-left {
+  left: auto;
+  right: calc(50% + 20px);
+}
+.map-pin-label.is-hidden {
+  visibility: hidden;
+}
+
 /* 같은 건물 묶음 개수 */
 .map-canvas .map-pin {
   position: relative;
@@ -1352,14 +1401,6 @@ p {
 .map-canvas .map-pin.paired {
   border-color: var(--color-fg-brand);
 }
-/* 짝 장소 점선 */
-.map-canvas .map-pair-line {
-  stroke: var(--color-fg-brand);
-  stroke-width: 3;
-  stroke-dasharray: 6 6;
-  stroke-linecap: round;
-  fill: none;
-}
 
 /* 내 위치 */
 .map-canvas .map-me-hit {
@@ -1375,12 +1416,6 @@ p {
   background: var(--color-stroke-focus-ring);
   border: 3px solid var(--color-bg-layer-default);
   box-shadow: var(--shadow-s1);
-}
-.map-canvas .map-me-accuracy {
-  stroke: var(--color-stroke-focus-ring);
-  stroke-width: 1;
-  fill: var(--color-stroke-focus-ring);
-  fill-opacity: 0.12;
 }
 .map-locate {
   /* 확대·축소 버튼(위 10 + 높이 80) 바로 아래. 미리보기 카드와 겹치지 않는다 */

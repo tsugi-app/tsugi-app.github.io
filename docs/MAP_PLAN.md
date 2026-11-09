@@ -1,5 +1,13 @@
 # 지도 탭 개발 계획
 
+> **2026-11-09 변경: 지도를 국토지리원 타일(Leaflet) → OpenFreeMap Positron(MapLibre)으로 교체.**
+> 지리원 淡色地図는 측량용이라 기호·한자 지명이 많아 모바일에서 "고지도"처럼 보였다. 조건(상업 이용, 비용 0, 한도·키 없음)을 다시 따져
+> OpenFreeMap을 골랐다 — 공식 FAQ "Is commercial usage allowed? Yes.", 조회·요청 한도 없음, 가입·키·쿠키 없음, MIT, 데이터는 OpenStreetMap(ODbL, 출처 표시).
+> 공개 서버는 기부 운영이라 SLA가 없다. 멈추면 같은 오픈소스 구성으로 **도쿄 지역만 잘라 GitHub Pages에 올리는** 길이 있다(비용 0 유지).
+> 벡터 지도라 렌더러를 Leaflet → MapLibre(BSD-3)로 바꿨다(CLAUDE.md 허용 라이브러리 변경).
+> 제외: CARTO(상업 무료 월 100만 타일 한도, 초과 시 유료·철회 가능), Protomaps 호스팅(상업 조건), 지리원 벡터 타일(시험 공개, 종료 가능).
+> 아래 2절의 표·타일 주소는 처음 결정 당시 기록이다.
+
 > 작성 2026-11-09. 지금 지도 탭은 "준비 중" 안내와 동네별 목록, 구글 지도 바깥 링크뿐이다.
 > 목표: **상업적으로 써도 되고, 돈이 들지 않고, 서버 없이** 동작하는 지도 탭.
 
@@ -115,7 +123,20 @@
 남은 확인 (사람·환경이 필요)
 - [ ] 실제 iPhone Safari·Android Chrome에서 한 손가락 이동, 두 손가락 확대, 카드 옆으로 넘기기. (이 Mac엔 Xcode가 없어 iOS 시뮬레이터로도 못 봤다.)
 - [ ] 실제 위치 권한 창(허용·거부)과 시부야 현장 위치.
-- [ ] 앱인토스: 콘솔 앱 등록 → 샌드박스에서 지리원 타일 이미지 로딩, `navigator.geolocation`, 바깥 링크 열기.
+- [ ] 앱인토스: 콘솔 앱 등록 → 샌드박스에서 OpenFreeMap 타일·글꼴 로딩(`tiles.openfreemap.org`), WebGL, `navigator.geolocation`, 바깥 링크 열기.
+
+### 2.5단계 — 마커 이름 라벨 ✅ 2026-11-09
+- 점만 보여 어떤 곳인지 몰라서, 마커 옆에 한국어 이름 알약을 단다. 화면을 덜 가리게 글자 12px, 최대 132px.
+- 겹침 처리(`MapView`의 `layoutLabels`): 고른 곳 → 기간 한정 → 새로 오픈 → 최근 변화 → 편집 추천 순서로 자리를 준다. 오른쪽이 다른 라벨·마커·지도 버튼·미리보기 카드와 겹치면 왼쪽, 그래도 겹치면 숨긴다. 줌 14 미만이면 숨긴다. 지도를 움직이거나 확대할 때마다 다시 계산.
+
+### MapLibre 교체 메모 (2026-11-09)
+- 스타일: `https://tiles.openfreemap.org/styles/positron`, 다크 모드는 `/styles/dark`(테마가 바뀌면 `setStyle(…, { diff: false })`).
+- 지명: 스타일을 불러올 때 모든 글자 레이어의 `text-field`를 `coalesce(name:ko, name:ja, name)`로 바꿔 한국어 이름이 있으면 한국어로.
+- 회전·기울이기 끔(`dragRotate`·`touchPitch` false, 두 손가락 회전 끔). 확대·축소 버튼만.
+- 마커는 HTML `maplibregl.Marker`. MapLibre가 마커 `aria-label`을 "Map marker"로 덮어써서 만든 뒤 다시 단다. `.map-pin-hit`에 `position`을 주면 마커 위치가 깨진다(마커는 absolute여야 함).
+- 짝 점선·내 위치 정확도 원은 GeoJSON 레이어, 색은 tokens.css 값을 읽어 넣는다. 스타일을 다시 불러오면 다시 얹는다.
+- 고른 곳이 화면 밖이면 카드에 가리지 않게 위로 띄워 `easeTo`.
+- 번들: 지도 청크 JS gzip 44KB(Leaflet) → 219KB(MapLibre) + CSS 9KB. 지도 탭에 들어갈 때만 받으므로 발견 첫 화면(65.3KB)은 그대로.
 
 ## 5. 확인 항목 (출시 전)
 

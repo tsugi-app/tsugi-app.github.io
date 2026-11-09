@@ -141,7 +141,7 @@ SEED 컴포넌트를 츠기에 필요한 만큼만 CSS 클래스로 옮긴다. �
 | **Bottom Sheet** | `.sheet` | 위쪽 r4, bg-layer-floating, 핸들 36×4, 제목 t6 700 + 닫기 아이콘, 뒤는 `bg-overlay`, 아래서 200ms 올라옴 | 날짜 달력 |
 | **Snackbar** | `.snackbar` | neutral-solid, r2, min 44, 화면 아래 | 저장·공유·복사 결과 |
 | **Radio List** | `.option-list` `.option-row` `.radiomark` | 행 최소 64, 라벨 t5 500 + 설명 t3, 오른쪽 라디오 20 (선택 = 브랜드 6px 테두리) | 설정의 화면 테마 |
-| **Map Pin** | `.map-pin` (+`--{type}`) | 유형색 원 20(고르면 32), 흰 테두리 3, `shadow-s1`, 누르는 영역 44. 같은 좌표는 한 마커 + 개수 배지(neutral-solid). 짝 장소는 테두리 brand + 점선(brand, 6-6) | 지도 탭 마커 |
+| **Map Pin** | `.map-pin` (+`--{type}`) | 유형색 원 20(고르면 32), 흰 테두리 3, `shadow-s1`, 누르는 영역 44. 같은 좌표는 한 마커 + 개수 배지(neutral-solid). 짝 장소는 테두리 brand + 점선(brand, 6-6) 이름 라벨: 마커 오른쪽 알약(t2 700, floating + `shadow-s1`, 최대 132px 말줄임, 같은 건물은 `+N`). 겹치면 왼쪽으로, 그래도 겹치면 숨김(우선순위: 고른 곳 → 기간 한정 → 새로 오픈 → 최근 변화 → 편집 추천). 줌 14 미만에선 숨김. 고른 곳 라벨은 neutral-solid | 지도 탭 마커 |
 | **Map Preview Card** | `.map-cards` `.map-card` | 지도 위 아래쪽, 좌우 거터, r3, `shadow-s2`, 썸네일 mini + 배지·이름·기간(·내 위치에서 거리) + 「근처 한 곳 · 직선 거리」(t3 brand) + 하트·「길찾기」(brand-solid sm) + 닫기. 같은 건물이면 옆으로 넘김(scroll-snap)과 `1/2` | 마커를 눌렀을 때 |
 | **Map Locate** | `.map-locate` | 40×40 r2, floating + `shadow-s1`, 확대·축소 바로 아래. 내 위치 점은 focus-ring 색 16 + 정확도 원 | 지도 탭 |
 | **Bottom Action Bar** | `.action-bar` | 높이 64, 위 구분선, 하트 + 주요 버튼 | 상세 하단 (당근 상품 상세 패턴) |
@@ -187,7 +187,7 @@ SEED 컴포넌트를 츠기에 필요한 만큼만 CSS 클래스로 옮긴다. �
 |---|---|---|
 | 발견 `#/` | 워드마크 "츠기" + 부제, 오른쪽 설정 버튼(웹만) | 칩 2줄(동네·취향, 가로 스크롤) → 여행 날짜 필드 → 새 소식 / 편집 추천 리스트 |
 | 상세 `#/p/:id` | ← 뒤로 · 공유 | 위 2.2 |
-| 지도 `#/map` | "지도" + 오른쪽 「목록으로 보기」(neutral-weak sm) | 동네 칩 + 「♡ 저장한 곳」 칩(`?saved=1`) 한 줄 → 지도(Leaflet + 지리원 淡色 타일, 탭 바 위까지 꽉 채움) → 마커 누르면 Map Preview Card. `?view=list`면 동네별 목록, `?hood=`로 동네 필터. 다크 모드에서도 타일은 밝은 그대로(출처 표시상 가공하지 않음) |
+| 지도 `#/map` | "지도" + 오른쪽 「목록으로 보기」(neutral-weak sm) | 동네 칩 + 「♡ 저장한 곳」 칩(`?saved=1`) 한 줄 → 지도(MapLibre + OpenFreeMap Positron, 지명은 한국어 우선, 탭 바 위까지 꽉 채움) → 마커 누르면 Map Preview Card. `?view=list`면 동네별 목록, `?hood=`로 동네 필터. 다크 모드에서는 OpenFreeMap Dark 스타일로 바뀐다. 회전·기울이기는 끈다 |
 | 설정 `#/settings` | ← 뒤로 · "설정" | 탭 바 숨김. "화면 테마" 리스트 헤더 → Radio List(시스템·라이트·다크). 고르는 즉시 적용 |
 | 저장 `#/saved` | "저장" | 보관 링크 콜아웃(+버튼) → 동네별 리스트 → 아이템(방문 예정일 필드·지도 열기) |
 
