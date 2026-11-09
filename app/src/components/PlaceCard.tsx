@@ -3,7 +3,7 @@ import type { PlaceView } from '../lib/content';
 import { daysLeft, formatDate, isUpdateActive, isUpdateEnded, needsRecheck, type Trip } from '../lib/dates';
 import { hrefTo } from '../lib/router';
 import { isSaved, toggleSaved, useSaved } from '../lib/storage';
-import { type CardType, HOOD_LABEL, TYPE_LABEL } from '../lib/types';
+import { type CardType, HOOD_LABEL, TYPE_LABEL, type Update } from '../lib/types';
 import { Icon } from './Icon';
 import { dday, Thumb, typeVars } from './PlaceParts';
 import { showSnackbar } from './Snackbar';
@@ -13,6 +13,17 @@ export function cardTypeOf(v: PlaceView, today: string, trip?: Trip): { type: Ca
   if (active) return { type: active.type, ended: false };
   const ended = v.updates.some((u) => isUpdateEnded(u, today));
   return { type: 'editorial', ended: ended && !v.take?.evergreen };
+}
+
+// 카드 아래 줄의 "언제" 문구. 발견 카드와 지도 미리보기 카드가 같이 쓴다.
+export function conditionText(update: Update | undefined, today: string): string {
+  if (!update) return '상시';
+  if (update.start > today)
+    return update.type === 'new'
+      ? `${formatDate(update.start)} 오픈 예정`
+      : `${formatDate(update.start)}부터${update.end ? ` ${formatDate(update.end)}까지` : ''}`;
+  if (update.end) return `${formatDate(update.end)}까지`;
+  return update.type === 'new' ? `${formatDate(update.start)} 오픈` : '상시';
 }
 
 interface Props {
@@ -33,17 +44,7 @@ export function PlaceCard({ view, today, trip, pairName }: Props) {
   const saved = isSaved(place.id);
   const recheck = needsRecheck(check, today);
 
-  const condition = !update
-    ? '상시'
-    : upcoming
-      ? update.type === 'new'
-        ? `${formatDate(update.start)} 오픈 예정`
-        : `${formatDate(update.start)}부터${update.end ? ` ${formatDate(update.end)}까지` : ''}`
-      : update.end
-        ? `${formatDate(update.end)}까지`
-        : update.type === 'new'
-          ? `${formatDate(update.start)} 오픈`
-          : '상시';
+  const condition = conditionText(update, today);
 
   return (
     <article className={`place-item${ended ? ' ended' : ''}`}>

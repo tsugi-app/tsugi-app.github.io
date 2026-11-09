@@ -69,7 +69,7 @@
 
 ## 4. 구현 단계
 
-### 1단계 — 지도 띄우기 (반나절~1일)
+### 1단계 — 지도 띄우기 ✅ 2026-11-09
 1. `npm install leaflet` + `@types/leaflet`(dev). CLAUDE.md 허용 목록에 이미 있다.
 2. `app/src/screens/MapScreen.tsx`를 지도 + 「목록」 전환으로 바꾼다. 지금 목록 코드는 `MapList` 컴포넌트로 옮겨 그대로 쓴다.
 3. 지도 코드는 **동적 import**(`import('leaflet')`)로 지도 탭에 들어갈 때만 내려받는다. 발견 탭 첫 화면 용량을 늘리지 않는다. (Leaflet ≈ 42KB gzip + CSS)
@@ -77,6 +77,12 @@
 5. 타일 레이어 = 지리원 淡色, `maxZoom: 18`, `attribution` 위 문구.
 6. 마커(`.map-pin`) + 누르면 미리보기 카드. 분석은 기존 `track('place_opened', { from: 'map' })`, 길찾기는 `track('map_opened', { from: 'map' })` — 새 이벤트를 만들지 않는다.
 7. URL 필터: `#/map?hood=…`. 발견 탭과 같은 방식.
+
+구현 메모
+- Leaflet 1.9.4는 타일에 `mix-blend-mode: plus-lighter`를 줘서 밝은 바탕 위에서 지도가 바랜다 → `.map-canvas .leaflet-tile { mix-blend-mode: normal }`.
+- leaflet.css가 지도 청크와 함께 나중에 들어와 같은 우선순위 규칙을 덮는다 → 마커 규칙은 `.map-canvas`로 한 단계 올렸다.
+- 같은 좌표(파르코의 ROOT·칸쿄 레코드)는 마커를 20px씩 옆으로 벌려 둘 다 누를 수 있게 했다. 2단계의 묶음 표시 전까지 임시.
+- 번들: 발견 첫 화면 JS gzip 62.3KB → 63.6KB(지도 화면 코드), Leaflet은 지도 청크 44.3KB + CSS 6.5KB로 분리.
 
 ### 2단계 — 쓰기 편하게 (1일)
 1. 내 위치 버튼 (권한은 누를 때만).
@@ -86,6 +92,7 @@
 
 ### 3단계 — 토스·품질 (반나절)
 1. 앱인토스 WebView에서 `cyberjapandata.gsi.go.jp` 이미지 요청이 막히지 않는지 샌드박스에서 확인. 막히면 콘솔의 허용 도메인 설정을 찾는다.
+1. 지도 오른쪽 아래 출처 링크(`target=_blank`)가 토스 WebView에서도 열리는지 확인. 안 되면 `openExternal`로 여는 처리를 `lib/channel.ts`에 둔다.
 2. 터치: 한 손가락 드래그는 지도 이동, 페이지 스크롤과 충돌하지 않게 지도 영역을 화면 높이에 고정.
 3. 접근성: 마커 버튼에 `aria-label="오타 기념 미술관, 기간 한정"`, 「목록」으로 같은 정보를 볼 수 있음을 앱 바에 안내.
 4. DESIGN.md §2에 Map Pin·Map Preview Card 규격을 추가하고, §3 화면 패턴의 지도 행을 바꾼다.
