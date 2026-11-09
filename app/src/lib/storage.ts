@@ -66,3 +66,25 @@ export function getSaved(): Saved[] {
 export function setVisitDate(placeId: string, visitDate?: string): void {
   write(read().map((s) => (s.placeId === placeId ? { ...s, visitDate } : s)));
 }
+
+// 화면 테마 설정. 기본은 기기 설정을 따른다 (docs/DESIGN.md §1.1 다크 모드).
+export type ThemePref = 'system' | 'light' | 'dark';
+const THEME_KEY = 'tsugi:theme';
+
+export function getThemePref(): ThemePref {
+  try {
+    const v = localStorage.getItem(THEME_KEY);
+    return v === 'light' || v === 'dark' ? v : 'system';
+  } catch {
+    return 'system';
+  }
+}
+
+export function setThemePref(pref: ThemePref): void {
+  try {
+    if (pref === 'system') localStorage.removeItem(THEME_KEY);
+    else localStorage.setItem(THEME_KEY, pref);
+  } catch {
+    // 저장 불가 — 이번 방문에만 적용
+  }
+}

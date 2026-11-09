@@ -1,24 +1,38 @@
 // 채널 분기는 이 파일과 analytics.ts 두 곳에서만 한다.
+import type { ThemePref } from './storage';
+
 export type Channel = 'web' | 'toss';
 
 export const CHANNEL: Channel = import.meta.env.VITE_CHANNEL === 'toss' ? 'toss' : 'web';
 
 export const WEB_BASE_URL = 'https://tsugi-app.github.io';
 
-// 다크 모드는 웹만 기기 설정을 따른다. 앱인토스는 다크 모드를 지원하지 않아 라이트로 고정한다.
+// 다크 모드는 웹만 지원한다. 앱인토스는 다크 모드를 지원하지 않아 라이트로 고정한다.
+export const SUPPORTS_THEME = CHANNEL === 'web';
+
+// 설정(시스템·라이트·다크)과 기기 설정을 합쳐 <html data-theme>을 단다.
 // 브라우저 상단 색(theme-color)은 tokens.css의 바탕색을 읽어 맞춘다 (색 코드를 여기 쓰지 않는다).
-export function applyColorMode(): void {
-  if (CHANNEL !== 'web') return;
+let themePref: ThemePref = 'system';
+let listening = false;
+
+export function applyColorMode(pref: ThemePref): void {
+  if (!SUPPORTS_THEME) return;
+  themePref = pref;
   const root = document.documentElement;
-  root.dataset.colorMode = 'system';
-  document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', 'light dark');
-  const meta = document.querySelector('meta[name="theme-color"]');
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
   const sync = () => {
+    const dark = themePref === 'dark' || (themePref === 'system' && media.matches);
+    if (dark) root.dataset.theme = 'dark';
+    else delete root.dataset.theme;
+    document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', dark ? 'dark' : 'light');
     const bg = getComputedStyle(root).getPropertyValue('--color-bg-layer-floating').trim();
-    if (meta && bg) meta.setAttribute('content', bg);
+    if (bg) document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bg);
   };
   sync();
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync);
+  if (!listening) {
+    media.addEventListener('change', sync);
+    listening = true;
+  }
 }
 
 // 빌드 시점에 번들된 content.json보다 새 파일이 Pages에 있으면 그걸 쓴다.

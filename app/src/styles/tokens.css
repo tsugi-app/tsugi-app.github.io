@@ -163,56 +163,53 @@
 }
 
 /*
- * 다크 모드 — 웹 채널만. lib/channel.ts가 웹에서 <html data-color-mode="system">을 단다.
- * 토스(앱인토스)는 속성이 없어 언제나 라이트다. 값은 SEED 다크 테마 기준.
+ * 다크 모드 — 웹만. lib/channel.ts의 applyColorMode()가 설정(시스템·라이트·다크)과
+ * 기기 설정을 합쳐 <html data-theme="dark">를 단다. 토스(앱인토스)는 속성이 없어 언제나 라이트다.
+ * 값은 SEED 다크 테마 기준. 시맨틱 토큰만 덮어쓴다.
  */
-:root[data-color-mode='system'] {
-  color-scheme: light dark;
-}
-@media (prefers-color-scheme: dark) {
-  :root[data-color-mode='system'] {
-    --color-bg-layer-default: #16171b;
-    --color-bg-layer-basement: #000000;
-    --color-bg-layer-floating: #1d2025;
-    --color-bg-neutral-weak: #2b2e35;
-    --color-bg-neutral-weak-pressed: #393d46;
-    --color-bg-neutral-solid: #f3f4f5;
-    --color-bg-neutral-solid-pressed: #dcdee3;
-    --color-bg-brand-solid: #4a66aa;
-    --color-bg-brand-solid-pressed: #3d5796;
-    --color-bg-brand-weak: #1f2840;
-    --color-bg-informative-weak: #202742;
-    --color-bg-transparent-pressed: rgba(255, 255, 255, 0.05);
-    --color-bg-disabled: #2b2e35;
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg-layer-default: #16171b;
+  --color-bg-layer-basement: #000000;
+  --color-bg-layer-floating: #1d2025;
+  --color-bg-neutral-weak: #2b2e35;
+  --color-bg-neutral-weak-pressed: #393d46;
+  --color-bg-neutral-solid: #f3f4f5;
+  --color-bg-neutral-solid-pressed: #dcdee3;
+  --color-bg-brand-solid: #4a66aa;
+  --color-bg-brand-solid-pressed: #3d5796;
+  --color-bg-brand-weak: #1f2840;
+  --color-bg-informative-weak: #202742;
+  --color-bg-transparent-pressed: rgba(255, 255, 255, 0.05);
+  --color-bg-disabled: #2b2e35;
 
-    --color-fg-neutral: #f3f4f5;
-    --color-fg-neutral-muted: #dcdee3;
-    --color-fg-neutral-subtle: #b0b3ba;
-    --color-fg-placeholder: #868b94;
-    --color-fg-disabled: #5b606a;
-    --color-fg-brand: #94a9e2;
-    --color-fg-on-brand-solid: #ffffff;
-    --color-fg-on-neutral-solid: #16171b;
-    --color-fg-informative-contrast: #b9d7fb;
-    --color-fg-critical: #ff6e60;
+  --color-fg-neutral: #f3f4f5;
+  --color-fg-neutral-muted: #dcdee3;
+  --color-fg-neutral-subtle: #b0b3ba;
+  --color-fg-placeholder: #868b94;
+  --color-fg-disabled: #5b606a;
+  --color-fg-brand: #94a9e2;
+  --color-fg-on-brand-solid: #ffffff;
+  --color-fg-on-neutral-solid: #16171b;
+  --color-fg-informative-contrast: #b9d7fb;
+  --color-fg-critical: #ff6e60;
 
-    --color-stroke-neutral-muted: rgba(255, 255, 255, 0.09);
-    --color-stroke-neutral-weak: #4a4f59;
-    --color-stroke-image: rgba(255, 255, 255, 0.05);
-    --color-stroke-focus-ring: #5e98fe;
+  --color-stroke-neutral-muted: rgba(255, 255, 255, 0.09);
+  --color-stroke-neutral-weak: #4a4f59;
+  --color-stroke-image: rgba(255, 255, 255, 0.05);
+  --color-stroke-focus-ring: #5e98fe;
 
-    --color-type-new-fg: #35ce9a;
-    --color-type-new-bg: #202926;
-    --color-type-limited-fg: #ff9e65;
-    --color-type-limited-bg: #31241f;
-    --color-type-changed-fg: #dab156;
-    --color-type-changed-bg: #302819;
-    --color-type-editorial-fg: #94a9e2;
-    --color-type-editorial-bg: #1f2840;
-    --color-warning-fg: #dab156;
-    --color-warning-bg: #302819;
+  --color-type-new-fg: #35ce9a;
+  --color-type-new-bg: #202926;
+  --color-type-limited-fg: #ff9e65;
+  --color-type-limited-bg: #31241f;
+  --color-type-changed-fg: #dab156;
+  --color-type-changed-bg: #302819;
+  --color-type-editorial-fg: #94a9e2;
+  --color-type-editorial-bg: #1f2840;
+  --color-warning-fg: #dab156;
+  --color-warning-bg: #302819;
 
-    --shadow-s1: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-    --shadow-s2: 0 2px 10px 0 rgba(0, 0, 0, 0.68);
-  }
+  --shadow-s1: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+  --shadow-s2: 0 2px 10px 0 rgba(0, 0, 0, 0.68);
 }

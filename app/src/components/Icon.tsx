@@ -14,7 +14,8 @@ export type IconName =
   | 'design'
   | 'goods'
   | 'walk'
-  | 'place';
+  | 'place'
+  | 'settings';
 
 const PATHS: Record<IconName, JSX.Element> = {
   discover: (
@@ -84,6 +85,13 @@ const PATHS: Record<IconName, JSX.Element> = {
     <>
       <circle cx="13" cy="4.5" r="1.8" />
       <path d="m9 21 2.5-6.5L14 17v4M8 11l2.5-3.5 4 1.5 2.5 3M11.5 14.5l1-5" />
+    </>
+  ),
+  settings: (
+    <>
+      <path d="M4 7h9M17 7h3M4 17h3M11 17h9" />
+      <circle cx="15" cy="7" r="2" />
+      <circle cx="9" cy="17" r="2" />
     </>
   ),
   place: (
