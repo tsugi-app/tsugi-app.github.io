@@ -21,7 +21,7 @@
 - 콘텐츠의 날짜·가격·예약 조건을 출처 없이 채우지 않는다. 모르면 비우고 `checks/*.json`의 `uncertain`에 적는다.
 - 컴포넌트에 색 코드를 직접 쓰지 않는다. 색·글꼴·간격·모서리는 `app/src/styles/tokens.css`에서만, 컴포넌트는 `--color-*` 시맨틱 토큰만 쓴다. 아이콘은 `components/Icon.tsx`의 인라인 SVG.
 - 분석 호출은 `lib/analytics.ts`의 `track()`을 통해서만. 채널 분기는 `lib/channel.ts`와 `lib/analytics.ts` 두 곳에서만.
-- 다크 모드를 만들지 않는다 (앱인토스 미지원, 웹도 라이트만).
+- 다크 모드는 웹만, 기기 설정(`prefers-color-scheme`)을 따른다. 앱인토스는 다크 모드를 지원하지 않아 라이트로 고정한다(`lib/channel.ts`의 `applyColorMode`). 다크 색 값은 `tokens.css`의 `[data-color-mode='system']` 블록에만 쓴다. 토글은 두지 않는다.
 
 ## 검사
 모든 PR은 `cd app && npm run validate && npm test && npm run build`와 `node --test scripts/*.test.mjs`가 통과해야 한다. 단위 테스트는 날짜 필터·만료·저장(보관 링크 포함) 로직과 레이더·감시 판정 규칙에만 쓴다.
