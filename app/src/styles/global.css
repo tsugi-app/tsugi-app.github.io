@@ -1125,6 +1125,9 @@ p {
 /* ── 지도 (MapScreen · MapView) — docs/MAP_PLAN.md ── */
 .app.is-map {
   padding-bottom: 0;
+  /* iOS Safari의 100vh는 주소창이 접힌 높이라, 지도 보기에서 페이지가 살짝 스크롤된다 */
+  min-height: 100dvh;
+  overscroll-behavior: none;
 }
 /* 지도 보기는 앱 바·칩 아래부터 탭 바 위까지 화면을 꽉 채운다 */
 .map-screen {

@@ -74,6 +74,24 @@ export function openExternal(url: string): void {
   window.open(url, '_blank', 'noopener');
 }
 
+// 내 위치. 웹은 브라우저 위치 API, 토스는 앱인토스 SDK 위치 API로 바꿀 자리 (docs/MAP_PLAN.md 3단계).
+// 위치는 부른 쪽 화면 상태에만 두고 저장하지 않는다.
+export type PositionResult =
+  | { ok: true; lat: number; lng: number; accuracy: number }
+  | { ok: false; reason: 'unsupported' | 'denied' | 'failed' };
+
+export function getPosition(): Promise<PositionResult> {
+  // TODO(D8): CHANNEL === 'toss'이면 SDK 위치 API를 쓴다. WebView에서 navigator.geolocation이 되면 그대로 둔다.
+  return new Promise((resolve) => {
+    if (!('geolocation' in navigator)) return resolve({ ok: false, reason: 'unsupported' });
+    navigator.geolocation.getCurrentPosition(
+      (pos) => resolve({ ok: true, lat: pos.coords.latitude, lng: pos.coords.longitude, accuracy: pos.coords.accuracy }),
+      (err) => resolve({ ok: false, reason: err.code === err.PERMISSION_DENIED ? 'denied' : 'failed' }),
+      { enableHighAccuracy: false, timeout: 10_000, maximumAge: 60_000 },
+    );
+  });
+}
+
 // 지도는 이름+주소로 검색한다. 좌표는 근사값일 수 있어 주소가 없을 때만 쓴다.
 export function googleMapsUrl(place: { name: { ko: string; ja?: string }; address?: string; geo: { lat: number; lng: number } }): string {
   const name = place.name.ja ?? place.name.ko;
