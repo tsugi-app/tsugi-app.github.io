@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-river-street</title>
+<desc>
+모티프: 도심 수로를 따라 이어지는 강변 산책로와 줄지어 선 조명
+근거: take.why "강을 따라 걷는 짧은 길, 올봄부터 조명이 새로 바뀌었다"
+피한 것: 조명 연출 작품(SHIBUYA FLOWSCAPE) 재현, 시부야 스트림 건물 외관
+제작: Claude Opus 5.5 · 2026-11-09
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<path d="M0 470 L1200 310 L1200 400 L0 560 Z" fill="#c3d1ec"/>
+<path d="M0 560 L1200 400 L1200 436 L0 596 Z" fill="#233c74"/>
+<path d="M0 596 L1200 436 L1200 900 L0 900 Z" fill="#5873b5"/>
+<g stroke="#c3d1ec" stroke-width="20" stroke-linecap="round" fill="none">
+<path d="M220 700 Q 270 660 320 700 Q 370 740 420 700"/>
+<path d="M560 640 Q 610 600 660 640 Q 710 680 760 640"/>
+<path d="M820 600 Q 870 560 920 600 Q 970 640 1020 600"/>
+</g>
+<g stroke="#233c74" stroke-width="20" stroke-linecap="round"><line x1="250" y1="456" x2="250" y2="306"/><line x1="450" y1="430" x2="450" y2="280"/><line x1="650" y1="403" x2="650" y2="253"/><line x1="850" y1="376" x2="850" y2="226"/></g>
+<g fill="#c99a2e"><circle cx="250" cy="300" r="30"/><circle cx="450" cy="274" r="30"/><circle cx="650" cy="247" r="30"/><circle cx="850" cy="220" r="30"/></g>
+</svg>

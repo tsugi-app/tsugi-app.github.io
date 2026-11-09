@@ -31,8 +31,10 @@ const esc = (s) =>
 
 function page({ path, title, description, image, hash }) {
   const url = `${BASE}${path}`;
-  // 장소 사진이 없으면 기본 이미지(app/public/og.png)를 쓴다. 그것도 없으면 이미지 없이 만든다.
-  const img = image ? `${BASE}/images/${image.file}` : DEFAULT_OG ? `${BASE}/og.png` : undefined;
+  // 장소 이미지가 없으면 기본 이미지(app/public/og.png)를 쓴다. 그것도 없으면 이미지 없이 만든다.
+  // 카카오톡·X·페이스북은 og:image로 SVG를 보여 주지 않으므로 SVG 이미지도 기본 이미지로 대신한다.
+  const raster = image && !/\.svg$/i.test(image.file) ? image : undefined;
+  const img = raster ? `${BASE}/images/${raster.file}` : DEFAULT_OG ? `${BASE}/og.png` : undefined;
   // hash에 이미 ?가 있으면 &로 이어 붙인다.
   const sep = hash.includes('?') ? '&' : '?';
   return `<!doctype html>

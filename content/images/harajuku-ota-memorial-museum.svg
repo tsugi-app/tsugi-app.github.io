@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>harajuku-ota-memorial-museum</title>
+<desc>
+모티프: 세로로 긴 판화 액자와 색판을 겹쳐 찍은 듯한 면, 모서리의 작은 낙관
+근거: take.why "우키요에 전문 미술관, 회기마다 작품을 통째로 바꿔 건다"
+피한 것: 특정 우키요에 작품·화풍(오이·호쿠사이 등), 파도·후지산
+제작: Claude Opus 5.5 · 2026-11-09
+</desc>
+<rect width="1200" height="900" fill="#e2e9de"/>
+<rect x="390" y="150" width="420" height="610" rx="8" fill="#233c74"/>
+<rect x="428" y="188" width="344" height="534" fill="#faf8f4"/>
+<rect x="470" y="232" width="260" height="446" fill="#c3d1ec"/>
+<rect x="470" y="520" width="260" height="158" fill="#5873b5"/>
+<rect x="470" y="600" width="260" height="78" fill="#233c74"/>
+<rect x="660" y="262" width="44" height="64" rx="4" fill="#c99a2e"/>
+</svg>

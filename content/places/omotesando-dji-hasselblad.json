@@ -15,5 +15,10 @@
     "lng": 139.70967
   },
   "address": "東京都渋谷区神宮前5-51-8 ラ・ポルト青山 1F・2F",
-  "official": "https://www.instagram.com/djihasselblad_tokyo_omotesando/"
+  "official": "https://www.instagram.com/djihasselblad_tokyo_omotesando/",
+  "image": {
+    "file": "omotesando-dji-hasselblad.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
 }

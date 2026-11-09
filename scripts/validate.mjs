@@ -1,6 +1,6 @@
 // content/ 규칙 검사. 오류가 하나라도 있으면 종료 코드 1 → CI가 병합을 막는다.
 // 규칙은 개발 계획 문서의 "검증 규칙" 표와 같다.
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { CONTENT, HOODS, TAGS, UPDATE_TYPES, isDate, readDir, todayTokyo } from './lib.mjs';
 
@@ -16,6 +16,24 @@ const checks = readDir('checks');
 const placeIds = new Set(places.map((p) => p.data.id));
 const BANNED = ['핫한', '인생', '현지인만'];
 
+// 대표 이미지 SVG 규칙 (docs/IMAGES.md 3장)
+const SVG_PALETTE = ['#e3e6ec', '#e2e9de', '#ece5da', '#233c74', '#5873b5', '#c3d1ec', '#faf8f4', '#c99a2e'];
+const SVG_BANNED = ['text', 'image', 'script', 'foreignObject', 'style', 'filter', 'linearGradient', 'radialGradient', 'mask', 'font'];
+function svgProblems(path) {
+  const out = [];
+  const svg = readFileSync(path, 'utf8');
+  if (statSync(path).size > 30 * 1024) out.push('30KB 초과');
+  const root = svg.match(/<svg\b[^>]*>/)?.[0] ?? '';
+  if (!/viewBox="0 0 1200 900"/.test(root) || !/width="1200"/.test(root) || !/height="900"/.test(root))
+    out.push('<svg>에 viewBox="0 0 1200 900" width="1200" height="900" 필요');
+  for (const tag of SVG_BANNED) if (new RegExp(`<${tag}\\b`).test(svg)) out.push(`<${tag}> 금지`);
+  if (/\b(xlink:)?href="(?!#)/.test(svg)) out.push('외부 href 금지');
+  if (!/<desc>[\s\S]*근거[\s\S]*<\/desc>/.test(svg)) out.push('<desc>에 모티프·근거 필요');
+  for (const c of new Set(svg.toLowerCase().match(/#[0-9a-f]{6}\b/g) ?? []))
+    if (!SVG_PALETTE.includes(c)) out.push(`팔레트 밖 색 ${c}`);
+  return out;
+}
+
 for (const { file, data: p } of places) {
   if (!p.id || file !== `places/${p.id}.json`) err(file, 'id가 파일명과 같아야 한다');
   if (!p.name?.ko) err(file, 'name.ko 필요');
@@ -27,6 +45,8 @@ for (const { file, data: p } of places) {
   if (p.image) {
     if (!p.image.file || !existsSync(join(CONTENT, 'images', p.image.file))) err(file, `이미지 파일 없음: ${p.image?.file}`);
     if (!p.image.credit || !p.image.license) err(file, 'image.credit·license 필요');
+    const path = p.image.file && join(CONTENT, 'images', p.image.file);
+    if (path && /\.svg$/i.test(path) && existsSync(path)) for (const m of svgProblems(path)) err(file, `${p.image.file}: ${m}`);
   }
   if (!checks.some((c) => c.data.placeId === p.id)) err(file, 'check(확인 기록) 없음 — 확인일 없는 카드는 발행 불가');
   if (!takes.some((t) => t.data.placeId === p.id)) warn(file, 'take(편집 판단) 없음 — 카드에 추천 이유가 비어 보인다');

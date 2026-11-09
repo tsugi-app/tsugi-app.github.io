@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-parco-root</title>
+<desc>
+모티프: 삼각 텐트와 입구 안에 켜진 랜턴 불빛
+근거: take.forWhom "캠핑·아웃도어 장비", update.note 아웃도어 기어
+피한 것: 취급 브랜드 로고·제품 형태(nordisk·Petromax 등), 매장 모습
+제작: Claude Opus 5.5 · 2026-11-09
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<rect x="150" y="700" width="900" height="64" rx="12" fill="#c3d1ec"/>
+<g stroke="#5873b5" stroke-width="18" stroke-linecap="round"><line x1="600" y1="200" x2="200" y2="716"/><line x1="600" y1="200" x2="1000" y2="716"/></g>
+<path d="M600 190 L310 712 L890 712 Z" fill="#233c74" stroke="#233c74" stroke-width="20" stroke-linejoin="round"/>
+<path d="M600 360 L490 712 L710 712 Z" fill="#5873b5"/>
+<path d="M600 360 L710 712 L760 712 Z" fill="#faf8f4"/>
+<circle cx="580" cy="640" r="40" fill="#c99a2e"/>
+<line x1="600" y1="190" x2="600" y2="150" stroke="#233c74" stroke-width="18" stroke-linecap="round"/>
+</svg>

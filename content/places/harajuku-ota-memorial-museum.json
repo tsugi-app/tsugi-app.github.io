@@ -14,5 +14,10 @@
     "lng": 139.70474
   },
   "address": "東京都渋谷区神宮前1-10-10",
-  "official": "https://www.ukiyoe-ota-muse.jp/"
+  "official": "https://www.ukiyoe-ota-muse.jp/",
+  "image": {
+    "file": "harajuku-ota-memorial-museum.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
 }

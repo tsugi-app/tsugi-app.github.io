@@ -14,5 +14,10 @@
     "lng": 139.70856
   },
   "address": "東京都渋谷区神宮前4-12-10",
-  "official": "https://www.omotesandohills.com/"
+  "official": "https://www.omotesandohills.com/",
+  "image": {
+    "file": "omotesando-hills.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
 }

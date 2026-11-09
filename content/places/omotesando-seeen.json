@@ -14,5 +14,10 @@
     "lng": 139.70943
   },
   "address": "東京都渋谷区神宮前4-13-12",
-  "official": "https://seeen.jp/"
+  "official": "https://seeen.jp/",
+  "image": {
+    "file": "omotesando-seeen.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
 }
