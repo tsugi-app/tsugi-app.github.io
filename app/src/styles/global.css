@@ -1237,13 +1237,31 @@ p {
   color: var(--color-fg-brand);
 }
 
-/* 마커를 누르면 뜨는 미리보기 카드. 출처 표시가 가려지지 않게 아래를 조금 띄운다 */
-.map-card {
+/* 마커를 누르면 뜨는 미리보기 카드. 출처 표시가 가려지지 않게 아래를 조금 띄운다.
+   같은 건물이면 카드 여러 장을 옆으로 넘긴다(scroll-snap) */
+.map-cards {
   position: absolute;
-  left: var(--space-gutter);
-  right: var(--space-gutter);
+  left: 0;
+  right: 0;
   bottom: var(--x6);
   z-index: 500;
+  animation: snackbar-in var(--d4) var(--ease-enter);
+}
+.map-cards-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-top: var(--x4);
+}
+.map-cards-row::-webkit-scrollbar {
+  display: none;
+}
+.map-card {
+  position: relative;
+  flex: 0 0 calc(100% - 2 * var(--space-gutter));
+  margin: 0 var(--space-gutter);
+  scroll-snap-align: center;
   display: flex;
   align-items: center;
   gap: var(--x3);
@@ -1251,7 +1269,9 @@ p {
   border-radius: var(--r3);
   background: var(--color-bg-layer-floating);
   box-shadow: var(--shadow-s2);
-  animation: snackbar-in var(--d4) var(--ease-enter);
+}
+.map-card + .map-card {
+  margin-left: 0;
 }
 .map-card-body {
   flex: 1;
@@ -1274,16 +1294,144 @@ p {
 }
 .map-card-close {
   position: absolute;
-  z-index: 1;
-  top: calc(-1 * var(--x4));
-  right: calc(-1 * var(--x1));
+  z-index: 2;
+  top: 0;
+  right: calc(var(--space-gutter) - var(--x1));
   width: var(--x8);
   height: var(--x8);
   background: var(--color-bg-layer-floating);
   box-shadow: var(--shadow-s1);
 }
+/* 지도 보기에서는 스낵바가 미리보기 카드를 가리지 않게 지도 위쪽에 띄운다 */
+.app.is-map .snackbar-region {
+  top: calc(var(--app-bar-h) + var(--x9) + var(--x6) + var(--x3));
+  bottom: auto;
+}
+
+/* 짝 장소 안내 — 누르면 짝 장소로 넘어간다 */
+.map-card-pair {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  margin-top: var(--x0_5);
+  font-size: var(--fs-t3);
+  line-height: var(--lh-t3);
+  color: var(--color-fg-brand);
+  text-align: left;
+}
+.map-card-pos {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 같은 건물 묶음 개수 */
+.map-canvas .map-pin {
+  position: relative;
+}
+.map-pin-count {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+  min-width: var(--x4);
+  height: var(--x4);
+  padding: 0 var(--x1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-full);
+  background: var(--color-bg-neutral-solid);
+  color: var(--color-fg-on-neutral-solid);
+  font-size: var(--fs-t1);
+  line-height: 1;
+  font-weight: var(--fw-bold);
+}
+/* 고른 곳의 짝 장소: 테두리를 브랜드색으로 */
+.map-canvas .map-pin.paired {
+  border-color: var(--color-fg-brand);
+}
+/* 짝 장소 점선 */
+.map-canvas .map-pair-line {
+  stroke: var(--color-fg-brand);
+  stroke-width: 3;
+  stroke-dasharray: 6 6;
+  stroke-linecap: round;
+  fill: none;
+}
+
+/* 내 위치 */
+.map-canvas .map-me-hit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.map-canvas .map-me {
+  display: block;
+  width: var(--x4);
+  height: var(--x4);
+  border-radius: var(--r-full);
+  background: var(--color-stroke-focus-ring);
+  border: 3px solid var(--color-bg-layer-default);
+  box-shadow: var(--shadow-s1);
+}
+.map-canvas .map-me-accuracy {
+  stroke: var(--color-stroke-focus-ring);
+  stroke-width: 1;
+  fill: var(--color-stroke-focus-ring);
+  fill-opacity: 0.12;
+}
+.map-locate {
+  /* 확대·축소 버튼(위 10 + 높이 80) 바로 아래. 미리보기 카드와 겹치지 않는다 */
+  position: absolute;
+  z-index: 400;
+  top: calc(10px + 2 * var(--x10) + var(--x2));
+  right: 10px;
+  width: var(--x10);
+  height: var(--x10);
+  border-radius: var(--r2);
+  background: var(--color-bg-layer-floating);
+  box-shadow: var(--shadow-s1);
+}
+.map-locate[aria-busy='true'] {
+  color: var(--color-fg-brand);
+}
+.map-empty {
+  /* 오른쪽 확대·내 위치 버튼(10 + 40)을 가리지 않게 비켜 둔다 */
+  position: absolute;
+  z-index: 400;
+  left: var(--space-gutter);
+  right: calc(10px + var(--x10) + var(--x3));
+  top: 10px;
+  padding: var(--x3) var(--x4);
+  border-radius: var(--r2_5);
+  background: var(--color-bg-layer-floating);
+  box-shadow: var(--shadow-s1);
+  font-size: var(--fs-t4);
+  line-height: var(--lh-t4);
+  color: var(--color-fg-neutral-muted);
+}
+.map-empty--list {
+  position: static;
+  margin: var(--x6) var(--space-gutter);
+  box-shadow: none;
+  background: var(--color-bg-neutral-weak);
+}
+
+/* 칩 사이 구분선, 칩 안 아이콘 */
+.chip-sep {
+  flex-shrink: 0;
+  width: 1px;
+  margin: var(--x2) var(--x0_5);
+  background: var(--color-stroke-neutral-weak);
+}
+.chip svg {
+  margin-right: var(--x1);
+}
+.chip[aria-pressed='true'] svg {
+  color: inherit;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .map-card {
+  .map-cards {
     animation: none;
   }
 }
