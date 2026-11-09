@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>nakazakicho-spot-coffee</title>
+<desc>
+모티프: 세로 홈이 난 카눌레 하나와 옆의 작은 커피잔
+근거: 공식 "디저트는 모두 가게에서 만든다", "카눌레는 갓 구운 이른 오후가 노릴 때"
+피한 것: 가게 로고·외관, 확인 안 된 다른 메뉴
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<ellipse cx="600" cy="690" rx="380" ry="32" fill="#c3d1ec"/>
+<path d="M300 300 Q300 260 340 260 L560 260 Q600 260 600 300 L630 640 Q630 680 590 680 L310 680 Q270 680 270 640 Z" fill="#233c74"/>
+<ellipse cx="450" cy="270" rx="150" ry="40" fill="#5873b5"/>
+<ellipse cx="450" cy="268" rx="60" ry="16" fill="#233c74"/>
+<rect x="340" y="330" width="22" height="320" rx="10" fill="#5873b5"/>
+<rect x="410" y="330" width="22" height="330" rx="10" fill="#5873b5"/>
+<rect x="480" y="330" width="22" height="330" rx="10" fill="#5873b5"/>
+<rect x="545" y="330" width="22" height="320" rx="10" fill="#5873b5"/>
+<path d="M700 480 L920 480 L900 650 Q895 680 865 680 L755 680 Q725 680 720 650 Z" fill="#5873b5"/>
+<path d="M920 520 Q990 530 975 590 Q960 640 905 630" fill="none" stroke="#5873b5" stroke-width="26" stroke-linecap="round"/>
+<ellipse cx="810" cy="484" rx="110" ry="20" fill="#c99a2e"/>
+</svg>

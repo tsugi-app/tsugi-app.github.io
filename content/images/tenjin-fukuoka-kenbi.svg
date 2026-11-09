@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>tenjin-fukuoka-kenbi</title>
+<desc>
+모티프: 미술관 벽에 크기가 다른 빈 액자 둘과 위에서 떨어지는 빛 사각형
+근거: place.category gallery, 공식 소개 "소장품이 1만 점을 넘는 현립미술관"
+피한 것: 에릭 칼 작품·애벌레(기간 한정 전시, 실존 작가 화풍)
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<rect x="180" y="640" width="840" height="40" rx="6" fill="#c3d1ec"/>
+<polygon points="560,150 820,150 880,640 500,640" fill="#c3d1ec"/>
+<rect x="250" y="220" width="300" height="380" rx="8" fill="#233c74"/>
+<rect x="288" y="258" width="224" height="304" fill="#faf8f4"/>
+<rect x="320" y="300" width="160" height="220" fill="#5873b5"/>
+<rect x="640" y="300" width="300" height="230" rx="8" fill="#233c74"/>
+<rect x="676" y="336" width="228" height="158" fill="#5873b5"/>
+<circle cx="860" cy="372" r="22" fill="#c99a2e"/>
+</svg>

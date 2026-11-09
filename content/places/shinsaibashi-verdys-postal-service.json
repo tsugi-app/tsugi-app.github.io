@@ -1,0 +1,24 @@
+{
+  "id": "shinsaibashi-verdys-postal-service",
+  "name": {
+    "ko": "베르디 포스털 서비스",
+    "ja": "Verdy's Postal Service"
+  },
+  "hood": "shinsaibashi",
+  "category": "goods",
+  "tags": [
+    "design",
+    "goods"
+  ],
+  "geo": {
+    "lat": 34.67404,
+    "lng": 135.50131
+  },
+  "address": "大阪府大阪市中央区心斎橋筋1丁目8-3 心斎橋PARCO B1F",
+  "official": "https://vsps.parco.jp/",
+  "image": {
+    "file": "shinsaibashi-verdys-postal-service.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

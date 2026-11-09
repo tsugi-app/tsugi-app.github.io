@@ -1,0 +1,23 @@
+{
+  "id": "tenjin-manucoffee-daimyo",
+  "name": {
+    "ko": "마누커피 다이묘점",
+    "ja": "manucoffee 大名店"
+  },
+  "hood": "tenjin",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 33.58643,
+    "lng": 130.39711
+  },
+  "address": "福岡県福岡市中央区大名1-1-3 石井ビル1F",
+  "official": "https://www.manucoffee.com/shoplist/",
+  "image": {
+    "file": "tenjin-manucoffee-daimyo.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

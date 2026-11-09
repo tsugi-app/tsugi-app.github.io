@@ -1,0 +1,15 @@
+{
+  "placeId": "umeda-umeda-tsutaya-books",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-23",
+  "uncertain": [
+    "페어에서 원화를 전시하는지(공식 페이지엔 그림책·굿즈 판매만)"
+  ],
+  "sources": [
+    "https://store.tsite.jp/umeda/",
+    "https://store.tsite.jp/umeda/access/",
+    "https://store.tsite.jp/umeda/event/shop/57865-1212351104.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

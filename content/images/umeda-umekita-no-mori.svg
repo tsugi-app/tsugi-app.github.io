@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>umeda-umekita-no-mori</title>
+<desc>
+모티프: 둥근 나무 덩어리 셋과 그 사이를 가로지르는 길 한 줄기
+근거: 보도자료 "공원 노스파크 서쪽의 도시의 숲", "남북 구역을 잇는 350m 길"
+피한 것: 오사카역·고층 빌딩 외관, 드론 쇼(개원 기념 행사)
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<path d="M150 700 Q600 560 1050 640 L1050 720 Q600 640 150 760 Z" fill="#c3d1ec"/>
+<rect x="352" y="470" width="36" height="170" rx="10" fill="#233c74"/>
+<rect x="602" y="430" width="36" height="200" rx="10" fill="#233c74"/>
+<rect x="822" y="480" width="36" height="150" rx="10" fill="#233c74"/>
+<circle cx="370" cy="400" r="150" fill="#5873b5"/>
+<circle cx="840" cy="420" r="130" fill="#5873b5"/>
+<circle cx="620" cy="330" r="190" fill="#233c74"/>
+<circle cx="690" cy="260" r="34" fill="#c99a2e"/>
+<path d="M300 560 Q420 520 470 560" fill="none" stroke="#233c74" stroke-width="22" stroke-linecap="round"/>
+</svg>

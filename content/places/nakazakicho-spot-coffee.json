@@ -1,0 +1,23 @@
+{
+  "id": "nakazakicho-spot-coffee",
+  "name": {
+    "ko": "스팟",
+    "ja": "spot"
+  },
+  "hood": "nakazakicho",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 34.70831,
+    "lng": 135.50417
+  },
+  "address": "大阪府大阪市北区中崎西1丁目10-5",
+  "official": "https://coffee-spot-osaka.com/",
+  "image": {
+    "file": "nakazakicho-spot-coffee.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

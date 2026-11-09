@@ -1,0 +1,23 @@
+{
+  "id": "shinsaibashi-lilo-coffee-roasters",
+  "name": {
+    "ko": "릴로 커피 로스터즈",
+    "ja": "LiLo Coffee Roasters"
+  },
+  "hood": "shinsaibashi",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 34.67414,
+    "lng": 135.49797
+  },
+  "address": "大阪府大阪市中央区西心斎橋1-10-28 1F",
+  "official": "https://coffee.liloinveve.com/pages/lilo-coffee-roasters-1",
+  "image": {
+    "file": "shinsaibashi-lilo-coffee-roasters.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

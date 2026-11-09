@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>tenjin-acros-takumi-gallery</title>
+<desc>
+모티프: 손으로 깎은 나무 그릇 하나와 옆에 놓인 끌 한 자루
+근거: 공식 소개 "전통 공예품의 소재·공정·도구를 풀어 보여 주는 전시", 1층 숍에서 공예품 판매
+피한 것: 박다오리 무늬·화장 마와시(기간 한정 기획전), 특정 공방 제품 재현
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<ellipse cx="600" cy="690" rx="380" ry="34" fill="#c3d1ec"/>
+<path d="M250 360 L780 360 Q770 610 620 660 L410 660 Q260 610 250 360 Z" fill="#233c74"/>
+<rect x="250" y="330" width="530" height="52" rx="14" fill="#5873b5"/>
+<path d="M330 430 Q515 470 700 430" fill="none" stroke="#c3d1ec" stroke-width="22" stroke-linecap="round"/>
+<path d="M330 500 Q515 540 700 500" fill="none" stroke="#c3d1ec" stroke-width="22" stroke-linecap="round"/>
+<rect x="850" y="250" width="56" height="250" rx="16" fill="#5873b5" transform="rotate(14 878 375)"/>
+<polygon points="830,500 900,500 880,640 850,640" fill="#233c74" transform="rotate(14 878 375)"/>
+<rect x="842" y="490" width="66" height="26" rx="6" fill="#c99a2e" transform="rotate(14 878 375)"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>tenjin-manucoffee-daimyo</title>
+<desc>
+모티프: 커피잔 하나와, 잔 앞의 원두 한 알에서 돋아난 새싹
+근거: 공식 소개 "커피 찌꺼기와 채프를 천연 유기비료로 되살린다", place.category cafe
+피한 것: 가게 로고·간판, 확인 안 된 메뉴
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<ellipse cx="600" cy="690" rx="400" ry="34" fill="#c3d1ec"/>
+<path d="M240 330 L640 330 L610 620 Q600 670 550 670 L330 670 Q280 670 270 620 Z" fill="#233c74"/>
+<path d="M640 390 Q760 400 740 500 Q720 580 620 580" fill="none" stroke="#233c74" stroke-width="40" stroke-linecap="round"/>
+<ellipse cx="440" cy="335" rx="200" ry="30" fill="#5873b5"/>
+<path d="M420 280 Q390 230 430 190 Q470 150 440 110" fill="none" stroke="#faf8f4" stroke-width="22" stroke-linecap="round"/>
+<ellipse cx="860" cy="630" rx="90" ry="62" fill="#5873b5" transform="rotate(-18 860 630)"/>
+<path d="M815 650 Q860 610 905 610" fill="none" stroke="#233c74" stroke-width="18" stroke-linecap="round"/>
+<path d="M860 575 L860 430" stroke="#233c74" stroke-width="22" stroke-linecap="round"/>
+<path d="M860 470 Q790 450 770 380 Q840 380 860 450 Z" fill="#c99a2e"/>
+<path d="M860 440 Q930 410 960 340 Q880 350 860 420 Z" fill="#233c74"/>
+</svg>

@@ -1,0 +1,19 @@
+{
+  "placeId": "tenjin-acros-takumi-gallery",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-20",
+  "uncertain": [
+    "정기 휴관일(공식 페이지에 없음)",
+    "기획전 입장료",
+    "1층 카페·숍 영업시간",
+    "연말연시(12/29~1/3) 휴관 여부"
+  ],
+  "sources": [
+    "https://www.acros.or.jp/takumi/",
+    "https://www.acros.or.jp/takumi/facility/",
+    "https://www.acros.or.jp/events/15827.html",
+    "https://www.acros.or.jp/events/15896.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

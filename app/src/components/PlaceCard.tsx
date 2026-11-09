@@ -1,6 +1,6 @@
 import { track } from '../lib/analytics';
 import type { PlaceView } from '../lib/content';
-import { daysLeft, formatDate, isUpdateActive, isUpdateEnded, needsRecheck, type Trip } from '../lib/dates';
+import { activeUpdate, daysLeft, formatDate, isUpdateEnded, needsRecheck, type Trip } from '../lib/dates';
 import { hrefTo } from '../lib/router';
 import { isSaved, toggleSaved, useSaved } from '../lib/storage';
 import { type CardType, HOOD_LABEL, TYPE_LABEL, type Update } from '../lib/types';
@@ -9,7 +9,7 @@ import { dday, Thumb, typeVars } from './PlaceParts';
 import { showSnackbar } from './Snackbar';
 
 export function cardTypeOf(v: PlaceView, today: string, trip?: Trip): { type: CardType; ended: boolean } {
-  const active = v.updates.find((u) => isUpdateActive(u, today, trip));
+  const active = activeUpdate(v.updates, today, trip);
   if (active) return { type: active.type, ended: false };
   const ended = v.updates.some((u) => isUpdateEnded(u, today));
   return { type: 'editorial', ended: ended && !v.take?.evergreen };
@@ -38,7 +38,7 @@ export function PlaceCard({ view, today, trip, pairName }: Props) {
   useSaved();
   const { place, take, check } = view;
   const { type, ended } = cardTypeOf(view, today, trip);
-  const update = view.updates.find((u) => isUpdateActive(u, today, trip));
+  const update = activeUpdate(view.updates, today, trip);
   const upcoming = !!update && update.start > today;
   const left = update && !upcoming ? daysLeft(update, today) : null;
   const saved = isSaved(place.id);

@@ -1,0 +1,15 @@
+{
+  "placeId": "hakata-dentou-kougeikan",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-12",
+  "uncertain": [
+    "관 안에서 공예품을 파는지(공식 '사기' 메뉴는 바깥 판매점 목록)"
+  ],
+  "sources": [
+    "https://www.hakata-dentou-kougeikan.jp/",
+    "https://www.hakata-dentou-kougeikan.jp/guide/",
+    "https://www.hakata-dentou-kougeikan.jp/news/%e3%80%90%e3%82%a4%e3%83%99%e3%83%b3%e3%83%88%e3%80%91%e3%80%8c%e5%8d%9a%e5%a4%9a%e7%b9%94%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%8d%e3%83%bc%e3%83%88%e5%b1%95%e3%80%8d%e9%96%8b%e5%82%ac%e3%81%ae/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

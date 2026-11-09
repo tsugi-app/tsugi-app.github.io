@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>hakata-machiya-furusatokan</title>
+<desc>
+모티프: 마치야 정면을 줄인 것 — 기와 처마 한 줄과 아래의 세로 격자창
+근거: take.why "메이지 시대 하카타오리 공방 겸 집을 옮겨 복원한 마치야", 공식 소개 "마치야동은 후쿠오카시 지정 문화재"
+피한 것: 건물 외관의 사실적 재현(요소 둘만 단순 도형으로), 간판·노렌 글자
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<rect x="160" y="660" width="880" height="36" rx="6" fill="#c3d1ec"/>
+<polygon points="190,300 1010,300 940,200 260,200" fill="#233c74"/>
+<rect x="170" y="296" width="860" height="34" rx="8" fill="#5873b5"/>
+<rect x="240" y="330" width="720" height="330" fill="#233c74"/>
+<rect x="280" y="370" width="380" height="250" fill="#c3d1ec"/>
+<g fill="#233c74">
+<rect x="318" y="370" width="20" height="250"/><rect x="368" y="370" width="20" height="250"/><rect x="418" y="370" width="20" height="250"/><rect x="468" y="370" width="20" height="250"/><rect x="518" y="370" width="20" height="250"/><rect x="568" y="370" width="20" height="250"/><rect x="618" y="370" width="20" height="250"/>
+</g>
+<rect x="710" y="370" width="210" height="290" fill="#5873b5"/>
+<rect x="740" y="380" width="150" height="90" fill="#c99a2e"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shinsaibashi-lilo-coffee-roasters</title>
+<desc>
+모티프: 드리퍼 하나와 그 위의 작은 초승달 (밤늦게까지 여는 로스터리)
+근거: 공식 "OPEN everyday 11:00 ~ 23:00", place.category cafe
+피한 것: 가게 로고, 확인 안 된 메뉴·블렌드 이름
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<ellipse cx="600" cy="700" rx="340" ry="30" fill="#c3d1ec"/>
+<polygon points="400,330 800,330 680,520 520,520" fill="#233c74"/>
+<rect x="380" y="300" width="440" height="46" rx="14" fill="#5873b5"/>
+<rect x="560" y="520" width="80" height="40" fill="#233c74"/>
+<path d="M440 560 L760 560 L740 680 L460 680 Z" fill="#5873b5"/>
+<rect x="480" y="600" width="240" height="26" rx="8" fill="#c3d1ec"/>
+<path d="M860 170 Q780 230 820 310 Q860 380 950 360 Q870 330 860 260 Q850 200 860 170 Z" fill="#c99a2e"/>
+</svg>

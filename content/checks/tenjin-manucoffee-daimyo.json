@@ -1,0 +1,14 @@
+{
+  "placeId": "tenjin-manucoffee-daimyo",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2027-02-10",
+  "uncertain": [
+    "결제 수단(현금·카드)"
+  ],
+  "sources": [
+    "https://www.manucoffee.com/shoplist/",
+    "https://www.manucoffee.com/about/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

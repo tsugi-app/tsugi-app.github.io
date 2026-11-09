@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { addDays, addMonths, daysLeft, formatYmd, isUpdateActive, isUpdateEnded, monthGrid, needsRecheck } from './dates';
+import { activeUpdate, addDays, addMonths, daysLeft, formatYmd, isUpdateActive, isUpdateEnded, monthGrid, needsRecheck } from './dates';
 import type { Update } from './types';
 
 const base: Update = {
@@ -65,5 +65,15 @@ describe('달력', () => {
   it('월 이동은 연도를 넘긴다', () => {
     expect(addMonths('2026-12', 1)).toBe('2027-01');
     expect(addMonths('2027-01', -1)).toBe('2026-12');
+  });
+});
+
+describe('activeUpdate', () => {
+  it('진행 중인 소식이 다음 예정 소식보다 앞선다 (파일 이름 순서와 상관없이)', () => {
+    const next = { ...base, id: 'a-next', start: '2026-12-15', end: '2027-01-11' };
+    const now = { ...base, id: 'z-now', start: '2026-11-03', end: '2026-11-23' };
+    expect(activeUpdate([next, now], '2026-11-10')?.id).toBe('z-now');
+    expect(activeUpdate([next, now], '2026-11-24')?.id).toBe('a-next');
+    expect(activeUpdate([next, now], '2027-01-12')).toBeUndefined();
   });
 });

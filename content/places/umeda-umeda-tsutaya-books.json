@@ -1,0 +1,24 @@
+{
+  "id": "umeda-umeda-tsutaya-books",
+  "name": {
+    "ko": "우메다 츠타야 서점",
+    "ja": "梅田 蔦屋書店"
+  },
+  "hood": "umeda",
+  "category": "goods",
+  "tags": [
+    "design",
+    "goods"
+  ],
+  "geo": {
+    "lat": 34.70188,
+    "lng": 135.49634
+  },
+  "address": "大阪府大阪市北区梅田3-1-3 ルクア イーレ9F",
+  "official": "https://store.tsite.jp/umeda/",
+  "image": {
+    "file": "umeda-umeda-tsutaya-books.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

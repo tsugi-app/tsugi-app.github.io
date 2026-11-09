@@ -1,0 +1,23 @@
+{
+  "id": "hakata-asian-art-museum",
+  "name": {
+    "ko": "후쿠오카 아시아 미술관",
+    "ja": "福岡アジア美術館"
+  },
+  "hood": "hakata",
+  "category": "gallery",
+  "tags": [
+    "design"
+  ],
+  "geo": {
+    "lat": 33.5953,
+    "lng": 130.40549
+  },
+  "address": "福岡県福岡市博多区下川端町3-1 リバレインセンタービル7・8階",
+  "official": "https://faam.city.fukuoka.lg.jp/",
+  "image": {
+    "file": "hakata-asian-art-museum.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

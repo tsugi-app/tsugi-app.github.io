@@ -1,0 +1,23 @@
+{
+  "id": "namba-parks-garden",
+  "name": {
+    "ko": "난바 파크스 가든",
+    "ja": "なんばパークス パークスガーデン"
+  },
+  "hood": "namba",
+  "category": "walk",
+  "tags": [
+    "walk"
+  ],
+  "geo": {
+    "lat": 34.66241,
+    "lng": 135.50125
+  },
+  "address": "大阪府大阪市浪速区難波中2-10-70 なんばパークス 2F〜9F",
+  "official": "http://nambaparks.com/garden",
+  "image": {
+    "file": "namba-parks-garden.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

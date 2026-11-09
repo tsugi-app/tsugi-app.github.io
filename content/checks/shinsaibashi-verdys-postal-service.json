@@ -1,0 +1,16 @@
+{
+  "placeId": "shinsaibashi-verdys-postal-service",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2027-01-10",
+  "uncertain": [
+    "매장만의 영업시간(PARCO 물판 영업시간으로 적음)",
+    "편지를 부칠 때 우편 요금이 따로 드는지"
+  ],
+  "sources": [
+    "https://shinsaibashi.parco.jp/newrenewal/detail/?id=38481",
+    "https://shinsaibashi.parco.jp/info/",
+    "https://vsps.parco.jp/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}
