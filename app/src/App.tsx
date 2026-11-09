@@ -7,12 +7,15 @@ import { Discover } from './screens/Discover';
 import { MapScreen } from './screens/MapScreen';
 import { Place } from './screens/Place';
 import { Saved } from './screens/Saved';
+import { Settings } from './screens/Settings';
 
-// 화면마다 자기 앱 바를 그린다. 상세는 탭 바 대신 하단 액션 바를 쓴다 (docs/DESIGN.md §3).
+// 화면마다 자기 앱 바를 그린다. 상세는 탭 바 대신 하단 액션 바를 쓰고, 설정은 탭 바를 숨긴다 (docs/DESIGN.md §3).
 export function App() {
   const route = useRoute();
   const content = useContent();
   const isPlace = route.name === 'place';
+  // 상세·설정은 하위 화면이라 탭 바를 숨긴다.
+  const isSub = isPlace || route.name === 'settings';
   const placeId = isPlace ? route.id : '';
 
   useEffect(() => {
@@ -25,7 +28,8 @@ export function App() {
       {route.name === 'place' && <Place content={content} id={route.id} />}
       {route.name === 'map' && <MapScreen content={content} />}
       {route.name === 'saved' && <Saved content={content} query={route.query} />}
-      {!isPlace && <Tabs route={route} />}
+      {route.name === 'settings' && <Settings />}
+      {!isSub && <Tabs route={route} />}
       <SnackbarRegion />
     </div>
   );

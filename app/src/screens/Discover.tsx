@@ -6,7 +6,8 @@ import { TripDates } from '../components/TripDates';
 import { track } from '../lib/analytics';
 import { type PlaceView, viewOf } from '../lib/content';
 import { isUpdateActive, todayTokyo, type Trip } from '../lib/dates';
-import { go } from '../lib/router';
+import { SUPPORTS_THEME } from '../lib/channel';
+import { go, hrefTo } from '../lib/router';
 import { type Content, HOOD_LABEL, type Hood, type Tag, TAG_LABEL } from '../lib/types';
 
 interface Props {
@@ -63,7 +64,15 @@ export function Discover({ content, query }: Props) {
 
   return (
     <>
-      <AppBar />
+      <AppBar
+        right={
+          SUPPORTS_THEME && (
+            <a className="icon-btn" href={hrefTo('/settings')} aria-label="설정">
+              <Icon name="settings" />
+            </a>
+          )
+        }
+      />
       <section>
         <div className="chip-row" role="group" aria-label="동네">
           <button className="chip" aria-pressed={!hood} onClick={() => setParam('hood', '')}>
