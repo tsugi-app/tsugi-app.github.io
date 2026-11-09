@@ -1,0 +1,14 @@
+{
+  "placeId": "omotesando-hills",
+  "checkedAt": "2026-11-09",
+  "checkedBy": "claude-draft",
+  "recheckBy": "2026-11-20",
+  "uncertain": [
+    "행사 시간(보도자료는 '표참도 힐즈 영업시간에 준함'으로만 밝힘)",
+    "뽑기·캡슐토이 일별 판매 수량",
+    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000004588.000018505.html"
+  ]
+}

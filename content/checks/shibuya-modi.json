@@ -1,0 +1,14 @@
+{
+  "placeId": "shibuya-modi",
+  "checkedAt": "2026-11-09",
+  "checkedBy": "claude-draft",
+  "recheckBy": "2026-11-13",
+  "uncertain": [
+    "시부야 모디 한정 특전 내용(보도자료 이미지에만 있어 확인 못 함)",
+    "가격은 보도자료 기준(현장 가격과 다를 수 있음)",
+    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000010.000174591.html"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "placeId": "shibuya-cafe-legato",
+  "checkedAt": "2026-11-09",
+  "checkedBy": "claude-draft",
+  "recheckBy": "2026-11-30",
+  "uncertain": [
+    "겨울 애프터눈 티 가격·제공 시간·예약 필수 여부(공식 사이트엔 가을 메뉴만 게시)",
+    "11/12 리뉴얼 뒤 점심·티타임 시간 변경 여부",
+    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000338.000014699.html",
+    "https://cafelegato.com/"
+  ]
+}

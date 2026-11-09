@@ -1,0 +1,18 @@
+{
+  "id": "omotesando-seeen",
+  "name": {
+    "ko": "seeen 오모테산도",
+    "ja": "seeen表参道"
+  },
+  "hood": "omotesando",
+  "category": "gallery",
+  "tags": [
+    "design"
+  ],
+  "geo": {
+    "lat": 35.6683,
+    "lng": 139.7079
+  },
+  "address": "東京都渋谷区神宮前4-13-12",
+  "official": "https://seeen.jp/"
+}

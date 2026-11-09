@@ -1,0 +1,18 @@
+{
+  "id": "shibuya-cafe-legato",
+  "name": {
+    "ko": "카페 레가토",
+    "ja": "CAFE Legato"
+  },
+  "hood": "shibuya",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 35.6567,
+    "lng": 139.6951
+  },
+  "address": "東京都渋谷区円山町3-6 E・スペースタワー15F",
+  "official": "https://cafelegato.com/"
+}
