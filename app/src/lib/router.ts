@@ -31,6 +31,15 @@ export function useRoute(): Route {
   return route;
 }
 
+// 앱 안에서 한 번이라도 이동했는지. 공유 링크로 상세에 바로 들어온 경우 뒤로 가기는 발견으로 보낸다.
+let moved = false;
+if (typeof window !== 'undefined') window.addEventListener('hashchange', () => (moved = true));
+
+export function goBack(): void {
+  if (moved) window.history.back();
+  else go('/');
+}
+
 export function go(path: string): void {
   window.location.hash = path;
 }

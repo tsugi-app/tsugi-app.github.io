@@ -4,6 +4,7 @@
 
 ## 구조
 - `app/` — Vite + React 18 + TypeScript. 화면 4개(`screens/`), 공용 로직은 `lib/`.
+- `docs/DESIGN.md` — UI/UX 가이드라인(당근 SEED 기반). 화면·컴포넌트·문구를 바꿀 땐 먼저 이 문서를 따른다.
 - `content/` — 장소·소식·편집 판단·확인 기록 JSON. 장소 1개 = 파일 1개.
 - `scripts/` — `validate.mjs`(규칙 검사), `build-content.mjs`(→ `app/public/content.json`), `build-share.mjs`(vite build 뒤 `dist/p/<id>/`·`dist/c/<동네|취향>/`에 OG 미리보기 페이지 생성, 웹 채널만). 의존성 없는 Node 스크립트.
 - `.github/workflows/` — `ci.yml`(PR 검사), `deploy-pages.yml`(main → Pages, 매일 03:00 KST 재빌드), `recheck.yml`(매주 월 재확인 이슈), `radar.yml`(10분마다 후보 레이더), `watchdog.yml`(매일: 레이더 24시간 무실행·리포 50일 무활동이면 이슈).
@@ -18,7 +19,7 @@
 - 백엔드 서버, DB, 계정, 알림을 추가하지 않는다. 저장은 `lib/storage.ts`의 localStorage뿐이다. 사파리가 7일 미방문 시 지울 수 있어서, 저장 목록은 `#/saved?keep=…` 보관 링크(`lib/savedLink.ts`)로 옮길 수 있게 한다.
 - 라이브러리를 늘리지 않는다. 허용: react, react-dom, vite, typescript, vitest. 지도는 D6에 leaflet만 추가.
 - 콘텐츠의 날짜·가격·예약 조건을 출처 없이 채우지 않는다. 모르면 비우고 `checks/*.json`의 `uncertain`에 적는다.
-- 컴포넌트에 색 코드를 직접 쓰지 않는다. 색·글꼴은 `app/src/styles/tokens.css`에서만.
+- 컴포넌트에 색 코드를 직접 쓰지 않는다. 색·글꼴·간격·모서리는 `app/src/styles/tokens.css`에서만, 컴포넌트는 `--color-*` 시맨틱 토큰만 쓴다. 아이콘은 `components/Icon.tsx`의 인라인 SVG.
 - 분석 호출은 `lib/analytics.ts`의 `track()`을 통해서만. 채널 분기는 `lib/channel.ts`와 `lib/analytics.ts` 두 곳에서만.
 - 다크 모드를 만들지 않는다 (앱인토스 미지원, 웹도 라이트만).
 

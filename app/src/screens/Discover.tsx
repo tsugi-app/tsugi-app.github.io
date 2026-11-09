@@ -1,4 +1,6 @@
 import { useEffect, useMemo } from 'react';
+import { AppBar } from '../components/AppBar';
+import { Icon } from '../components/Icon';
 import { PlaceCard, cardTypeOf } from '../components/PlaceCard';
 import { TripDates } from '../components/TripDates';
 import { track } from '../lib/analytics';
@@ -49,43 +51,75 @@ export function Discover({ content, query }: Props) {
   const pairName = (v: PlaceView) =>
     v.take?.pairWith ? content.places.find((p) => p.id === v.take!.pairWith)?.name.ko : undefined;
 
+  const list = (items: PlaceView[]) => (
+    <ul className="place-list">
+      {items.map((v) => (
+        <li key={v.place.id}>
+          <PlaceCard view={v} today={today} trip={trip} pairName={pairName(v)} />
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
-    <section>
-      <div className="chips" role="group" aria-label="동네">
-        {(Object.keys(HOOD_LABEL) as Hood[]).map((h) => (
-          <button key={h} className="chip" aria-pressed={hood === h} onClick={() => setParam('hood', hood === h ? '' : h)}>
-            {HOOD_LABEL[h]}
+    <>
+      <AppBar />
+      <section>
+        <div className="chip-row" role="group" aria-label="동네">
+          <button className="chip" aria-pressed={!hood} onClick={() => setParam('hood', '')}>
+            전체
           </button>
-        ))}
-      </div>
-      <div className="chips" role="group" aria-label="취향">
-        {(Object.keys(TAG_LABEL) as Tag[]).map((t) => (
-          <button key={t} className="chip" aria-pressed={tag === t} onClick={() => setParam('tag', tag === t ? '' : t)}>
-            {TAG_LABEL[t]}
-          </button>
-        ))}
-      </div>
-      <TripDates
-        from={from}
-        to={to}
-        today={today}
-        onChange={(f, t) => setParams({ from: f, to: t })}
-        onClear={() => setParams({ from: '', to: '' })}
-      />
+          {(Object.keys(HOOD_LABEL) as Hood[]).map((h) => (
+            <button key={h} className="chip" aria-pressed={hood === h} onClick={() => setParam('hood', hood === h ? '' : h)}>
+              {HOOD_LABEL[h]}
+            </button>
+          ))}
+        </div>
+        <div className="chip-row" role="group" aria-label="취향">
+          {(Object.keys(TAG_LABEL) as Tag[]).map((t) => (
+            <button key={t} className="chip" aria-pressed={tag === t} onClick={() => setParam('tag', tag === t ? '' : t)}>
+              {TAG_LABEL[t]}
+            </button>
+          ))}
+        </div>
+        <TripDates
+          from={from}
+          to={to}
+          today={today}
+          onChange={(f, t) => setParams({ from: f, to: t })}
+          onClear={() => setParams({ from: '', to: '' })}
+        />
+        <div className="divider-band" />
 
-      {views.length === 0 && (
-        <p className="empty">이 조건엔 아직 후보가 없어요. 동네를 하나 더 넣어 볼까요?</p>
-      )}
+        {views.length === 0 && (
+          <div className="empty">
+            <Icon name="discover" size={48} />
+            <p>이 조건엔 아직 후보가 없어요.</p>
+            <button className="btn btn--neutral-weak" onClick={() => setParams({ hood: '', tag: '' })}>
+              동네·취향 조건 풀기
+            </button>
+          </div>
+        )}
 
-      {fresh.length > 0 && <h2 className="section-title">{trip ? '여행 기간 중 새 소식' : '지금 새 소식'}</h2>}
-      {fresh.map((v) => (
-        <PlaceCard key={v.place.id} view={v} today={today} trip={trip} pairName={pairName(v)} />
-      ))}
+        {fresh.length > 0 && (
+          <>
+            <h2 className="list-header">
+              {trip ? '여행 기간 중 새 소식' : '지금 새 소식'}
+              <small>{fresh.length}곳</small>
+            </h2>
+            {list(fresh)}
+          </>
+        )}
 
-      {editorial.length > 0 && <h2 className="section-title">편집 추천</h2>}
-      {editorial.map((v) => (
-        <PlaceCard key={v.place.id} view={v} today={today} trip={trip} pairName={pairName(v)} />
-      ))}
-    </section>
+        {editorial.length > 0 && (
+          <>
+            <h2 className="list-header">
+              편집 추천<small>{editorial.length}곳</small>
+            </h2>
+            {list(editorial)}
+          </>
+        )}
+      </section>
+    </>
   );
 }
