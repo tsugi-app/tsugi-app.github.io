@@ -10,7 +10,7 @@ import { type PlaceView, viewOf } from '../lib/content';
 import { daysLeft, formatDate, isUpdateActive, needsRecheck, todayTokyo } from '../lib/dates';
 import { hrefTo } from '../lib/router';
 import { isSaved, toggleSaved, useSaved } from '../lib/storage';
-import { type Content, HOOD_LABEL, TAG_LABEL, TYPE_LABEL, type Update } from '../lib/types';
+import { areaLabel, type Content, HOOD_LABEL, TAG_LABEL, TYPE_LABEL, type Update } from '../lib/types';
 
 interface Props {
   content: Content;
@@ -114,7 +114,7 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
             </span>
             {needsRecheck(check, today) && <span className="badge badge--warning">재확인 필요</span>}
             <span className="meta">
-              {HOOD_LABEL[place.hood]}
+              {areaLabel(place)}
               {place.tags.map((t) => (
                 <span key={t} className="meta-sep">
                   {TAG_LABEL[t]}

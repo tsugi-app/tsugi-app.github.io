@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 // GitHub Pages에는 서버 리라이트가 없어 해시 라우팅을 쓴다.
 //   #/                    발견
 //   #/p/<placeId>         장소 상세
-//   #/map                 지도 (?hood=… 동네, ?view=list 목록 보기)
+//   #/map                 지도 (?city=…&hood=… 도시·동네, ?view=list 목록 보기)
 //   #/saved               저장 (?keep=… 이면 보관 링크 불러오기)
 //   #/settings            설정 (화면 테마)
 export type Route =

@@ -6,7 +6,10 @@ export const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 export const CONTENT = join(ROOT, 'content');
 export const APP_PUBLIC = join(ROOT, 'app', 'public');
 
-export const HOODS = ['shibuya', 'harajuku', 'omotesando'];
+// 도시·동네 목록은 앱과 같은 파일(app/src/lib/labels.json)을 읽는다.
+export const LABELS = JSON.parse(readFileSync(join(ROOT, 'app', 'src', 'lib', 'labels.json'), 'utf8'));
+export const CITIES = Object.keys(LABELS.city);
+export const HOODS = Object.keys(LABELS.hood);
 export const TAGS = ['cafe', 'design', 'goods', 'walk'];
 export const UPDATE_TYPES = ['new', 'limited', 'changed'];
 

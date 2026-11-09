@@ -1,6 +1,6 @@
 // 공유 미리보기용 정적 페이지를 만든다. vite build 뒤에 돈다.
 //   /p/<placeId>/   장소 하나   → /#/p/<placeId>
-//   /c/<동네|취향>/  주제 하나   → /#/?hood=… 또는 /#/?tag=…
+//   /c/<도시|동네|취향>/  주제 하나   → /#/?city=…, /#/?hood=… 또는 /#/?tag=…
 // 해시 주소는 카톡·X 미리보기 수집기가 읽지 못해서, 실제 경로에 OG 태그만 담은 페이지를 두고
 // 사람이 열면 바로 앱 해시 경로로 넘긴다. 링크의 ?c=캠페인 은 그대로 넘긴다.
 // 앱인토스 번들(VITE_CHANNEL=toss)에는 필요 없어서 만들지 않는다.
@@ -81,7 +81,7 @@ let n = 0;
 for (const p of content.places) {
   if (!SAFE_ID.test(p.id)) continue;
   const take = content.takes.find((t) => t.placeId === p.id);
-  const hood = labels.hood[p.hood] ?? '';
+  const hood = labels.hood[p.hood]?.ko ?? '';
   write(`/p/${p.id}/`, page({
     path: `/p/${p.id}/`,
     title: `${p.name.ko} · ${hood} — ${SITE}`,
@@ -93,7 +93,13 @@ for (const p of content.places) {
 }
 
 const topics = [
-  ...Object.entries(labels.hood).map(([k, label]) => ({ k, label, param: 'hood', match: (p) => p.hood === k, phrase: `${label}에서` })),
+  // 도시·동네는 장소가 있는 곳만 만든다 (빈 주제 페이지를 공유하지 않게).
+  ...Object.entries(labels.city)
+    .map(([k, label]) => ({ k, label, param: 'city', match: (p) => labels.hood[p.hood]?.city === k, phrase: `${label}에서` }))
+    .filter((t) => content.places.some(t.match)),
+  ...Object.entries(labels.hood)
+    .map(([k, { ko }]) => ({ k, label: ko, param: 'hood', match: (p) => p.hood === k, phrase: `${ko}에서` }))
+    .filter((t) => content.places.some(t.match)),
   ...Object.entries(labels.tag).map(([k, label]) => ({ k, label, param: 'tag', match: (p) => p.tags.includes(k), phrase: `${label} 취향으로` })),
 ];
 

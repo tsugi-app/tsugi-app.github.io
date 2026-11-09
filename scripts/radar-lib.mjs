@@ -1,7 +1,15 @@
 // 후보 레이더 — 순수 함수만 둔다 (네트워크·GitHub 호출 없음). radar.test.mjs가 이걸 검사한다.
 
-// 지역어: 하나라도 있어야 후보. 값은 content의 hood.
+import { readFileSync } from 'node:fs';
+
+// 도시·동네 이름은 앱과 같은 파일을 읽는다.
+const LABELS = JSON.parse(readFileSync(new URL('../app/src/lib/labels.json', import.meta.url), 'utf8'));
+
+// 지역어: 하나라도 있어야 후보. 값은 content의 hood (labels.json의 키).
+// 도시 이름(大阪·福岡…)은 넣지 않는다 — 본사·순회 매장 보도자료가 쏟아진다. 동네·시설 이름만.
+// 앞에 있는 말이 먼저 잡힌다.
 export const AREAS = [
+  // 도쿄
   ['表参道', 'omotesando'],
   ['北青山', 'omotesando'],
   ['南青山', 'omotesando'],
@@ -11,7 +19,38 @@ export const AREAS = [
   ['渋谷', 'shibuya'],
   ['宮下公園', 'shibuya'],
   ['MIYASHITA PARK', 'shibuya'],
+  // 오사카
+  ['梅田', 'umeda'],
+  ['グランフロント大阪', 'umeda'],
+  ['中崎町', 'nakazakicho'],
+  ['心斎橋', 'shinsaibashi'],
+  ['南船場', 'shinsaibashi'],
+  ['堀江', 'shinsaibashi'],
+  ['なんば', 'namba'],
+  ['難波', 'namba'],
+  // 교토 — 岡崎은 아이치현 岡崎市와 겹쳐서 시설 이름으로만
+  ['河原町', 'kawaramachi'],
+  ['祇園', 'gion'],
+  ['岡崎公園', 'okazaki'],
+  ['京都市京セラ美術館', 'okazaki'],
+  ['ロームシアター京都', 'okazaki'],
+  // 후쿠오카 — 博多는 상품명(博多ラーメン 등)에 흔해서 역·시설 이름으로만
+  ['天神', 'tenjin'],
+  ['博多駅', 'hakata'],
+  ['JR博多シティ', 'hakata'],
+  ['アミュプラザ博多', 'hakata'],
+  ['KITTE博多', 'hakata'],
+  ['キャナルシティ博多', 'hakata'],
+  // 삿포로 — 大通り는 흔한 말이라 삿포로가 붙은 표기만
+  ['大通公園', 'odori'],
+  ['札幌大通', 'odori'],
+  ['すすきの', 'susukino'],
+  ['ススキノ', 'susukino'],
 ];
+
+// 지역어처럼 보이지만 다른 곳인 말. 지역어를 찾기 전에 지운다.
+// 天神橋·天神祭는 오사카, 祇園山笠·博多祇園은 후쿠오카 축제다.
+export const AREA_MASK = ['天神橋', '天神祭', '祇園山笠', '博多祇園'];
 
 // 소식어: 하나라도 있어야 후보. 값은 updates의 type 추정치.
 export const SIGNALS = [
@@ -42,9 +81,11 @@ export const EXCLUDE = [
   'リテールメディア',
 ];
 
-// 지역어가 키워드에만 있고 키워드에 도쿄 밖 지명이 있으면 다른 지역 소식이다.
-// (같은 날 오탐: 淡路島의 テーマパーク 행사인데 발표사 키워드에 南青山)
-const ELSEWHERE = /(北海道|青森|岩手|宮城|秋田|山形|福島|茨城|栃木|群馬|埼玉|千葉|神奈川|新潟|富山|石川|福井|山梨|長野|岐阜|静岡|愛知|三重|滋賀|京都|大阪|兵庫|奈良|和歌山|鳥取|島根|岡山|広島|山口|徳島|香川|愛媛|高知|福岡|佐賀|長崎|熊本|大分|宮崎|鹿児島|沖縄|淡路島|横浜|名古屋|札幌|仙台|神戸)/;
+// 지역어가 키워드에만 있고 키워드에 그 도시 밖 지명이 있으면 다른 지역 소식이다.
+// (2026-11-09 오탐: 淡路島의 テーマパーク 행사인데 발표사 키워드에 南青山)
+const PLACE_NAMES = ['北海道', '青森', '岩手', '宮城', '秋田', '山形', '福島', '茨城', '栃木', '群馬', '埼玉', '千葉', '東京', '神奈川', '新潟', '富山', '石川', '福井', '山梨', '長野', '岐阜', '静岡', '愛知', '三重', '滋賀', '京都', '大阪', '兵庫', '奈良', '和歌山', '鳥取', '島根', '岡山', '広島', '山口', '徳島', '香川', '愛媛', '高知', '福岡', '佐賀', '長崎', '熊本', '大分', '宮崎', '鹿児島', '沖縄', '淡路島', '横浜', '名古屋', '札幌', '仙台', '神戸'];
+const HOME = { tokyo: ['東京'], osaka: ['大阪'], kyoto: ['京都'], fukuoka: ['福岡'], sapporo: ['北海道', '札幌'] };
+const elsewhere = (city) => new RegExp(`(${PLACE_NAMES.filter((n) => !(HOME[city] ?? []).includes(n)).join('|')})`);
 
 function normalize(text) {
   return text
@@ -135,11 +176,11 @@ const firstHit = (text, list) => list.find(([w]) => text.includes(w));
 export function classify(item) {
   const text = normalize(`${item.title} ${stripCompanyInfo(item.description ?? '')} ${item.keywords ?? ''}`);
   if (EXCLUDE.some((w) => text.includes(w))) return null;
-  const area = firstHit(text, AREAS);
+  const area = firstHit(AREA_MASK.reduce((t, w) => t.replaceAll(w, ''), text), AREAS);
   const signal = firstHit(text, SIGNALS);
   if (!area || !signal) return null;
   const body = normalize(`${item.title} ${stripCompanyInfo(item.description ?? '')}`);
-  if (!body.includes(area[0]) && ELSEWHERE.test(item.keywords ?? '')) return null;
+  if (!body.includes(area[0]) && elsewhere(LABELS.hood[area[1]].city).test(item.keywords ?? '')) return null;
   return { hood: area[1], type: signal[1], area: area[0], signal: signal[0] };
 }
 
@@ -167,7 +208,6 @@ export function isoWeekTokyo(now = new Date()) {
   return `${d.getUTCFullYear()}-W${String(week).padStart(2, '0')}`;
 }
 
-const HOOD_KO = { shibuya: '시부야', harajuku: '하라주쿠', omotesando: '오모테산도' };
 const TYPE_KO = { new: '새로 오픈', limited: '기간 한정', changed: '최근 변화' };
 
 export function formatComment(cands, now = new Date()) {
@@ -176,14 +216,14 @@ export function formatComment(cands, now = new Date()) {
   for (const c of cands) {
     const title = c.title.replace(/[\[\]]/g, '');
     lines.push(`- [ ] **${title}**`);
-    lines.push(`  ${HOOD_KO[c.hood]} · ${TYPE_KO[c.type]}(추정: "${c.signal}") · ${c.corp || '발표사 미상'} · ${c.date.slice(0, 10)} · [보도자료](${c.link})`);
+    lines.push(`  ${LABELS.city[LABELS.hood[c.hood].city]} ${LABELS.hood[c.hood].ko} · ${TYPE_KO[c.type]}(추정: "${c.signal}") · ${c.corp || '발표사 미상'} · ${c.date.slice(0, 10)} · [보도자료](${c.link})`);
   }
   lines.push('', '<sub>자동 수집 · PR TIMES RSS·뉴스 사이트맵 · 지역어+소식어 키워드 일치. 카드로 만들 항목에 체크하고 Claude에게 "체크한 후보로 카드 초안" 요청.</sub>');
   return lines.join('\n');
 }
 
 export const ISSUE_BODY = [
-  '이번 주 PR TIMES 보도자료(RSS·뉴스 사이트맵) 중 시부야·하라주쿠·오모테산도의 새로 오픈·기간 한정·리뉴얼 소식을 매시간 자동으로 모읍니다. 새 후보는 댓글로 추가됩니다.',
+  '이번 주 PR TIMES 보도자료(RSS·뉴스 사이트맵) 중 츠기가 다루는 동네(`app/src/lib/labels.json`)의 새로 오픈·기간 한정·리뉴얼 소식을 10분마다 자동으로 모읍니다. 새 후보는 댓글로 추가됩니다.',
   '',
   '**쓰는 법**',
   '1. 댓글의 후보 중 카드로 만들 만한 곳에 체크합니다. 여행자가 가 볼 이유가 없는 곳은 무시합니다.',

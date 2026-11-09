@@ -7,27 +7,28 @@ import { Icon } from '../components/Icon';
 import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
 import { getPosition, googleMapsUrl, openExternal } from '../lib/channel';
-import { type PlaceView, viewOf } from '../lib/content';
+import { areaFilter, type PlaceView, viewOf } from '../lib/content';
 import { daysLeft, isUpdateActive, todayTokyo } from '../lib/dates';
 import { distanceM, formatDistance } from '../lib/geo';
 import { go, hrefTo } from '../lib/router';
 import { isSaved, toggleSaved, useSaved } from '../lib/storage';
-import { type Content, HOOD_LABEL, type Hood, TAG_LABEL, TYPE_LABEL } from '../lib/types';
+import { areaLabel, CITY_LABEL, type Content, HOOD_LABEL, type Hood, TAG_LABEL, TYPE_LABEL, citiesWithPlaces } from '../lib/types';
 
 // 지도 탭 — docs/MAP_PLAN.md 1·2단계.
 //   #/map              지도 (MapLibre + OpenFreeMap Positron, 지도 탭에 들어갈 때만 내려받는다)
-//   #/map?hood=…       동네만
+//   #/map?city=…&hood=…  도시·동네만 (발견 탭과 같은 필터, lib/content.ts의 areaFilter)
 //   #/map?saved=1      저장한 곳만
 //   #/map?view=list    동네별 목록 (지도가 불편한 사람·스크린리더를 위한 대체 경로)
 const MapView = lazy(() => import('../components/MapView'));
 
-// 세 동네가 들어오는 범위. 내 위치가 이 밖이면 지도를 옮기지 않는다.
-const AREA = { south: 35.64, north: 35.69, west: 139.68, east: 139.73 };
+// 내 위치가 지금 보이는 장소들에서 이만큼(도) 넘게 벗어나면 지도를 옮기지 않는다 (약 3km).
+const NEAR_DEG = 0.03;
 
 export function MapScreen({ content, query }: { content: Content; query: URLSearchParams }) {
   const saved = useSaved();
   const today = todayTokyo();
-  const hood = (query.get('hood') ?? '') as Hood | '';
+  const area = useMemo(() => areaFilter(content.places, query), [content, query]);
+  const { city, hood } = area;
   const onlySaved = query.get('saved') === '1';
   const list = query.get('view') === 'list';
   // 누른 마커의 장소들(같은 건물이면 여러 곳)과 그중 지금 카드로 보이는 곳.
@@ -41,11 +42,11 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
   const views = useMemo(
     () =>
       content.places
-        .filter((p) => !hood || p.hood === hood)
+        .filter(area.match)
         .filter((p) => !onlySaved || saved.some((s) => s.placeId === p.id))
         .map((p) => viewOf(content, p.id)!)
         .filter((v) => !cardTypeOf(v, today).ended),
-    [content, hood, onlySaved, saved, today],
+    [content, area, onlySaved, saved, today],
   );
 
   const pinOf = (v: PlaceView): Pin => {
@@ -118,12 +119,13 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
     }
     const next = { lat: r.lat, lng: r.lng, accuracy: r.accuracy };
     setMe(next);
-    const inArea = next.lat > AREA.south && next.lat < AREA.north && next.lng > AREA.west && next.lng < AREA.east;
-    if (inArea) setMeKey((k) => k + 1);
-    else showSnackbar('지금 위치가 시부야·하라주쿠·오모테산도 밖이라 지도를 옮기지 않았어요.');
+    const near = (views.length ? views.map((v) => v.place) : content.places).some(
+      (p) => Math.abs(p.geo.lat - next.lat) < NEAR_DEG && Math.abs(p.geo.lng - next.lng) < NEAR_DEG,
+    );
+    if (near) setMeKey((k) => k + 1);
+    else showSnackbar('지금 위치가 지도에 있는 장소들과 멀어서 지도를 옮기지 않았어요.');
   };
 
-  const hoods = (Object.keys(HOOD_LABEL) as Hood[]).filter((h) => content.places.some((p) => p.hood === h));
   const groupViews = (group ?? []).map((id) => views.find((v) => v.place.id === id)).filter(Boolean) as PlaceView[];
 
   return (
@@ -137,16 +139,32 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
           </button>
         }
       />
-      <div className="chip-row map-chips" role="group" aria-label="지도 필터">
-        <button className="chip" aria-pressed={!hood} onClick={() => setParams({ hood: '' })}>
-          전체
-        </button>
-        {hoods.map((h) => (
-          <button key={h} className="chip" aria-pressed={hood === h} onClick={() => setParams({ hood: hood === h ? '' : h })}>
-            {HOOD_LABEL[h]}
+      {area.cities.length > 1 && (
+        <div className="chip-row map-chips" role="group" aria-label="도시">
+          <button className="chip" aria-pressed={!city} onClick={() => setParams({ city: '', hood: '' })}>
+            전체
           </button>
-        ))}
-        <span className="chip-sep" aria-hidden />
+          {area.cities.map((c) => (
+            <button key={c} className="chip" aria-pressed={city === c} onClick={() => setParams({ city: city === c ? '' : c, hood: '' })}>
+              {CITY_LABEL[c]}
+            </button>
+          ))}
+        </div>
+      )}
+      <div className="chip-row map-chips" role="group" aria-label="지도 필터">
+        {area.hoods.length > 0 && (
+          <>
+            <button className="chip" aria-pressed={!hood} onClick={() => setParams({ city, hood: '' })}>
+              {area.cities.length > 1 && city ? `${CITY_LABEL[city]} 전체` : '전체'}
+            </button>
+            {area.hoods.map((h) => (
+              <button key={h} className="chip" aria-pressed={hood === h} onClick={() => setParams({ city, hood: hood === h ? '' : h })}>
+                {HOOD_LABEL[h]}
+              </button>
+            ))}
+            <span className="chip-sep" aria-hidden />
+          </>
+        )}
         <button className="chip" aria-pressed={onlySaved} onClick={() => setParams({ saved: onlySaved ? '' : '1' })}>
           <Icon name={onlySaved ? 'heartFill' : 'heart'} size={16} />
           저장한 곳
@@ -167,7 +185,7 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
               pair={pairPin}
               me={me}
               onSelect={select}
-              fitKey={`${hood || 'all'}:${onlySaved ? 's' : ''}`}
+              fitKey={`${city || 'all'}:${hood || 'all'}:${onlySaved ? 's' : ''}`}
               meKey={meKey}
             />
           </Suspense>
@@ -349,9 +367,10 @@ function pairDistance(a: { lat: number; lng: number }, b: { lat: number; lng: nu
   return m < 30 ? '같은 건물' : `직선 ${formatDistance(m)}`;
 }
 
-// 목록 보기 — 지도 이전의 동네별 목록 그대로.
+// 목록 보기 — 지도 이전의 동네별 목록 그대로. 여러 도시가 섞이면 제목에 도시를 붙인다.
 function MapList({ views, onlySaved }: { views: PlaceView[]; onlySaved: boolean }) {
   const hoods = (Object.keys(HOOD_LABEL) as Hood[]).filter((h) => views.some((v) => v.place.hood === h));
+  const manyCities = citiesWithPlaces(views.map((v) => v.place)).length > 1;
   if (onlySaved && views.length === 0) {
     return <p className="map-empty map-empty--list">저장한 곳이 아직 없어요. 발견 탭에서 하트를 눌러 보세요.</p>;
   }
@@ -362,7 +381,7 @@ function MapList({ views, onlySaved }: { views: PlaceView[]; onlySaved: boolean 
         return (
           <section key={h}>
             <h2 className="list-header">
-              {HOOD_LABEL[h]}
+              {manyCities ? areaLabel({ hood: h }) : HOOD_LABEL[h]}
               <small>{places.length}곳</small>
             </h2>
             <ul className="place-list">

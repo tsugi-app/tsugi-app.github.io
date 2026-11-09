@@ -22,16 +22,16 @@ test('지역어 + 소식어가 모두 있어야 후보', () => {
       ['omotesando', 'limited'],
       ['shibuya', 'new'],
       ['harajuku', 'limited'],
+      ['umeda', 'new'], // 2026-11-10부터 오사카도 다룬다
       ['omotesando', 'changed'],
     ],
   );
-  assert.ok(Object.values(by).filter(Boolean).length === 4);
+  assert.ok(Object.values(by).filter(Boolean).length === 5);
 });
 
-test('오피스 이전, 지역 밖, OpenAI 같은 단어는 걸러진다', () => {
+test('오피스 이전, OpenAI 같은 단어는 걸러진다', () => {
   const titles = pickCandidates(items).map((c) => c.title);
   assert.ok(!titles.some((t) => t.includes('オフィス')));
-  assert.ok(!titles.some((t) => t.includes('大阪')));
   assert.ok(!titles.some((t) => t.includes('OpenAI')));
 });
 
@@ -48,7 +48,7 @@ test('온라인 스토어 개점은 여행 후보가 아니다 (실제 피드 �
 
 test('이미 알고 있는 링크는 다시 올리지 않는다', () => {
   const known = new Set([items[0].link]);
-  assert.equal(pickCandidates(items, known).length, 3);
+  assert.equal(pickCandidates(items, known).length, 4);
 });
 
 test('ISO 주차는 도쿄 기준', () => {
@@ -61,7 +61,7 @@ test('ISO 주차는 도쿄 기준', () => {
 
 test('댓글은 체크박스 목록과 보도자료 링크를 담는다', () => {
   const body = formatComment(pickCandidates(items), new Date('2026-11-07T01:00:00Z'));
-  assert.match(body, /수집 — 4건/);
+  assert.match(body, /수집 — 5건/);
   assert.match(body, /- \[ \] \*\*表参道に文具の期間限定ストアが登場\*\*/);
   assert.match(body, /\[보도자료\]\(https:\/\/prtimes\.jp\/main\/html\/rd\/p\/000000001\.000000001\.html\)/);
 });
@@ -108,4 +108,31 @@ test('평일 피드 오탐: 필라테스 개점, 광고 캠페인, 다른 지역
   assert.equal(classify(awaji), null);
   // 제목·본문에 지역어가 있으면 키워드에 다른 지명이 섞여도 후보다
   assert.equal(classify({ ...awaji, title: '表参道で期間限定ストアを開催（大阪・福岡にも巡回）' })?.hood, 'omotesando');
+});
+
+test('다섯 도시의 동네를 잡고, 이름이 겹치는 다른 곳은 거른다', () => {
+  const base = { description: '', link: 'https://prtimes.jp/m', corp: '', date: '' };
+  const at = (title, keywords) => classify({ ...base, title, keywords })?.hood ?? null;
+  assert.equal(at('梅田にカフェがオープン'), 'umeda');
+  assert.equal(at('心斎橋PARCOで期間限定ストア'), 'shinsaibashi');
+  assert.equal(at('祇園に和菓子店がオープン'), 'gion');
+  assert.equal(at('天神にポップアップストアが登場'), 'tenjin');
+  assert.equal(at('JR博多シティで期間限定イベント'), 'hakata');
+  assert.equal(at('すすきのにバーがオープン'), 'susukino');
+  // 오사카 天神橋筋, 博多祇園山笠는 동네가 아니다
+  assert.equal(at('天神橋筋商店街に新店舗がオープン'), null);
+  assert.equal(at('博多祇園山笠の限定グッズをオープン記念で'), null);
+  // 博多는 상품명으로 흔해서 그것만으론 잡지 않는다
+  assert.equal(at('博多ラーメンの新店舗がオープン'), null);
+  // 다른 도시 동네가 키워드에만 있고 키워드에 그 도시 밖 지명이 있으면 거른다
+  assert.equal(at('冬のイベントを期間限定で開催', '東京,梅田,期間限定'), null);
+  assert.equal(at('冬のイベントを期間限定で開催', '大阪,梅田,期間限定'), 'umeda');
+});
+
+test('댓글에 도시와 동네를 함께 적는다', () => {
+  const body = formatComment(
+    [{ title: 't', hood: 'umeda', type: 'new', signal: 'オープン', corp: '', date: '2026-11-10T00:00:00Z', link: 'https://prtimes.jp/x' }],
+    new Date('2026-11-10T01:00:00Z'),
+  );
+  assert.match(body, /오사카 우메다 · 새로 오픈/);
 });
