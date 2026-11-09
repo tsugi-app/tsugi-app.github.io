@@ -6,7 +6,7 @@ import { dday, Thumb, typeVars } from '../components/PlaceParts';
 import { Icon } from '../components/Icon';
 import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
-import { googleMapsUrl, openExternal } from '../lib/channel';
+import { getPosition, googleMapsUrl, openExternal } from '../lib/channel';
 import { type PlaceView, viewOf } from '../lib/content';
 import { daysLeft, isUpdateActive, todayTokyo } from '../lib/dates';
 import { distanceM, formatDistance } from '../lib/geo';
@@ -62,6 +62,19 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
     }
   }, [views, selected]);
 
+  // Esc로 미리보기 카드를 닫는다.
+  useEffect(() => {
+    if (!group) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setGroup(null);
+        setSelected(null);
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [group]);
+
   const current = selected ? views.find((v) => v.place.id === selected) : undefined;
   const pairView = current?.take?.pairWith ? viewOf(content, current.take.pairWith) : undefined;
   const pairPin = pairView && pins.find((p) => p.id === pairView.place.id) ? pinOf(pairView) : null;
@@ -81,33 +94,26 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
     setSelected(ids?.[0] ?? null);
   };
 
-  // 내 위치는 버튼을 누를 때만 묻는다. 저장하지 않는다.
-  const locate = () => {
-    if (!('geolocation' in navigator)) {
-      showSnackbar('이 기기에서는 위치를 확인할 수 없어요.');
+  // 내 위치는 버튼을 누를 때만 묻는다. 저장하지 않는다. 채널별 처리는 lib/channel.ts의 getPosition.
+  const locate = async () => {
+    setLocating(true);
+    const r = await getPosition();
+    setLocating(false);
+    if (!r.ok) {
+      showSnackbar(
+        r.reason === 'denied'
+          ? '위치 권한이 꺼져 있어요. 브라우저 설정에서 허용해 주세요.'
+          : r.reason === 'unsupported'
+            ? '이 기기에서는 위치를 확인할 수 없어요.'
+            : '위치를 찾지 못했어요. 잠시 뒤 다시 눌러 주세요.',
+      );
       return;
     }
-    setLocating(true);
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setLocating(false);
-        const next = { lat: pos.coords.latitude, lng: pos.coords.longitude, accuracy: pos.coords.accuracy };
-        setMe(next);
-        const inArea =
-          next.lat > AREA.south && next.lat < AREA.north && next.lng > AREA.west && next.lng < AREA.east;
-        if (inArea) setMeKey((k) => k + 1);
-        else showSnackbar('지금 위치가 시부야·하라주쿠·오모테산도 밖이라 지도를 옮기지 않았어요.');
-      },
-      (err) => {
-        setLocating(false);
-        showSnackbar(
-          err.code === err.PERMISSION_DENIED
-            ? '위치 권한이 꺼져 있어요. 브라우저 설정에서 허용해 주세요.'
-            : '위치를 찾지 못했어요. 잠시 뒤 다시 눌러 주세요.',
-        );
-      },
-      { enableHighAccuracy: false, timeout: 10_000, maximumAge: 60_000 },
-    );
+    const next = { lat: r.lat, lng: r.lng, accuracy: r.accuracy };
+    setMe(next);
+    const inArea = next.lat > AREA.south && next.lat < AREA.north && next.lng > AREA.west && next.lng < AREA.east;
+    if (inArea) setMeKey((k) => k + 1);
+    else showSnackbar('지금 위치가 시부야·하라주쿠·오모테산도 밖이라 지도를 옮기지 않았어요.');
   };
 
   const hoods = (Object.keys(HOOD_LABEL) as Hood[]).filter((h) => content.places.some((p) => p.hood === h));
@@ -144,6 +150,9 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
         <MapList views={views} onlySaved={onlySaved} />
       ) : (
         <div className="map-wrap">
+          <p className="sr-only" id="map-hint">
+            지도의 장소 표시는 Tab 키로 옮겨 가며 Enter로 고를 수 있어요. 같은 장소를 목록으로 보려면 위의 「목록으로 보기」를 누르세요.
+          </p>
           <Suspense fallback={<div className="map-canvas map-loading">지도를 불러오고 있어요.</div>}>
             <MapView
               pins={pins}
@@ -220,7 +229,7 @@ function MapCards({
   };
 
   return (
-    <div className="map-cards">
+    <div className="map-cards" role="region" aria-label="고른 장소" aria-live="polite">
       <button className="map-card-close icon-btn" aria-label="미리보기 닫기" onClick={onClose}>
         <Icon name="close" size={18} />
       </button>

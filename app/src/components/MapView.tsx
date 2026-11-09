@@ -1,6 +1,7 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef } from 'react';
+import { openExternal } from '../lib/channel';
 import { coordKey } from '../lib/geo';
 import type { CardType } from '../lib/types';
 
@@ -56,6 +57,14 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
     map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>');
     L.tileLayer(TILE_URL, { attribution: ATTRIBUTION, maxZoom: 18, minZoom: 5 }).addTo(map);
     map.on('click', () => selectRef.current(null));
+    // 출처 링크도 다른 바깥 링크처럼 openExternal로 연다 (토스 WebView에서 target=_blank가 막힐 수 있다).
+    const attr = map.attributionControl.getContainer();
+    attr?.addEventListener('click', (e) => {
+      const a = (e.target as HTMLElement).closest('a');
+      if (!a) return;
+      e.preventDefault();
+      openExternal(a.href);
+    });
     lineLayer.current = L.layerGroup().addTo(map);
     meLayer.current = L.layerGroup().addTo(map);
     pinLayer.current = L.layerGroup().addTo(map);
@@ -70,6 +79,8 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
   useEffect(() => {
     const layer = pinLayer.current;
     if (!layer) return;
+    // 마커를 다시 그리면 키보드 포커스가 사라지므로, 포커스가 있던 마커를 기억했다가 되돌린다.
+    const focusedKey = (document.activeElement as HTMLElement | null)?.dataset?.pinKey;
     layer.clearLayers();
     const groups = new Map<string, Pin[]>();
     for (const p of pins) groups.set(coordKey(p), [...(groups.get(coordKey(p)) ?? []), p]);
@@ -99,7 +110,16 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
       marker.addTo(layer);
       const node = marker.getElement();
       node?.setAttribute('aria-label', label);
+      if (node) node.dataset.pinKey = coordKey(first);
       node?.setAttribute('aria-pressed', String(isSel));
+      // Leaflet은 Enter를 옛 keypress로만 받아 브라우저에 따라 안 먹는다. Enter·Space를 직접 받는다.
+      node?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectRef.current(ids);
+        }
+      });
+      if (node && focusedKey && focusedKey === coordKey(first)) node.focus({ preventScroll: true });
     }
   }, [pins, selected, pair]);
 
@@ -150,5 +170,5 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fitKey]);
 
-  return <div ref={el} className="map-canvas" role="region" aria-label="장소 지도" />;
+  return <div ref={el} className="map-canvas" role="region" aria-label="장소 지도" aria-describedby="map-hint" />;
 }

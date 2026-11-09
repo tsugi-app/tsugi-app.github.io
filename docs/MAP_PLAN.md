@@ -97,13 +97,25 @@
 - 같은 좌표 묶음: `lib/geo.ts`의 `coordKey`(소수 5자리). 카드는 scroll-snap으로 넘기고, 보이는 카드가 바뀌면 고른 곳도 바뀐다.
 - 지도 보기에서 스낵바는 위쪽에 띄워 카드를 가리지 않는다.
 
-### 3단계 — 토스·품질 (반나절)
+### 3단계 — 토스·품질 (코드 부분 ✅ 2026-11-09, 실기기·토스 확인은 남음)
 1. 앱인토스 WebView에서 `cyberjapandata.gsi.go.jp` 이미지 요청이 막히지 않는지 샌드박스에서 확인. 막히면 콘솔의 허용 도메인 설정을 찾는다.
 1. 지도 오른쪽 아래 출처 링크(`target=_blank`)가 토스 WebView에서도 열리는지 확인. 안 되면 `openExternal`로 여는 처리를 `lib/channel.ts`에 둔다.
 1. 토스 WebView에서 `navigator.geolocation`이 되는지 확인. 안 되면 앱인토스 SDK 위치 API로 바꾸는 분기를 `lib/channel.ts`에 둔다.
 2. 터치: 한 손가락 드래그는 지도 이동, 페이지 스크롤과 충돌하지 않게 지도 영역을 화면 높이에 고정.
 3. 접근성: 마커 버튼에 `aria-label="오타 기념 미술관, 기간 한정"`, 「목록」으로 같은 정보를 볼 수 있음을 앱 바에 안내.
 4. DESIGN.md §2에 Map Pin·Map Preview Card 규격을 추가하고, §3 화면 패턴의 지도 행을 바꾼다.
+
+구현 메모 (2026-11-09)
+- 출처 링크: 지도 출처 표시의 링크 클릭을 가로채 `openExternal`로 연다 → 토스에선 `openExternal`만 SDK로 바꾸면 된다.
+- 내 위치: `lib/channel.ts`의 `getPosition()`으로 옮겼다. 토스 SDK 위치 API로 바꿀 자리는 거기 한 곳(TODO D8).
+- 높이: `.app.is-map`을 `min-height: 100dvh`, `overscroll-behavior: none`. iOS Safari의 `100vh`(주소창 접힌 높이) 때문에 지도 보기에서 페이지가 살짝 스크롤되던 것을 막는다. 크롬 모바일 에뮬레이션에서 문서 높이 = 화면 높이, 지도 아래 끝 = 탭 바 위 끝 확인.
+- 키보드: Leaflet은 마커 Enter를 옛 `keypress`로만 받아 크롬에서 안 먹었다 → 마커에 Enter·Space `keydown`을 직접 단다. 마커를 다시 그려도 포커스가 같은 마커에 남는다. Esc로 카드 닫기. 지도 영역에 스크린리더용 안내(Tab·Enter, 「목록으로 보기」), 카드 영역은 `aria-live="polite"`.
+- 대비: 마커 채움 vs 테두리 — 라이트 3.96~8.37:1(흰 테두리), 다크 7.7~8.91:1(어두운 테두리). 비텍스트 3:1 통과.
+
+남은 확인 (사람·환경이 필요)
+- [ ] 실제 iPhone Safari·Android Chrome에서 한 손가락 이동, 두 손가락 확대, 카드 옆으로 넘기기. (이 Mac엔 Xcode가 없어 iOS 시뮬레이터로도 못 봤다.)
+- [ ] 실제 위치 권한 창(허용·거부)과 시부야 현장 위치.
+- [ ] 앱인토스: 콘솔 앱 등록 → 샌드박스에서 지리원 타일 이미지 로딩, `navigator.geolocation`, 바깥 링크 열기.
 
 ## 5. 확인 항목 (출시 전)
 
