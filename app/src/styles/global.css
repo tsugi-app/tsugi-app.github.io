@@ -1121,3 +1121,169 @@ p {
     animation: none;
   }
 }
+
+/* ── 지도 (MapScreen · MapView) — docs/MAP_PLAN.md ── */
+.app.is-map {
+  padding-bottom: 0;
+}
+/* 지도 보기는 앱 바·칩 아래부터 탭 바 위까지 화면을 꽉 채운다 */
+.map-screen {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - var(--tab-bar-h) - env(safe-area-inset-bottom));
+}
+.map-chips {
+  flex-shrink: 0;
+  padding-bottom: var(--x3);
+}
+.map-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  border-top: 1px solid var(--color-stroke-neutral-muted);
+}
+.map-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-bg-layer-basement);
+}
+.map-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-t4);
+  color: var(--color-fg-neutral-subtle);
+}
+
+/* 마커 — 이미지 없이 유형색 원. 누르는 영역은 44px(.map-pin-hit).
+   leaflet.css가 나중에 들어와 .leaflet-marker-icon을 덮으므로 .map-canvas로 한 단계 올린다 */
+.map-canvas .map-pin-hit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+}
+.map-canvas .map-pin-hit:focus-visible {
+  outline: 2px solid var(--color-stroke-focus-ring);
+  outline-offset: -6px;
+  border-radius: var(--r-full);
+}
+.map-canvas .map-pin {
+  display: block;
+  width: var(--x5);
+  height: var(--x5);
+  border-radius: var(--r-full);
+  background: var(--pin);
+  border: 3px solid var(--color-bg-layer-default);
+  box-shadow: var(--shadow-s1);
+  transition: width var(--d3) var(--ease-enter), height var(--d3) var(--ease-enter);
+}
+.map-pin--new {
+  --pin: var(--color-type-new-fg);
+}
+.map-pin--limited {
+  --pin: var(--color-type-limited-fg);
+}
+.map-pin--changed {
+  --pin: var(--color-type-changed-fg);
+}
+.map-pin--editorial {
+  --pin: var(--color-type-editorial-fg);
+}
+.map-canvas .map-pin.selected {
+  width: var(--x8);
+  height: var(--x8);
+  border-width: 4px;
+  box-shadow: var(--shadow-s2);
+}
+
+/* Leaflet 1.9.4는 타일에 mix-blend-mode: plus-lighter를 줘서 밝은 바탕 위에서 지도가 바랜다 */
+.map-canvas .leaflet-tile {
+  mix-blend-mode: normal;
+}
+/* Leaflet 기본 컨트롤을 츠기 토큰으로 */
+.map-canvas.leaflet-container {
+  font-family: var(--font);
+}
+.map-canvas .leaflet-control-zoom {
+  border: 0;
+  box-shadow: var(--shadow-s1);
+  border-radius: var(--r2);
+  overflow: hidden;
+}
+.map-canvas .leaflet-control-zoom a {
+  width: var(--x10);
+  height: var(--x10);
+  line-height: var(--x10);
+  font-size: var(--fs-t6);
+  color: var(--color-fg-neutral);
+  background: var(--color-bg-layer-floating);
+  border-bottom-color: var(--color-stroke-neutral-muted);
+}
+.map-canvas .leaflet-control-zoom a.leaflet-disabled {
+  color: var(--color-fg-disabled);
+  background: var(--color-bg-layer-floating);
+}
+.map-canvas .leaflet-control-attribution {
+  font-size: var(--fs-t1);
+  line-height: var(--lh-t1);
+  color: var(--color-fg-neutral-muted);
+  background: var(--color-bg-layer-floating);
+  border-top-left-radius: var(--r1);
+}
+.map-canvas .leaflet-control-attribution a {
+  color: var(--color-fg-brand);
+}
+
+/* 마커를 누르면 뜨는 미리보기 카드. 출처 표시가 가려지지 않게 아래를 조금 띄운다 */
+.map-card {
+  position: absolute;
+  left: var(--space-gutter);
+  right: var(--space-gutter);
+  bottom: var(--x6);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--x3);
+  padding: var(--x3) var(--x2) var(--x3) var(--x3);
+  border-radius: var(--r3);
+  background: var(--color-bg-layer-floating);
+  box-shadow: var(--shadow-s2);
+  animation: snackbar-in var(--d4) var(--ease-enter);
+}
+.map-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--x0_5);
+}
+.map-card-body .place-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.map-card-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--x1);
+}
+.map-card-close {
+  position: absolute;
+  z-index: 1;
+  top: calc(-1 * var(--x4));
+  right: calc(-1 * var(--x1));
+  width: var(--x8);
+  height: var(--x8);
+  background: var(--color-bg-layer-floating);
+  box-shadow: var(--shadow-s1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .map-card {
+    animation: none;
+  }
+}

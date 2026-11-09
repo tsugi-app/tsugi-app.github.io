@@ -17,16 +17,18 @@ export function App() {
   // 상세·설정은 하위 화면이라 탭 바를 숨긴다.
   const isSub = isPlace || route.name === 'settings';
   const placeId = isPlace ? route.id : '';
+  // 지도 보기는 화면 높이를 꽉 채우므로 탭 바 아래 여백을 따로 두지 않는다.
+  const isMapView = route.name === 'map' && route.query.get('view') !== 'list';
 
   useEffect(() => {
     if (placeId) window.scrollTo(0, 0);
   }, [placeId]);
 
   return (
-    <div className={`app${isPlace ? ' has-action-bar' : ''}`}>
+    <div className={`app${isPlace ? ' has-action-bar' : ''}${isMapView ? ' is-map' : ''}`}>
       {route.name === 'discover' && <Discover content={content} query={route.query} />}
       {route.name === 'place' && <Place content={content} id={route.id} />}
-      {route.name === 'map' && <MapScreen content={content} />}
+      {route.name === 'map' && <MapScreen content={content} query={route.query} />}
       {route.name === 'saved' && <Saved content={content} query={route.query} />}
       {route.name === 'settings' && <Settings />}
       {!isSub && <Tabs route={route} />}
