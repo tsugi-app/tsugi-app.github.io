@@ -1,15 +1,16 @@
 {
   "placeId": "shibuya-parco-root",
-  "checkedAt": "2026-11-08",
-  "checkedBy": "claude-draft",
+  "checkedAt": "2026-11-09",
+  "checkedBy": "claude",
   "recheckBy": "2026-11-27",
   "uncertain": [
-    "영업시간",
+    "매장별 영업시간(파르코 기본 11:00~21:00, 일부 매장은 다름)",
     "패션과 잡화 비중(보도자료는 \"패션을 축으로\"라고만 밝힘)",
-    "매장 주소는 파르코 건물 주소 기준",
     "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
   ],
   "sources": [
-    "https://prtimes.jp/main/html/rd/p/000004148.000003639.html"
+    "https://prtimes.jp/main/html/rd/p/000004148.000003639.html",
+    "https://shibuya.parco.jp/page/2026new-renewal/",
+    "https://shibuya.parco.jp/page/guide/"
   ]
 }
