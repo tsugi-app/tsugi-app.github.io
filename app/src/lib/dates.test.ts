@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { addDays, daysLeft, isUpdateActive, isUpdateEnded, needsRecheck } from './dates';
+import { addDays, addMonths, daysLeft, formatYmd, isUpdateActive, isUpdateEnded, monthGrid, needsRecheck } from './dates';
 import type { Update } from './types';
 
 const base: Update = {
@@ -45,5 +45,25 @@ describe('isUpdateEnded / daysLeft / needsRecheck', () => {
     expect(needsRecheck(c, '2026-11-26')).toBe(false);
     expect(needsRecheck(c, '2026-11-27')).toBe(true);
     expect(needsRecheck(undefined, '2026-11-27')).toBe(false);
+  });
+});
+
+describe('달력', () => {
+  it('날짜 표시는 YYYY/MM/DD', () => {
+    expect(formatYmd('2026-11-09')).toBe('2026/11/09');
+  });
+  it('한 달을 일요일 시작 주로 나눈다', () => {
+    const g = monthGrid('2026-11'); // 2026-11-01은 일요일, 30일까지
+    expect(g[0][0]).toBe('2026-11-01');
+    expect(g.length).toBe(5);
+    expect(g[4].filter(Boolean)).toEqual(['2026-11-29', '2026-11-30']);
+    const feb = monthGrid('2027-02'); // 2027-02-01은 월요일, 28일까지
+    expect(feb[0][0]).toBeNull();
+    expect(feb[0][1]).toBe('2027-02-01');
+    expect(feb.flat().filter(Boolean).length).toBe(28);
+  });
+  it('월 이동은 연도를 넘긴다', () => {
+    expect(addMonths('2026-12', 1)).toBe('2027-01');
+    expect(addMonths('2027-01', -1)).toBe('2026-12');
   });
 });
