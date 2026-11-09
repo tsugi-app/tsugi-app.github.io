@@ -1,0 +1,23 @@
+{
+  "id": "okazaki-hosomi-museum",
+  "name": {
+    "ko": "호소미 미술관",
+    "ja": "細見美術館"
+  },
+  "hood": "okazaki",
+  "category": "gallery",
+  "tags": [
+    "design"
+  ],
+  "geo": {
+    "lat": 35.01435,
+    "lng": 135.77948
+  },
+  "address": "京都府京都市左京区岡崎最勝寺町6-3",
+  "official": "https://www.emuseum.or.jp/",
+  "image": {
+    "file": "okazaki-hosomi-museum.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

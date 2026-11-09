@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>gion-kagizen-honten</title>
+<desc>
+모티프: 접시 위 둥근 생과자 하나와 옆의 찻잔
+근거: take.why "안쪽 찻집에서 이달의 생과자를 바로 먹을 수 있다"
+피한 것: 11월 한정 과자 모양(은행잎·단풍, 기간 한정), 가게 상표·노렌 글자
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e8e4d8"/>
+<ellipse cx="600" cy="690" rx="400" ry="30" fill="#c3d1ec"/>
+<ellipse cx="420" cy="600" rx="230" ry="60" fill="#233c74"/>
+<ellipse cx="420" cy="585" rx="190" ry="44" fill="#5873b5"/>
+<path d="M290 560 Q290 400 420 400 Q550 400 550 560 Z" fill="#233c74"/>
+<path d="M330 520 Q360 450 420 440" fill="none" stroke="#c3d1ec" stroke-width="22" stroke-linecap="round"/>
+<circle cx="420" cy="420" r="22" fill="#c99a2e"/>
+<path d="M700 430 L940 430 L910 640 Q905 670 875 670 L765 670 Q735 670 730 640 Z" fill="#5873b5"/>
+<ellipse cx="820" cy="432" rx="120" ry="24" fill="#233c74"/>
+<path d="M800 380 Q780 330 815 290" fill="none" stroke="#5873b5" stroke-width="20" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "placeId": "odori-white-illumination",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-10",
+  "uncertain": [
+    "오도리 회장 범위(가이드북 지도상 3~5초메, 주소 표기 없음)",
+    "크리스마스 시장 입장료(공식 페이지에 표기 없음)",
+    "좌표는 지리원 검색 大通西3丁目 블록 기준"
+  ],
+  "sources": [
+    "https://www.sapporo.travel/white-illumination/",
+    "https://www.sapporo.travel/white-illumination/event/munich/",
+    "https://www.sapporo.travel/cms/wp-content/uploads/2026/10/2026-さっぽろホワイトイルミネーション公式ガイドブック.pdf",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

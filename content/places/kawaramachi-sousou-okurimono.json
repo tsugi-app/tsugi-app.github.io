@@ -1,0 +1,24 @@
+{
+  "id": "kawaramachi-sousou-okurimono",
+  "name": {
+    "ko": "소우소우 오쿠리모노",
+    "ja": "SOU・SOUおくりもの"
+  },
+  "hood": "kawaramachi",
+  "category": "goods",
+  "tags": [
+    "goods",
+    "design"
+  ],
+  "geo": {
+    "lat": 35.00415,
+    "lng": 135.76825
+  },
+  "address": "京都府京都市中京区新京極通四条上ル中之町569-5",
+  "official": "https://www.sousou.co.jp/pages/store-info",
+  "image": {
+    "file": "kawaramachi-sousou-okurimono.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>kawaramachi-ippodo-honten</title>
+<desc>
+모티프: 옆손잡이 찻주전자(규스) 하나와 찻잎 두 장
+근거: take.why "다실에서 직원에게 배우며 차를 직접 우려 마신다", 공식 "일본차 전문점"
+피한 것: 가게 노렌·상표, 차 통 포장 디자인
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e8e4d8"/>
+<ellipse cx="600" cy="690" rx="360" ry="30" fill="#c3d1ec"/>
+<ellipse cx="560" cy="500" rx="230" ry="180" fill="#233c74"/>
+<rect x="400" y="310" width="320" height="50" rx="20" fill="#5873b5"/>
+<circle cx="560" cy="295" r="34" fill="#233c74"/>
+<path d="M330 470 Q250 450 220 380" fill="none" stroke="#233c74" stroke-width="40" stroke-linecap="round"/>
+<rect x="780" y="440" width="200" height="56" rx="24" fill="#5873b5" transform="rotate(-12 780 468)"/>
+<path d="M440 560 Q560 600 680 560" fill="none" stroke="#c3d1ec" stroke-width="22" stroke-linecap="round"/>
+<path d="M830 640 Q880 560 960 560 Q930 640 830 640 Z" fill="#c99a2e"/>
+<path d="M880 660 Q950 610 1010 630 Q960 690 880 660 Z" fill="#5873b5"/>
+</svg>

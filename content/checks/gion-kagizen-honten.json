@@ -1,0 +1,16 @@
+{
+  "placeId": "gion-kagizen-honten",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-25",
+  "uncertain": [
+    "찻집 메뉴·가격(PDF 메뉴 미확인)",
+    "생과자 이트인이 본점 찻집에서 되는지(공지에 장소 명시 없음)",
+    "판매 기간은 '예정'"
+  ],
+  "sources": [
+    "https://www.kagizen.co.jp/pages/shops-honten",
+    "https://www.kagizen.co.jp/blogs/news/11%E6%9C%881%E6%97%A5%E6%97%A5-11%E6%9C%8830%E6%97%A5%E6%97%A5-%E8%B2%A9%E5%A3%B2%E3%81%AE%E7%94%9F%E8%8F%93%E5%AD%90%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

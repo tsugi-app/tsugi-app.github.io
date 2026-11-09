@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>kawaramachi-sousou-okurimono</title>
+<desc>
+모티프: 리본을 두른 선물 상자 하나와 옆의 작은 상자
+근거: 공식 "작은 선물, 축하·답례 장면에 맞는 상품이 모인 선물 가게(おくりもの)"
+피한 것: 브랜드 고유 텍스타일 문양, 로고
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e8e4d8"/>
+<rect x="160" y="660" width="880" height="34" rx="6" fill="#c3d1ec"/>
+<rect x="290" y="340" width="440" height="320" rx="10" fill="#233c74"/>
+<rect x="270" y="300" width="480" height="80" rx="10" fill="#5873b5"/>
+<rect x="485" y="300" width="50" height="360" fill="#c3d1ec"/>
+<path d="M510 300 Q420 200 380 250 Q360 300 510 300 Z" fill="#c99a2e"/>
+<path d="M510 300 Q600 200 640 250 Q660 300 510 300 Z" fill="#c99a2e"/>
+<rect x="800" y="500" width="180" height="160" rx="8" fill="#5873b5"/>
+<rect x="870" y="500" width="40" height="160" fill="#233c74"/>
+</svg>

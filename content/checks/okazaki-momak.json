@@ -1,0 +1,14 @@
+{
+  "placeId": "okazaki-momak",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-15",
+  "uncertain": [
+    "2027년 휴관 뒤 재개관 날짜(공식엔 '1/18~3월 휴관'만)"
+  ],
+  "sources": [
+    "https://www.momak.go.jp/",
+    "https://www.momak.go.jp/Japanese/exhibitionarchive/2026/468.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "placeId": "okazaki-hosomi-museum",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-20",
+  "uncertain": [
+    "미술관 카페 영업(전시 페이지에 지난 해 안내가 섞여 있음)"
+  ],
+  "sources": [
+    "https://www.emuseum.or.jp/",
+    "https://www.emuseum.or.jp/exhibition/index.html",
+    "https://www.emuseum.or.jp/access/index.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

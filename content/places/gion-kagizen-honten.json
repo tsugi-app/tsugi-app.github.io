@@ -1,0 +1,23 @@
+{
+  "id": "gion-kagizen-honten",
+  "name": {
+    "ko": "가기젠요시후사 시조 본점",
+    "ja": "鍵善良房 四条本店"
+  },
+  "hood": "gion",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 35.00404,
+    "lng": 135.77475
+  },
+  "address": "京都府京都市東山区祇園町北側264番地",
+  "official": "https://www.kagizen.co.jp/pages/shops-honten",
+  "image": {
+    "file": "gion-kagizen-honten.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

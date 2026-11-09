@@ -1,0 +1,15 @@
+{
+  "placeId": "odori-500m-museum",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-15",
+  "uncertain": [
+    "다음 전시(vol.57)는 상세 페이지가 아직 없음",
+    "좌표는 지리원 검색 大通西1丁目 블록 기준(통로는 東2丁目까지)"
+  ],
+  "sources": [
+    "https://www.500m.jp/",
+    "https://www.500m.jp/exhibition/8203.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "placeId": "gion-zenbi",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-13",
+  "uncertain": [
+    "연말연시 휴관 날짜",
+    "11/14 전 전시 교체 휴관 여부",
+    "뮤지엄숍 품목·영업시간"
+  ],
+  "sources": [
+    "https://zenbi.kagizen.com/",
+    "https://zenbi.kagizen.com/information/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

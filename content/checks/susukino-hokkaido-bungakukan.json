@@ -1,0 +1,15 @@
+{
+  "placeId": "susukino-hokkaido-bungakukan",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-10",
+  "uncertain": [
+    "상설전·자료전 관람료",
+    "스스키노역보다 나카지마코엔역 쪽(나카지마 공원 북부)"
+  ],
+  "sources": [
+    "https://www.h-bungaku.or.jp/",
+    "https://www.h-bungaku.or.jp/exhibition/future.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

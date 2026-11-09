@@ -1,0 +1,23 @@
+{
+  "id": "susukino-hokkaido-bungakukan",
+  "name": {
+    "ko": "홋카이도립 문학관",
+    "ja": "北海道立文学館"
+  },
+  "hood": "susukino",
+  "category": "gallery",
+  "tags": [
+    "design"
+  ],
+  "geo": {
+    "lat": 43.04657,
+    "lng": 141.35609
+  },
+  "address": "北海道札幌市中央区中島公園1番4号",
+  "official": "https://www.h-bungaku.or.jp/",
+  "image": {
+    "file": "susukino-hokkaido-bungakukan.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

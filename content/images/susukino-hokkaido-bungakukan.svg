@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>susukino-hokkaido-bungakukan</title>
+<desc>
+모티프: 원고 종이 한 장과 그 위에 비스듬히 놓인 만년필
+근거: 공식 "홋카이도의 문학"을 다루는 문학관, place.category gallery
+피한 것: 이와타 미치오 그림(기간 한정 특별전, 실존 작가), 책 표지 글자
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e4e6ee"/>
+<rect x="160" y="680" width="880" height="34" rx="6" fill="#c3d1ec"/>
+<rect x="320" y="170" width="420" height="510" rx="8" fill="#faf8f4"/>
+<rect x="340" y="190" width="380" height="470" fill="#c3d1ec"/>
+<g fill="#5873b5">
+<rect x="380" y="250" width="300" height="22" rx="8"/><rect x="380" y="320" width="300" height="22" rx="8"/><rect x="380" y="390" width="220" height="22" rx="8"/><rect x="380" y="460" width="260" height="22" rx="8"/>
+</g>
+<g transform="rotate(28 800 420)">
+<rect x="770" y="190" width="70" height="330" rx="24" fill="#233c74"/>
+<polygon points="770,520 840,520 805,640" fill="#233c74"/>
+<rect x="770" y="250" width="70" height="26" fill="#c99a2e"/>
+</g>
+</svg>
