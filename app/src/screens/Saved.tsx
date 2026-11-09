@@ -1,5 +1,6 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AppBar } from '../components/AppBar';
+import { DateField, DateSheet } from '../components/DateSheet';
 import { Icon } from '../components/Icon';
 import { cardTypeOf } from '../components/PlaceCard';
 import { Thumb } from '../components/PlaceParts';
@@ -126,6 +127,7 @@ export function Saved({ content, query }: Props) {
 }
 
 function SavedList({ content, saved, today }: { content: Content; saved: SavedItem[]; today: string }) {
+  const [picking, setPicking] = useState<SavedItem | null>(null);
   const byHood = new Map<Hood | 'unknown', SavedItem[]>();
   for (const s of saved) {
     const hood = content.places.find((x) => x.id === s.placeId)?.hood ?? 'unknown';
@@ -176,14 +178,7 @@ function SavedList({ content, saved, today }: { content: Content; saved: SavedIt
                       )}
                       <h3 className="place-name">{v.place.name.ko}</h3>
                       <div className="place-item-actions">
-                        <label className="field field--inline">
-                          <span className="field-label">방문 예정</span>
-                          <input
-                            type="date"
-                            value={s.visitDate ?? ''}
-                            onChange={(e) => setVisitDate(s.placeId, e.target.value || undefined)}
-                          />
-                        </label>
+                        <DateField inline label="방문 예정" value={s.visitDate} onOpen={() => setPicking(s)} />
                         <button
                           className="btn btn--sm btn--neutral-weak"
                           onClick={() => {
@@ -202,6 +197,17 @@ function SavedList({ content, saved, today }: { content: Content; saved: SavedIt
           </ul>
         </section>
       ))}
+      {picking && (
+        <DateSheet
+          mode="single"
+          title="방문 예정일"
+          min={today}
+          value={picking.visitDate}
+          onConfirm={(d) => setVisitDate(picking.placeId, d)}
+          onClear={() => setVisitDate(picking.placeId, undefined)}
+          onClose={() => setPicking(null)}
+        />
+      )}
     </>
   );
 }

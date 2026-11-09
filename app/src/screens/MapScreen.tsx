@@ -6,7 +6,7 @@ import { googleMapsUrl, openExternal } from '../lib/channel';
 import { hrefTo } from '../lib/router';
 import { type Content, HOOD_LABEL, type Hood, TAG_LABEL } from '../lib/types';
 
-// D6에 Leaflet + OSM 타일로 교체한다. 그 전까지는 동네별 목록 + 외부 지도 열기.
+// 지도는 docs/MAP_PLAN.md대로 Leaflet + 국토지리원 타일로 바꾼다. 그 전까지는 동네별 목록 + 외부 지도 열기.
 export function MapScreen({ content }: { content: Content }) {
   const hoods = (Object.keys(HOOD_LABEL) as Hood[]).filter((h) => content.places.some((p) => p.hood === h));
   return (

@@ -70,10 +70,7 @@ export function PlaceCard({ view, today, trip, pairName }: Props) {
         <p className="place-why">{take?.why ?? '추천 이유를 확인 중이에요.'}</p>
         {take?.pairWith && pairName && <p className="place-pair">근처 한 곳 · {pairName}</p>}
         <div className="place-item-foot">
-          <span className="meta">
-            <span>{condition}</span>
-            <span className="meta-sep">{check ? `확인 ${formatDate(check.checkedAt)}` : '확인 중'}</span>
-          </span>
+          <span className="meta">{condition}</span>
           <button
             className="icon-btn heart"
             aria-pressed={saved}

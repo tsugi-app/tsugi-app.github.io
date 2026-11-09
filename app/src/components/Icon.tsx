@@ -15,7 +15,9 @@ export type IconName =
   | 'goods'
   | 'walk'
   | 'place'
-  | 'settings';
+  | 'settings'
+  | 'calendar'
+  | 'close';
 
 const PATHS: Record<IconName, JSX.Element> = {
   discover: (
@@ -100,6 +102,13 @@ const PATHS: Record<IconName, JSX.Element> = {
       <path d="M10 20v-5h4v5" />
     </>
   ),
+  calendar: (
+    <>
+      <rect x="4" y="5.5" width="16" height="14.5" rx="2" />
+      <path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" />
+    </>
+  ),
+  close: <path d="M6 6l12 12M18 6 6 18" />,
 };
 
 export function Icon({ name, size = 24 }: { name: IconName; size?: number }) {

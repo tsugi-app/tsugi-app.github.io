@@ -53,3 +53,27 @@ export function formatDate(d: string): string {
   const [, m, day] = d.split('-');
   return `${Number(m)}.${Number(day)}`;
 }
+
+// 날짜 입력 표시는 YYYY/MM/DD로 통일한다 (브라우저 기본 date 입력은 기기 언어에 따라 mm/dd/yyyy가 된다).
+export function formatYmd(d: string): string {
+  return d.replace(/-/g, '/');
+}
+
+// 달력 한 달: 'YYYY-MM' → 일요일 시작 7칸씩 끊은 주 배열. 앞뒤 빈칸은 null.
+export function monthGrid(ym: string): (string | null)[][] {
+  const [y, m] = ym.split('-').map(Number);
+  const first = new Date(Date.UTC(y, m - 1, 1));
+  const days = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  const cells: (string | null)[] = Array(first.getUTCDay()).fill(null);
+  for (let d = 1; d <= days; d++) cells.push(`${ym}-${String(d).padStart(2, '0')}`);
+  while (cells.length % 7) cells.push(null);
+  const weeks: (string | null)[][] = [];
+  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+  return weeks;
+}
+
+export function addMonths(ym: string, n: number): string {
+  const [y, m] = ym.split('-').map(Number);
+  const d = new Date(Date.UTC(y, m - 1 + n, 1));
+  return d.toISOString().slice(0, 7);
+}
