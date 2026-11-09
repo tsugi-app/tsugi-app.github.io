@@ -5,6 +5,7 @@
 ## 구조
 - `app/` — Vite + React 18 + TypeScript. 화면 4개(`screens/`), 공용 로직은 `lib/`.
 - `docs/DESIGN.md` — UI/UX 가이드라인(당근 SEED 기반). 화면·컴포넌트·문구를 바꿀 땐 먼저 이 문서를 따른다.
+- `docs/IMAGES.md` — 장소 대표 이미지(Claude가 그린 SVG) 화풍·팔레트·캔버스·검토 규칙.
 - `content/` — 장소·소식·편집 판단·확인 기록 JSON. 장소 1개 = 파일 1개.
 - `scripts/` — `validate.mjs`(규칙 검사), `build-content.mjs`(→ `app/public/content.json`), `build-share.mjs`(vite build 뒤 `dist/p/<id>/`·`dist/c/<동네|취향>/`에 OG 미리보기 페이지 생성, 웹 채널만). 의존성 없는 Node 스크립트.
 - `.github/workflows/` — `ci.yml`(PR 검사), `deploy-pages.yml`(main → Pages, 매일 03:00 KST 재빌드), `recheck.yml`(매주 월 재확인 이슈), `radar.yml`(10분마다 후보 레이더), `watchdog.yml`(매일: 레이더 24시간 무실행·리포 50일 무활동이면 이슈).
@@ -38,7 +39,7 @@
   4. 행사 장소가 시부야·하라주쿠·오모테산도가 맞다 (본사 주소·다른 지역 순회지 아님).
   5. 검토를 마친 날짜가 `checkedAt`, 행사 시작 전이나 기간 중간이 `recheckBy`.
 - take의 `why`는 80자 이내, "핫한·인생·현지인만" 금지.
-- 이미지는 `credit`·`license` 없이 넣지 않는다.
+- 이미지는 `credit`·`license` 없이 넣지 않는다. 대표 이미지는 Claude(Opus)가 그린 SVG만 쓰고, 그리기 전에 `docs/IMAGES.md`를 따른다.
 
 ## 커밋
 - 커밋은 사용자 본인의 git 계정(erabi-pecu)으로 한다. GitHub 예약 실행은 워크플로의 cron 줄을 마지막으로 수정한 사용자 기준으로 돌기 때문에, 리포 권한이 없는 계정(예: `noreply@anthropic.com` → `claude` 계정)으로 cron 줄을 커밋하면 레이더·재빌드가 멈춘다. `git config user.email`이 `306176449+erabi-pecu@users.noreply.github.com`인지 확인하고 시작한다.
