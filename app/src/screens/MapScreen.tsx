@@ -15,7 +15,7 @@ import { isSaved, toggleSaved, useSaved } from '../lib/storage';
 import { type Content, HOOD_LABEL, type Hood, TAG_LABEL, TYPE_LABEL } from '../lib/types';
 
 // 지도 탭 — docs/MAP_PLAN.md 1·2단계.
-//   #/map              지도 (Leaflet + 지리원 타일, 지도 탭에 들어갈 때만 내려받는다)
+//   #/map              지도 (MapLibre + OpenFreeMap Positron, 지도 탭에 들어갈 때만 내려받는다)
 //   #/map?hood=…       동네만
 //   #/map?saved=1      저장한 곳만
 //   #/map?view=list    동네별 목록 (지도가 불편한 사람·스크린리더를 위한 대체 경로)

@@ -1,17 +1,20 @@
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useRef } from 'react';
 import { openExternal } from '../lib/channel';
 import { coordKey } from '../lib/geo';
 import type { CardType } from '../lib/types';
 
 // 지도 본체 — docs/MAP_PLAN.md. 지도 탭에 들어갈 때만 내려받도록 MapScreen에서 lazy import 한다.
-// 타일: 국토지리원 지리원 타일 淡色地図. 실시간으로 읽어 보여 주는 경우 출처 표시만 하면 된다.
-// 마커는 이미지 없이 CSS(.map-pin)로 그려 색을 tokens.css의 유형색에서 가져온다.
+// 지도: OpenFreeMap(OpenStreetMap 데이터) Positron 스타일, MapLibre로 그린다.
+//   상업 이용 가능, 무료, 키·조회 한도 없음, 출처 표시 필요(MapLibre가 자동으로 단다).
+// 마커는 HTML(.map-pin)로 그려 색을 tokens.css의 유형색에서 가져온다.
 
-const TILE_URL = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
-const ATTRIBUTION = '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>';
-const SHIBUYA: L.LatLngTuple = [35.6617, 139.7041];
+const STYLE = { light: 'https://tiles.openfreemap.org/styles/positron', dark: 'https://tiles.openfreemap.org/styles/dark' };
+const SHIBUYA: [number, number] = [139.7041, 35.6617];
+const LABEL_MIN_ZOOM = 14;
+// 지도 글자는 한국어 이름이 있으면 한국어, 없으면 일본어·원래 이름.
+const KO_TEXT = ['coalesce', ['get', 'name:ko'], ['get', 'name:ja'], ['get', 'name']] as unknown as maplibregl.ExpressionSpecification;
 
 export interface Pin {
   id: string;
@@ -24,25 +27,50 @@ export interface Pin {
   label: string;
 }
 
+export interface Me {
+  lat: number;
+  lng: number;
+  accuracy: number;
+}
+
+interface Props {
+  pins: Pin[];
+  selected: string | null;
+  // 고른 곳의 짝 장소(take.pairWith). 있으면 점선으로 잇는다.
+  pair: Pin | null;
+  me: Me | null;
+  // 같은 좌표에 여러 곳이 있으면 한 마커로 묶고, 누르면 그 묶음의 id 전부를 넘긴다.
+  onSelect: (ids: string[] | null) => void;
+  // 이 값이 바뀌면 보이는 마커가 모두 들어오게 지도를 맞춘다 (동네 칩을 바꿀 때).
+  fitKey: string;
+  // 이 값이 바뀌면 내 위치로 이동한다.
+  meKey: number;
+}
+
 const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
-// 라벨이 다른 라벨·마커와 겹치면 오른쪽 → 왼쪽 순서로 자리를 바꿔 보고, 둘 다 겹치면 숨긴다.
+const isDark = () => document.documentElement.dataset.theme === 'dark';
+// 색은 tokens.css의 시맨틱 토큰을 그대로 읽는다 (컴포넌트에 색 코드를 쓰지 않는다).
+const token = (name: string) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+// 라벨이 다른 라벨·마커·지도 버튼·카드와 겹치면 오른쪽 → 왼쪽 순서로 자리를 바꿔 보고, 둘 다 겹치면 숨긴다.
 // 고른 곳 → 기간 한정·새로 오픈·최근 변화 → 편집 추천 순서로 먼저 자리를 준다.
 const PRIORITY: Record<CardType, number> = { limited: 0, new: 1, changed: 2, editorial: 3 };
-const LABEL_MIN_ZOOM = 14;
 
-function layoutLabels(map: L.Map, container: HTMLElement) {
+function layoutLabels(zoom: number, container: HTMLElement) {
   const hits = [...container.querySelectorAll<HTMLElement>('.map-pin-hit')];
-  const show = map.getZoom() >= LABEL_MIN_ZOOM;
+  const show = zoom >= LABEL_MIN_ZOOM;
   const box = container.getBoundingClientRect();
   const taken: DOMRect[] = hits.map((h) => h.querySelector('.map-pin')!.getBoundingClientRect());
-  // 확대·축소, 내 위치 버튼, 출처 표시, 미리보기 카드가 있는 자리도 피한다.
   const wrap = container.parentElement ?? container;
-  for (const c of wrap.querySelectorAll<HTMLElement>('.leaflet-control, .map-locate, .map-cards, .map-empty')) {
+  for (const c of wrap.querySelectorAll<HTMLElement>('.maplibregl-ctrl, .map-locate, .map-cards, .map-empty')) {
     taken.push(c.getBoundingClientRect());
   }
   const overlaps = (r: DOMRect) =>
-    r.left < box.left || r.right > box.right || r.top < box.top || r.bottom > box.bottom ||
+    r.left < box.left ||
+    r.right > box.right ||
+    r.top < box.top ||
+    r.bottom > box.bottom ||
     taken.some((t) => r.left < t.right && r.right > t.left && r.top < t.bottom && r.bottom > t.top);
   const order = hits
     .map((h) => ({ h, sel: h.getAttribute('aria-pressed') === 'true', pr: Number(h.dataset.priority ?? 9) }))
@@ -69,68 +97,112 @@ function layoutLabels(map: L.Map, container: HTMLElement) {
   }
 }
 
-export interface Me {
-  lat: number;
-  lng: number;
-  accuracy: number;
+// 정확도 원(m)을 지도 위 다각형으로. 줌이 바뀌어도 실제 반경을 따른다.
+function circle(lng: number, lat: number, m: number): GeoJSON.Feature<GeoJSON.Polygon> {
+  const pts: [number, number][] = [];
+  const dLat = m / 111_320;
+  const dLng = m / (111_320 * Math.cos((lat * Math.PI) / 180));
+  for (let i = 0; i <= 48; i++) {
+    const a = (i / 48) * 2 * Math.PI;
+    pts.push([lng + dLng * Math.cos(a), lat + dLat * Math.sin(a)]);
+  }
+  return { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [pts] } };
 }
 
-interface Props {
-  pins: Pin[];
-  selected: string | null;
-  // 고른 곳의 짝 장소(take.pairWith). 있으면 점선으로 잇는다.
-  pair: Pin | null;
-  me: Me | null;
-  // 같은 좌표에 여러 곳이 있으면 한 마커로 묶고, 누르면 그 묶음의 id 전부를 넘긴다.
-  onSelect: (ids: string[] | null) => void;
-  // 이 값이 바뀌면 보이는 마커가 모두 들어오게 지도를 맞춘다 (동네 칩을 바꿀 때).
-  fitKey: string;
-  // 이 값이 바뀌면 내 위치로 이동한다.
-  meKey: number;
-}
+const EMPTY: GeoJSON.FeatureCollection = { type: 'FeatureCollection', features: [] };
 
 export default function MapView({ pins, selected, pair, me, onSelect, fitKey, meKey }: Props) {
   const el = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<L.Map | null>(null);
-  const pinLayer = useRef<L.LayerGroup | null>(null);
-  const lineLayer = useRef<L.LayerGroup | null>(null);
-  const meLayer = useRef<L.LayerGroup | null>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const markers = useRef<maplibregl.Marker[]>([]);
+  const meMarker = useRef<maplibregl.Marker | null>(null);
   const selectRef = useRef(onSelect);
   selectRef.current = onSelect;
+  // 스타일을 바꾸면(다크 모드) 직접 얹은 선·원이 사라지므로 마지막 값을 들고 있다가 다시 얹는다.
+  const overlay = useRef<{ line: GeoJSON.FeatureCollection; acc: GeoJSON.FeatureCollection }>({ line: EMPTY, acc: EMPTY });
 
-  // 지도는 한 번만 만든다.
+  const relayout = () => {
+    const map = mapRef.current;
+    if (map && el.current) layoutLabels(map.getZoom(), el.current);
+  };
+
+  // 스타일이 (다시) 로드될 때마다: 한국어 라벨, 짝 장소 점선, 내 위치 정확도 원.
+  const onStyle = (map: maplibregl.Map) => {
+    for (const layer of map.getStyle().layers ?? []) {
+      if (layer.type === 'symbol' && layer.layout && 'text-field' in layer.layout) {
+        map.setLayoutProperty(layer.id, 'text-field', KO_TEXT);
+      }
+    }
+    const brand = token('--color-fg-brand');
+    const ring = token('--color-stroke-focus-ring');
+    if (!map.getSource('acc')) map.addSource('acc', { type: 'geojson', data: overlay.current.acc });
+    if (!map.getLayer('acc-fill'))
+      map.addLayer({ id: 'acc-fill', type: 'fill', source: 'acc', paint: { 'fill-color': ring, 'fill-opacity': 0.12 } });
+    if (!map.getLayer('acc-line'))
+      map.addLayer({ id: 'acc-line', type: 'line', source: 'acc', paint: { 'line-color': ring, 'line-width': 1 } });
+    if (!map.getSource('pair')) map.addSource('pair', { type: 'geojson', data: overlay.current.line });
+    if (!map.getLayer('pair-line'))
+      map.addLayer({
+        id: 'pair-line',
+        type: 'line',
+        source: 'pair',
+        layout: { 'line-cap': 'round' },
+        paint: { 'line-color': brand, 'line-width': 3, 'line-dasharray': [2, 2] },
+      });
+  };
+
+  // 지도는 한 번만 만든다. 회전·기울이기는 끈다(여행 중 한 손 조작에서 헷갈린다).
   useEffect(() => {
-    const map = L.map(el.current!, { zoomControl: false, minZoom: 11, maxZoom: 18 }).setView(SHIBUYA, 15);
-    L.control.zoom({ position: 'topright', zoomInTitle: '확대', zoomOutTitle: '축소' }).addTo(map);
-    map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>');
-    L.tileLayer(TILE_URL, { attribution: ATTRIBUTION, maxZoom: 18, minZoom: 5 }).addTo(map);
+    const container = el.current!;
+    const map = new maplibregl.Map({
+      container,
+      style: isDark() ? STYLE.dark : STYLE.light,
+      center: SHIBUYA,
+      zoom: 15,
+      minZoom: 11,
+      maxZoom: 18,
+      dragRotate: false,
+      pitchWithRotate: false,
+      touchPitch: false,
+      attributionControl: { compact: true },
+    });
+    map.touchZoomRotate.disableRotation();
+    map.keyboard.disableRotation();
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+    map.on('style.load', () => onStyle(map));
     map.on('click', () => selectRef.current(null));
-    map.on('zoomend moveend resize', () => el.current && layoutLabels(map, el.current));
+    map.on('moveend', relayout);
+    map.on('resize', relayout);
     // 출처 링크도 다른 바깥 링크처럼 openExternal로 연다 (토스 WebView에서 target=_blank가 막힐 수 있다).
-    const attr = map.attributionControl.getContainer();
-    attr?.addEventListener('click', (e) => {
-      const a = (e.target as HTMLElement).closest('a');
+    const onAttr = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest('.maplibregl-ctrl-attrib a') as HTMLAnchorElement | null;
       if (!a) return;
       e.preventDefault();
       openExternal(a.href);
-    });
-    lineLayer.current = L.layerGroup().addTo(map);
-    meLayer.current = L.layerGroup().addTo(map);
-    pinLayer.current = L.layerGroup().addTo(map);
+    };
+    container.addEventListener('click', onAttr);
+    // 다크 모드를 바꾸면 지도 스타일도 바꾼다.
+    // diff: false여야 style.load가 다시 불려 한국어 라벨·점선·원을 다시 얹는다.
+    const obs = new MutationObserver(() => map.setStyle(isDark() ? STYLE.dark : STYLE.light, { diff: false }));
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     mapRef.current = map;
     return () => {
+      obs.disconnect();
+      container.removeEventListener('click', onAttr);
       map.remove();
       mapRef.current = null;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 마커. 같은 좌표(같은 건물)는 한 마커로 묶고 개수를 단다.
   useEffect(() => {
-    const layer = pinLayer.current;
-    if (!layer) return;
+    const map = mapRef.current;
+    if (!map) return;
     // 마커를 다시 그리면 키보드 포커스가 사라지므로, 포커스가 있던 마커를 기억했다가 되돌린다.
     const focusedKey = (document.activeElement as HTMLElement | null)?.dataset?.pinKey;
-    layer.clearLayers();
+    for (const m of markers.current) m.remove();
+    markers.current = [];
     const groups = new Map<string, Pin[]>();
     for (const p of pins) groups.set(coordKey(p), [...(groups.get(coordKey(p)) ?? []), p]);
     for (const group of groups.values()) {
@@ -141,81 +213,100 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
       const count = group.length > 1 ? `<span class="map-pin-count">${group.length}</span>` : '';
       // 같은 건물이면 "첫 곳 이름 +1". 이름만 말줄임하고 개수는 남긴다.
       const more = group.length > 1 ? `<span class="map-pin-label-more">+${group.length - 1}</span>` : '';
-      const nameLabel = `<span class="map-pin-label${isSel ? ' selected' : ''}" aria-hidden="true"><span class="map-pin-label-name">${esc(first.name)}</span>${more}</span>`;
       const label = group.length > 1 ? `${group.length}곳: ${group.map((p) => p.label).join(' / ')}` : first.label;
-      const marker = L.marker([first.lat, first.lng], {
-        icon: L.divIcon({
-          className: 'map-pin-hit',
-          html: `<span class="map-pin map-pin--${first.type}${isSel ? ' selected' : ''}${isPair ? ' paired' : ''}">${count}</span>${nameLabel}`,
-          iconSize: [44, 44],
-          iconAnchor: [22, 22],
-        }),
-        keyboard: true,
-        title: label,
-        zIndexOffset: isSel ? 1000 : isPair ? 500 : 0,
-        riseOnHover: true,
-      });
-      marker.on('click', (e) => {
-        L.DomEvent.stopPropagation(e);
+
+      const node = document.createElement('div');
+      node.className = 'map-pin-hit';
+      node.tabIndex = 0;
+      node.setAttribute('role', 'button');
+      node.setAttribute('aria-label', label);
+      node.setAttribute('aria-pressed', String(isSel));
+      node.title = label;
+      node.dataset.pinKey = coordKey(first);
+      node.dataset.priority = String(Math.min(...group.map((p) => PRIORITY[p.type])));
+      node.style.zIndex = isSel ? '3' : isPair ? '2' : '1';
+      node.innerHTML =
+        `<span class="map-pin map-pin--${first.type}${isSel ? ' selected' : ''}${isPair ? ' paired' : ''}">${count}</span>` +
+        `<span class="map-pin-label${isSel ? ' selected' : ''}" aria-hidden="true"><span class="map-pin-label-name">${esc(first.name)}</span>${more}</span>`;
+      node.addEventListener('click', (e) => {
+        e.stopPropagation();
         selectRef.current(ids);
       });
-      marker.addTo(layer);
-      const node = marker.getElement();
-      node?.setAttribute('aria-label', label);
-      if (node) {
-        node.dataset.pinKey = coordKey(first);
-        node.dataset.priority = String(Math.min(...group.map((p) => PRIORITY[p.type])));
-      }
-      node?.setAttribute('aria-pressed', String(isSel));
-      // Leaflet은 Enter를 옛 keypress로만 받아 브라우저에 따라 안 먹는다. Enter·Space를 직접 받는다.
-      node?.addEventListener('keydown', (e) => {
+      node.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           selectRef.current(ids);
         }
       });
-      if (node && focusedKey && focusedKey === coordKey(first)) node.focus({ preventScroll: true });
+      markers.current.push(new maplibregl.Marker({ element: node, anchor: 'center' }).setLngLat([first.lng, first.lat]).addTo(map));
+      // MapLibre가 마커를 만들 때 aria-label을 "Map marker"로 덮어써서 다시 단다.
+      node.setAttribute('aria-label', label);
+      node.setAttribute('role', 'button');
+      if (focusedKey && focusedKey === coordKey(first)) node.focus({ preventScroll: true });
     }
-    const map = mapRef.current;
-    if (map && el.current) {
-      const id = requestAnimationFrame(() => layoutLabels(map, el.current!));
-      return () => cancelAnimationFrame(id);
-    }
+    const id = requestAnimationFrame(relayout);
+    return () => cancelAnimationFrame(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pins, selected, pair]);
+
+  // 고른 곳이 화면 밖이면(짝 장소로 넘어갈 때 등) 그쪽으로 옮긴다. 아래 카드에 가리지 않게 위로 조금 띄운다.
+  useEffect(() => {
+    const map = mapRef.current;
+    const p = pins.find((x) => x.id === selected);
+    if (!map || !p) return;
+    const pt = map.project([p.lng, p.lat]);
+    const { clientWidth: w, clientHeight: h } = map.getContainer();
+    if (pt.x < 24 || pt.x > w - 24 || pt.y < 24 || pt.y > h - 160) {
+      map.easeTo({ center: [p.lng, p.lat], offset: [0, -60], duration: 400 });
+    }
+    // 고른 곳이 바뀔 때만 본다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected]);
 
   // 짝 장소 점선.
   useEffect(() => {
-    const layer = lineLayer.current;
-    if (!layer) return;
-    layer.clearLayers();
     const from = pins.find((p) => p.id === selected);
-    if (!from || !pair) return;
-    L.polyline(
-      [
-        [from.lat, from.lng],
-        [pair.lat, pair.lng],
-      ],
-      { className: 'map-pair-line', interactive: false },
-    ).addTo(layer);
+    overlay.current.line =
+      from && pair
+        ? {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                  type: 'LineString',
+                  coordinates: [
+                    [from.lng, from.lat],
+                    [pair.lng, pair.lat],
+                  ],
+                },
+              },
+            ],
+          }
+        : EMPTY;
+    (mapRef.current?.getSource('pair') as maplibregl.GeoJSONSource | undefined)?.setData(overlay.current.line);
   }, [pins, selected, pair]);
 
   // 내 위치: 점 + 정확도 원. 위치는 이 화면에만 두고 저장하지 않는다.
   useEffect(() => {
-    const layer = meLayer.current;
-    if (!layer) return;
-    layer.clearLayers();
+    const map = mapRef.current;
+    if (!map) return;
+    meMarker.current?.remove();
+    meMarker.current = null;
+    overlay.current.acc = me ? { type: 'FeatureCollection', features: [circle(me.lng, me.lat, me.accuracy)] } : EMPTY;
+    (map.getSource('acc') as maplibregl.GeoJSONSource | undefined)?.setData(overlay.current.acc);
     if (!me) return;
-    L.circle([me.lat, me.lng], { radius: me.accuracy, className: 'map-me-accuracy', interactive: false }).addTo(layer);
-    L.marker([me.lat, me.lng], {
-      icon: L.divIcon({ className: 'map-me-hit', html: '<span class="map-me"></span>', iconSize: [24, 24], iconAnchor: [12, 12] }),
-      interactive: false,
-      keyboard: false,
-    }).addTo(layer);
+    const dot = document.createElement('div');
+    dot.className = 'map-me-hit';
+    dot.innerHTML = '<span class="map-me"></span>';
+    meMarker.current = new maplibregl.Marker({ element: dot, anchor: 'center' }).setLngLat([me.lng, me.lat]).addTo(map);
+    dot.setAttribute('aria-label', '내 위치');
   }, [me]);
 
   useEffect(() => {
     const map = mapRef.current;
-    if (map && me && meKey) map.flyTo([me.lat, me.lng], Math.max(map.getZoom(), 16), { duration: 0.6 });
+    if (map && me && meKey) map.flyTo({ center: [me.lng, me.lat], zoom: Math.max(map.getZoom(), 16), duration: 600 });
     // meKey가 바뀔 때(버튼을 누를 때)만 이동한다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meKey]);
@@ -224,8 +315,9 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
   useEffect(() => {
     const map = mapRef.current;
     if (!map || pins.length === 0) return;
-    const bounds = L.latLngBounds(pins.map((p) => [p.lat, p.lng] as L.LatLngTuple));
-    map.fitBounds(bounds, { padding: [56, 56], maxZoom: 16 });
+    const b = new maplibregl.LngLatBounds();
+    for (const p of pins) b.extend([p.lng, p.lat]);
+    map.fitBounds(b, { padding: 56, maxZoom: 16, duration: 0 });
     // pins는 fitKey와 함께 바뀌므로 fitKey만 본다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fitKey]);
