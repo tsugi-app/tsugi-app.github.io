@@ -50,7 +50,14 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
 
   const pinOf = (v: PlaceView): Pin => {
     const type = cardTypeOf(v, today).type;
-    return { id: v.place.id, lat: v.place.geo.lat, lng: v.place.geo.lng, type, label: `${v.place.name.ko}, ${TYPE_LABEL[type]}` };
+    return {
+      id: v.place.id,
+      lat: v.place.geo.lat,
+      lng: v.place.geo.lng,
+      type,
+      name: v.place.name.ko,
+      label: `${v.place.name.ko}, ${TYPE_LABEL[type]}`,
+    };
   };
   const pins = useMemo(() => views.map(pinOf), [views, today]); // eslint-disable-line react-hooks/exhaustive-deps
 

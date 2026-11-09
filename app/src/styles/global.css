@@ -1327,6 +1327,58 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
+/* 마커 옆 이름 라벨 — 화면을 덜 가리게 작은 알약, 겹치면 왼쪽으로 돌리거나 숨긴다(MapView layoutLabels) */
+.map-canvas .map-pin-hit {
+  position: relative;
+}
+.map-pin-label {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 14px);
+  transform: translateY(-50%);
+  max-width: 132px;
+  padding: 3px var(--x1_5);
+  border-radius: var(--r1_5);
+  background: var(--color-bg-layer-floating);
+  color: var(--color-fg-neutral);
+  box-shadow: var(--shadow-s1);
+  font-size: var(--fs-t2);
+  line-height: var(--lh-t2);
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  display: flex;
+  gap: var(--x1);
+  pointer-events: auto;
+}
+.map-pin-label-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.map-pin-label-more {
+  flex-shrink: 0;
+  color: var(--color-fg-neutral-subtle);
+}
+.map-pin-label.selected .map-pin-label-more {
+  color: inherit;
+}
+.map-pin-label.is-left {
+  left: auto;
+  right: calc(50% + 14px);
+}
+.map-pin-label.selected {
+  left: calc(50% + 20px);
+  background: var(--color-bg-neutral-solid);
+  color: var(--color-fg-on-neutral-solid);
+}
+.map-pin-label.selected.is-left {
+  left: auto;
+  right: calc(50% + 20px);
+}
+.map-pin-label.is-hidden {
+  visibility: hidden;
+}
+
 /* 같은 건물 묶음 개수 */
 .map-canvas .map-pin {
   position: relative;

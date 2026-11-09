@@ -18,7 +18,55 @@ export interface Pin {
   lat: number;
   lng: number;
   type: CardType;
+  // 지도 위 이름 라벨(한국어 이름)
+  name: string;
+  // 스크린리더용 "이름, 유형"
   label: string;
+}
+
+const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+// 라벨이 다른 라벨·마커와 겹치면 오른쪽 → 왼쪽 순서로 자리를 바꿔 보고, 둘 다 겹치면 숨긴다.
+// 고른 곳 → 기간 한정·새로 오픈·최근 변화 → 편집 추천 순서로 먼저 자리를 준다.
+const PRIORITY: Record<CardType, number> = { limited: 0, new: 1, changed: 2, editorial: 3 };
+const LABEL_MIN_ZOOM = 14;
+
+function layoutLabels(map: L.Map, container: HTMLElement) {
+  const hits = [...container.querySelectorAll<HTMLElement>('.map-pin-hit')];
+  const show = map.getZoom() >= LABEL_MIN_ZOOM;
+  const box = container.getBoundingClientRect();
+  const taken: DOMRect[] = hits.map((h) => h.querySelector('.map-pin')!.getBoundingClientRect());
+  // 확대·축소, 내 위치 버튼, 출처 표시, 미리보기 카드가 있는 자리도 피한다.
+  const wrap = container.parentElement ?? container;
+  for (const c of wrap.querySelectorAll<HTMLElement>('.leaflet-control, .map-locate, .map-cards, .map-empty')) {
+    taken.push(c.getBoundingClientRect());
+  }
+  const overlaps = (r: DOMRect) =>
+    r.left < box.left || r.right > box.right || r.top < box.top || r.bottom > box.bottom ||
+    taken.some((t) => r.left < t.right && r.right > t.left && r.top < t.bottom && r.bottom > t.top);
+  const order = hits
+    .map((h) => ({ h, sel: h.getAttribute('aria-pressed') === 'true', pr: Number(h.dataset.priority ?? 9) }))
+    .sort((a, b) => Number(b.sel) - Number(a.sel) || a.pr - b.pr);
+  for (const { h, sel } of order) {
+    const label = h.querySelector<HTMLElement>('.map-pin-label');
+    if (!label) continue;
+    label.classList.remove('is-left', 'is-hidden');
+    if (!show && !sel) {
+      label.classList.add('is-hidden');
+      continue;
+    }
+    let r = label.getBoundingClientRect();
+    if (overlaps(r)) {
+      label.classList.add('is-left');
+      r = label.getBoundingClientRect();
+      if (overlaps(r)) {
+        label.classList.remove('is-left');
+        label.classList.add('is-hidden');
+        continue;
+      }
+    }
+    taken.push(r);
+  }
 }
 
 export interface Me {
@@ -57,6 +105,7 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
     map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>');
     L.tileLayer(TILE_URL, { attribution: ATTRIBUTION, maxZoom: 18, minZoom: 5 }).addTo(map);
     map.on('click', () => selectRef.current(null));
+    map.on('zoomend moveend resize', () => el.current && layoutLabels(map, el.current));
     // 출처 링크도 다른 바깥 링크처럼 openExternal로 연다 (토스 WebView에서 target=_blank가 막힐 수 있다).
     const attr = map.attributionControl.getContainer();
     attr?.addEventListener('click', (e) => {
@@ -90,11 +139,14 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
       const isSel = !!selected && ids.includes(selected);
       const isPair = !!pair && ids.includes(pair.id) && !isSel;
       const count = group.length > 1 ? `<span class="map-pin-count">${group.length}</span>` : '';
+      // 같은 건물이면 "첫 곳 이름 +1". 이름만 말줄임하고 개수는 남긴다.
+      const more = group.length > 1 ? `<span class="map-pin-label-more">+${group.length - 1}</span>` : '';
+      const nameLabel = `<span class="map-pin-label${isSel ? ' selected' : ''}" aria-hidden="true"><span class="map-pin-label-name">${esc(first.name)}</span>${more}</span>`;
       const label = group.length > 1 ? `${group.length}곳: ${group.map((p) => p.label).join(' / ')}` : first.label;
       const marker = L.marker([first.lat, first.lng], {
         icon: L.divIcon({
           className: 'map-pin-hit',
-          html: `<span class="map-pin map-pin--${first.type}${isSel ? ' selected' : ''}${isPair ? ' paired' : ''}">${count}</span>`,
+          html: `<span class="map-pin map-pin--${first.type}${isSel ? ' selected' : ''}${isPair ? ' paired' : ''}">${count}</span>${nameLabel}`,
           iconSize: [44, 44],
           iconAnchor: [22, 22],
         }),
@@ -110,7 +162,10 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
       marker.addTo(layer);
       const node = marker.getElement();
       node?.setAttribute('aria-label', label);
-      if (node) node.dataset.pinKey = coordKey(first);
+      if (node) {
+        node.dataset.pinKey = coordKey(first);
+        node.dataset.priority = String(Math.min(...group.map((p) => PRIORITY[p.type])));
+      }
       node?.setAttribute('aria-pressed', String(isSel));
       // Leaflet은 Enter를 옛 keypress로만 받아 브라우저에 따라 안 먹는다. Enter·Space를 직접 받는다.
       node?.addEventListener('keydown', (e) => {
@@ -120,6 +175,11 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
         }
       });
       if (node && focusedKey && focusedKey === coordKey(first)) node.focus({ preventScroll: true });
+    }
+    const map = mapRef.current;
+    if (map && el.current) {
+      const id = requestAnimationFrame(() => layoutLabels(map, el.current!));
+      return () => cancelAnimationFrame(id);
     }
   }, [pins, selected, pair]);
 
