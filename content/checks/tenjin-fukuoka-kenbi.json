@@ -1,0 +1,15 @@
+{
+  "placeId": "tenjin-fukuoka-kenbi",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-10",
+  "uncertain": [
+    "예매권을 아직 파는지",
+    "좌표는 지리원 주소 검색이 블록(天神五丁目2番) 단위까지만 일치"
+  ],
+  "sources": [
+    "https://fukuoka-kenbi.jp/",
+    "https://fukuoka-kenbi.jp/exhibition/2026/0701_18474/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

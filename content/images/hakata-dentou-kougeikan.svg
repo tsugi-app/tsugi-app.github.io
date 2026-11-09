@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>hakata-dentou-kougeikan</title>
+<desc>
+모티프: 바닥 위에서 도는 팽이 하나 (하카타 고마)
+근거: 공식 소개 "하카타오리·하카타 인형과 함께 하카타 마게모노·하카타 고마·하카타 하사미·하카타 하리코를 다룬다"
+피한 것: 하카타 인형 얼굴(얼굴 금지), 박다오리 띠 무늬 재현(기간 한정 행사)
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<ellipse cx="600" cy="700" rx="300" ry="30" fill="#c3d1ec"/>
+<rect x="582" y="170" width="36" height="110" rx="12" fill="#233c74"/>
+<path d="M330 330 Q600 240 870 330 Q860 470 600 690 Q340 470 330 330 Z" fill="#233c74"/>
+<path d="M340 360 Q600 290 860 360 L840 420 Q600 360 360 420 Z" fill="#c99a2e"/>
+<path d="M400 470 Q600 420 800 470 L760 530 Q600 490 440 530 Z" fill="#5873b5"/>
+<path d="M480 590 Q600 560 720 590 L660 640 Q600 625 540 640 Z" fill="#c3d1ec"/>
+<path d="M240 520 Q200 600 260 660" fill="none" stroke="#5873b5" stroke-width="22" stroke-linecap="round"/>
+<path d="M960 520 Q1000 600 940 660" fill="none" stroke="#5873b5" stroke-width="22" stroke-linecap="round"/>
+</svg>

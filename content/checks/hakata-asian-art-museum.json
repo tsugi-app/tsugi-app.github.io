@@ -1,0 +1,16 @@
+{
+  "placeId": "hakata-asian-art-museum",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-15",
+  "uncertain": [
+    "전시 사진 촬영 가능 여부",
+    "좌표는 지리원 주소 검색이 블록(下川端町3番) 단위까지만 일치"
+  ],
+  "sources": [
+    "https://faam.city.fukuoka.lg.jp/",
+    "https://faam.city.fukuoka.lg.jp/exhibition/26076/",
+    "https://faam.city.fukuoka.lg.jp/about/concept/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

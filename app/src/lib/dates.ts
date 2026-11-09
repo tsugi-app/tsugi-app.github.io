@@ -34,6 +34,13 @@ export function isUpdateActive(u: Update, today: string, trip?: Trip): boolean {
   return end >= today;
 }
 
+// 카드에 보일 소식 하나: 살아 있는 소식 중 가장 먼저 시작하는 것 (지금 진행 중인 것이 다음 예정보다 앞선다).
+export function activeUpdate(updates: Update[], today: string, trip?: Trip): Update | undefined {
+  return updates
+    .filter((u) => isUpdateActive(u, today, trip))
+    .sort((a, b) => a.start.localeCompare(b.start))[0];
+}
+
 export function isUpdateEnded(u: Update, today: string): boolean {
   return effectiveEnd(u) < today;
 }

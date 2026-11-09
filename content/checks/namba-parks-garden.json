@@ -1,0 +1,15 @@
+{
+  "placeId": "namba-parks-garden",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-15",
+  "uncertain": [
+    "이달 휴관일(공식 페이지에 날짜가 비어 있음)",
+    "일루미네이션 장소별 점등 시간(발표문에 '일부 시설 제외')"
+  ],
+  "sources": [
+    "http://nambaparks.com/garden",
+    "https://www.nankai.co.jp/lib/company/news/pdf/261030.pdf",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>namba-parks-garden</title>
+<desc>
+모티프: 오른쪽 위로 올라가는 계단식 단 다섯 개와 단마다 얹힌 둥근 나무
+근거: 공식 "2층부터 9층까지 펼쳐진 약 11,500㎡ 옥상 공원"
+피한 것: 건물 외관의 사실적 재현, 일루미네이션(기간 한정)
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<rect x="160" y="640" width="880" height="60" fill="#233c74"/>
+<rect x="320" y="560" width="720" height="80" fill="#233c74"/>
+<rect x="480" y="480" width="560" height="80" fill="#233c74"/>
+<rect x="640" y="400" width="400" height="80" fill="#233c74"/>
+<rect x="800" y="320" width="240" height="80" fill="#233c74"/>
+<rect x="160" y="626" width="160" height="22" rx="6" fill="#5873b5"/>
+<rect x="320" y="546" width="160" height="22" rx="6" fill="#5873b5"/>
+<rect x="480" y="466" width="160" height="22" rx="6" fill="#5873b5"/>
+<rect x="640" y="386" width="160" height="22" rx="6" fill="#5873b5"/>
+<rect x="800" y="306" width="240" height="22" rx="6" fill="#5873b5"/>
+<circle cx="240" cy="570" r="60" fill="#c3d1ec"/>
+<circle cx="400" cy="490" r="60" fill="#c3d1ec"/>
+<circle cx="560" cy="410" r="60" fill="#c3d1ec"/>
+<circle cx="720" cy="330" r="60" fill="#c3d1ec"/>
+<circle cx="900" cy="240" r="76" fill="#c3d1ec"/>
+<circle cx="940" cy="200" r="26" fill="#c99a2e"/>
+</svg>

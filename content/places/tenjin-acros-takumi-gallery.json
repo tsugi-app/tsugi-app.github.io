@@ -1,0 +1,24 @@
+{
+  "id": "tenjin-acros-takumi-gallery",
+  "name": {
+    "ko": "아크로스 후쿠오카 다쿠미 갤러리",
+    "ja": "アクロス福岡 匠ギャラリー"
+  },
+  "hood": "tenjin",
+  "category": "design",
+  "tags": [
+    "design",
+    "goods"
+  ],
+  "geo": {
+    "lat": 33.58954,
+    "lng": 130.40372
+  },
+  "address": "福岡県福岡市中央区天神1丁目1番1号 アクロス福岡 1・2階",
+  "official": "https://www.acros.or.jp/takumi/",
+  "image": {
+    "file": "tenjin-acros-takumi-gallery.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

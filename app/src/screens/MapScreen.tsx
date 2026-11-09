@@ -8,7 +8,7 @@ import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
 import { getPosition, googleMapsUrl, openExternal } from '../lib/channel';
 import { areaFilter, type PlaceView, viewOf } from '../lib/content';
-import { daysLeft, isUpdateActive, todayTokyo } from '../lib/dates';
+import { activeUpdate, daysLeft, todayTokyo } from '../lib/dates';
 import { distanceM, formatDistance } from '../lib/geo';
 import { go, hrefTo } from '../lib/router';
 import { isSaved, toggleSaved, useSaved } from '../lib/storage';
@@ -295,7 +295,7 @@ function MapCard({
 }) {
   const { place } = view;
   const { type } = cardTypeOf(view, today);
-  const update = view.updates.find((u) => isUpdateActive(u, today));
+  const update = activeUpdate(view.updates, today);
   const upcoming = !!update && update.start > today;
   const left = update && !upcoming ? daysLeft(update, today) : null;
   const saved = isSaved(place.id);

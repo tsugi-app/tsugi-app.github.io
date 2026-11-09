@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shinsaibashi-verdys-postal-service</title>
+<desc>
+모티프: 윗면이 둥근 우체통 하나와 투입구로 들어가는 봉투 한 장
+근거: 공식 "매장에 우체통을 두고, 그 자리에서 편지를 써서 부칠 수 있다"
+피한 것: VERDY 캐릭터·그래픽(실존 작가 작품), 일본 우편 마크, 실제 우체통 디자인 재현
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<ellipse cx="560" cy="700" rx="300" ry="30" fill="#c3d1ec"/>
+<path d="M400 330 Q400 180 560 180 Q720 180 720 330 L720 680 L400 680 Z" fill="#233c74"/>
+<rect x="450" y="300" width="220" height="34" rx="12" fill="#faf8f4"/>
+<rect x="480" y="440" width="160" height="120" rx="10" fill="#5873b5"/>
+<rect x="380" y="660" width="360" height="36" rx="8" fill="#5873b5"/>
+<g transform="rotate(-16 820 300)">
+<rect x="720" y="230" width="260" height="170" rx="10" fill="#c3d1ec"/>
+<path d="M720 240 L850 330 L980 240" fill="none" stroke="#5873b5" stroke-width="22" stroke-linejoin="round"/>
+<circle cx="930" cy="360" r="22" fill="#c99a2e"/>
+</g>
+</svg>

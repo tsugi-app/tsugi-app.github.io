@@ -1,0 +1,16 @@
+{
+  "placeId": "shinsaibashi-lilo-coffee-roasters",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2027-02-10",
+  "uncertain": [
+    "좌석 수·스탠딩 여부",
+    "결제 수단",
+    "일본어 건물명(공식엔 영문 주소만)"
+  ],
+  "sources": [
+    "https://coffee.liloinveve.com/pages/lilo-coffee-roasters-1",
+    "https://coffee.liloinveve.com/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

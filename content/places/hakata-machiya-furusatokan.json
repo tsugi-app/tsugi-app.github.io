@@ -1,0 +1,24 @@
+{
+  "id": "hakata-machiya-furusatokan",
+  "name": {
+    "ko": "하카타 마치야 후루사토관",
+    "ja": "博多町家ふるさと館"
+  },
+  "hood": "hakata",
+  "category": "gallery",
+  "tags": [
+    "walk",
+    "goods"
+  ],
+  "geo": {
+    "lat": 33.59352,
+    "lng": 130.41142
+  },
+  "address": "福岡県福岡市博多区冷泉町6-10",
+  "official": "https://hakatamachiya.com/",
+  "image": {
+    "file": "hakata-machiya-furusatokan.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

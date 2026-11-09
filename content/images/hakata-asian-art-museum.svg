@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>hakata-asian-art-museum</title>
+<desc>
+모티프: 가로로 이어진 크기·비율이 다른 빈 액자 셋 (여러 나라의 작품을 한 벽에)
+근거: 공식 소개 "아시아의 근현대 미술 작품을 체계적으로 수집·전시", place.category gallery
+피한 것: 남아시아 특별전 작품(기간 한정, 실존 작가), 나라별 상징물
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<rect x="160" y="650" width="880" height="36" rx="6" fill="#c3d1ec"/>
+<rect x="170" y="290" width="230" height="300" rx="8" fill="#233c74"/>
+<rect x="204" y="324" width="162" height="232" fill="#c3d1ec"/>
+<rect x="450" y="200" width="300" height="390" rx="8" fill="#233c74"/>
+<rect x="486" y="236" width="228" height="318" fill="#faf8f4"/>
+<rect x="520" y="300" width="160" height="200" fill="#5873b5"/>
+<circle cx="600" cy="360" r="36" fill="#c99a2e"/>
+<rect x="800" y="360" width="230" height="230" rx="8" fill="#233c74"/>
+<rect x="834" y="394" width="162" height="162" fill="#5873b5"/>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "id": "umeda-umekita-no-mori",
+  "name": {
+    "ko": "우메키타 숲",
+    "ja": "うめきたの森"
+  },
+  "hood": "umeda",
+  "category": "walk",
+  "tags": [
+    "walk"
+  ],
+  "geo": {
+    "lat": 34.70476,
+    "lng": 135.49437
+  },
+  "address": "大阪府大阪市北区大深町 グラングリーン大阪 うめきた公園 ノースパーク（西側）",
+  "official": "https://umekita.com/",
+  "image": {
+    "file": "umeda-umekita-no-mori.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

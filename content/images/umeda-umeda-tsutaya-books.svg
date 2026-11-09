@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>umeda-umeda-tsutaya-books</title>
+<desc>
+모티프: 반쯤 펼쳐 세운 책 한 권과 옆에 눕혀 쌓은 책 세 권
+근거: 공식 "루쿠아 이레 9층 대형 서점", take.differsFrom "작가 팝업과 페어가 계속 바뀐다"
+피한 것: 서점 로고·간판, MORIBITO 그림책 그림(기간 한정 페어, 실존 작가 화풍)
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<rect x="170" y="660" width="860" height="36" rx="6" fill="#c3d1ec"/>
+<path d="M300 250 L560 300 L560 660 L300 610 Z" fill="#233c74"/>
+<path d="M820 250 L560 300 L560 660 L820 610 Z" fill="#5873b5"/>
+<path d="M340 300 L520 336 L520 600 L340 566 Z" fill="#faf8f4"/>
+<rect x="545" y="290" width="30" height="372" rx="8" fill="#233c74"/>
+<rect x="860" y="600" width="170" height="60" rx="8" fill="#233c74"/>
+<rect x="876" y="540" width="140" height="60" rx="8" fill="#c99a2e"/>
+<rect x="866" y="480" width="160" height="60" rx="8" fill="#5873b5"/>
+</svg>

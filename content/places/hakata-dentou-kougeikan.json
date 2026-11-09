@@ -1,0 +1,23 @@
+{
+  "id": "hakata-dentou-kougeikan",
+  "name": {
+    "ko": "하카타 전통공예관",
+    "ja": "はかた伝統工芸館"
+  },
+  "hood": "hakata",
+  "category": "gallery",
+  "tags": [
+    "design"
+  ],
+  "geo": {
+    "lat": 33.59373,
+    "lng": 130.41812
+  },
+  "address": "福岡県福岡市博多区博多駅前1-23-2 Park Front 博多駅前一丁目1階",
+  "official": "https://www.hakata-dentou-kougeikan.jp/",
+  "image": {
+    "file": "hakata-dentou-kougeikan.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
