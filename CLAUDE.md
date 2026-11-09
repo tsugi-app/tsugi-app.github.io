@@ -4,14 +4,15 @@
 
 ## 구조
 - `app/` — Vite + React 18 + TypeScript. 화면 4개(`screens/`), 공용 로직은 `lib/`.
+- 지역은 도시 → 동네 2단계. 목록은 `app/src/lib/labels.json` 한 곳(도시 5곳: 도쿄·오사카·교토·후쿠오카·삿포로, 동네마다 소속 도시). 카드(place)에는 `hood`만 쓰고 도시는 거기서 정해진다. 앱·검사·공유 페이지·레이더가 모두 이 파일을 읽는다. 동네를 늘릴 땐 이 파일과 `scripts/radar-lib.mjs`의 `AREAS`를 같이 고친다. 장소가 없는 도시·동네는 화면 칩과 공유 페이지에 나오지 않는다.
 - `docs/DESIGN.md` — UI/UX 가이드라인(당근 SEED 기반). 화면·컴포넌트·문구를 바꿀 땐 먼저 이 문서를 따른다.
 - `docs/IMAGES.md` — 장소 대표 이미지(Claude가 그린 SVG) 화풍·팔레트·캔버스·검토 규칙.
 - `content/` — 장소·소식·편집 판단·확인 기록 JSON. 장소 1개 = 파일 1개.
-- `scripts/` — `validate.mjs`(규칙 검사), `build-content.mjs`(→ `app/public/content.json`), `build-share.mjs`(vite build 뒤 `dist/p/<id>/`·`dist/c/<동네|취향>/`에 OG 미리보기 페이지 생성, 웹 채널만). 의존성 없는 Node 스크립트.
+- `scripts/` — `validate.mjs`(규칙 검사), `build-content.mjs`(→ `app/public/content.json`), `build-share.mjs`(vite build 뒤 `dist/p/<id>/`·`dist/c/<도시|동네|취향>/`에 OG 미리보기 페이지 생성, 웹 채널만). 의존성 없는 Node 스크립트.
 - `.github/workflows/` — `ci.yml`(PR 검사), `deploy-pages.yml`(main → Pages, 매일 03:00 KST 재빌드), `recheck.yml`(매주 월 재확인 이슈), `radar.yml`(10분마다 후보 레이더), `watchdog.yml`(매일: 레이더 24시간 무실행·리포 50일 무활동이면 이슈).
 
 ## 후보 레이더
-- `scripts/radar.mjs`가 PR TIMES 공식 RSS와 뉴스 사이트맵(발표사 키워드)을 10분마다 읽어, 본사 주소를 지운 뒤 지역어(渋谷·原宿·表参道…)와 소식어(オープン·期間限定…)가 함께 있는 보도자료를 이번 주 `radar` 라벨 이슈에 댓글로 쌓는다. 판정 규칙은 `scripts/radar-lib.mjs` 한 곳.
+- `scripts/radar.mjs`가 PR TIMES 공식 RSS와 뉴스 사이트맵(발표사 키워드)을 10분마다 읽어, 본사 주소를 지운 뒤 지역어(渋谷·梅田·祇園·天神·すすきの… 동네·시설 이름. 도시 이름은 넣지 않는다)와 소식어(オープン·期間限定…)가 함께 있는 보도자료를 이번 주 `radar` 라벨 이슈에 댓글로 쌓는다. 판정 규칙은 `scripts/radar-lib.mjs` 한 곳.
 - 레이더는 후보만 모은다. 카드(content/)를 자동으로 만들거나 바꾸지 않는다.
 - "레이더에서 체크한 후보로 카드 초안"을 요청받으면: 이번 주 레이더 이슈의 체크된 항목을 읽고, 각 보도자료와 공식 페이지에서 날짜·장소를 확인해 place·update·take·check를 쓰고 PR을 연다. 확인 못 한 값은 비우고 `uncertain`에 적는다. 아래 「Claude 카드 검토」를 마치면 CI 통과 후 Claude가 바로 병합(=발행)한다. 사용자 검토를 기다리지 않는다 (2026-11-09 사용자 결정).
 - X·야후 리얼타임 검색·LINE은 자동 수집하지 않는다(API 유료·비공개·약관 위험). 편집자가 직접 열어 참고만 한다.
@@ -36,7 +37,7 @@
   1. update의 `start`·`end`와 장소 주소가 공식 출처에 있다. 주최 측이나 장소 운영사가 직접 낸 보도자료는 공식 출처로 본다. 장소 공식 페이지에도 게시돼 있으면 함께 대조하고, 둘이 다르면 장소 공식 페이지를 따르고 `uncertain`에 적는다. 장소 쪽에 아직 없으면 그 사실을 `uncertain`에 적는다.
   2. note·take에 쓴 가격·시간·예약 조건은 출처에 그대로 있는 값이다. 출처에 없으면 쓰지 않고 `uncertain`에 적는다.
   3. take의 `why`는 80자 이내, 금지 문구 없음. `notFor`는 출처에서 읽히는 사실(휴무·입장 제한·연령 등)에 기댄다.
-  4. 행사 장소가 시부야·하라주쿠·오모테산도가 맞다 (본사 주소·다른 지역 순회지 아님).
+  4. 행사 장소가 카드의 `hood` 동네가 맞다 (`labels.json`에 있는 동네, 본사 주소·다른 지역 순회지 아님).
   5. 검토를 마친 날짜가 `checkedAt`, 행사 시작 전이나 기간 중간이 `recheckBy`.
 - take의 `why`는 80자 이내, "핫한·인생·현지인만" 금지.
 - 이미지는 `credit`·`license` 없이 넣지 않는다. 대표 이미지는 Claude(Opus)가 그린 SVG만 쓰고, 그리기 전에 `docs/IMAGES.md`를 따른다.

@@ -2,7 +2,7 @@
 // 규칙은 개발 계획 문서의 "검증 규칙" 표와 같다.
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { CONTENT, HOODS, TAGS, UPDATE_TYPES, isDate, readDir, todayTokyo } from './lib.mjs';
+import { CITIES, CONTENT, HOODS, LABELS, TAGS, UPDATE_TYPES, isDate, readDir, todayTokyo } from './lib.mjs';
 
 const errors = [];
 const warnings = [];
@@ -33,6 +33,9 @@ function svgProblems(path) {
     if (!SVG_PALETTE.includes(c)) out.push(`팔레트 밖 색 ${c}`);
   return out;
 }
+
+for (const [h, v] of Object.entries(LABELS.hood))
+  if (!CITIES.includes(v.city) || !v.ko) err('app/src/lib/labels.json', `hood.${h}에 ko와 city(${CITIES.join('|')}) 필요`);
 
 for (const { file, data: p } of places) {
   if (!p.id || file !== `places/${p.id}.json`) err(file, 'id가 파일명과 같아야 한다');
@@ -84,5 +87,7 @@ for (const { file, data: c } of checks) {
 
 for (const w of warnings) console.warn(`경고  ${w}`);
 for (const e of errors) console.error(`오류  ${e}`);
+const perCity = CITIES.map((c) => `${LABELS.city[c]} ${places.filter((p) => LABELS.hood[p.data.hood]?.city === c).length}`).join(', ');
+console.log(`도시별 장소: ${perCity}`);
 console.log(`검사 완료: 장소 ${places.length}, 소식 ${updates.length}, 판단 ${takes.length}, 확인 ${checks.length} — 오류 ${errors.length}, 경고 ${warnings.length}`);
 if (errors.length) process.exit(1);

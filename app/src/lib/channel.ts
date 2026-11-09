@@ -45,7 +45,7 @@ export function shareUrl(hashPath: string): string {
 }
 
 // 장소·주제 공유는 미리보기(OG)가 붙는 정적 페이지 주소로 만든다 (scripts/build-share.mjs가 생성).
-//   /p/<placeId>/ , /c/<동네|취향>/
+//   /p/<placeId>/ , /c/<도시|동네|취향>/
 export function sharePageUrl(path: string): string {
   return `${WEB_BASE_URL}${path}`;
 }

@@ -12,7 +12,7 @@ import { isUpdateEnded, needsRecheck, todayTokyo } from '../lib/dates';
 import { go, hrefTo } from '../lib/router';
 import { countNew, encodeKeep, parseKeep } from '../lib/savedLink';
 import { importKeep, setVisitDate, toggleSaved, useSaved } from '../lib/storage';
-import { type Content, HOOD_LABEL, type Hood, type Saved as SavedItem } from '../lib/types';
+import { areaLabel, citiesWithPlaces, type Content, HOOD_LABEL, type Hood, type Saved as SavedItem } from '../lib/types';
 
 const LAST_VISIT = 'tsugi:saved-visited';
 
@@ -133,13 +133,15 @@ function SavedList({ content, saved, today }: { content: Content; saved: SavedIt
     const hood = content.places.find((x) => x.id === s.placeId)?.hood ?? 'unknown';
     byHood.set(hood, [...(byHood.get(hood) ?? []), s]);
   }
+  // 여러 도시를 저장했으면 묶음 제목에 도시를 붙인다 ("오사카 · 우메다").
+  const manyCities = citiesWithPlaces([...byHood.keys()].filter((h) => h !== 'unknown').map((hood) => ({ hood }))).length > 1;
 
   return (
     <>
       {[...byHood.entries()].map(([hood, items]) => (
         <section key={hood}>
           <h2 className="list-header">
-            {hood === 'unknown' ? '정보 없음' : HOOD_LABEL[hood]}
+            {hood === 'unknown' ? '정보 없음' : manyCities ? areaLabel({ hood }) : HOOD_LABEL[hood]}
             <small>{items.length}곳</small>
           </h2>
           <ul className="place-list">

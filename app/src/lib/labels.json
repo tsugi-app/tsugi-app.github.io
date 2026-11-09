@@ -1,4 +1,26 @@
 {
-  "hood": { "shibuya": "시부야", "harajuku": "하라주쿠", "omotesando": "오모테산도" },
+  "city": {
+    "tokyo": "도쿄",
+    "osaka": "오사카",
+    "kyoto": "교토",
+    "fukuoka": "후쿠오카",
+    "sapporo": "삿포로"
+  },
+  "hood": {
+    "shibuya": { "ko": "시부야", "city": "tokyo" },
+    "harajuku": { "ko": "하라주쿠", "city": "tokyo" },
+    "omotesando": { "ko": "오모테산도", "city": "tokyo" },
+    "umeda": { "ko": "우메다", "city": "osaka" },
+    "shinsaibashi": { "ko": "신사이바시", "city": "osaka" },
+    "namba": { "ko": "난바", "city": "osaka" },
+    "nakazakicho": { "ko": "나카자키초", "city": "osaka" },
+    "kawaramachi": { "ko": "가와라마치", "city": "kyoto" },
+    "gion": { "ko": "기온", "city": "kyoto" },
+    "okazaki": { "ko": "오카자키", "city": "kyoto" },
+    "tenjin": { "ko": "텐진", "city": "fukuoka" },
+    "hakata": { "ko": "하카타", "city": "fukuoka" },
+    "odori": { "ko": "오도리", "city": "sapporo" },
+    "susukino": { "ko": "스스키노", "city": "sapporo" }
+  },
   "tag": { "cafe": "카페", "design": "디자인", "goods": "생활용품", "walk": "산책" }
 }
