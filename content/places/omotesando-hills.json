@@ -1,0 +1,18 @@
+{
+  "id": "omotesando-hills",
+  "name": {
+    "ko": "오모테산도 힐즈",
+    "ja": "表参道ヒルズ"
+  },
+  "hood": "omotesando",
+  "category": "mall",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.6673,
+    "lng": 139.7088
+  },
+  "address": "東京都渋谷区神宮前4-12-10",
+  "official": "https://www.omotesandohills.com/"
+}

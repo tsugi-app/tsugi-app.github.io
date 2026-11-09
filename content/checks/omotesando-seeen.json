@@ -1,0 +1,15 @@
+{
+  "placeId": "omotesando-seeen",
+  "checkedAt": "2026-11-09",
+  "checkedBy": "claude-draft",
+  "recheckBy": "2026-11-25",
+  "uncertain": [
+    "워크숍·테이스팅(회당 최대 9명) 현장 예약이 언제 마감되는지",
+    "층별 구성(1F 전시·워크숍, B1F 바)은 보도자료 기준",
+    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000014.000171077.html",
+    "https://seeen.jp/"
+  ]
+}
