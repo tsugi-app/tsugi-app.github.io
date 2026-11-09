@@ -30,36 +30,40 @@ export function TripDates({ from, to, today, onChange, onClear }: Props) {
 
   return (
     <div className="trip" role="group" aria-label="여행 날짜">
-      <label>
-        <span className="muted">출발</span>
-        <input type="date" value={a} min={today} onChange={(e) => commit(e.target.value, b)} />
-      </label>
-      <span className="muted" aria-hidden>
-        ~
-      </span>
-      <label>
-        <span className="muted">귀국</span>
-        <input type="date" value={b} min={a || today} onChange={(e) => commit(a, e.target.value)} />
-      </label>
-      {(applied || a || b) && (
-        <button
-          className="trip-clear muted"
-          onClick={() => {
-            setA('');
-            setB('');
-            onClear();
-          }}
-        >
-          지우기
-        </button>
-      )}
-      <p className="muted trip-note">
-        {applied
-          ? `${formatDate(from!)} ~ ${formatDate(to!)} 여행 기간에 갈 수 있는 곳만 보여 줍니다.`
-          : a && !b
-            ? '귀국 날짜도 넣어 주세요.'
-            : '날짜를 넣으면 그 기간에 끝나 버리는 기간 한정 후보를 걸러냅니다. (선택)'}
-      </p>
+      <div className="trip-row">
+        <label className="field">
+          <span className="field-label">출발</span>
+          <input type="date" value={a} min={today} onChange={(e) => commit(e.target.value, b)} />
+        </label>
+        <span className="trip-tilde" aria-hidden>
+          ~
+        </span>
+        <label className="field">
+          <span className="field-label">귀국</span>
+          <input type="date" value={b} min={a || today} onChange={(e) => commit(a, e.target.value)} />
+        </label>
+      </div>
+      <div className="trip-foot">
+        <p className={`trip-note${applied ? ' applied' : ''}`}>
+          {applied
+            ? `${formatDate(from!)} ~ ${formatDate(to!)} 여행 기간에 갈 수 있는 곳만 보여 줘요.`
+            : a && !b
+              ? '귀국 날짜도 넣어 주세요.'
+              : '날짜를 넣으면 여행 전에 끝나는 기간 한정 소식을 걸러 줘요. (선택)'}
+        </p>
+        {(applied || a || b) && (
+          <button
+            className="btn btn--text"
+            onClick={() => {
+              setA('');
+              setB('');
+              onClear();
+            }}
+          >
+            지우기
+          </button>
+        )}
+      </div>
     </div>
   );
 }
