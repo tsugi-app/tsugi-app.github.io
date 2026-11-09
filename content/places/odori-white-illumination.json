@@ -1,0 +1,23 @@
+{
+  "id": "odori-white-illumination",
+  "name": {
+    "ko": "오도리 공원 화이트 일루미네이션",
+    "ja": "さっぽろホワイトイルミネーション 大通会場"
+  },
+  "hood": "odori",
+  "category": "walk",
+  "tags": [
+    "walk"
+  ],
+  "geo": {
+    "lat": 43.06086,
+    "lng": 141.35275
+  },
+  "address": "北海道札幌市中央区 大通公園",
+  "official": "https://www.sapporo.travel/white-illumination/",
+  "image": {
+    "file": "odori-white-illumination.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

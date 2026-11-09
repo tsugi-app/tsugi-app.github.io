@@ -1,0 +1,23 @@
+{
+  "id": "odori-akarenga",
+  "name": {
+    "ko": "아카렌가 청사",
+    "ja": "北海道庁旧本庁舎（赤れんが庁舎）"
+  },
+  "hood": "odori",
+  "category": "walk",
+  "tags": [
+    "walk"
+  ],
+  "geo": {
+    "lat": 43.06444,
+    "lng": 141.34706
+  },
+  "address": "北海道札幌市中央区北3条西6丁目",
+  "official": "https://www.hokkaido-redbrick.jp/",
+  "image": {
+    "file": "odori-akarenga.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

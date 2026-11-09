@@ -1,0 +1,18 @@
+{
+  "placeId": "odori-akarenga",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-15",
+  "uncertain": [
+    "주소(공식 사이트엔 없음, 같은 블록의 홋카이도청 페이지 주소)",
+    "21시 이후 앞뜰 조명을 밖에서 볼 수 있는지",
+    "행사 페이지에 시간·요금 표기 없음(점등 시간은 가이드북)"
+  ],
+  "sources": [
+    "https://www.hokkaido-redbrick.jp/",
+    "https://www.hokkaido-redbrick.jp/2026/11/06/760/",
+    "https://www.pref.hokkaido.lg.jp/sm/zsk/a0001/b0003/",
+    "https://www.sapporo.travel/cms/wp-content/uploads/2026/10/2026-さっぽろホワイトイルミネーション公式ガイドブック.pdf",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

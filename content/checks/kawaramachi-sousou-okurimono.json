@@ -1,0 +1,14 @@
+{
+  "placeId": "kawaramachi-sousou-okurimono",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2027-02-10",
+  "uncertain": [
+    "정기 휴무(수요일은 홈페이지 '11월의 정기휴일' 공지 기준)"
+  ],
+  "sources": [
+    "https://www.sousou.co.jp/pages/store-info",
+    "https://www.sousou.co.jp/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

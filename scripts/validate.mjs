@@ -17,7 +17,7 @@ const placeIds = new Set(places.map((p) => p.data.id));
 const BANNED = ['핫한', '인생', '현지인만'];
 
 // 대표 이미지 SVG 규칙 (docs/IMAGES.md 3장)
-const SVG_PALETTE = ['#e3e6ec', '#e2e9de', '#ece5da', '#e9e2e0', '#dfe7e7', '#233c74', '#5873b5', '#c3d1ec', '#faf8f4', '#c99a2e'];
+const SVG_PALETTE = ['#e3e6ec', '#e2e9de', '#ece5da', '#e9e2e0', '#dfe7e7', '#e8e4d8', '#e4e6ee', '#233c74', '#5873b5', '#c3d1ec', '#faf8f4', '#c99a2e'];
 const SVG_BANNED = ['text', 'image', 'script', 'foreignObject', 'style', 'filter', 'linearGradient', 'radialGradient', 'mask', 'font'];
 function svgProblems(path) {
   const out = [];

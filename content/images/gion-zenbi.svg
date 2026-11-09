@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>gion-zenbi</title>
+<desc>
+모티프: 나무 틀의 작은 진열장 하나와 그 안에 떨어지는 빛 사각형
+근거: 공식 "기온의 화과자 노포 가기젠이 운영하는 작은 미술관", place.category gallery
+피한 것: 시미즈 우이치 작품(기간 한정, 실존 작가), 과자 상표
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e8e4d8"/>
+<rect x="160" y="670" width="880" height="34" rx="6" fill="#c3d1ec"/>
+<rect x="320" y="180" width="560" height="490" rx="10" fill="#233c74"/>
+<rect x="360" y="220" width="480" height="300" fill="#c3d1ec"/>
+<polygon points="520,220 680,220 760,520 440,520" fill="#faf8f4"/>
+<ellipse cx="600" cy="470" rx="90" ry="40" fill="#5873b5"/>
+<rect x="360" y="550" width="480" height="80" fill="#5873b5"/>
+<rect x="580" y="575" width="40" height="30" rx="6" fill="#c99a2e"/>
+</svg>

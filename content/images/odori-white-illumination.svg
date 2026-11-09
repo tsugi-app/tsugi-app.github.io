@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>odori-white-illumination</title>
+<desc>
+모티프: 공원 나무 한 그루를 감싼 작은 전구 점들과 바닥의 눈
+근거: take.why "1981년 오도리 공원에서 전구로 시작한 겨울 조명"
+피한 것: 올해 오브제·TV 탑 등 실제 구조물, 크리스마스 시장 상표
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#e4e6ee"/>
+<path d="M150 690 Q600 620 1050 690 L1050 760 L150 760 Z" fill="#faf8f4"/>
+<rect x="580" y="480" width="40" height="200" rx="10" fill="#233c74"/>
+<polygon points="600,150 830,520 370,520" fill="#233c74"/>
+<g fill="#c99a2e">
+<circle cx="600" cy="230" r="16"/><circle cx="550" cy="310" r="16"/><circle cx="650" cy="320" r="16"/><circle cx="500" cy="400" r="16"/><circle cx="600" cy="390" r="16"/><circle cx="700" cy="410" r="16"/><circle cx="450" cy="480" r="16"/><circle cx="560" cy="470" r="16"/><circle cx="660" cy="480" r="16"/><circle cx="760" cy="490" r="16"/>
+</g>
+<circle cx="280" cy="300" r="20" fill="#c3d1ec"/><circle cx="950" cy="260" r="20" fill="#c3d1ec"/><circle cx="880" cy="400" r="14" fill="#c3d1ec"/><circle cx="320" cy="450" r="14" fill="#c3d1ec"/>
+</svg>

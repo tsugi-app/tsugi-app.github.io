@@ -1,0 +1,24 @@
+{
+  "id": "odori-500m-museum",
+  "name": {
+    "ko": "500m 미술관",
+    "ja": "札幌大通地下ギャラリー 500m美術館"
+  },
+  "hood": "odori",
+  "category": "gallery",
+  "tags": [
+    "design",
+    "walk"
+  ],
+  "geo": {
+    "lat": 43.06102,
+    "lng": 141.35637
+  },
+  "address": "北海道札幌市中央区大通西1丁目〜東2丁目（地下鉄大通駅〜バスセンター前駅間 地下2階コンコース内）",
+  "official": "https://www.500m.jp/",
+  "image": {
+    "file": "odori-500m-museum.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

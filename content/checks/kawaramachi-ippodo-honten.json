@@ -1,0 +1,16 @@
+{
+  "placeId": "kawaramachi-ippodo-honten",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-17",
+  "uncertain": [
+    "2026~27 연말연시 영업시간",
+    "다실 메뉴 가격",
+    "10·11월 가격 개정 예고가 있어 테이크아웃 가격이 바뀔 수 있음"
+  ],
+  "sources": [
+    "https://www.ippodo-tea.co.jp/pages/store-kyoto?view=store-detail",
+    "https://www.ippodo-tea.co.jp/blogs/news/ajiminohi_202611",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gion-zenbi",
+  "name": {
+    "ko": "젠비 가기젠 미술관",
+    "ja": "ZENBI －鍵善良房－ KAGIZEN ART MUSEUM"
+  },
+  "hood": "gion",
+  "category": "gallery",
+  "tags": [
+    "design"
+  ],
+  "geo": {
+    "lat": 35.0036,
+    "lng": 135.77402
+  },
+  "address": "京都府京都市東山区祇園町南側570-107",
+  "official": "https://zenbi.kagizen.com/",
+  "image": {
+    "file": "gion-zenbi.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
