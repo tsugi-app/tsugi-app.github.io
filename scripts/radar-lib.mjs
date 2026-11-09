@@ -36,7 +36,15 @@ export const EXCLUDE = [
   'クリニック', '歯科', '不動産', '賃貸', 'オフィス移転', 'コワーキング',
   'オンラインストア', 'オンラインショップ', 'ECサイト', '公式通販', 'アプリをリリース',
   'オープンキャンパス', 'オープンイノベーション', 'オープンソース', 'オープンハウス', 'オープンデータ',
+  // 여행자가 들르지 않는 회원제·시술 공간 (2026-11-09 평일 피드 오탐: 南青山 필라테스 개점)
+  'ピラティス', 'Pilates', 'PILATES', 'パーソナルジム', 'フィットネスジム', 'ヨガスタジオ', 'エステサロン', '脱毛サロン',
+  // 매장이 아닌 광고 캠페인 (같은 날 오탐: 渋谷区 편의점 충전기 광고 jack)
+  'リテールメディア',
 ];
+
+// 지역어가 키워드에만 있고 키워드에 도쿄 밖 지명이 있으면 다른 지역 소식이다.
+// (같은 날 오탐: 淡路島의 テーマパーク 행사인데 발표사 키워드에 南青山)
+const ELSEWHERE = /(北海道|青森|岩手|宮城|秋田|山形|福島|茨城|栃木|群馬|埼玉|千葉|神奈川|新潟|富山|石川|福井|山梨|長野|岐阜|静岡|愛知|三重|滋賀|京都|大阪|兵庫|奈良|和歌山|鳥取|島根|岡山|広島|山口|徳島|香川|愛媛|高知|福岡|佐賀|長崎|熊本|大分|宮崎|鹿児島|沖縄|淡路島|横浜|名古屋|札幌|仙台|神戸)/;
 
 function normalize(text) {
   return text
@@ -130,6 +138,8 @@ export function classify(item) {
   const area = firstHit(text, AREAS);
   const signal = firstHit(text, SIGNALS);
   if (!area || !signal) return null;
+  const body = normalize(`${item.title} ${stripCompanyInfo(item.description ?? '')}`);
+  if (!body.includes(area[0]) && ELSEWHERE.test(item.keywords ?? '')) return null;
   return { hood: area[1], type: signal[1], area: area[0], signal: signal[0] };
 }
 

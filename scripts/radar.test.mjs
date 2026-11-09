@@ -99,3 +99,13 @@ test('「～13日限定」 같은 날짜 한정도 기간 한정 소식이다 (�
   const item = { title: '【11月7日～13日限定】天然石ブランド表参道店でブレスレットのメンテナンスが無料に', description: '', link: 'https://prtimes.jp/z', corp: '', date: '' };
   assert.deepEqual([classify(item)?.hood, classify(item)?.type], ['omotesando', 'limited']);
 });
+
+test('평일 피드 오탐: 필라테스 개점, 광고 캠페인, 다른 지역 행사는 거른다 (2026-11-09)', () => {
+  const base = { link: 'https://prtimes.jp/w', corp: '', date: '' };
+  assert.equal(classify({ ...base, title: '「FIVE. Pilates Club」が11月9日、南青山にオープン', description: '' }), null);
+  assert.equal(classify({ ...base, title: '【推し活×リテールメディア】渋谷区のコンビニ充電器をジャック！期間限定で開催', description: '' }), null);
+  const awaji = { ...base, title: 'テーマパークのウィンターカーニバルを11月17日より期間限定で開催', description: '', keywords: '淡路島,兵庫県,テーマパーク,南青山,期間限定' };
+  assert.equal(classify(awaji), null);
+  // 제목·본문에 지역어가 있으면 키워드에 다른 지명이 섞여도 후보다
+  assert.equal(classify({ ...awaji, title: '表参道で期間限定ストアを開催（大阪・福岡にも巡回）' })?.hood, 'omotesando');
+});
