@@ -4,12 +4,13 @@
   "checkedBy": "claude",
   "recheckBy": "2026-11-27",
   "uncertain": [
-    "매장별 영업시간(파르코 기본 11:00~21:00, 일부 매장은 다름)",
-    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+    "매장 영업시간(파르코 매장 페이지에 없음, 파르코 기본 11:00~21:00)"
   ],
   "sources": [
+    "https://shibuya.parco.jp/shop/detail/?cd=031589",
     "https://prtimes.jp/main/html/rd/p/000004148.000003639.html",
     "https://shibuya.parco.jp/page/2026new-renewal/",
-    "https://shibuya.parco.jp/page/guide/"
+    "https://shibuya.parco.jp/page/guide/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]
 }

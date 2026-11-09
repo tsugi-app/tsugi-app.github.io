@@ -5,10 +5,10 @@
   "recheckBy": "2026-12-08",
   "uncertain": [
     "조명 점등 시간",
-    "주소는 산책로 시작점(시부야 스트림) 기준",
-    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+    "좌표는 산책로 시작점(시부야 스트림) 주소 위치"
   ],
   "sources": [
-    "https://www.tokyu.co.jp/company/information/detail/60581.html"
+    "https://www.tokyu.co.jp/company/information/detail/60581.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]
 }

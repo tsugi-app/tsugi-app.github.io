@@ -4,11 +4,11 @@
   "checkedBy": "claude",
   "recheckBy": "2026-11-22",
   "uncertain": [
-    "드론 비행 체험 이용 방법(예약 필요 여부)",
-    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+    "드론 비행 체험 이용 방법(예약 필요 여부)"
   ],
   "sources": [
     "https://kyodonewsprwire.jp/release/202610228519",
-    "https://kyodonewsprwire.jp/release/202611069636"
+    "https://kyodonewsprwire.jp/release/202611069636",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]
 }

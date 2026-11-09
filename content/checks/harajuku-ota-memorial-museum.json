@@ -4,11 +4,11 @@
   "checkedBy": "claude",
   "recheckBy": "2026-12-01",
   "uncertain": [
-    "월별 휴관일은 공식 달력에서 확인(전시 사이 교체 기간은 휴관)",
-    "좌표는 지도 표시용 근사값(주소 기준 지도 링크 사용)"
+    "2027년 1월 휴관일(공식 달력에 12월까지만 게시)"
   ],
   "sources": [
     "https://www.ukiyoe-ota-muse.jp/exhibition/schedule",
-    "https://www.ukiyoe-ota-muse.jp/"
+    "https://www.ukiyoe-ota-muse.jp/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]
 }
