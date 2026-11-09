@@ -15,5 +15,10 @@
     "lng": 139.71735
   },
   "address": "東京都港区南青山6-5-1",
-  "official": "https://www.nezu-muse.or.jp/"
+  "official": "https://www.nezu-muse.or.jp/",
+  "image": {
+    "file": "aoyama-nezu-museum.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
 }

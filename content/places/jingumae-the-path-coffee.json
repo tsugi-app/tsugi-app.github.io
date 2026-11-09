@@ -14,5 +14,10 @@
     "lng": 139.70892
   },
   "address": "東京都渋谷区神宮前2-30-32 パークレーンプラザ1F",
-  "official": "https://www.instagram.com/the_path_coffee/"
+  "official": "https://www.instagram.com/the_path_coffee/",
+  "image": {
+    "file": "jingumae-the-path-coffee.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
 }

@@ -14,5 +14,10 @@
     "lng": 139.69588
   },
   "address": "東京都渋谷区円山町3-6 E・スペースタワー15F",
-  "official": "https://cafelegato.com/"
+  "official": "https://cafelegato.com/",
+  "image": {
+    "file": "shibuya-cafe-legato.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
 }

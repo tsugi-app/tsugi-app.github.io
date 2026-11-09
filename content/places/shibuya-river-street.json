@@ -14,5 +14,10 @@
     "lng": 139.70285
   },
   "address": "東京都渋谷区渋谷3-21-3 渋谷ストリーム前",
-  "official": "https://www.tokyu.co.jp/company/information/detail/60581.html"
+  "official": "https://www.tokyu.co.jp/company/information/detail/60581.html",
+  "image": {
+    "file": "shibuya-river-street.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
 }

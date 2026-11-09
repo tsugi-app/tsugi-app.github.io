@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>omotesando-dji-hasselblad</title>
+<desc>
+모티프: 격자 케이지 안에 떠 있는 위에서 본 드론
+근거: take.why "실내 케이지에서 드론을 날려 보고", take.differsFrom "1층 드론 비행 체험 케이지"
+피한 것: DJI·핫셀블라드 로고, 특정 제품 형태, 카메라 상표 디자인
+제작: Claude Opus 5.5 · 2026-11-09
+</desc>
+<rect width="1200" height="900" fill="#ece5da"/>
+<rect x="200" y="160" width="800" height="590" rx="12" fill="#c3d1ec"/>
+<g stroke="#5873b5" stroke-width="18">
+<line x1="333" y1="160" x2="333" y2="750"/><line x1="467" y1="160" x2="467" y2="750"/>
+<line x1="600" y1="160" x2="600" y2="750"/><line x1="733" y1="160" x2="733" y2="750"/>
+<line x1="867" y1="160" x2="867" y2="750"/>
+<line x1="200" y1="307" x2="1000" y2="307"/><line x1="200" y1="455" x2="1000" y2="455"/>
+<line x1="200" y1="602" x2="1000" y2="602"/>
+</g>
+<rect x="200" y="160" width="800" height="590" rx="12" fill="none" stroke="#233c74" stroke-width="22"/>
+<g stroke="#233c74" stroke-width="30" stroke-linecap="round">
+<line x1="470" y1="330" x2="730" y2="580"/><line x1="730" y1="330" x2="470" y2="580"/>
+</g>
+<g fill="#faf8f4" stroke="#233c74" stroke-width="22">
+<circle cx="470" cy="330" r="74"/><circle cx="730" cy="330" r="74"/>
+<circle cx="470" cy="580" r="74"/><circle cx="730" cy="580" r="74"/>
+</g>
+<rect x="540" y="400" width="120" height="110" rx="28" fill="#233c74"/>
+<circle cx="600" cy="455" r="20" fill="#c99a2e"/>
+</svg>

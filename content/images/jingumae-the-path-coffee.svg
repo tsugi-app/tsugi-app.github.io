@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>jingumae-the-path-coffee</title>
+<desc>
+모티프: 김이 오르는 커피잔과 아침 해
+근거: take.why "평일 아침 9시에 여는 진구마에 골목 커피", update.note 평일 9:00~17:00
+피한 것: 가게 로고·외관, 확인 안 된 메뉴
+제작: Claude Opus 5.5 · 2026-11-09
+</desc>
+<rect width="1200" height="900" fill="#e2e9de"/>
+<circle cx="872" cy="262" r="84" fill="#c99a2e"/>
+<path d="M528 380 C 488 330 568 300 528 248" fill="none" stroke="#5873b5" stroke-width="24" stroke-linecap="round"/>
+<path d="M628 372 C 588 318 668 288 628 228" fill="none" stroke="#5873b5" stroke-width="24" stroke-linecap="round"/>
+<circle cx="800" cy="548" r="74" fill="none" stroke="#233c74" stroke-width="40"/>
+<path d="M410 432 L790 432 L770 620 C 760 680 720 712 660 712 L540 712 C 480 712 440 680 430 620 Z" fill="#233c74"/>
+<ellipse cx="600" cy="436" rx="186" ry="26" fill="#5873b5"/>
+<rect x="330" y="712" width="540" height="40" rx="20" fill="#5873b5"/>
+</svg>

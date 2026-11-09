@@ -180,10 +180,8 @@
 
 ---
 
-## 5. 남은 결정 (이미지 첫 장 전에)
+## 5. 기계 검사와 남은 일
 
-1. **공유 미리보기는 SVG를 못 쓴다.** 카카오톡·X·페이스북은 `og:image`로 SVG를 보여 주지 않는다. 지금 `scripts/build-share.mjs`는 `image.file`을 그대로 `og:image`에 넣으므로, SVG를 넣는 순간 공유 미리보기가 깨진다.
-   - 당장: 파일이 `.svg`면 기본 `og.png`로 대신하게 고친다 (첫 이미지 PR에 함께).
-   - 나중: 장소별 OG PNG가 필요하면 변환 방법을 정한다 (라이브러리 추가 없이: macOS `qlmanage`/`sips`, 또는 CI의 헤드리스 Chrome).
-2. **`validate.mjs` 검사 추가** — `.svg`의 금지 요소, `viewBox`·`width`·`height`, 30KB 제한, 팔레트 밖 색. 손 검토 대신 기계가 막게 한다.
-3. **앱인토스** — WebView의 `<img>` SVG 표시를 실기기에서 한 번 확인한다.
+- **공유 미리보기**: 카카오톡·X·페이스북은 `og:image`로 SVG를 보여 주지 않는다. `scripts/build-share.mjs`는 이미지가 `.svg`면 기본 `og.png`를 쓴다. 장소별 OG 이미지가 필요해지면 PNG 변환 방법을 정한다 (라이브러리 추가 없이: macOS `qlmanage`/`sips`, 또는 CI의 헤드리스 Chrome).
+- **`validate.mjs`가 막는 것**: 3장의 금지 요소, `viewBox`·`width`·`height`, 30KB 초과, 1.1 팔레트 밖 색, `<desc>`에 근거가 없는 파일. 팔레트를 바꾸면 `validate.mjs`의 `SVG_PALETTE`도 같이 고친다.
+- **앱인토스**: WebView의 `<img>` SVG 표시를 실기기에서 한 번 확인한다.

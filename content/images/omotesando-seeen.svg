@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>omotesando-seeen</title>
+<desc>
+모티프: 거푸집 구멍이 찍힌 콘크리트 벽에 걸린 빈 액자
+근거: take.differsFrom "안도 다다오가 설계한 건물", place.category gallery
+피한 것: 데이비드 카슨 작품·타이포그래피, 맥캘란 병·상표(기간 한정 행사)
+제작: Claude Opus 5.5 · 2026-11-09
+</desc>
+<rect width="1200" height="900" fill="#ece5da"/>
+<rect x="150" y="136" width="900" height="628" fill="#c3d1ec"/>
+<g stroke="#ece5da" stroke-width="14"><line x1="150" y1="450" x2="1050" y2="450"/><line x1="450" y1="136" x2="450" y2="764"/><line x1="750" y1="136" x2="750" y2="764"/></g>
+<g fill="#5873b5"><circle cx="230" cy="220" r="12"/><circle cx="230" cy="360" r="12"/><circle cx="230" cy="540" r="12"/><circle cx="230" cy="680" r="12"/><circle cx="370" cy="220" r="12"/><circle cx="370" cy="360" r="12"/><circle cx="370" cy="540" r="12"/><circle cx="370" cy="680" r="12"/><circle cx="830" cy="220" r="12"/><circle cx="830" cy="360" r="12"/><circle cx="830" cy="540" r="12"/><circle cx="830" cy="680" r="12"/><circle cx="970" cy="220" r="12"/><circle cx="970" cy="360" r="12"/><circle cx="970" cy="540" r="12"/><circle cx="970" cy="680" r="12"/></g>
+<rect x="470" y="250" width="260" height="330" fill="#233c74"/>
+<rect x="502" y="282" width="196" height="266" fill="#faf8f4"/>
+<rect x="150" y="764" width="900" height="136" fill="#5873b5"/>
+</svg>

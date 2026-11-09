@@ -15,5 +15,10 @@
     "lng": 139.6992
   },
   "address": "東京都渋谷区宇田川町15-1 渋谷PARCO 5F",
-  "official": "https://shibuya.parco.jp/page/2026new-renewal/"
+  "official": "https://shibuya.parco.jp/page/2026new-renewal/",
+  "image": {
+    "file": "shibuya-parco-root.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
 }
