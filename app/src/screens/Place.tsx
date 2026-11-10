@@ -1,15 +1,13 @@
 import { type ReactNode, useEffect } from 'react';
 import { AppBar } from '../components/AppBar';
 import { Icon } from '../components/Icon';
-import { cardTypeOf } from '../components/PlaceCard';
-import { dday, Thumb, typeVars } from '../components/PlaceParts';
+import { cardTypeOf, dday, SaveButton, Thumb, typeVars } from '../components/PlaceParts';
 import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
 import { googleMapsUrl, openExternal, sharePageUrl, shareOrCopy } from '../lib/channel';
 import { type PlaceView, viewOf } from '../lib/content';
 import { daysLeft, formatDate, isUpdateActive, needsRecheck, todayTokyo } from '../lib/dates';
 import { hrefTo } from '../lib/router';
-import { isSaved, toggleSaved, useSaved } from '../lib/storage';
 import { areaLabel, type Content, HOOD_LABEL, TAG_LABEL, TYPE_LABEL, type Update } from '../lib/types';
 
 interface Props {
@@ -19,7 +17,6 @@ interface Props {
 
 // 상세는 기획안의 6블록 순서를 그대로 따른다. 빈 블록은 숨기지 않고 "확인 중"으로 보인다.
 export function Place({ content, id }: Props) {
-  useSaved();
   const view = viewOf(content, id);
   useEffect(() => {
     if (view) track('place_opened', { placeId: id, from: 'detail' });
@@ -58,7 +55,6 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
   // 끝나지 않은 소식을 시작일 순으로 모두 보여 준다 (예: 지금 전시 + 다음 전시).
   const current = view.updates.filter((u) => isUpdateActive(u, today)).sort((a, b) => a.start.localeCompare(b.start));
   const pair = take?.pairWith ? content.places.find((p) => p.id === take.pairWith) : undefined;
-  const saved = isSaved(place.id);
 
   const share = async () => {
     showSnackbar(await shareOrCopy(sharePageUrl(`/p/${place.id}/`), `${place.name.ko} — 츠기`));
@@ -182,18 +178,7 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
 
       <div className="action-bar">
         <div className="action-bar-inner">
-          <button
-            className="icon-btn heart"
-            aria-pressed={saved}
-            aria-label={saved ? '저장 취소' : '저장'}
-            onClick={() => {
-              const now = toggleSaved(place.id);
-              if (now) track('place_saved', { placeId: place.id, from: 'detail' });
-              showSnackbar(now ? '저장했어요. 저장 탭에서 볼 수 있어요.' : '저장에서 뺐어요.');
-            }}
-          >
-            <Icon name={saved ? 'heartFill' : 'heart'} size={26} />
-          </button>
+          <SaveButton place={place} from="detail" size={26} />
           <span className="action-bar-sep" aria-hidden />
           <button
             className="btn btn--lg btn--brand-solid btn--grow"

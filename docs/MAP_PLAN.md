@@ -1,160 +1,65 @@
-# 지도 탭 개발 계획
+# 지도 탭 설계
 
-> **2026-11-09 변경: 지도를 국토지리원 타일(Leaflet) → OpenFreeMap Positron(MapLibre)으로 교체.**
-> 지리원 淡色地図는 측량용이라 기호·한자 지명이 많아 모바일에서 "고지도"처럼 보였다. 조건(상업 이용, 비용 0, 한도·키 없음)을 다시 따져
-> OpenFreeMap을 골랐다 — 공식 FAQ "Is commercial usage allowed? Yes.", 조회·요청 한도 없음, 가입·키·쿠키 없음, MIT, 데이터는 OpenStreetMap(ODbL, 출처 표시).
-> 공개 서버는 기부 운영이라 SLA가 없다. 멈추면 같은 오픈소스 구성으로 **도쿄 지역만 잘라 GitHub Pages에 올리는** 길이 있다(비용 0 유지).
-> 벡터 지도라 렌더러를 Leaflet → MapLibre(BSD-3)로 바꿨다(CLAUDE.md 허용 라이브러리 변경).
-> 제외: CARTO(상업 무료 월 100만 타일 한도, 초과 시 유료·철회 가능), Protomaps 호스팅(상업 조건), 지리원 벡터 타일(시험 공개, 종료 가능).
-> 아래 2절의 표·타일 주소는 처음 결정 당시 기록이다.
+> 2026-11-09 만들고 같은 날 지도를 국토지리원 타일(Leaflet) → OpenFreeMap(MapLibre)으로 바꿨다.
+> 이 문서는 지금 코드 기준이다. Leaflet 시절 계획·메모는 git 기록(이 파일의 2026-11-09 판)에 있다.
 
-> 작성 2026-11-09. 지금 지도 탭은 "준비 중" 안내와 동네별 목록, 구글 지도 바깥 링크뿐이다.
-> 목표: **상업적으로 써도 되고, 돈이 들지 않고, 서버 없이** 동작하는 지도 탭.
-
----
+목표: **상업적으로 써도 되고, 돈이 들지 않고, 서버 없이** 동작하는 지도 탭.
 
 ## 1. 지켜야 할 조건
 
 | 조건 | 출처 | 지도에 주는 뜻 |
 |---|---|---|
 | 서버·DB·계정 없음 | CLAUDE.md | 타일 서버를 직접 돌리지 않는다. 남이 공개한 타일이나 정적 파일만 쓴다. |
-| 라이브러리는 leaflet 하나만 추가 | CLAUDE.md | MapLibre 같은 벡터 지도 라이브러리는 못 쓴다 → **래스터 타일**이어야 한다. |
+| 지도 라이브러리는 maplibre-gl 하나 | CLAUDE.md | 플러그인(클러스터 등)을 더하지 않는다. |
 | 상업 이용 | 앱인토스 출시 | 무료 요금제라도 "비상업 한정"인 곳은 쓸 수 없다. |
-| 돈이 들지 않음 | 요청 | 호출량 과금, 카드 등록이 필요한 곳은 제외한다. |
-| 색은 tokens.css에서만 | CLAUDE.md, DESIGN.md | 마커·말풍선은 CSS 클래스로 그리고 시맨틱 토큰을 쓴다. |
-| 웹 + 토스 WebView 공용 | CLAUDE.md | 외부 링크는 `lib/channel.ts`의 `openExternal`로만. |
+| 돈이 들지 않음, 한도 없음 | 사용자 결정 | 호출량 과금·카드 등록·월 한도가 있는 곳은 제외한다. |
+| 색은 tokens.css에서만 | CLAUDE.md, DESIGN.md | 마커는 HTML+CSS 클래스, 지도 위 선·원은 토큰 값을 읽어 넣는다. |
+| 웹 + 토스 WebView 공용 | CLAUDE.md | 외부 링크·위치는 `lib/channel.ts`(`openExternal`·`getPosition`)로만. |
 
-## 2. 타일 후보 비교
+## 2. 지도 서비스 — OpenFreeMap
 
-| 후보 | 비용 | 상업 이용 | Leaflet만으로 | 판단 |
-|---|---|---|---|---|
-| **국토지리원 지리원 타일 (淡色地図)** | 무료, 키 없음 | 됨. 지리원 서버에서 실시간으로 읽어 보여 주는 웹·앱은 **출처 표시만 하면 신청이 필요 없다** | 됨 (래스터 PNG) | **채택** |
-| OSM 공식 타일 (tile.openstreetmap.org) | 무료 | 대량·배포 앱 기본값으로 쓰는 건 "heavy use"로 보고 예고 없이 막을 수 있다 | 됨 | 기본값으로는 쓰지 않음 |
-| OpenFreeMap | 무료, 키 없음, 이용 제한 없다고 밝힘 | 명시 조항 없음 (기부로 운영) | **안 됨** — 벡터 타일이라 MapLibre 필요 | 라이브러리 규칙 위반 |
-| Carto·Stadia·MapTiler 무료 요금제 | 무료 한도 | 무료 요금제는 비상업 한정 | 됨 | 제외 |
-| Google Maps JavaScript API | 월 무료 한도 후 과금, 카드 등록 필요 | 됨 | 별도 SDK | 제외 (지금처럼 "지도 열기" 바깥 링크로만 쓴다) |
+- 스타일: `https://tiles.openfreemap.org/styles/positron`, 다크 모드는 `/styles/dark`.
+- 고른 이유: 공식 FAQ "Is commercial usage allowed? Yes.", 조회·요청 한도 없음, 가입·키·쿠키 없음, MIT. 데이터는 OpenStreetMap(ODbL) — 출처 표시는 MapLibre가 자동으로 단다.
+- 위험: 공개 서버는 기부 운영이라 SLA가 없다. 멈추면 같은 오픈소스 구성으로 **필요한 지역만 잘라 GitHub Pages에 올리는** 길이 있다(비용 0 유지).
+- 제외한 곳: 국토지리원 淡色地図(기호·한자 지명이 많아 모바일에서 고지도처럼 보임), CARTO(월 100만 타일 한도), Protomaps 호스팅(상업 조건), 지리원 벡터 타일(시험 공개), OSM 공식 타일(대량 이용 차단 가능), Google Maps JS(과금) — 구글 지도는 「길찾기」 바깥 링크로만 쓴다.
 
-**채택 이유**
-1. 츠기의 장소는 모두 도쿄 세 동네다. 지리원 타일은 일본 전역이 공공 데이터로 깔끔하고, 일본어 지명이 정확하다.
-2. 淡色地図(옅은 색 지도)는 바탕이 회색조라 츠기 마커(유형색)가 잘 보인다.
-3. 출처 표시(`出典：国土地理院` + 타일 목록 링크)만 하면 된다. 키도, 사용량 제한 고지도 없다.
-4. 좌표는 이미 지리원 주소 검색으로 맞춰 두었다(2026-11-09). 같은 기준이라 마커가 건물 위에 정확히 앉는다.
+## 3. 화면 (DESIGN.md에 맞춤)
 
-**출처 표시 문구(지도 오른쪽 아래, Leaflet attribution)**
-`<a href="https://maps.gsi.go.jp/development/ichiran.html">地理院タイル</a> | Leaflet`
+- **주소**: `#/map`(첫 도시의 첫 장소를 가운데), `?city=all`, `?city=…&hood=…`(발견 탭과 같은 `areaFilter`), `?saved=1`(저장한 곳만), `?view=list`(동네별 목록 — 지도가 불편한 사람·스크린리더용 대체 경로).
+- **마커**: `.map-pin` 유형색 원, 누르는 영역 44px(`.map-pin-hit`). 같은 좌표(`lib/geo.ts`의 `coordKey`)는 한 마커에 개수를 달고, 누르면 카드 여러 장을 옆으로 넘긴다(scroll-snap).
+- **이름 라벨**: 마커 옆 한국어 이름 알약(12px, 최대 132px). `MapView`의 `layoutLabels`가 고른 곳 → 기간 한정 → 새로 오픈 → 최근 변화 → 편집 추천 순으로 자리를 주고, 겹치면 왼쪽, 그래도 겹치면 숨긴다. 줌 14 미만은 숨긴다.
+- **미리보기 카드**: 이름·유형 배지·기간·하트·「길찾기」. 누르면 상세. 고른 곳이 화면 밖이면 카드에 가리지 않게 위로 띄워 `easeTo`.
+- **짝 장소**(`take.pairWith`): 브랜드색 점선 + 짝 마커 테두리. 카드에 "근처 한 곳 · 이름 · 직선 80m"(30m 미만은 "같은 건물"). 도보 시간은 출처 없는 값이라 쓰지 않는다.
+- **내 위치**: 확대·축소 아래 버튼. 누를 때만 묻고(정확도 낮음, 10초 제한, 1분 캐시) 저장하지 않는다. 장소들에서 약 3km 넘게 떨어져 있으면 지도를 옮기지 않고 스낵바로 알린다.
+- **종료된 소식만 남은 곳**은 지도에서도 뺀다(발견 피드와 같은 `cardTypeOf`).
+- **분석**: 새 이벤트 없이 `place_opened`·`map_opened`·`place_saved`에 `from: 'map'`.
 
-**타일 주소**
-`https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png` — 줌 5~18. 세 동네는 줌 15~18로 충분하다.
+## 4. 구현 메모
 
-## 3. 화면 설계 (DESIGN.md에 맞춤)
+- 지도 코드(`components/MapView.tsx`, maplibre-gl JS gzip 약 219KB + CSS 9KB)는 지도 탭에 들어갈 때만 `lazy` import한다. 발견 첫 화면 번들은 늘지 않는다.
+- 지명: 스타일을 불러올 때마다 모든 글자 레이어의 `text-field`를 `coalesce(name:ko, name:ja, name)`로 바꾼다.
+- 다크 모드: `<html data-theme>`이 바뀌면 `setStyle(…, { diff: false })` — 그래야 `style.load`가 다시 불려 한국어 지명·점선·정확도 원을 다시 얹는다.
+- 회전·기울이기는 끈다(`dragRotate`·`touchPitch` false, 두 손가락 회전 끔). 확대·축소 버튼만.
+- MapLibre가 마커 `aria-label`을 "Map marker"로 덮어써서 만든 뒤 다시 단다. `.map-pin-hit`에 `position`을 주면 마커 위치가 깨진다.
+- 키보드: 마커에 Enter·Space `keydown`을 직접 달고, 마커를 다시 그려도 포커스를 되돌린다. Esc로 카드 닫기. 지도 영역에 스크린리더용 안내, 카드 영역은 `aria-live="polite"`.
+- 출처 링크 클릭은 가로채 `openExternal`로 연다(토스 WebView에서 `target=_blank`가 막힐 수 있다).
+- 높이: `.app.is-map`은 `min-height: 100dvh`, `overscroll-behavior: none` — iOS Safari의 `100vh` 때문에 지도 보기에서 페이지가 살짝 스크롤되던 것을 막는다.
+- 대비: 마커 채움 vs 테두리 라이트 3.96~8.37:1, 다크 7.7~8.91:1(비텍스트 3:1 통과).
 
-```
-┌───────────────────────────┐
-│ 지도                        │ ← 앱 바
-├───────────────────────────┤
-│ [전체][시부야][하라주쿠][오모테산도] │ ← 발견 탭과 같은 칩, 같은 URL 필터(?hood=)
-│                             │
-│     ●(주홍) ●(초록)          │ ← 지리원 淡色 타일 + 유형색 원형 마커 28px
-│          ●(남색)  ◎내 위치   │
-│                             │
-│ ┌─────────────────────────┐ │
-│ │ [기간 한정 D-12] 하라주쿠  │ │ ← 마커를 누르면 아래에서 미리보기 카드
-│ │ 오타 기념 미술관      ♡  │ │    (place-item 축소판, 누르면 상세)
-│ │ 12.6까지 · 길찾기         │ │    "길찾기" = 기존 googleMapsUrl 바깥 링크
-│ └─────────────────────────┘ │
-├───────────────────────────┤
-│ 발견   지도   저장           │ ← 탭 바
-└───────────────────────────┘
-```
+## 5. 남은 확인 (사람·환경이 필요)
 
-- **마커**: `L.divIcon` + `.map-pin` 클래스. 바탕은 `--color-type-*-fg`, 테두리 `--color-bg-layer-default` 2px, 그림자 `--shadow-s1`. 이미지 아이콘을 쓰지 않아 다크 모드 토큰이 그대로 먹는다. 누르는 영역은 44px.
-- **종료된 소식만 있는 장소**는 지도에서도 뺀다 (발견 피드와 같은 `cardTypeOf` 판정).
-- **처음 화면**: 보이는 마커가 모두 들어오게 `fitBounds`. 동네 칩을 누르면 그 동네로 이동.
-- **미리보기 카드**: 지도 아래쪽에 떠 있는 카드 1장. 이름·유형 배지·기간·하트·「길찾기」. 카드를 누르면 상세(`#/p/:id`).
-- **내 위치**(2단계): 오른쪽 아래 버튼. 누를 때만 `navigator.geolocation`을 묻는다. 위치는 저장하지 않는다.
-- **목록 보기**: 지도 위 「목록」 버튼으로 지금의 동네별 목록(현재 MapScreen)을 그대로 보여 준다. 지도가 불편한 사람, 스크린리더 사용자를 위한 대체 경로.
-- **다크 모드**: 지리원 타일엔 다크 판이 없다. 타일에 CSS 필터를 씌우면 출처 표시상 "가공"이 되므로 하지 않는다. 다크 모드에서도 타일은 밝은 그대로 두고, 지도 바깥 UI(앱 바·카드·칩)만 다크 토큰을 쓴다.
-
-## 4. 구현 단계
-
-### 1단계 — 지도 띄우기 ✅ 2026-11-09
-1. `npm install leaflet` + `@types/leaflet`(dev). CLAUDE.md 허용 목록에 이미 있다.
-2. `app/src/screens/MapScreen.tsx`를 지도 + 「목록」 전환으로 바꾼다. 지금 목록 코드는 `MapList` 컴포넌트로 옮겨 그대로 쓴다.
-3. 지도 코드는 **동적 import**(`import('leaflet')`)로 지도 탭에 들어갈 때만 내려받는다. 발견 탭 첫 화면 용량을 늘리지 않는다. (Leaflet ≈ 42KB gzip + CSS)
-4. `leaflet/dist/leaflet.css`는 지도 화면에서만 import. Leaflet 기본 색(링크·컨트롤)은 `global.css`에서 시맨틱 토큰으로 덮는다.
-5. 타일 레이어 = 지리원 淡色, `maxZoom: 18`, `attribution` 위 문구.
-6. 마커(`.map-pin`) + 누르면 미리보기 카드. 분석은 기존 `track('place_opened', { from: 'map' })`, 길찾기는 `track('map_opened', { from: 'map' })` — 새 이벤트를 만들지 않는다.
-7. URL 필터: `#/map?hood=…`. 발견 탭과 같은 방식.
-
-구현 메모
-- Leaflet 1.9.4는 타일에 `mix-blend-mode: plus-lighter`를 줘서 밝은 바탕 위에서 지도가 바랜다 → `.map-canvas .leaflet-tile { mix-blend-mode: normal }`.
-- leaflet.css가 지도 청크와 함께 나중에 들어와 같은 우선순위 규칙을 덮는다 → 마커 규칙은 `.map-canvas`로 한 단계 올렸다.
-- 같은 좌표(파르코의 ROOT·칸쿄 레코드)는 마커를 20px씩 옆으로 벌려 둘 다 누를 수 있게 했다. 2단계의 묶음 표시 전까지 임시.
-- 번들: 발견 첫 화면 JS gzip 62.3KB → 63.6KB(지도 화면 코드), Leaflet은 지도 청크 44.3KB + CSS 6.5KB로 분리.
-
-### 2단계 — 쓰기 편하게 ✅ 2026-11-09
-1. 내 위치 버튼 (권한은 누를 때만).
-2. `pairWith`가 있는 장소를 고르면 짝 장소까지 점선 + 거리(직선, 도보 분 추정은 하지 않음 — 출처 없는 값).
-3. 「저장한 곳만」 토글 (localStorage의 저장 목록 그대로).
-4. 마커가 겹치면(같은 건물: 파르코의 ROOT·칸쿄 레코드) 한 마커에 개수를 표시하고, 누르면 카드 여러 장을 가로로 넘긴다. 별도 클러스터 플러그인은 쓰지 않는다.
-
-구현 메모
-- 내 위치: 확대·축소 아래 버튼. 누를 때만 `getCurrentPosition`(정확도 낮음, 10초 제한, 1분 캐시). 세 동네 범위 밖이면 지도를 옮기지 않고 스낵바로 알린다. 권한 거부·실패도 스낵바. 위치는 화면 상태에만 두고 저장하지 않는다. 카드에 "내 위치에서 330m".
-- 짝 장소: 고른 곳의 `pairWith`가 지도에 보이면 브랜드색 점선 + 짝 마커 테두리. 카드에 "근처 한 곳 · 이름 · 직선 80m"(30m 미만은 "같은 건물"), 누르면 짝으로 넘어간다. 필터로 짝이 안 보이면 짝의 상세로 간다.
-- 저장한 곳: 칩 `♡ 저장한 곳`(`#/map?saved=1`). 없으면 지도 위에 안내.
-- 같은 좌표 묶음: `lib/geo.ts`의 `coordKey`(소수 5자리). 카드는 scroll-snap으로 넘기고, 보이는 카드가 바뀌면 고른 곳도 바뀐다.
-- 지도 보기에서 스낵바는 위쪽에 띄워 카드를 가리지 않는다.
-
-### 3단계 — 토스·품질 (코드 부분 ✅ 2026-11-09, 실기기·토스 확인은 남음)
-1. 앱인토스 WebView에서 `cyberjapandata.gsi.go.jp` 이미지 요청이 막히지 않는지 샌드박스에서 확인. 막히면 콘솔의 허용 도메인 설정을 찾는다.
-1. 지도 오른쪽 아래 출처 링크(`target=_blank`)가 토스 WebView에서도 열리는지 확인. 안 되면 `openExternal`로 여는 처리를 `lib/channel.ts`에 둔다.
-1. 토스 WebView에서 `navigator.geolocation`이 되는지 확인. 안 되면 앱인토스 SDK 위치 API로 바꾸는 분기를 `lib/channel.ts`에 둔다.
-2. 터치: 한 손가락 드래그는 지도 이동, 페이지 스크롤과 충돌하지 않게 지도 영역을 화면 높이에 고정.
-3. 접근성: 마커 버튼에 `aria-label="오타 기념 미술관, 기간 한정"`, 「목록」으로 같은 정보를 볼 수 있음을 앱 바에 안내.
-4. DESIGN.md §2에 Map Pin·Map Preview Card 규격을 추가하고, §3 화면 패턴의 지도 행을 바꾼다.
-
-구현 메모 (2026-11-09)
-- 출처 링크: 지도 출처 표시의 링크 클릭을 가로채 `openExternal`로 연다 → 토스에선 `openExternal`만 SDK로 바꾸면 된다.
-- 내 위치: `lib/channel.ts`의 `getPosition()`으로 옮겼다. 토스 SDK 위치 API로 바꿀 자리는 거기 한 곳(TODO D8).
-- 높이: `.app.is-map`을 `min-height: 100dvh`, `overscroll-behavior: none`. iOS Safari의 `100vh`(주소창 접힌 높이) 때문에 지도 보기에서 페이지가 살짝 스크롤되던 것을 막는다. 크롬 모바일 에뮬레이션에서 문서 높이 = 화면 높이, 지도 아래 끝 = 탭 바 위 끝 확인.
-- 키보드: Leaflet은 마커 Enter를 옛 `keypress`로만 받아 크롬에서 안 먹었다 → 마커에 Enter·Space `keydown`을 직접 단다. 마커를 다시 그려도 포커스가 같은 마커에 남는다. Esc로 카드 닫기. 지도 영역에 스크린리더용 안내(Tab·Enter, 「목록으로 보기」), 카드 영역은 `aria-live="polite"`.
-- 대비: 마커 채움 vs 테두리 — 라이트 3.96~8.37:1(흰 테두리), 다크 7.7~8.91:1(어두운 테두리). 비텍스트 3:1 통과.
-
-남은 확인 (사람·환경이 필요)
-- [ ] 실제 iPhone Safari·Android Chrome에서 한 손가락 이동, 두 손가락 확대, 카드 옆으로 넘기기. (이 Mac엔 Xcode가 없어 iOS 시뮬레이터로도 못 봤다.)
-- [ ] 실제 위치 권한 창(허용·거부)과 시부야 현장 위치.
-- [ ] 앱인토스: 콘솔 앱 등록 → 샌드박스에서 OpenFreeMap 타일·글꼴 로딩(`tiles.openfreemap.org`), WebGL, `navigator.geolocation`, 바깥 링크 열기.
-
-### 2.5단계 — 마커 이름 라벨 ✅ 2026-11-09
-- 점만 보여 어떤 곳인지 몰라서, 마커 옆에 한국어 이름 알약을 단다. 화면을 덜 가리게 글자 12px, 최대 132px.
-- 겹침 처리(`MapView`의 `layoutLabels`): 고른 곳 → 기간 한정 → 새로 오픈 → 최근 변화 → 편집 추천 순서로 자리를 준다. 오른쪽이 다른 라벨·마커·지도 버튼·미리보기 카드와 겹치면 왼쪽, 그래도 겹치면 숨긴다. 줌 14 미만이면 숨긴다. 지도를 움직이거나 확대할 때마다 다시 계산.
-
-### MapLibre 교체 메모 (2026-11-09)
-- 스타일: `https://tiles.openfreemap.org/styles/positron`, 다크 모드는 `/styles/dark`(테마가 바뀌면 `setStyle(…, { diff: false })`).
-- 지명: 스타일을 불러올 때 모든 글자 레이어의 `text-field`를 `coalesce(name:ko, name:ja, name)`로 바꿔 한국어 이름이 있으면 한국어로.
-- 회전·기울이기 끔(`dragRotate`·`touchPitch` false, 두 손가락 회전 끔). 확대·축소 버튼만.
-- 마커는 HTML `maplibregl.Marker`. MapLibre가 마커 `aria-label`을 "Map marker"로 덮어써서 만든 뒤 다시 단다. `.map-pin-hit`에 `position`을 주면 마커 위치가 깨진다(마커는 absolute여야 함).
-- 짝 점선·내 위치 정확도 원은 GeoJSON 레이어, 색은 tokens.css 값을 읽어 넣는다. 스타일을 다시 불러오면 다시 얹는다.
-- 고른 곳이 화면 밖이면 카드에 가리지 않게 위로 띄워 `easeTo`.
-- 번들: 지도 청크 JS gzip 44KB(Leaflet) → 219KB(MapLibre) + CSS 9KB. 지도 탭에 들어갈 때만 받으므로 발견 첫 화면(65.3KB)은 그대로.
-
-## 5. 확인 항목 (출시 전)
-
-- [ ] 국토지리원 **현행** 콘텐츠 이용 규약과 지리원 타일 목록에서 淡色地図의 조건을 다시 읽는다 (조사한 FAQ는 실시간 읽기 = 출처 표시만, 2014~2016년 문서 기준).
-- [ ] 지도 위 출처 표시가 가려지지 않는지 (미리보기 카드가 덮지 않게 카드 위치 조정).
-- [ ] 토스 WebView에서 타일 로딩·확대 제스처.
-- [ ] 다크 모드에서 마커·카드 대비 4.5:1.
-- [ ] 발견 탭 번들 크기가 늘지 않았는지 (`vite build` 출력 비교).
+- [ ] 실제 iPhone Safari·Android Chrome에서 한 손가락 이동, 두 손가락 확대, 카드 옆으로 넘기기.
+- [ ] 실제 위치 권한 창(허용·거부)과 현장 위치.
+- [ ] 앱인토스 샌드박스: `tiles.openfreemap.org` 타일·글꼴 로딩, WebGL, `navigator.geolocation`(안 되면 `lib/channel.ts`의 `getPosition`을 SDK로), 바깥 링크 열기.
+- [ ] 미리보기 카드가 지도 출처 표시를 덮지 않는지.
 
 ## 6. 하지 않는 것
 
-- 타일을 미리 내려받아 저장(오프라인 지도) — 지리원·OSM 모두 대량 내려받기를 막는다.
+- 타일을 미리 내려받아 저장(오프라인 지도).
 - 길찾기·도보 시간 계산 — 구글 지도 바깥 링크로 넘긴다.
-- 지도 SDK 추가(MapLibre, Google Maps JS) — 라이브러리 규칙과 비용 조건에 걸린다.
+- 유료·한도 있는 지도 SDK(Google Maps JS, Mapbox 등).
 
 ## 참고
 
-- 국토지리원 이용 규약 Q&A: https://www.gsi.go.jp/LAW/2930-qa.html
-- 지리원 타일 목록: https://maps.gsi.go.jp/development/ichiran.html
-- OSM 타일 이용 정책: https://operations.osmfoundation.org/policies/tiles/
 - OpenFreeMap: https://openfreemap.org/quick_start/
+- OpenStreetMap 저작권: https://www.openstreetmap.org/copyright

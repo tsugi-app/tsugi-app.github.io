@@ -2,13 +2,12 @@ import { useEffect, useMemo, useState } from 'react';
 import { AppBar } from '../components/AppBar';
 import { DateField, DateSheet } from '../components/DateSheet';
 import { Icon } from '../components/Icon';
-import { cardTypeOf } from '../components/PlaceCard';
-import { Thumb } from '../components/PlaceParts';
+import { cardTypeOf, Thumb } from '../components/PlaceParts';
 import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
 import { googleMapsUrl, openExternal, shareOrCopy, shareUrl } from '../lib/channel';
 import { viewOf } from '../lib/content';
-import { isUpdateEnded, needsRecheck, todayTokyo } from '../lib/dates';
+import { needsRecheck, todayTokyo } from '../lib/dates';
 import { go, hrefTo } from '../lib/router';
 import { countNew, encodeKeep, parseKeep } from '../lib/savedLink';
 import { importKeep, setVisitDate, toggleSaved, useSaved } from '../lib/storage';
@@ -163,9 +162,8 @@ function SavedList({ content, saved, today }: { content: Content; saved: SavedIt
                   </li>
                 );
               }
-              const ended = v.updates.length > 0 && v.updates.every((u) => isUpdateEnded(u, today)) && !v.take?.evergreen;
+              const { type, ended } = cardTypeOf(v, today);
               const recheck = needsRecheck(v.check, today);
-              const { type } = cardTypeOf(v, today);
               return (
                 <li key={s.placeId}>
                   <div className={`place-item${ended ? ' ended' : ''}`}>

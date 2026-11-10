@@ -77,7 +77,7 @@ export function openExternal(url: string): void {
   window.open(url, '_blank', 'noopener');
 }
 
-// 내 위치. 웹은 브라우저 위치 API, 토스는 앱인토스 SDK 위치 API로 바꿀 자리 (docs/MAP_PLAN.md 3단계).
+// 내 위치. 웹은 브라우저 위치 API, 토스는 앱인토스 SDK 위치 API로 바꿀 자리 (docs/MAP_PLAN.md §5).
 // 위치는 부른 쪽 화면 상태에만 두고 저장하지 않는다.
 export type PositionResult =
   | { ok: true; lat: number; lng: number; accuracy: number }

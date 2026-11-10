@@ -38,10 +38,6 @@ export function useSaved(): Saved[] {
   );
 }
 
-export function isSaved(placeId: string): boolean {
-  return read().some((s) => s.placeId === placeId);
-}
-
 export function toggleSaved(placeId: string): boolean {
   const cur = read();
   if (cur.some((s) => s.placeId === placeId)) {
@@ -57,10 +53,6 @@ export function importKeep(items: KeepItem[]): number {
   const added = countNew(cur, items);
   write(mergeKeep(cur, items, new Date().toISOString()));
   return added;
-}
-
-export function getSaved(): Saved[] {
-  return read();
 }
 
 export function setVisitDate(placeId: string, visitDate?: string): void {

@@ -1,11 +1,12 @@
 import { useEffect, useMemo } from 'react';
 import { AppBar } from '../components/AppBar';
 import { Icon } from '../components/Icon';
-import { PlaceCard, cardTypeOf } from '../components/PlaceCard';
+import { PlaceCard } from '../components/PlaceCard';
+import { cardTypeOf } from '../components/PlaceParts';
 import { TripDates } from '../components/TripDates';
 import { track } from '../lib/analytics';
 import { areaFilter, type PlaceView, viewOf } from '../lib/content';
-import { isUpdateActive, todayTokyo, type Trip } from '../lib/dates';
+import { todayTokyo, type Trip } from '../lib/dates';
 import { SUPPORTS_THEME } from '../lib/channel';
 import { go, hrefTo } from '../lib/router';
 import { CITY_LABEL, type Content, HOOD_LABEL, type Tag, TAG_LABEL } from '../lib/types';
@@ -29,16 +30,18 @@ export function Discover({ content, query }: Props) {
     track('discovery_viewed', { city: city || undefined, hood: hood || undefined, tag: tag || undefined, hasTrip: !!trip });
   }, [city, hood, tag, trip]);
 
-  const views = useMemo(() => {
-    return content.places
-      .filter(area.match)
-      .filter((p) => !tag || p.tags.includes(tag))
-      .map((p) => viewOf(content, p.id)!)
-      .filter((v) => !cardTypeOf(v, today, trip).ended);
+  // 끝난 소식만 남은 곳은 빼고, 살아 있는 소식이 있으면 "새 소식", 없으면 "편집 추천"으로 나눈다.
+  const { fresh, editorial } = useMemo(() => {
+    const fresh: PlaceView[] = [];
+    const editorial: PlaceView[] = [];
+    for (const p of content.places) {
+      if (!area.match(p) || (tag && !p.tags.includes(tag))) continue;
+      const v = viewOf(content, p.id)!;
+      const card = cardTypeOf(v, today, trip);
+      if (!card.ended) (card.update ? fresh : editorial).push(v);
+    }
+    return { fresh, editorial };
   }, [content, area, tag, today, trip]);
-
-  const fresh = views.filter((v) => v.updates.some((u) => isUpdateActive(u, today, trip)));
-  const editorial = views.filter((v) => !fresh.includes(v));
 
   const setParams = (patch: Record<string, string>) => {
     const q = new URLSearchParams(query);
@@ -120,7 +123,7 @@ export function Discover({ content, query }: Props) {
         />
         <div className="divider-band" />
 
-        {views.length === 0 && (
+        {fresh.length + editorial.length === 0 && (
           <div className="empty">
             <Icon name="discover" size={48} />
             <p>이 조건엔 아직 후보가 없어요.</p>

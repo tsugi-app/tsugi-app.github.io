@@ -2,27 +2,13 @@
 //   1) 레이더(radar.yml)가 마지막으로 성공한 지 RADAR_MAX_HOURS 넘게 지났는가
 //   2) main의 마지막 커밋이 STALE_DAYS 넘게 지났는가 — 공개 리포는 60일 무활동이면 예약 워크플로가 자동으로 꺼진다
 // 이 감시 자체도 예약 실행이라, 60일 규칙에 걸리면 같이 멈춘다. 그래서 50일에 미리 경고한다.
+import { GITHUB_REPO, GITHUB_TOKEN, gh } from './lib.mjs';
+
 const RADAR_MAX_HOURS = 24;
 const STALE_DAYS = 50;
 const LABEL = 'watchdog';
 
-const repo = process.env.GITHUB_REPOSITORY;
-const token = process.env.GITHUB_TOKEN;
-const dry = !token || !repo || process.argv.includes('--dry-run');
-
-async function gh(path, init = {}) {
-  const res = await fetch(`https://api.github.com/repos/${repo}${path}`, {
-    ...init,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-      'Content-Type': 'application/json',
-    },
-  });
-  if (!res.ok) throw new Error(`GitHub ${init.method ?? 'GET'} ${path} → ${res.status} ${await res.text()}`);
-  return res.json();
-}
+const dry = !GITHUB_TOKEN || !GITHUB_REPO || process.argv.includes('--dry-run');
 
 const hoursSince = (iso) => (Date.now() - Date.parse(iso)) / 3_600_000;
 

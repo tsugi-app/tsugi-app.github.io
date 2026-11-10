@@ -25,7 +25,7 @@ jobs:
       - name: 테스트 (앱)
         run: npm test
       - name: 테스트 (스크립트)
-        run: node --test ../scripts/radar.test.mjs ../scripts/watchdog.test.mjs
+        run: node --test ../scripts/*.test.mjs
       - name: 빌드 (web)
         run: npm run build
         env:

@@ -4,7 +4,7 @@
 //   node scripts/radar.mjs --file x.rdf [--news y.xml] → 네트워크 대신 파일에서 읽기 (테스트용)
 import { readFileSync } from 'node:fs';
 import { ISSUE_BODY, formatComment, isoWeekTokyo, mergeItems, parseNewsSitemap, parseRdf, pickCandidates } from './radar-lib.mjs';
-import { readDir } from './lib.mjs';
+import { GITHUB_REPO as repo, GITHUB_TOKEN as token, gh, readDir } from './lib.mjs';
 
 const FEED = 'https://prtimes.jp/index.rdf';
 // 공식 뉴스 사이트맵 (robots.txt에 공개). 제목과 발표사 지정 키워드가 있어 RSS 발췌에 없는 장소를 보완한다.
@@ -42,24 +42,6 @@ function knownFromContent() {
   for (const { data } of readDir('updates')) if (data.source) links.add(data.source);
   for (const { data } of readDir('checks')) for (const s of data.sources ?? []) links.add(s);
   return links;
-}
-
-const repo = process.env.GITHUB_REPOSITORY;
-const token = process.env.GITHUB_TOKEN;
-
-async function gh(path, init = {}) {
-  const res = await fetch(`https://api.github.com/repos/${repo}${path}`, {
-    ...init,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-      'Content-Type': 'application/json',
-      ...init.headers,
-    },
-  });
-  if (!res.ok) throw new Error(`GitHub ${init.method ?? 'GET'} ${path} → ${res.status} ${await res.text()}`);
-  return res.status === 204 ? null : res.json();
 }
 
 async function ensureWeeklyIssue(week) {
