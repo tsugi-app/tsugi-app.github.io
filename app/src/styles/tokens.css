@@ -32,6 +32,11 @@
   --palette-ai-600: #2d4b8e;
   --palette-ai-700: #233c74;
 
+  /* 대표 아이콘 전용 — 주홍(朱) 바탕, 감(紺) 정차 점. app/public/icon.svg·manifest.webmanifest의 색 코드와 같게 둔다.
+     화면 컴포넌트에는 쓰지 않는다(주홍은 상태 색 carrot·red와 헷갈린다). */
+  --palette-shu-500: #ff5a3c;
+  --palette-kon-900: #16204a;
+
   /* SEED 상태 색 */
   --palette-green-100: #edfaf6;
   --palette-green-700: #079171;
