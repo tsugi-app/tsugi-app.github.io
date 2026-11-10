@@ -91,7 +91,7 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
         {take?.evergreen && <p className="block-note">소식이 끝난 뒤에도 갈 수 있어요.</p>}
       </>
     ) : take?.evergreen ? (
-      '상시 방문할 수 있어요.'
+      '상시 방문할 수 있어요'
     ) : undefined;
 
   return (
