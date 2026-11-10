@@ -907,6 +907,46 @@ p {
   outline-offset: 2px;
 }
 
+a.option-row {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Prose (처리방침 같은 긴 글) ─────────── */
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--x3);
+  padding: var(--x4) var(--space-gutter) var(--x16);
+  font-size: var(--fs-t4);
+  line-height: var(--lh-t4);
+  color: var(--color-fg-neutral-muted);
+}
+.prose h2 {
+  margin-top: var(--x4);
+  font-size: var(--fs-t5);
+  line-height: var(--lh-t5);
+  font-weight: var(--fw-bold);
+  color: var(--color-fg-neutral);
+}
+.prose ul {
+  margin: 0;
+  padding-left: var(--x5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--x2);
+}
+.prose b {
+  font-weight: var(--fw-medium);
+  color: var(--color-fg-neutral);
+}
+.prose-meta {
+  margin-top: var(--x4);
+  font-size: var(--fs-t3);
+  line-height: var(--lh-t3);
+  color: var(--color-fg-neutral-subtle);
+}
+
 /* ── Bottom Sheet · 날짜 달력 (DateSheet) ─── */
 .sheet-root {
   position: fixed;
