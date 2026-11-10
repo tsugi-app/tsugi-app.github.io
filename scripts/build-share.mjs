@@ -21,7 +21,9 @@ const SAFE_ID = /^[a-z0-9][a-z0-9-]{0,79}$/;
 
 if (!existsSync(DIST)) throw new Error('app/dist가 없다 — vite build 뒤에 실행한다');
 
-const DEFAULT_OG = existsSync(join(DIST, 'og.png')); // vite가 app/public/og.png를 dist로 복사한다
+// 기본 미리보기 이미지는 앱 아이콘(정사각). vite가 app/public/icon-1024.png를 dist로 복사한다.
+const DEFAULT_IMG = 'icon-1024.png';
+const HAS_DEFAULT = existsSync(join(DIST, DEFAULT_IMG));
 
 const content = JSON.parse(readFileSync(join(APP_PUBLIC, 'content.json'), 'utf8'));
 const labels = JSON.parse(readFileSync(join(ROOT, 'app', 'src', 'lib', 'labels.json'), 'utf8'));
@@ -31,10 +33,10 @@ const esc = (s) =>
 
 function page({ path, title, description, image, hash }) {
   const url = `${BASE}${path}`;
-  // 장소 이미지가 없으면 기본 이미지(app/public/og.png)를 쓴다. 그것도 없으면 이미지 없이 만든다.
+  // 장소 이미지가 없으면 앱 아이콘(app/public/icon-1024.png)을 쓴다. 그것도 없으면 이미지 없이 만든다.
   // 카카오톡·X·페이스북은 og:image로 SVG를 보여 주지 않으므로 SVG 이미지도 기본 이미지로 대신한다.
   const raster = image && !/\.svg$/i.test(image.file) ? image : undefined;
-  const img = raster ? `${BASE}/images/${raster.file}` : DEFAULT_OG ? `${BASE}/og.png` : undefined;
+  const img = raster ? `${BASE}/images/${raster.file}` : HAS_DEFAULT ? `${BASE}/${DEFAULT_IMG}` : undefined;
   // hash에 이미 ?가 있으면 &로 이어 붙인다.
   const sep = hash.includes('?') ? '&' : '?';
   return `<!doctype html>
@@ -55,7 +57,7 @@ function page({ path, title, description, image, hash }) {
 <meta property="og:url" content="${esc(url)}" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(description)}" />
-${img ? `<meta property="og:image" content="${esc(img)}" />\n<meta name="twitter:card" content="summary_large_image" />` : '<meta name="twitter:card" content="summary" />'}
+${img ? `<meta property="og:image" content="${esc(img)}" />\n` : ''}<meta name="twitter:card" content="${raster ? 'summary_large_image' : 'summary'}" />
 <meta name="twitter:title" content="${esc(title)}" />
 <meta name="twitter:description" content="${esc(description)}" />
 <script>
