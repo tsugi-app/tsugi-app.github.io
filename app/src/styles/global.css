@@ -68,10 +68,6 @@ p {
 .app.has-action-bar {
   padding-bottom: calc(var(--action-bar-h) + env(safe-area-inset-bottom) + var(--x6));
 }
-.gutter {
-  padding-left: var(--space-gutter);
-  padding-right: var(--space-gutter);
-}
 .divider-band {
   height: var(--x2);
   background: var(--color-bg-layer-basement);
@@ -201,14 +197,6 @@ p {
 }
 .chip-row::-webkit-scrollbar {
   display: none;
-}
-.chip-row-label {
-  flex-shrink: 0;
-  align-self: center;
-  font-size: var(--fs-t3);
-  line-height: var(--lh-t3);
-  color: var(--color-fg-neutral-subtle);
-  margin-right: var(--x1);
 }
 .chip {
   flex-shrink: 0;
@@ -529,9 +517,6 @@ p {
   background: var(--color-bg-informative-weak);
   color: var(--color-fg-informative-contrast);
 }
-.callout--brand {
-  background: var(--color-bg-brand-weak);
-}
 .callout svg {
   flex-shrink: 0;
 }
@@ -541,9 +526,6 @@ p {
   display: flex;
   flex-direction: column;
   gap: var(--x2_5);
-}
-.callout-title {
-  font-weight: var(--fw-bold);
 }
 .callout-actions {
   display: flex;
@@ -564,37 +546,10 @@ p {
   font-weight: var(--fw-medium);
   color: var(--color-fg-neutral-muted);
 }
-.field input {
-  width: 100%;
-  min-width: 0;
-  height: var(--x11);
-  padding: 0 var(--x3);
-  font: inherit;
-  font-size: var(--fs-t5);
-  color: var(--color-fg-neutral);
-  background: var(--color-bg-layer-default);
-  border: 1px solid var(--color-stroke-neutral-weak);
-  border-radius: var(--r2);
-  -webkit-appearance: none;
-  appearance: none;
-}
-.field input:focus {
-  outline: none;
-  border-color: var(--color-fg-neutral);
-}
-.field input:invalid,
-.field input[value=''] {
-  color: var(--color-fg-placeholder);
-}
 .field--inline {
   flex-direction: row;
   align-items: center;
   gap: var(--x2);
-}
-.field--inline input {
-  height: var(--x9);
-  width: auto;
-  font-size: var(--fs-t4);
 }
 
 /* 날짜 칸 — 누르면 DateSheet가 열린다. 값은 YYYY/MM/DD */
@@ -902,15 +857,6 @@ p {
 .radiomark:checked {
   border: 6px solid var(--color-bg-brand-solid);
 }
-.radiomark:focus-visible {
-  outline: 2px solid var(--color-stroke-focus-ring);
-  outline-offset: 2px;
-}
-
-a.option-row {
-  color: inherit;
-  text-decoration: none;
-}
 
 /* ── Prose (처리방침 같은 긴 글) ─────────── */
 .prose {
@@ -1162,13 +1108,6 @@ a.option-row {
   background: var(--color-fg-on-brand-solid);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .sheet,
-  .sheet-backdrop {
-    animation: none;
-  }
-}
-
 /* ── 지도 (MapScreen · MapView) — docs/MAP_PLAN.md ── */
 .app.is-map {
   padding-bottom: 0;
@@ -1224,6 +1163,7 @@ a.option-row {
   border-radius: var(--r-full);
 }
 .map-canvas .map-pin {
+  position: relative;
   display: block;
   width: var(--x5);
   height: var(--x5);
@@ -1424,9 +1364,6 @@ a.option-row {
 }
 
 /* 같은 건물 묶음 개수 */
-.map-canvas .map-pin {
-  position: relative;
-}
 .map-pin-count {
   position: absolute;
   top: -10px;
@@ -1511,9 +1448,6 @@ a.option-row {
 .chip svg {
   margin-right: var(--x1);
 }
-.chip[aria-pressed='true'] svg {
-  color: inherit;
-}
 /* 아이콘만 있는 칩(지도의 저장한 곳). 누르는 폭은 44 */
 .chip--icon {
   width: var(--x11);
@@ -1522,10 +1456,4 @@ a.option-row {
 }
 .chip--icon svg {
   margin-right: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .map-cards {
-    animation: none;
-  }
 }

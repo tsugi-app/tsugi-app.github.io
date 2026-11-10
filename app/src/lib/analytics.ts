@@ -14,7 +14,7 @@ type Params = Record<string, string | number | boolean | undefined>;
 
 const OPERATOR_FLAG = 'tsugi:operator';
 
-export function isOperator(): boolean {
+function isOperator(): boolean {
   try {
     return localStorage.getItem(OPERATOR_FLAG) === '1';
   } catch {
@@ -86,7 +86,7 @@ export function track(name: EventName, params: Params = {}): void {
   }
 }
 
-export function campaignFromUrl(): string | undefined {
+function campaignFromUrl(): string | undefined {
   const hash = window.location.hash;
   const q = hash.includes('?') ? hash.slice(hash.indexOf('?') + 1) : '';
   return new URLSearchParams(q).get('c') ?? undefined;

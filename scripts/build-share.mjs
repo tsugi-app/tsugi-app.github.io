@@ -6,7 +6,7 @@
 // 앱인토스 번들(VITE_CHANNEL=toss)에는 필요 없어서 만들지 않는다.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { APP_PUBLIC, ROOT } from './lib.mjs';
+import { APP_PUBLIC, LABELS as labels, ROOT } from './lib.mjs';
 
 if (process.env.VITE_CHANNEL === 'toss') {
   console.log('공유 페이지: toss 채널이라 건너뜀');
@@ -26,7 +26,6 @@ const DEFAULT_IMG = 'icon-1024.png';
 const HAS_DEFAULT = existsSync(join(DIST, DEFAULT_IMG));
 
 const content = JSON.parse(readFileSync(join(APP_PUBLIC, 'content.json'), 'utf8'));
-const labels = JSON.parse(readFileSync(join(ROOT, 'app', 'src', 'lib', 'labels.json'), 'utf8'));
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);

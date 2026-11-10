@@ -1,9 +1,7 @@
 // 후보 레이더 — 순수 함수만 둔다 (네트워크·GitHub 호출 없음). radar.test.mjs가 이걸 검사한다.
 
-import { readFileSync } from 'node:fs';
-
-// 도시·동네 이름은 앱과 같은 파일을 읽는다.
-const LABELS = JSON.parse(readFileSync(new URL('../app/src/lib/labels.json', import.meta.url), 'utf8'));
+// 도시·동네 이름은 앱과 같은 파일(app/src/lib/labels.json)을 읽는다.
+import { LABELS, todayTokyo } from './lib.mjs';
 
 // 지역어: 하나라도 있어야 후보. 값은 content의 hood (labels.json의 키).
 // 도시 이름(大阪·福岡…)은 넣지 않는다 — 본사·순회 매장 보도자료가 쏟아진다. 동네·시설 이름만.
@@ -199,7 +197,7 @@ export function pickCandidates(items, knownLinks = new Set()) {
 
 // Asia/Tokyo 기준 ISO 주차 ("2026-W45").
 export function isoWeekTokyo(now = new Date()) {
-  const ymd = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);
+  const ymd = todayTokyo(now);
   const d = new Date(`${ymd}T00:00:00Z`);
   const day = (d.getUTCDay() + 6) % 7; // 월=0
   d.setUTCDate(d.getUTCDate() - day + 3); // 그 주 목요일

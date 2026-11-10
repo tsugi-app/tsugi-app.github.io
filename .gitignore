@@ -4,3 +4,6 @@ app/dist
 app/public/content.json
 app/public/images
 *.ait
+.ait
+# Finder 복제본 ("파일 2.json")
+* 2.*

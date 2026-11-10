@@ -1,20 +1,19 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { AppBar } from '../components/AppBar';
 import type { Me, Pin } from '../components/MapView';
-import { cardTypeOf, conditionText } from '../components/PlaceCard';
-import { dday, Thumb, typeVars } from '../components/PlaceParts';
+import { cardTypeOf, conditionText, SaveButton, Thumb, TypeBadge } from '../components/PlaceParts';
 import { Icon } from '../components/Icon';
 import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
 import { getPosition, googleMapsUrl, openExternal } from '../lib/channel';
 import { areaFilter, type PlaceView, viewOf } from '../lib/content';
-import { activeUpdate, daysLeft, todayTokyo } from '../lib/dates';
+import { todayTokyo } from '../lib/dates';
 import { distanceM, formatDistance } from '../lib/geo';
 import { go, hrefTo } from '../lib/router';
-import { isSaved, toggleSaved, useSaved } from '../lib/storage';
+import { useSaved } from '../lib/storage';
 import { areaLabel, CITY_LABEL, type Content, HOOD_LABEL, type Hood, TAG_LABEL, TYPE_LABEL, citiesWithPlaces } from '../lib/types';
 
-// 지도 탭 — docs/MAP_PLAN.md 1·2단계.
+// 지도 탭 — docs/MAP_PLAN.md §3.
 //   #/map              지도 (MapLibre + OpenFreeMap Positron, 지도 탭에 들어갈 때만 내려받는다)
 //   #/map              처음 들어오면 첫 도시(labels.json 순서, 지금은 도쿄)의 첫 장소를 가운데에 보여 준다
 //   #/map?city=all     모든 도시 (「전체」 칩)
@@ -339,11 +338,7 @@ function MapCard({
   position?: string;
 }) {
   const { place } = view;
-  const { type } = cardTypeOf(view, today);
-  const update = activeUpdate(view.updates, today);
-  const upcoming = !!update && update.start > today;
-  const left = update && !upcoming ? daysLeft(update, today) : null;
-  const saved = isSaved(place.id);
+  const { type, update } = cardTypeOf(view, today);
   const fromMe = me ? formatDistance(distanceM(me, place.geo)) : null;
 
   return (
@@ -357,11 +352,7 @@ function MapCard({
       <Thumb place={place} type={type} variant="mini" />
       <div className="map-card-body">
         <div className="place-item-meta-top">
-          <span className="badge" style={typeVars(type)}>
-            {TYPE_LABEL[type]}
-            {left !== null && left >= 0 && ` ${dday(left)}`}
-            {upcoming && ' · 예정'}
-          </span>
+          <TypeBadge type={type} update={update} today={today} />
           <span>{HOOD_LABEL[place.hood]}</span>
           {position && <span className="map-card-pos">{position}</span>}
         </div>
@@ -380,18 +371,7 @@ function MapCard({
         )}
       </div>
       <div className="map-card-actions">
-        <button
-          className="icon-btn heart"
-          aria-pressed={saved}
-          aria-label={saved ? `${place.name.ko} 저장 취소` : `${place.name.ko} 저장`}
-          onClick={() => {
-            const now = toggleSaved(place.id);
-            if (now) track('place_saved', { placeId: place.id, from: 'map' });
-            showSnackbar(now ? '저장했어요. 저장 탭에서 볼 수 있어요.' : '저장에서 뺐어요.');
-          }}
-        >
-          <Icon name={saved ? 'heartFill' : 'heart'} />
-        </button>
+        <SaveButton place={place} from="map" />
         <button
           className="btn btn--sm btn--brand-solid"
           onClick={() => {
