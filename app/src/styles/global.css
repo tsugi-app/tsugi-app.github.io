@@ -1467,6 +1467,15 @@ p {
 .chip[aria-pressed='true'] svg {
   color: inherit;
 }
+/* 아이콘만 있는 칩(지도의 저장한 곳). 누르는 폭은 44 */
+.chip--icon {
+  width: var(--x11);
+  padding: 0;
+  justify-content: center;
+}
+.chip--icon svg {
+  margin-right: 0;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .map-cards {

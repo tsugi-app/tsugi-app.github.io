@@ -43,9 +43,14 @@ interface Props {
   onSelect: (ids: string[] | null) => void;
   // 이 값이 바뀌면 보이는 마커가 모두 들어오게 지도를 맞춘다 (동네 칩을 바꿀 때).
   fitKey: string;
+  // 있으면 fitKey가 바뀔 때 전체를 맞추는 대신 이 장소를 가운데에 둔다 (지도 탭에 처음 들어올 때).
+  focus?: string | null;
   // 이 값이 바뀌면 내 위치로 이동한다.
   meKey: number;
 }
+
+// 처음 들어올 때 한 곳을 가운데에 둘 때의 확대 단계. 라벨이 보이는 14 이상, 주변 골목이 함께 보이는 정도.
+const FOCUS_ZOOM = 15;
 
 const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
@@ -111,7 +116,7 @@ function circle(lng: number, lat: number, m: number): GeoJSON.Feature<GeoJSON.Po
 
 const EMPTY: GeoJSON.FeatureCollection = { type: 'FeatureCollection', features: [] };
 
-export default function MapView({ pins, selected, pair, me, onSelect, fitKey, meKey }: Props) {
+export default function MapView({ pins, selected, pair, me, onSelect, fitKey, focus, meKey }: Props) {
   const el = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const markers = useRef<maplibregl.Marker[]>([]);
@@ -159,7 +164,8 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
       style: isDark() ? STYLE.dark : STYLE.light,
       center: SHIBUYA,
       zoom: 15,
-      minZoom: 11,
+      // 「전체」(후쿠오카~삿포로)가 한 화면에 들어오게. 11이면 일본 전체를 담지 못해 가운데(동해 바다)만 보였다.
+      minZoom: 4,
       maxZoom: 18,
       dragRotate: false,
       pitchWithRotate: false,
@@ -315,10 +321,15 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, me
   useEffect(() => {
     const map = mapRef.current;
     if (!map || pins.length === 0) return;
+    const f = focus ? pins.find((p) => p.id === focus) : undefined;
+    if (f) {
+      map.jumpTo({ center: [f.lng, f.lat], zoom: FOCUS_ZOOM });
+      return;
+    }
     const b = new maplibregl.LngLatBounds();
     for (const p of pins) b.extend([p.lng, p.lat]);
     map.fitBounds(b, { padding: 56, maxZoom: 16, duration: 0 });
-    // pins는 fitKey와 함께 바뀌므로 fitKey만 본다.
+    // pins·focus는 fitKey와 함께 바뀌므로 fitKey만 본다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fitKey]);
 
