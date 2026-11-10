@@ -15,6 +15,9 @@ const takes = readDir('takes');
 const checks = readDir('checks');
 const placeIds = new Set(places.map((p) => p.data.id));
 const BANNED = ['핫한', '인생', '현지인만'];
+// 콘텐츠 말투 (docs/DESIGN.md 4.1): 문장 필드는 해요체로 끝내고 마침표를 찍지 않는다. 끝의 괄호 보충은 빼고 본다.
+const HAEYO_FIELDS = ['why', 'notFor', 'differsFrom'];
+const endOf = (s) => s.trim().replace(/\s*\([^()]*\)$/, '');
 
 // 대표 이미지 SVG 규칙 (docs/IMAGES.md 3장)
 const SVG_PALETTE = ['#e3e6ec', '#e2e9de', '#ece5da', '#e9e2e0', '#dfe7e7', '#e8e4d8', '#e4e6ee', '#233c74', '#5873b5', '#c3d1ec', '#faf8f4', '#c99a2e'];
@@ -72,6 +75,12 @@ for (const { file, data: t } of takes) {
   else {
     if (t.why.length > 80) warn(file, `why가 80자 초과 (${t.why.length}자)`);
     for (const b of BANNED) if (t.why.includes(b)) warn(file, `why에 금지 문구 "${b}"`);
+  }
+  for (const k of HAEYO_FIELDS) {
+    if (typeof t[k] !== 'string' || !t[k]) continue;
+    const end = endOf(t[k]);
+    if (/[.。]$/.test(end)) err(file, `${k}는 마침표 없이 끝낸다`);
+    else if (!/요$/.test(end)) err(file, `${k}는 해요체(~요)로 끝낸다: "…${end.slice(-12)}"`);
   }
   if (t.pairWith && !placeIds.has(t.pairWith)) err(file, `pairWith가 없는 장소: ${t.pairWith}`);
 }
