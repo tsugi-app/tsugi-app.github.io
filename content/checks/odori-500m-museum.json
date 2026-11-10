@@ -4,12 +4,13 @@
   "checkedBy": "claude",
   "recheckBy": "2026-12-15",
   "uncertain": [
-    "다음 전시(vol.57)는 상세 페이지가 아직 없음",
-    "좌표는 지리원 검색 大通西1丁目 블록 기준(통로는 東2丁目까지)"
+    "좌표는 지리원 검색 大通西1丁目 블록 기준(통로는 東2丁目까지)",
+    "vol.57 전시 내용·작품 구성(상세는 수상 발표 페이지뿐)"
   ],
   "sources": [
     "https://www.500m.jp/",
     "https://www.500m.jp/exhibition/8203.html",
-    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+    "https://msearch.gsi.go.jp/address-search/AddressSearch",
+    "https://www.500m.jp/award/8224.html"
   ]
 }
