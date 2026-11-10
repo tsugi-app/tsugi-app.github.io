@@ -25,7 +25,7 @@ export function isOperator(): boolean {
 // 웹 채널은 PostHog Cloud로 보낸다. 라이브러리 없이 수집 API에 직접 POST한다.
 // 프로젝트 키는 쓰기 전용 공개 키라 번들에 실려도 된다. 비어 있으면 아무것도 보내지 않는다.
 // 리전을 바꾸면 screens/Privacy.tsx의 국외 이전 문구도 같이 고친다.
-const POSTHOG_KEY = '';
+const POSTHOG_KEY: string = 'phc_qxHLfFwvHdAHgu6fAc74JLtJUMFbp2icRhydhQYEyBf5';
 const POSTHOG_HOST = 'https://us.i.posthog.com';
 const ANON_ID = 'tsugi:aid';
 
