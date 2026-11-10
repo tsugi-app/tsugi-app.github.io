@@ -45,6 +45,10 @@ function page({ path, title, description, image, hash }) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}" />
 <link rel="canonical" href="${esc(url)}" />
+<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="${SITE}" />
 <meta property="og:locale" content="ko_KR" />

@@ -112,6 +112,12 @@
 - 라이브러리를 쓰지 않는다. `components/Icon.tsx`의 인라인 SVG(24 그리드, 1.8px 선, `currentColor`).
 - 탭 바·앱 바·저장(하트) 같은 반복 행동에만 쓴다. 아이콘만 있는 버튼은 반드시 `aria-label`.
 
+### 1.5.1 대표 아이콘 (앱 아이콘·파비콘·홈 화면)
+- 확정안: **"아이 노선"** (2026-11-10 사용자 결정). 아이 600 바탕에 흰 노선, 두 역 사이에 큰 흰 정차(+)가 끼어든다. og.png 하단 노선과 같은 그림이다.
+- 원본은 `app/public/icon.svg`(1024 정사각, 모서리 깎지 않음). PNG(`favicon-32`·`apple-touch-icon`(180)·`icon-192`·`icon-512`·`icon-1024`)는 `scripts/icon/icon.html` 주석의 명령으로 다시 만든다. 앱인토스 콘솔 업로드는 `icon-1024.png`에서 필요한 크기로 만든다.
+- `index.html`과 공유 페이지(`build-share.mjs`)가 같은 아이콘·`manifest.webmanifest`를 건다. manifest의 `display`는 `browser` — 홈 화면에서 따로 열리면 사파리 저장 목록과 저장소가 갈라지기 때문이다.
+- 아이콘 파일은 CSS 변수가 닿지 않아 색 코드를 직접 쓴다(`tokens.css`의 아이 600 `#2d4b8e`·아이 500 `#5873b5`·흰색만). 색을 바꾸면 tokens.css와 함께 고친다.
+
 ### 1.6 접근성 (SEED Inclusive Design)
 - 누를 수 있는 곳 최소 44×44px.
 - 본문 대비 4.5:1 이상 (`fg-neutral-subtle #555d6d`까지는 흰 바탕에서 통과).
