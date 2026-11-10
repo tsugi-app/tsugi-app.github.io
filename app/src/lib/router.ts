@@ -5,13 +5,15 @@ import { useEffect, useState } from 'react';
 //   #/p/<placeId>         장소 상세
 //   #/map                 지도 (?city=…&hood=… 도시·동네, ?view=list 목록 보기)
 //   #/saved               저장 (?keep=… 이면 보관 링크 불러오기)
-//   #/settings            설정 (화면 테마)
+//   #/settings            설정 (화면 테마·이용 통계)
+//   #/privacy             개인정보 처리방침
 export type Route =
   | { name: 'discover'; query: URLSearchParams }
   | { name: 'place'; id: string }
   | { name: 'map'; query: URLSearchParams }
   | { name: 'saved'; query: URLSearchParams }
-  | { name: 'settings' };
+  | { name: 'settings' }
+  | { name: 'privacy' };
 
 export function parse(hash: string): Route {
   const raw = hash.replace(/^#/, '') || '/';
@@ -21,6 +23,7 @@ export function parse(hash: string): Route {
   if (path === '/map') return { name: 'map', query };
   if (path === '/saved') return { name: 'saved', query };
   if (path === '/settings') return { name: 'settings' };
+  if (path === '/privacy') return { name: 'privacy' };
   return { name: 'discover', query };
 }
 

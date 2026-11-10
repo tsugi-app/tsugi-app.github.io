@@ -22,7 +22,7 @@
 - 라이브러리를 늘리지 않는다. 허용: react, react-dom, vite, typescript, vitest. 지도는 maplibre-gl만(OpenFreeMap 타일, 2026-11-09 leaflet에서 교체 — 사용자 결정). 지도 서비스는 상업 이용 무료·한도 없음인 곳만 쓴다(docs/MAP_PLAN.md).
 - 콘텐츠의 날짜·가격·예약 조건을 출처 없이 채우지 않는다. 모르면 비우고 `checks/*.json`의 `uncertain`에 적는다.
 - 컴포넌트에 색 코드를 직접 쓰지 않는다. 색·글꼴·간격·모서리는 `app/src/styles/tokens.css`에서만, 컴포넌트는 `--color-*` 시맨틱 토큰만 쓴다. 아이콘은 `components/Icon.tsx`의 인라인 SVG.
-- 분석 호출은 `lib/analytics.ts`의 `track()`을 통해서만. 채널 분기는 `lib/channel.ts`와 `lib/analytics.ts` 두 곳에서만.
+- 분석 호출은 `lib/analytics.ts`의 `track()`을 통해서만. 웹은 PostHog Cloud 수집 API에 직접 POST한다(SDK 없음, 쿠키 없음). 이벤트·속성이나 기기 저장 항목을 바꾸면 `screens/Privacy.tsx`(`#/privacy`)의 처리방침과 시행일도 같이 고친다. 채널 분기는 `lib/channel.ts`와 `lib/analytics.ts` 두 곳에서만.
 - 다크 모드는 웹만. 기본은 기기 설정을 따르고, 설정 화면(`#/settings`)에서 시스템·라이트·다크를 고를 수 있다(`lib/storage.ts`의 `tsugi:theme`). 앱인토스는 다크 모드를 지원하지 않아 라이트로 고정하고 설정 버튼도 숨긴다(`lib/channel.ts`의 `SUPPORTS_THEME`·`applyColorMode`). 다크 색 값은 `tokens.css`의 `[data-theme='dark']` 블록에만 쓴다.
 
 ## 검사

@@ -6,23 +6,24 @@ import { useRoute } from './lib/router';
 import { Discover } from './screens/Discover';
 import { MapScreen } from './screens/MapScreen';
 import { Place } from './screens/Place';
+import { Privacy } from './screens/Privacy';
 import { Saved } from './screens/Saved';
 import { Settings } from './screens/Settings';
 
-// 화면마다 자기 앱 바를 그린다. 상세는 탭 바 대신 하단 액션 바를 쓰고, 설정은 탭 바를 숨긴다 (docs/DESIGN.md §3).
+// 화면마다 자기 앱 바를 그린다. 상세는 탭 바 대신 하단 액션 바를 쓰고, 설정·처리방침은 탭 바를 숨긴다 (docs/DESIGN.md §3).
 export function App() {
   const route = useRoute();
   const content = useContent();
   const isPlace = route.name === 'place';
-  // 상세·설정은 하위 화면이라 탭 바를 숨긴다.
-  const isSub = isPlace || route.name === 'settings';
+  // 상세·설정·처리방침은 하위 화면이라 탭 바를 숨긴다.
+  const isSub = isPlace || route.name === 'settings' || route.name === 'privacy';
   const placeId = isPlace ? route.id : '';
   // 지도 보기는 화면 높이를 꽉 채우므로 탭 바 아래 여백을 따로 두지 않는다.
   const isMapView = route.name === 'map' && route.query.get('view') !== 'list';
 
   useEffect(() => {
-    if (placeId) window.scrollTo(0, 0);
-  }, [placeId]);
+    if (placeId || route.name === 'privacy') window.scrollTo(0, 0);
+  }, [placeId, route.name]);
 
   return (
     <div className={`app${isPlace ? ' has-action-bar' : ''}${isMapView ? ' is-map' : ''}`}>
@@ -31,6 +32,7 @@ export function App() {
       {route.name === 'map' && <MapScreen content={content} query={route.query} />}
       {route.name === 'saved' && <Saved content={content} query={route.query} />}
       {route.name === 'settings' && <Settings />}
+      {route.name === 'privacy' && <Privacy />}
       {!isSub && <Tabs route={route} />}
       <SnackbarRegion />
     </div>

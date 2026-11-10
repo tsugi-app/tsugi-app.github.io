@@ -88,3 +88,23 @@ export function setThemePref(pref: ThemePref): void {
     // 저장 불가 — 이번 방문에만 적용
   }
 }
+
+// 이용 통계 보내기. 기본은 켜짐이고, 설정에서 끄면 그 뒤로는 보내지 않는다 (#/privacy).
+const ANALYTICS_KEY = 'tsugi:analytics';
+
+export function getAnalyticsOff(): boolean {
+  try {
+    return localStorage.getItem(ANALYTICS_KEY) === 'off';
+  } catch {
+    return false;
+  }
+}
+
+export function setAnalyticsOff(off: boolean): void {
+  try {
+    if (off) localStorage.setItem(ANALYTICS_KEY, 'off');
+    else localStorage.removeItem(ANALYTICS_KEY);
+  } catch {
+    // 저장 불가 — 이번 방문에만 적용
+  }
+}
