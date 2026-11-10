@@ -16,6 +16,8 @@ import { areaLabel, CITY_LABEL, type Content, HOOD_LABEL, type Hood, TAG_LABEL, 
 
 // 지도 탭 — docs/MAP_PLAN.md 1·2단계.
 //   #/map              지도 (MapLibre + OpenFreeMap Positron, 지도 탭에 들어갈 때만 내려받는다)
+//   #/map              처음 들어오면 첫 도시(labels.json 순서, 지금은 도쿄)의 첫 장소를 가운데에 보여 준다
+//   #/map?city=all     모든 도시 (「전체」 칩)
 //   #/map?city=…&hood=…  도시·동네만 (발견 탭과 같은 필터, lib/content.ts의 areaFilter)
 //   #/map?saved=1      저장한 곳만
 //   #/map?view=list    동네별 목록 (지도가 불편한 사람·스크린리더를 위한 대체 경로)
@@ -24,9 +26,21 @@ const MapView = lazy(() => import('../components/MapView'));
 // 내 위치가 지금 보이는 장소들에서 이만큼(도) 넘게 벗어나면 지도를 옮기지 않는다 (약 3km).
 const NEAR_DEG = 0.03;
 
-export function MapScreen({ content, query }: { content: Content; query: URLSearchParams }) {
+// 「전체」를 골랐다는 표시. areaFilter는 모르는 도시 값을 '전체'로 읽는다.
+const ALL = 'all';
+
+export function MapScreen({ content, query: rawQuery }: { content: Content; query: URLSearchParams }) {
   const saved = useSaved();
   const today = todayTokyo();
+  // 필터 없이 들어오면(탭 바의 「지도」) 첫 도시로 시작한다. 전국을 한 화면에 맞추면 마커가 점으로만 보여서다.
+  const entry = !rawQuery.get('city') && !rawQuery.get('hood') && rawQuery.get('saved') !== '1';
+  const query = useMemo(() => {
+    if (!entry) return rawQuery;
+    const first = citiesWithPlaces(content.places)[0];
+    const q = new URLSearchParams(rawQuery);
+    if (first) q.set('city', first);
+    return q;
+  }, [rawQuery, entry, content]);
   const area = useMemo(() => areaFilter(content.places, query), [content, query]);
   const { city, hood } = area;
   const onlySaved = query.get('saved') === '1';
@@ -62,6 +76,16 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
   };
   const pins = useMemo(() => views.map(pinOf), [views, today]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // 처음 들어왔을 때 가운데에 둘 곳: 동네 칩 순서(labels.json)로 첫 동네의 첫 장소.
+  const focus = useMemo(() => {
+    if (!entry) return null;
+    for (const h of area.hoods) {
+      const v = views.find((x) => x.place.hood === h);
+      if (v) return v.place.id;
+    }
+    return views[0]?.place.id ?? null;
+  }, [entry, area, views]);
+
   // 필터를 바꿔 고른 곳이 사라지면 카드를 닫는다.
   useEffect(() => {
     if (selected && !views.some((v) => v.place.id === selected)) {
@@ -89,6 +113,8 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
 
   const setParams = (patch: Record<string, string>) => {
     const q = new URLSearchParams(query);
+    // 처음 화면(도시 기본값)에서 다른 필터를 눌러도 도시는 그대로 이어진다. 저장한 곳은 모든 도시에서 본다.
+    if (patch.saved === '1' && entry) q.delete('city');
     for (const [k, v] of Object.entries(patch)) {
       if (v) q.set(k, v);
       else q.delete(k);
@@ -126,6 +152,18 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
     else showSnackbar('지금 위치가 지도에 있는 장소들과 멀어서 지도를 옮기지 않았어요.');
   };
 
+  const savedChip = (
+    <button
+      className="chip chip--icon"
+      aria-pressed={onlySaved}
+      aria-label="저장한 곳만 보기"
+      title="저장한 곳"
+      onClick={() => setParams({ saved: onlySaved ? '' : '1' })}
+    >
+      <Icon name={onlySaved ? 'heartFill' : 'heart'} size={20} />
+    </button>
+  );
+
   const groupViews = (group ?? []).map((id) => views.find((v) => v.place.id === id)).filter(Boolean) as PlaceView[];
 
   return (
@@ -139,37 +177,43 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
           </button>
         }
       />
+      {/* 저장한 곳(하트)은 줄 맨 앞에 둔다. 칩이 많아 가로 스크롤 끝에 있으면 보이지 않아서다. */}
       {area.cities.length > 1 && (
         <div className="chip-row map-chips" role="group" aria-label="도시">
-          <button className="chip" aria-pressed={!city} onClick={() => setParams({ city: '', hood: '' })}>
+          {savedChip}
+          <span className="chip-sep" aria-hidden />
+          <button className="chip" aria-pressed={!city} onClick={() => setParams({ city: ALL, hood: '' })}>
             전체
           </button>
           {area.cities.map((c) => (
-            <button key={c} className="chip" aria-pressed={city === c} onClick={() => setParams({ city: city === c ? '' : c, hood: '' })}>
+            <button key={c} className="chip" aria-pressed={city === c} onClick={() => setParams({ city: city === c ? ALL : c, hood: '' })}>
               {CITY_LABEL[c]}
             </button>
           ))}
         </div>
       )}
-      <div className="chip-row map-chips" role="group" aria-label="지도 필터">
-        {area.hoods.length > 0 && (
-          <>
-            <button className="chip" aria-pressed={!hood} onClick={() => setParams({ city, hood: '' })}>
-              {area.cities.length > 1 && city ? `${CITY_LABEL[city]} 전체` : '전체'}
-            </button>
-            {area.hoods.map((h) => (
-              <button key={h} className="chip" aria-pressed={hood === h} onClick={() => setParams({ city, hood: hood === h ? '' : h })}>
-                {HOOD_LABEL[h]}
+      {(area.hoods.length > 0 || area.cities.length <= 1) && (
+        <div className="chip-row map-chips" role="group" aria-label="동네">
+          {area.cities.length <= 1 && (
+            <>
+              {savedChip}
+              {area.hoods.length > 0 && <span className="chip-sep" aria-hidden />}
+            </>
+          )}
+          {area.hoods.length > 0 && (
+            <>
+              <button className="chip" aria-pressed={!hood} onClick={() => setParams({ city, hood: '' })}>
+                {area.cities.length > 1 && city ? `${CITY_LABEL[city]} 전체` : '전체'}
               </button>
-            ))}
-            <span className="chip-sep" aria-hidden />
-          </>
-        )}
-        <button className="chip" aria-pressed={onlySaved} onClick={() => setParams({ saved: onlySaved ? '' : '1' })}>
-          <Icon name={onlySaved ? 'heartFill' : 'heart'} size={16} />
-          저장한 곳
-        </button>
-      </div>
+              {area.hoods.map((h) => (
+                <button key={h} className="chip" aria-pressed={hood === h} onClick={() => setParams({ city, hood: hood === h ? '' : h })}>
+                  {HOOD_LABEL[h]}
+                </button>
+              ))}
+            </>
+          )}
+        </div>
+      )}
 
       {list ? (
         <MapList views={views} onlySaved={onlySaved} />
@@ -185,7 +229,8 @@ export function MapScreen({ content, query }: { content: Content; query: URLSear
               pair={pairPin}
               me={me}
               onSelect={select}
-              fitKey={`${city || 'all'}:${hood || 'all'}:${onlySaved ? 's' : ''}`}
+              focus={focus}
+              fitKey={`${city || 'all'}:${hood || 'all'}:${onlySaved ? 's' : ''}:${focus ?? ''}`}
               meKey={meKey}
             />
           </Suspense>
