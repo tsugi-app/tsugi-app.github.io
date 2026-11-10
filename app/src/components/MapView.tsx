@@ -164,7 +164,8 @@ export default function MapView({ pins, selected, pair, me, onSelect, fitKey, fo
       style: isDark() ? STYLE.dark : STYLE.light,
       center: SHIBUYA,
       zoom: 15,
-      minZoom: 11,
+      // 「전체」(후쿠오카~삿포로)가 한 화면에 들어오게. 11이면 일본 전체를 담지 못해 가운데(동해 바다)만 보였다.
+      minZoom: 4,
       maxZoom: 18,
       dragRotate: false,
       pitchWithRotate: false,
