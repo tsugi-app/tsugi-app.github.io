@@ -10,6 +10,9 @@ export const WEB_BASE_URL = 'https://tsugi-app.github.io';
 // 다크 모드는 웹만 지원한다. 앱인토스는 다크 모드를 지원하지 않아 라이트로 고정한다.
 export const SUPPORTS_THEME = CHANNEL === 'web';
 
+// 앱 바 워드마크 왼쪽 아이콘은 웹만. 앱인토스는 토스 상단 바가 앱 이름·아이콘을 따로 보여 줄 수 있어 겹치지 않게 뺀다.
+export const SHOW_WORDMARK_ICON = CHANNEL === 'web';
+
 // 설정(시스템·라이트·다크)과 기기 설정을 합쳐 <html data-theme>을 단다.
 // 브라우저 상단 색(theme-color)은 tokens.css의 바탕색을 읽어 맞춘다 (색 코드를 여기 쓰지 않는다).
 let themePref: ThemePref = 'system';

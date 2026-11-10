@@ -107,7 +107,7 @@ p {
 .wordmark {
   flex: 1;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--x2);
   min-width: 0;
 }
@@ -116,7 +116,14 @@ p {
   line-height: var(--lh-t9);
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
-  color: var(--color-fg-brand);
+  color: var(--color-fg-neutral);
+}
+/* 대표 아이콘(app/public/icon.svg). 브랜드 색은 아이콘이 맡고 글자는 본문 색으로 둔다. */
+.wordmark-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r2);
 }
 .wordmark span {
   font-size: var(--fs-t3);
