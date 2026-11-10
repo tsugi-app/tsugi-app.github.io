@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { SHOW_WORDMARK_ICON } from '../lib/channel';
 import { goBack } from '../lib/router';
 import { Icon } from './Icon';
 
@@ -13,6 +14,7 @@ export function AppBar({ title, back, right }: { title?: ReactNode; back?: boole
       )}
       {title ?? (
         <a className="wordmark" href="#/">
+          {SHOW_WORDMARK_ICON && <img className="wordmark-icon" src="/icon.svg" alt="" width={28} height={28} />}
           <b>츠기</b>
           <span>다음 일본 여행에 넣을 한 곳</span>
         </a>
