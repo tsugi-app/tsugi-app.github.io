@@ -1,0 +1,24 @@
+{
+  "id": "omotesando-ami-paris-cafe",
+  "name": {
+    "ko": "아미 파리스 팝업 스토어 & 르 카페 아미",
+    "ja": "AMI PARIS POP-UP STORE AND LE CAFÉ AMI"
+  },
+  "hood": "omotesando",
+  "category": "cafe",
+  "tags": [
+    "cafe",
+    "design"
+  ],
+  "geo": {
+    "lat": 35.6681,
+    "lng": 139.70667
+  },
+  "address": "東京都渋谷区神宮前4-26-18",
+  "official": "https://ami-paris.co.jp/ami-omotesando",
+  "image": {
+    "file": "omotesando-ami-paris-cafe.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
