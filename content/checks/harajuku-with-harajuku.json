@@ -1,0 +1,17 @@
+{
+  "placeId": "harajuku-with-harajuku",
+  "checkedAt": "2026-11-10",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-26",
+  "uncertain": [
+    "WITH HARAJUKU 공식 NEWS & EVENTS엔 아직 게시 전(11/10 기준) — 주최사 보도자료 기준",
+    "무료 제공 수량과 소진 시각",
+    "번지(1-14-30)는 보도자료 기준, 시설 공식 사이트에서는 神宮前1까지만 확인"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000023.000080247.html",
+    "https://withharajuku.jp/",
+    "https://withharajuku.jp/news-events",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "harajuku-with-harajuku",
+  "name": {
+    "ko": "위드 하라주쿠",
+    "ja": "WITH HARAJUKU"
+  },
+  "hood": "harajuku",
+  "category": "mall",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 35.67057,
+    "lng": 139.70299
+  },
+  "address": "東京都渋谷区神宮前1-14-30",
+  "official": "https://withharajuku.jp/",
+  "image": {
+    "file": "harajuku-with-harajuku.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

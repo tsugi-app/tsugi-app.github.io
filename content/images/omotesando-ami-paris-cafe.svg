@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>omotesando-ami-paris-cafe</title>
+<desc>
+모티프: 꽃이 놓인 발코니와 은은한 아연 지붕을 얹은 파리 오스만 양식 정면, 하트 풍선 하나
+근거: 브랜드 보도자료 https://prtimes.jp/main/html/rd/p/000000060.000087547.html "パリのオスマン建築を想起させるファサード", "花々が飾られたバルコニー", "柔らかく輝く亜鉛調の屋根", "Ami de Cœur" 하트 벌룬
+피한 것: 브랜드 로고·하트 마크 그대로의 형태, 파리 거리 표지판(글자), 실제 외관의 사실적 재현, 빨강(팔레트 밖이라 하트는 겨자로)
+제작: Claude Opus 5.5 · 2026-11-10
+</desc>
+<rect width="1200" height="900" fill="#ece5da"/>
+<path d="M360 300 L410 176 L790 176 L840 300 Z" fill="#5873b5" stroke="#5873b5" stroke-width="12" stroke-linejoin="round"/>
+<g fill="#c3d1ec"><rect x="470" y="206" width="56" height="70" rx="28"/><rect x="572" y="206" width="56" height="70" rx="28"/><rect x="674" y="206" width="56" height="70" rx="28"/></g>
+<rect x="340" y="296" width="520" height="28" rx="6" fill="#233c74"/>
+<rect x="370" y="324" width="460" height="440" fill="#233c74"/>
+<g fill="#c3d1ec">
+<rect x="412" y="360" width="80" height="140" rx="6"/><rect x="560" y="360" width="80" height="140" rx="6"/><rect x="708" y="360" width="80" height="140" rx="6"/>
+<rect x="412" y="590" width="80" height="174" rx="6"/><rect x="560" y="590" width="80" height="174" rx="6"/><rect x="708" y="590" width="80" height="174" rx="6"/>
+</g>
+<g fill="#faf8f4"><circle cx="400" cy="508" r="22"/><circle cx="436" cy="500" r="24"/><circle cx="474" cy="508" r="22"/><circle cx="560" cy="506" r="22"/><circle cx="600" cy="498" r="26"/><circle cx="640" cy="506" r="22"/><circle cx="726" cy="508" r="22"/><circle cx="764" cy="500" r="24"/><circle cx="800" cy="508" r="22"/></g>
+<rect x="356" y="520" width="488" height="22" rx="6" fill="#5873b5"/>
+<g stroke="#5873b5" stroke-width="18" stroke-linecap="round"><line x1="380" y1="542" x2="380" y2="572"/><line x1="440" y1="542" x2="440" y2="572"/><line x1="500" y1="542" x2="500" y2="572"/><line x1="560" y1="542" x2="560" y2="572"/><line x1="640" y1="542" x2="640" y2="572"/><line x1="700" y1="542" x2="700" y2="572"/><line x1="760" y1="542" x2="760" y2="572"/><line x1="820" y1="542" x2="820" y2="572"/></g>
+<rect x="356" y="568" width="488" height="18" rx="6" fill="#5873b5"/>
+<path d="M950 352 C 976 400 900 460 860 520" fill="none" stroke="#233c74" stroke-width="18" stroke-linecap="round"/>
+<path d="M950 354 C 912 320 876 284 876 246 C 876 216 898 196 924 196 C 938 196 946 204 950 214 C 954 204 962 196 976 196 C 1002 196 1024 216 1024 246 C 1024 284 988 320 950 354 Z" fill="#c99a2e" stroke="#c99a2e" stroke-width="10" stroke-linejoin="round"/>
+<rect x="150" y="764" width="900" height="136" fill="#c3d1ec"/>
+</svg>
