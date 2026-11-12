@@ -1,0 +1,23 @@
+{
+  "id": "umeda-lego-store-lucua-south",
+  "name": {
+    "ko": "레고 스토어 오사카 루쿠아 사우스점",
+    "ja": "レゴ®ストア 大阪 ルクア サウス店"
+  },
+  "hood": "umeda",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 34.70188,
+    "lng": 135.49634
+  },
+  "address": "大阪府大阪市北区梅田3-1-1 ルクア サウス 12F",
+  "official": "https://www.lego.com/ja-jp/stores",
+  "image": {
+    "file": "umeda-lego-store-lucua-south.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

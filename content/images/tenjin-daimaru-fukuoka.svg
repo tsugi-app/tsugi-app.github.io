@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>tenjin-daimaru-fukuoka</title>
+<desc>
+모티프: 끈을 열십자로 묶은 선물 상자 하나와 리본
+근거: place.category mall(백화점), 보도자료 https://prtimes.jp/main/html/rd/p/000000036.000131021.html 지하 과자 이벤트 스페이스
+피한 것: 과자 틴 그림·영국 상징(기간 한정 행사·상표), 백화점 로고·외관
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<rect x="150" y="690" width="900" height="34" rx="10" fill="#c3d1ec"/>
+<rect x="320" y="380" width="560" height="310" rx="10" fill="#233c74"/>
+<rect x="300" y="320" width="600" height="80" rx="10" fill="#5873b5"/>
+<rect x="570" y="320" width="60" height="370" fill="#c3d1ec"/>
+<path d="M600 320 C 540 230 450 240 470 300 C 480 330 560 330 600 320 Z" fill="#c99a2e"/>
+<path d="M600 320 C 660 230 750 240 730 300 C 720 330 640 330 600 320 Z" fill="#c99a2e"/>
+</svg>

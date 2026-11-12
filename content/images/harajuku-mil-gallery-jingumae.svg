@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>harajuku-mil-gallery-jingumae</title>
+<desc>
+모티프: 벽에 걸린 빈 액자 하나와 위에서 떨어지는 빛 사각형, 낮은 받침대
+근거: place.category gallery(갤러리 기본 어휘), 보도자료 https://prtimes.jp/main/html/rd/p/000000440.000012005.html 2층 갤러리 전시
+피한 것: 과자·브랜드 패키지(기간 한정 행사·상표), 출품작 재현, 건물 외관
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e2e9de"/>
+<path d="M330 136 L870 136 L830 520 L370 520 Z" fill="#c3d1ec"/>
+<rect x="400" y="230" width="400" height="300" rx="6" fill="#233c74"/>
+<rect x="446" y="276" width="308" height="208" fill="#faf8f4"/>
+<rect x="150" y="680" width="900" height="30" fill="#5873b5"/>
+<rect x="760" y="560" width="150" height="120" rx="6" fill="#5873b5"/>
+<circle cx="835" cy="530" r="30" fill="#c99a2e"/>
+</svg>

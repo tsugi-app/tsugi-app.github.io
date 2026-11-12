@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>hakata-the-strings-hakata</title>
+<desc>
+모티프: 높은 층 큰 창 앞 받침 접시 위의 찻잔, 창 아래로 낮게 깔린 지평선
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000371.000053980.html KITTE博多 11F 카페 라운지, place.category cafe
+피한 것: 앨리스 캐릭터·원작 삽화(기간 한정 행사·실존 작품), 차 브랜드 상표, 건물 외관
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<rect x="230" y="150" width="740" height="430" rx="10" fill="#c3d1ec"/>
+<rect x="590" y="150" width="20" height="430" fill="#233c74"/>
+<path d="M230 470 L330 440 L420 460 L520 420 L640 450 L760 410 L860 445 L970 430 L970 580 L230 580 Z" fill="#5873b5"/>
+<circle cx="820" cy="260" r="44" fill="#c99a2e"/>
+<rect x="150" y="580" width="900" height="30" fill="#233c74"/>
+<ellipse cx="600" cy="716" rx="230" ry="36" fill="#5873b5"/>
+<path d="M440 600 L760 600 C 760 680 700 716 600 716 C 500 716 440 680 440 600 Z" fill="#233c74"/>
+<circle cx="790" cy="650" r="38" fill="none" stroke="#233c74" stroke-width="22"/>
+<ellipse cx="600" cy="602" rx="160" ry="16" fill="#faf8f4"/>
+</svg>

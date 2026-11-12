@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shinsaibashi-book-and-bed</title>
+<desc>
+모티프: 책이 꽂힌 책장 한 칸에 베개가 놓인 침대 자리
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000156.000153230.html 本棚の中にベッドが埋め込まれた '묵을 수 있는 서점'
+피한 것: 별 모양 한정 메뉴(기간 한정 행사), 책 표지 글자, 로고
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<rect x="220" y="150" width="760" height="600" rx="10" fill="#233c74"/>
+<g fill="#c3d1ec"><rect x="250" y="180" width="700" height="150"/><rect x="250" y="560" width="700" height="160"/></g>
+<rect x="250" y="360" width="700" height="170" fill="#faf8f4"/>
+<g fill="#5873b5"><rect x="270" y="210" width="40" height="120"/><rect x="320" y="230" width="34" height="100"/><rect x="364" y="200" width="44" height="130"/><rect x="460" y="220" width="36" height="110"/><rect x="506" y="210" width="40" height="120"/><rect x="640" y="230" width="34" height="100"/><rect x="684" y="205" width="44" height="125"/><rect x="800" y="215" width="40" height="115"/><rect x="850" y="225" width="36" height="105"/><rect x="290" y="590" width="40" height="130"/><rect x="340" y="610" width="36" height="110"/><rect x="500" y="595" width="44" height="125"/><rect x="554" y="605" width="34" height="115"/><rect x="700" y="590" width="40" height="130"/><rect x="750" y="615" width="38" height="105"/><rect x="880" y="600" width="40" height="120"/></g>
+<rect x="250" y="470" width="700" height="60" fill="#5873b5"/>
+<rect x="290" y="420" width="170" height="60" rx="26" fill="#c3d1ec"/>
+<rect x="480" y="440" width="440" height="40" rx="14" fill="#233c74"/>
+<circle cx="860" cy="400" r="22" fill="#c99a2e"/>
+</svg>

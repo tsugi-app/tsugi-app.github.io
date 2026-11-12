@@ -1,0 +1,23 @@
+{
+  "id": "shibuya-mr-men-coffee-stand",
+  "name": {
+    "ko": "미스터 멘 리틀 미스 더 커피 스탠드",
+    "ja": "MR. MEN LITTLE MISS THE COFFEE STAND"
+  },
+  "hood": "shibuya",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 35.65961,
+    "lng": 139.70009
+  },
+  "address": "東京都渋谷区道玄坂2-2-1 渋谷地下街しぶちか14番",
+  "official": "https://shopjp.coffeesupreme.com",
+  "image": {
+    "file": "shibuya-mr-men-coffee-stand.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

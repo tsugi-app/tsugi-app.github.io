@@ -1,0 +1,16 @@
+{
+  "placeId": "hakata-the-strings-hakata",
+  "checkedAt": "2026-11-12",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-01",
+  "uncertain": [
+    "ザ ストリングス 博多 예약 페이지 공식 페이지는 이번 확인 환경에서 열리지 않아 대조하지 못함 — 주최·운영사 보도자료 기준",
+    "9개 도시 순회 행사 — 하카타 회장 개요 기준",
+    "휴무 표기가 「火・土・日・祝日は定休」와 「平日のみ…火曜定休」로 함께 있음 — 앞쪽(판매 기간 표기) 기준",
+    "마리아주 프레르 플랜 가격은 보도자료에 없음"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000371.000053980.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

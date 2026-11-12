@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>harajuku-laforet</title>
+<desc>
+모티프: 가로 봉에 걸린 옷걸이 셋, 가운데 하나에 걸린 겨울 코트 실루엣
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000004612.000018505.html 라포레 1층 의류 브랜드 콘셉트 스토어(아우터 등 겨울 신작), place.category mall
+피한 것: 브랜드 로고·참 디자인 재현(기간 한정 행사), 건물 외관·간판 글자
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e2e9de"/>
+<rect x="170" y="230" width="860" height="26" rx="13" fill="#233c74"/>
+<g fill="none" stroke="#5873b5" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M330 256 L330 300 L230 380 L430 380 Z"/><path d="M870 256 L870 300 L770 380 L970 380 Z"/></g>
+<path d="M600 256 L600 300" stroke="#233c74" stroke-width="18" stroke-linecap="round"/>
+<path d="M600 300 L470 360 L440 700 L560 700 L580 520 L620 520 L640 700 L760 700 L730 360 Z" fill="#233c74" stroke="#233c74" stroke-width="12" stroke-linejoin="round"/>
+<path d="M560 330 L600 470 L640 330 Z" fill="#c3d1ec"/>
+<g fill="#c99a2e"><circle cx="600" cy="520" r="16"/><circle cx="600" cy="580" r="16"/></g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-mr-men-coffee-stand</title>
+<desc>
+모티프: 뚜껑 덮인 테이크아웃 컵 하나와 김 한 줄기, 받침 띠
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000022.000043018.html 테이크아웃 전용 커피 스탠드, place.category cafe
+피한 것: 캐릭터 얼굴·이름, 로고, 지하상가 내부 재현
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<rect x="150" y="664" width="900" height="40" rx="10" fill="#c3d1ec"/>
+<path d="M470 330 L730 330 L700 664 L500 664 Z" fill="#233c74" stroke="#233c74" stroke-width="12" stroke-linejoin="round"/>
+<rect x="452" y="290" width="296" height="54" rx="14" fill="#5873b5"/>
+<rect x="500" y="262" width="200" height="40" rx="12" fill="#5873b5"/>
+<path d="M486 440 L714 440 L704 560 L496 560 Z" fill="#c3d1ec"/>
+<circle cx="600" cy="500" r="34" fill="#c99a2e"/>
+<path d="M600 236 C 560 200 640 176 600 140" fill="none" stroke="#5873b5" stroke-width="22" stroke-linecap="round"/>
+<path d="M800 600 L800 664 M860 560 L860 664" stroke="#5873b5" stroke-width="20" stroke-linecap="round"/>
+</svg>
