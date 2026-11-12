@@ -39,6 +39,9 @@
   3. take의 `why`는 80자 이내, 금지 문구 없음. `why`·`notFor`·`differsFrom`은 해요체·마침표 없음, `forWhom`은 「~ 사람」(docs/DESIGN.md 4.1). `notFor`는 출처에서 읽히는 사실(휴무·입장 제한·연령 등)에 기댄다.
   4. 행사 장소가 카드의 `hood` 동네가 맞다 (`labels.json`에 있는 동네, 본사 주소·다른 지역 순회지 아님).
   5. 검토를 마친 날짜가 `checkedAt`, 행사 시작 전이나 기간 중간이 `recheckBy`.
+  6. `evergreen` 카드의 take에는 날짜·회기·이번 전시 내용을 쓰지 않는다. 행사가 끝나도 편집 추천으로 남기 때문이다. 그런 내용은 update의 `note`에 쓰고, take에는 장소가 오래 가진 성격만 남긴다.
+  7. 장소 공식 페이지가 접속을 막거나(봇 확인·연결 끊김·403) 게시가 없으면, 그 사유를 `uncertain`에 구체적으로 적는다. 재확인 때 편집자가 직접 열어 볼 곳이다.
+- 취향 태그는 `cafe`·`design`·`goods`·`walk`·`food`(먹거리: 술집·노포 간식 등 식사 중심 가게). 목록은 `labels.json`의 `tag`와 `scripts/lib.mjs`의 `TAGS`를 같이 고친다.
 - take의 `why`는 80자 이내, "핫한·인생·현지인만" 금지.
 - 이미지는 `credit`·`license` 없이 넣지 않는다. 대표 이미지는 Claude(Opus)가 그린 SVG만 쓰고, 그리기 전에 `docs/IMAGES.md`를 따른다.
 

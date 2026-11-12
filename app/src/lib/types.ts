@@ -5,7 +5,7 @@ import labels from './labels.json';
 // 도시·동네 목록은 labels.json 한 곳에 둔다. 동네가 어느 도시인지도 거기서 정한다 (카드에는 hood만 쓴다).
 export type City = keyof typeof labels.city;
 export type Hood = keyof typeof labels.hood;
-export type Tag = 'cafe' | 'design' | 'goods' | 'walk';
+export type Tag = 'cafe' | 'design' | 'goods' | 'walk' | 'food';
 export type UpdateType = 'new' | 'limited' | 'changed';
 export type CardType = UpdateType | 'editorial';
 

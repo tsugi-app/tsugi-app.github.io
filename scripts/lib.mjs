@@ -10,7 +10,7 @@ export const APP_PUBLIC = join(ROOT, 'app', 'public');
 export const LABELS = JSON.parse(readFileSync(join(ROOT, 'app', 'src', 'lib', 'labels.json'), 'utf8'));
 export const CITIES = Object.keys(LABELS.city);
 export const HOODS = Object.keys(LABELS.hood);
-export const TAGS = ['cafe', 'design', 'goods', 'walk'];
+export const TAGS = ['cafe', 'design', 'goods', 'walk', 'food'];
 export const UPDATE_TYPES = ['new', 'limited', 'changed'];
 
 export function readDir(kind) {
