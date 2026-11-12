@@ -1,0 +1,15 @@
+{
+  "placeId": "hakata-number-shot",
+  "checkedAt": "2026-11-12",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-24",
+  "uncertain": [
+    "번지(博多駅中央街1-1)는 マイング横丁 다른 가게 등록 정보와 국토지리원 검색 기준 — 보도자료엔 「博多駅1階 マイング横丁」까지만 있음",
+    "메뉴 가격은 보도자료·マイング 공지에 없음"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000123.000032707.html",
+    "https://www.ming.or.jp/news/detail393.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

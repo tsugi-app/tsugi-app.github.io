@@ -1,0 +1,24 @@
+{
+  "id": "shibuya-scramble-square-plusq-beauty",
+  "name": {
+    "ko": "+Q 뷰티 시부야 스크램블 스퀘어점",
+    "ja": "+Q（プラスク） ビューティー 渋谷スクランブルスクエア店"
+  },
+  "hood": "shibuya",
+  "category": "goods",
+  "tags": [
+    "goods",
+    "cafe"
+  ],
+  "geo": {
+    "lat": 35.65795,
+    "lng": 139.70232
+  },
+  "address": "東京都渋谷区渋谷2-24-12 渋谷スクランブルスクエア 6F・5F",
+  "official": "https://www.tokyu-dept.co.jp/shibuyabeautyjam/specialcontents/2026winter/index.html",
+  "image": {
+    "file": "shibuya-scramble-square-plusq-beauty.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

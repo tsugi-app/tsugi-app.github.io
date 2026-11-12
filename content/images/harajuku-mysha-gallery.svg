@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>harajuku-mysha-gallery</title>
+<desc>
+모티프: 벽에 나란히 걸린 빈 액자 둘과 그 아래로 굽어 가는 산책길 한 줄기
+근거: place.category gallery, 보도자료 https://prtimes.jp/main/html/rd/p/000000021.000167249.html 원래 강을 덮어 만든 산책로 캣 스트리트의 2층 갤러리
+피한 것: 달 아트·반지 등 행사 상품(기간 한정), 브랜드 로고, 사람 얼굴
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e2e9de"/>
+<rect x="150" y="150" width="900" height="420" fill="#c3d1ec"/>
+<rect x="250" y="220" width="280" height="240" rx="6" fill="#233c74"/><rect x="290" y="260" width="200" height="160" fill="#faf8f4"/>
+<rect x="670" y="250" width="240" height="210" rx="6" fill="#233c74"/><rect x="706" y="286" width="168" height="138" fill="#faf8f4"/>
+<circle cx="790" cy="355" r="30" fill="#c99a2e"/>
+<path d="M150 570 L1050 570 L1050 764 L150 764 Z" fill="#e2e9de"/>
+<path d="M380 570 C 360 640 520 670 560 764 L 760 764 C 700 660 560 640 600 570 Z" fill="#5873b5"/>
+<rect x="150" y="560" width="900" height="20" fill="#233c74"/>
+</svg>

@@ -1,0 +1,15 @@
+{
+  "placeId": "shibuya-scramble-square-plusq-beauty",
+  "checkedAt": "2026-11-12",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-25",
+  "uncertain": [
+    "얼굴 타입 진단 요금은 보도자료·특설 페이지에 없음",
+    "카페 영업시간은 보도자료·특설 페이지에 없음"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000176.000020722.html",
+    "https://www.tokyu-dept.co.jp/shibuyabeautyjam/specialcontents/2026winter/index.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

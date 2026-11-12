@@ -1,0 +1,14 @@
+{
+  "placeId": "harajuku-mysha-gallery",
+  "checkedAt": "2026-11-12",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-20",
+  "uncertain": [
+    "갤러리는 공식 사이트 없이 인스타그램만 운영 — 대조 못 함, 브랜드 운영사(Ninevation) 보도자료 기준",
+    "달 아트 체험 예약 잔여 미확인"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000021.000167249.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

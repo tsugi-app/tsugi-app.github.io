@@ -1,0 +1,22 @@
+{
+  "id": "harajuku-mysha-gallery",
+  "name": {
+    "ko": "미샤 갤러리",
+    "ja": "mysha Gallery"
+  },
+  "hood": "harajuku",
+  "category": "gallery",
+  "tags": [
+    "design"
+  ],
+  "geo": {
+    "lat": 35.66596,
+    "lng": 139.70523
+  },
+  "address": "東京都渋谷区神宮前6-14-6 INO5-2F",
+  "image": {
+    "file": "harajuku-mysha-gallery.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
