@@ -1,0 +1,22 @@
+{
+  "id": "umeda-muse-m-hep-five",
+  "name": {
+    "ko": "뮤즈엠",
+    "ja": "MUSE M"
+  },
+  "hood": "umeda",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 34.70385,
+    "lng": 135.49963
+  },
+  "address": "大阪府大阪市北区角田町5-15 HEP FIVE 6階",
+  "image": {
+    "file": "umeda-muse-m-hep-five.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

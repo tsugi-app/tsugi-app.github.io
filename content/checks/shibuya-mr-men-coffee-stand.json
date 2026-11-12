@@ -1,0 +1,16 @@
+{
+  "placeId": "shibuya-mr-men-coffee-stand",
+  "checkedAt": "2026-11-12",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-06",
+  "uncertain": [
+    "しぶちか 공식 페이지는 이번 확인 환경에서 열리지 않아 대조하지 못함 — 주최·운영사 보도자료 기준",
+    "메뉴·가격은 보도자료에 없음(산리오 발표에 커피·차·소프트드링크·디저트·한정 굿즈 언급만 있음)",
+    "정기 휴무일 미확인"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000022.000043018.html",
+    "https://corporate.sanrio.co.jp/news/20261105.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

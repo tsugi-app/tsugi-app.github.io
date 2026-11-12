@@ -1,0 +1,15 @@
+{
+  "placeId": "harajuku-mil-gallery-jingumae",
+  "checkedAt": "2026-11-12",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-20",
+  "uncertain": [
+    "MIL GALLERY 공식 페이지는 이번 확인 환경에서 열리지 않아 대조하지 못함 — 주최·운영사 보도자료 기준",
+    "입장료 표기가 없음(무료 여부 미확인)",
+    "갤러리 공식 사이트 주소 미확인"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000440.000012005.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

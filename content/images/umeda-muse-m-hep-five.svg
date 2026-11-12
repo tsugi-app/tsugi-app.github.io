@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>umeda-muse-m-hep-five</title>
+<desc>
+모티프: 받침대에서 올라오는 빛 기둥 위에 떠 있는 겹 마름모
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000001.000185926.html 매장 안 홀로그램 디스플레이(영상이 공간에 떠오르는 연출), place.category goods
+피한 것: 아티스트 얼굴·실존 인물, 굿즈 상표, 로고
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<path d="M470 640 L540 300 L660 300 L730 640 Z" fill="#c3d1ec"/>
+<path d="M600 190 L720 330 L600 470 L480 330 Z" fill="#233c74" stroke="#233c74" stroke-width="12" stroke-linejoin="round"/>
+<path d="M600 250 L668 330 L600 410 L532 330 Z" fill="#5873b5"/>
+<circle cx="600" cy="330" r="30" fill="#c99a2e"/>
+<ellipse cx="600" cy="660" rx="230" ry="44" fill="#233c74"/>
+<rect x="370" y="660" width="460" height="64" fill="#233c74"/>
+<ellipse cx="600" cy="652" rx="160" ry="22" fill="#5873b5"/>
+<g fill="#5873b5"><circle cx="420" cy="420" r="16"/><circle cx="790" cy="470" r="14"/><circle cx="760" cy="240" r="12"/></g>
+</svg>

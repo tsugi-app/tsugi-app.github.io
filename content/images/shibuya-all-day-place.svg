@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-all-day-place</title>
+<desc>
+모티프: 활짝 열린 1층 출입문과 바닥에 떨어진 빛
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000002.000194227.html 1F 엔트런스에서 열리는 팝업
+피한 것: 의류·액세서리 디자인 재현(기간 한정 행사), 로고, 건물 외관 재현
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<rect x="300" y="160" width="600" height="540" rx="10" fill="#233c74"/>
+<rect x="370" y="230" width="460" height="470" fill="#c3d1ec"/>
+<path d="M370 230 L520 270 L520 660 L370 700 Z" fill="#5873b5"/>
+<circle cx="490" cy="470" r="14" fill="#c99a2e"/>
+<path d="M520 700 L830 700 L960 790 L470 790 Z" fill="#c3d1ec"/>
+<rect x="150" y="696" width="900" height="16" fill="#233c74"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>umeda-lego-store-lucua-south</title>
+<desc>
+모티프: 계단처럼 쌓인 장난감 블록 세 개
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000002281.000022901.html 블록 제품과 부품을 골라 담는 코너, place.category goods
+피한 것: 상표·로고, 미니피겨 얼굴, 오사카성 모자이크 재현, 건물 외관
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<rect x="150" y="684" width="900" height="40" rx="10" fill="#c3d1ec"/>
+<g fill="#233c74"><rect x="250" y="520" width="360" height="164" rx="12"/><rect x="278" y="472" width="70" height="56" rx="10"/><rect x="394" y="472" width="70" height="56" rx="10"/><rect x="510" y="472" width="70" height="56" rx="10"/></g>
+<g fill="#5873b5"><rect x="610" y="520" width="340" height="164" rx="12"/><rect x="640" y="472" width="70" height="56" rx="10"/><rect x="745" y="472" width="70" height="56" rx="10"/><rect x="850" y="472" width="70" height="56" rx="10"/></g>
+<g fill="#c99a2e"><rect x="430" y="330" width="250" height="142" rx="12"/><rect x="456" y="282" width="70" height="56" rx="10"/><rect x="584" y="282" width="70" height="56" rx="10"/></g>
+<g fill="#faf8f4"><rect x="290" y="556" width="34" height="80" rx="8"/><rect x="650" y="556" width="34" height="80" rx="8"/></g>
+</svg>

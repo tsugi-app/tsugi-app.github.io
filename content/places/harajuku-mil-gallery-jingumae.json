@@ -1,0 +1,22 @@
+{
+  "id": "harajuku-mil-gallery-jingumae",
+  "name": {
+    "ko": "밀 갤러리 진구마에",
+    "ja": "MIL GALLERY JINGUMAE"
+  },
+  "hood": "harajuku",
+  "category": "gallery",
+  "tags": [
+    "design"
+  ],
+  "geo": {
+    "lat": 35.66888,
+    "lng": 139.70773
+  },
+  "address": "東京都渋谷区神宮前4-25-28 2F",
+  "image": {
+    "file": "harajuku-mil-gallery-jingumae.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

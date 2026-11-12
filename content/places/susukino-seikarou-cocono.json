@@ -1,0 +1,23 @@
+{
+  "id": "susukino-seikarou-cocono",
+  "name": {
+    "ko": "세이카로 코코노 스스키노점",
+    "ja": "星華楼 ココノ ススキノ店"
+  },
+  "hood": "susukino",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 43.05519,
+    "lng": 141.35265
+  },
+  "address": "北海道札幌市中央区南4条西4丁目1-1 COCONO SUSUKINO 地下1階 北海道四季マルシェ内",
+  "official": "https://www.instagram.com/seikarou23/",
+  "image": {
+    "file": "susukino-seikarou-cocono.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

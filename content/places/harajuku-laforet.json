@@ -1,0 +1,22 @@
+{
+  "id": "harajuku-laforet",
+  "name": {
+    "ko": "라포레 하라주쿠",
+    "ja": "ラフォーレ原宿"
+  },
+  "hood": "harajuku",
+  "category": "mall",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.66891,
+    "lng": 139.70555
+  },
+  "address": "東京都渋谷区神宮前1-11-6",
+  "image": {
+    "file": "harajuku-laforet.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

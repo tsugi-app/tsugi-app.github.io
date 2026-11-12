@@ -1,0 +1,23 @@
+{
+  "id": "shinsaibashi-book-and-bed",
+  "name": {
+    "ko": "북 앤드 베드 도쿄 신사이바시",
+    "ja": "BOOK AND BED TOKYO SHINSAIBASHI"
+  },
+  "hood": "shinsaibashi",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 34.67436,
+    "lng": 135.50261
+  },
+  "address": "大阪府大阪市中央区東心斎橋1-19-11 ウナギダニスクエア3階",
+  "official": "https://bookandbedtokyo.com/ja/",
+  "image": {
+    "file": "shinsaibashi-book-and-bed.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

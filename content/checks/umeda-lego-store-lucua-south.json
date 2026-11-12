@@ -1,0 +1,16 @@
+{
+  "placeId": "umeda-lego-store-lucua-south",
+  "checkedAt": "2026-11-12",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-23",
+  "uncertain": [
+    "LUCUA SOUTH 특설 사이트 공식 페이지는 이번 확인 환경에서 열리지 않아 대조하지 못함 — 주최·운영사 보도자료 기준",
+    "입장 정리권(사전 추첨·선착순)의 신청 방법과 운영 기간 — 특설 사이트에서 안내 예정",
+    "11/18~23 프리오픈은 회원 초대제라는 보도가 있으나 공식 출처로 확인 못 함"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000002281.000022901.html",
+    "https://www.westjr.co.jp/press/article/2026/09/30/items/260930_00_press_lucuasouth.pdf",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

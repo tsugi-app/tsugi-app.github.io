@@ -1,0 +1,22 @@
+{
+  "id": "shibuya-all-day-place",
+  "name": {
+    "ko": "올 데이 플레이스 시부야",
+    "ja": "all day place shibuya"
+  },
+  "hood": "shibuya",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.66157,
+    "lng": 139.70309
+  },
+  "address": "東京都渋谷区渋谷1-17-1",
+  "image": {
+    "file": "shibuya-all-day-place.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

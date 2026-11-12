@@ -1,0 +1,23 @@
+{
+  "id": "hakata-the-strings-hakata",
+  "name": {
+    "ko": "더 스트링스 하카타 타임네스트",
+    "ja": "ザ ストリングス 博多 タイムネスト"
+  },
+  "hood": "hakata",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 33.58884,
+    "lng": 130.41936
+  },
+  "address": "福岡県福岡市博多区博多駅中央街9-1 KITTE博多 11F",
+  "official": "https://wedding-hakata.strings-group.jp/cafe",
+  "image": {
+    "file": "hakata-the-strings-hakata.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

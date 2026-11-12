@@ -1,0 +1,22 @@
+{
+  "id": "tenjin-daimaru-fukuoka",
+  "name": {
+    "ko": "다이마루 후쿠오카 텐진점",
+    "ja": "大丸福岡天神店"
+  },
+  "hood": "tenjin",
+  "category": "mall",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 33.58846,
+    "lng": 130.40193
+  },
+  "address": "福岡県福岡市中央区天神1-4-1",
+  "image": {
+    "file": "tenjin-daimaru-fukuoka.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
