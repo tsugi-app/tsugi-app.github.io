@@ -22,5 +22,5 @@
     "odori": { "ko": "오도리", "city": "sapporo" },
     "susukino": { "ko": "스스키노", "city": "sapporo" }
   },
-  "tag": { "cafe": "카페", "design": "디자인", "goods": "생활용품", "walk": "산책" }
+  "tag": { "cafe": "카페", "design": "디자인", "goods": "생활용품", "walk": "산책", "food": "먹거리" }
 }

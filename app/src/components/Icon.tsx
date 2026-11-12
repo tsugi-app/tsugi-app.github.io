@@ -14,6 +14,7 @@ export type IconName =
   | 'design'
   | 'goods'
   | 'walk'
+  | 'food'
   | 'place'
   | 'settings'
   | 'calendar'
@@ -88,6 +89,12 @@ const PATHS: Record<IconName, JSX.Element> = {
     <>
       <circle cx="13" cy="4.5" r="1.8" />
       <path d="m9 21 2.5-6.5L14 17v4M8 11l2.5-3.5 4 1.5 2.5 3M11.5 14.5l1-5" />
+    </>
+  ),
+  food: (
+    <>
+      <path d="M7 3.5v6.5a2 2 0 0 0 2 2v8.5M9 3.5v5M11 3.5v6.5a2 2 0 0 1-2 2" />
+      <path d="M17 20.5v-17c-2 1-3 3.5-3 6.5v4h3" />
     </>
   ),
   settings: (
