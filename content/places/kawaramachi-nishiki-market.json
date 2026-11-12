@@ -1,0 +1,24 @@
+{
+  "id": "kawaramachi-nishiki-market",
+  "name": {
+    "ko": "니시키 시장",
+    "ja": "錦市場"
+  },
+  "hood": "kawaramachi",
+  "category": "food",
+  "tags": [
+    "food",
+    "walk"
+  ],
+  "geo": {
+    "lat": 35.0043,
+    "lng": 135.76459
+  },
+  "address": "京都府京都市中京区西大文字町609",
+  "official": "https://www.kyoto-nishiki.or.jp/",
+  "image": {
+    "file": "kawaramachi-nishiki-market.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>okazaki-kyoto-city-kyocera-museum</title>
+<desc>
+모티프: 열린 정육면체 틀 하나와 그 앞의 빈 액자
+근거: 공식 사이트 https://kyotocity-kyocera.museum/ 신관 「東山キューブ」 기획전과 본관 컬렉션룸, place.category gallery
+피한 것: 건물 외관 재현, 출품작(하쿠인·지브리·칠공예 등 기간 한정 전시), 로고
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e8e4d8"/>
+<path d="M330 300 L630 200 L930 300 L630 400 Z" fill="#c3d1ec"/>
+<path d="M330 300 L630 400 L630 720 L330 620 Z" fill="#233c74"/>
+<path d="M630 400 L930 300 L930 620 L630 720 Z" fill="#5873b5"/>
+<rect x="410" y="420" width="150" height="190" fill="#faf8f4" transform="skewY(18) translate(0 -150)"/>
+<rect x="150" y="720" width="900" height="30" fill="#c3d1ec"/>
+<circle cx="850" cy="200" r="34" fill="#c99a2e"/>
+</svg>

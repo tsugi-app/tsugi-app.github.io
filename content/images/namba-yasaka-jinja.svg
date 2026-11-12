@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>namba-yasaka-jinja</title>
+<desc>
+모티프: 단순한 맞배지붕 하나와 처마에 건 굵은 금줄
+근거: 오사카 관광국 페이지 https://osaka-info.jp/experience/ja/osaka/spot/246 주택가 안의 오래된 신사, 지금의 본전은 1974년 건립
+피한 것: 도리이, 사자 머리 무대(관광 페이지에 없음), 건물 외관 재현, 글자
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<path d="M180 400 L600 170 L1020 400 L960 430 L600 240 L240 430 Z" fill="#233c74" stroke="#233c74" stroke-width="14" stroke-linejoin="round"/>
+<rect x="300" y="430" width="600" height="300" fill="#5873b5"/>
+<rect x="340" y="480" width="520" height="250" fill="#233c74"/>
+<path d="M270 470 C 400 540 800 540 930 470" fill="none" stroke="#c99a2e" stroke-width="30" stroke-linecap="round"/>
+<g fill="#faf8f4"><rect x="420" y="520" width="26" height="60"/><rect x="590" y="535" width="26" height="60"/><rect x="760" y="520" width="26" height="60"/></g>
+<rect x="150" y="730" width="900" height="30" fill="#c3d1ec"/>
+</svg>
