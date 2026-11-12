@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shinsaibashi-va-osaka</title>
+<desc>
+모티프: 회색 벽에 뚫린 큰 원과 그 앞을 가로지르는 낮은 벽
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000001520.000006099.html 안도 다다오 설계, 원형을 쓴 형태와 회색 벽이 특징인 1980년 건물
+피한 것: 건물 외관 사실 재현, 브랜드 로고, 디렉터·인물
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<rect x="200" y="160" width="800" height="560" fill="#c3d1ec"/>
+<g stroke="#faf8f4" stroke-width="6"><line x1="200" y1="346" x2="1000" y2="346"/><line x1="200" y1="532" x2="1000" y2="532"/><line x1="467" y1="160" x2="467" y2="720"/><line x1="733" y1="160" x2="733" y2="720"/></g>
+<circle cx="600" cy="440" r="230" fill="#233c74"/>
+<circle cx="600" cy="440" r="150" fill="#5873b5"/>
+<rect x="150" y="600" width="900" height="120" fill="#233c74"/>
+<circle cx="820" cy="250" r="34" fill="#c99a2e"/>
+</svg>

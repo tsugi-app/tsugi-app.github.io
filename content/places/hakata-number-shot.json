@@ -1,0 +1,23 @@
+{
+  "id": "hakata-number-shot",
+  "name": {
+    "ko": "하카타 넘버 샷",
+    "ja": "博多 NUMBER SHOT"
+  },
+  "hood": "hakata",
+  "category": "food",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 33.58991,
+    "lng": 130.4204
+  },
+  "address": "福岡県福岡市博多区博多駅中央街1-1 JR博多駅1階 マイング横丁",
+  "official": "https://www.ming.or.jp/",
+  "image": {
+    "file": "hakata-number-shot.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

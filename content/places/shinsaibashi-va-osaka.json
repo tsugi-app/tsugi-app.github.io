@@ -1,0 +1,24 @@
+{
+  "id": "shinsaibashi-va-osaka",
+  "name": {
+    "ko": "브이에이 오사카",
+    "ja": "V.A. OSAKA"
+  },
+  "hood": "shinsaibashi",
+  "category": "goods",
+  "tags": [
+    "goods",
+    "cafe"
+  ],
+  "geo": {
+    "lat": 34.67268,
+    "lng": 135.50139
+  },
+  "address": "大阪府大阪市中央区心斎橋1-5-24",
+  "official": "https://vatokyo.com/",
+  "image": {
+    "file": "shinsaibashi-va-osaka.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

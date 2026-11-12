@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-scramble-square-plusq-beauty</title>
+<desc>
+모티프: 선반 위에 키가 다른 화장품 병 셋과 찻잔 하나
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000176.000020722.html 화장품·뷰티 매장이 모인 층과 같은 층 카페
+피한 것: 만화 캐릭터·원작 그림(기간 한정 행사·실존 작품), 브랜드 병·로고, 건물 외관
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<rect x="150" y="640" width="900" height="34" rx="10" fill="#5873b5"/>
+<rect x="280" y="380" width="130" height="260" rx="16" fill="#233c74"/><rect x="315" y="320" width="60" height="70" rx="8" fill="#5873b5"/>
+<rect x="450" y="300" width="150" height="340" rx="20" fill="#233c74"/><rect x="495" y="236" width="60" height="74" rx="8" fill="#c99a2e"/>
+<rect x="640" y="460" width="120" height="180" rx="40" fill="#233c74"/><rect x="675" y="420" width="50" height="50" rx="8" fill="#5873b5"/>
+<rect x="470" y="380" width="110" height="120" rx="10" fill="#c3d1ec"/>
+<path d="M810 540 L950 540 C 950 610 920 640 880 640 C 840 640 810 610 810 540 Z" fill="#5873b5"/>
+<circle cx="965" cy="575" r="26" fill="none" stroke="#5873b5" stroke-width="18"/>
+</svg>

@@ -1,0 +1,22 @@
+{
+  "id": "omotesando-prada-beauty-tokyo",
+  "name": {
+    "ko": "프라다 뷰티 도쿄",
+    "ja": "プラダ ビューティ トウキョウ"
+  },
+  "hood": "omotesando",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.6669,
+    "lng": 139.70694
+  },
+  "address": "東京都渋谷区神宮前5-12-1",
+  "image": {
+    "file": "omotesando-prada-beauty-tokyo.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
