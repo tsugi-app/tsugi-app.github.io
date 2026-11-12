@@ -1,0 +1,24 @@
+{
+  "id": "gion-kenninji",
+  "name": {
+    "ko": "겐닌지",
+    "ja": "建仁寺"
+  },
+  "hood": "gion",
+  "category": "temple",
+  "tags": [
+    "design",
+    "walk"
+  ],
+  "geo": {
+    "lat": 35.00113,
+    "lng": 135.77396
+  },
+  "address": "京都府京都市東山区大和大路通四条下る小松町584",
+  "official": "https://www.kenninji.jp/",
+  "image": {
+    "file": "gion-kenninji.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

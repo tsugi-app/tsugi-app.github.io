@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>gion-kenninji</title>
+<desc>
+모티프: 법당 천장을 올려다본 원형 틀 안의 소용돌이 두 개
+근거: 공식 페이지 https://www.kenninji.jp/property/ 법당 천장 가득 그린 두 마리 용(쌍룡도), 교토에서 가장 오래된 선종 사원
+피한 것: 실존 작품(쌍룡도·풍신뇌신도) 재현, 용 형상, 건물 외관, 글자
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e8e4d8"/>
+<rect x="200" y="150" width="800" height="600" fill="#c3d1ec"/>
+<g stroke="#e8e4d8" stroke-width="10"><line x1="200" y1="300" x2="1000" y2="300"/><line x1="200" y1="450" x2="1000" y2="450"/><line x1="200" y1="600" x2="1000" y2="600"/><line x1="400" y1="150" x2="400" y2="750"/><line x1="600" y1="150" x2="600" y2="750"/><line x1="800" y1="150" x2="800" y2="750"/></g>
+<circle cx="600" cy="450" r="280" fill="#233c74"/>
+<path d="M600 450 C 600 380 690 360 720 420 C 750 490 660 560 580 540 C 480 515 450 400 520 330" fill="none" stroke="#5873b5" stroke-width="28" stroke-linecap="round"/>
+<path d="M600 450 C 600 520 510 540 480 480 C 450 410 540 340 620 360 C 720 385 750 500 680 570" fill="none" stroke="#5873b5" stroke-width="28" stroke-linecap="round"/>
+<circle cx="600" cy="450" r="26" fill="#c99a2e"/>
+</svg>

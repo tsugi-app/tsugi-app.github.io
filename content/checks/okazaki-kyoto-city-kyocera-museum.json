@@ -1,0 +1,17 @@
+{
+  "placeId": "okazaki-kyoto-city-kyocera-museum",
+  "checkedAt": "2026-11-12",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-15",
+  "uncertain": [
+    "컬렉션룸 특집의 교토시 외 거주 학생 요금 외 세부 요금은 전시 페이지 기준",
+    "별관 주소(岡崎最勝寺町13)도 있음 — 본관 주소로 적음"
+  ],
+  "sources": [
+    "https://kyotocity-kyocera.museum/exhibition/20261217-20270111",
+    "https://kyotocity-kyocera.museum/exhibition/20270115-20270314",
+    "https://kyotocity-kyocera.museum/exhibition/20270206-20270505",
+    "https://kyotocity-kyocera.museum/access",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

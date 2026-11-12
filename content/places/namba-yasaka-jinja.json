@@ -1,0 +1,23 @@
+{
+  "id": "namba-yasaka-jinja",
+  "name": {
+    "ko": "난바 야사카 신사",
+    "ja": "難波八阪神社"
+  },
+  "hood": "namba",
+  "category": "walk",
+  "tags": [
+    "walk"
+  ],
+  "geo": {
+    "lat": 34.66144,
+    "lng": 135.4964
+  },
+  "address": "大阪府大阪市浪速区元町2-9-19",
+  "official": "https://osaka-info.jp/experience/ja/osaka/spot/246",
+  "image": {
+    "file": "namba-yasaka-jinja.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

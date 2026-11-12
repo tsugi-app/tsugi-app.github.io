@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>kawaramachi-nishiki-market</title>
+<desc>
+모티프: 옆에서 본 좁은 골목을 따라 늘어선 가게 차양 다섯 개와 그 아래 길
+근거: 공식 사이트 https://www.kyoto-nishiki.or.jp/ 390m 이어진 시장 골목, 「교토의 부엌」
+피한 것: 가게 간판·글자, 특정 가게 상품, 천장화 그림 재현
+제작: Claude Opus 5.5 · 2026-11-12
+</desc>
+<rect width="1200" height="900" fill="#e8e4d8"/>
+<rect x="150" y="250" width="900" height="40" fill="#233c74"/>
+<g fill="#5873b5"><path d="M160 290 L330 290 L310 360 L180 360 Z"/><path d="M520 290 L690 290 L670 360 L540 360 Z"/><path d="M880 290 L1040 290 L1020 360 L900 360 Z"/></g>
+<g fill="#c3d1ec"><path d="M340 290 L510 290 L490 360 L360 360 Z"/><path d="M700 290 L870 290 L850 360 L720 360 Z"/></g>
+<g fill="#233c74"><rect x="180" y="360" width="130" height="300"/><rect x="540" y="360" width="130" height="300"/><rect x="900" y="360" width="120" height="300"/></g>
+<g fill="#5873b5"><rect x="360" y="360" width="130" height="300"/><rect x="720" y="360" width="130" height="300"/></g>
+<g fill="#faf8f4"><rect x="200" y="420" width="90" height="60"/><rect x="380" y="420" width="90" height="60"/><rect x="560" y="420" width="90" height="60"/><rect x="740" y="420" width="90" height="60"/><rect x="920" y="420" width="80" height="60"/></g>
+<rect x="150" y="660" width="900" height="70" fill="#c3d1ec"/>
+<circle cx="600" cy="190" r="34" fill="#c99a2e"/>
+</svg>

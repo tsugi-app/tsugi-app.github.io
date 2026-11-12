@@ -1,0 +1,18 @@
+{
+  "placeId": "gion-kenninji",
+  "checkedAt": "2026-11-12",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-28",
+  "uncertain": [
+    "법요·행사로 관람을 쉬는 날이 공지로만 올라옴(정기 휴무 표기 없음)",
+    "절 안에 전시된 풍신뇌신도가 복제본인지는 공식 페이지에 직접 쓰여 있지 않음 — 원본 기탁 사실만 적음"
+  ],
+  "sources": [
+    "https://www.kenninji.jp/",
+    "https://www.kenninji.jp/access/",
+    "https://www.kenninji.jp/property/",
+    "https://www.kenninji.jp/news/?p=2352",
+    "https://www.kenninji.jp/news/?p=1512",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}
