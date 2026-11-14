@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect } from 'react';
+import { AdBanner } from '../components/AdBanner';
 import { AppBar } from '../components/AppBar';
 import { Icon, type IconName } from '../components/Icon';
 import { cardTypeOf, dday, SaveButton, Thumb, typeVars } from '../components/PlaceParts';
@@ -177,6 +178,7 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
           )}
         </Block>
         {place.media && place.media.length > 0 && <MediaBlock place={place} media={place.media} />}
+        <AdBanner slot="place" />
       </article>
 
       <div className="action-bar">
