@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect } from 'react';
+import { AdBanner } from '../components/AdBanner';
 import { AppBar } from '../components/AppBar';
 import { Icon } from '../components/Icon';
 import { cardTypeOf, dday, SaveButton, Thumb, typeVars } from '../components/PlaceParts';
@@ -174,6 +175,7 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
             </>
           )}
         </Block>
+        <AdBanner slot="place" />
       </article>
 
       <div className="action-bar">

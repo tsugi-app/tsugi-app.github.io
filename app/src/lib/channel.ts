@@ -24,6 +24,15 @@ export const SUPPORTS_KEEP_LINK = CHANNEL === 'web';
 
 export const TOSS_APP_NAME = 'tsugi';
 
+// 인앱 광고(배너)는 토스 채널만. 웹에는 광고를 넣지 않는다.
+// 광고 그룹 ID는 앱인토스 콘솔 → 인앱 광고에서 발급. 비어 있으면 그 자리는 아무것도 그리지 않는다.
+export type AdSlot = 'discover' | 'place';
+const AD_GROUP_ID: Record<AdSlot, string> = {
+  discover: '', // 발견목록_배너
+  place: '', // 장소상세_배너
+};
+export const SHOW_ADS = CHANNEL === 'toss';
+
 const toss = () => import('@apps-in-toss/web-framework');
 
 // 앱 시작 때 한 번. 토스 채널에서만:
@@ -106,6 +115,50 @@ export async function shareOrCopy(url: string, title: string): Promise<string> {
     window.prompt('아래 링크를 복사해 두세요.', url);
     return '';
   }
+}
+
+// 배너 SDK 초기화는 한 번만. 실패하거나 지원하지 않는 토스 버전이면 false.
+let adsReady: Promise<boolean> | null = null;
+function initAds(): Promise<boolean> {
+  adsReady ??= toss()
+    .then(
+      ({ TossAds }) =>
+        new Promise<boolean>((resolve) => {
+          if (!TossAds.initialize.isSupported()) return resolve(false);
+          TossAds.initialize({
+            callbacks: { onInitialized: () => resolve(true), onInitializationFailed: () => resolve(false) },
+          });
+        }),
+    )
+    .catch(() => false);
+  return adsReady;
+}
+
+// 배너를 el에 붙인다. 광고가 그려지면 onShown, 채울 광고가 없거나 실패하면 onEmpty. 돌려받은 함수로 뗀다.
+export function attachAdBanner(slot: AdSlot, el: HTMLElement, onShown: () => void, onEmpty: () => void): () => void {
+  const id = AD_GROUP_ID[slot];
+  if (!SHOW_ADS || !id) {
+    onEmpty();
+    return () => {};
+  }
+  let detach: (() => void) | null = null;
+  let cancelled = false;
+  void initAds().then(async (ok) => {
+    if (cancelled) return;
+    if (!ok) return onEmpty();
+    const { TossAds } = await toss();
+    if (cancelled || !TossAds.attachBanner.isSupported()) return onEmpty();
+    detach = TossAds.attachBanner(id, el, {
+      theme: 'light',
+      variant: 'card',
+      tone: 'grey',
+      callbacks: { onAdRendered: onShown, onNoFill: onEmpty, onAdFailedToRender: onEmpty },
+    }).destroy;
+  });
+  return () => {
+    cancelled = true;
+    detach?.();
+  };
 }
 
 // 장소 공유. 웹은 미리보기가 붙는 정적 페이지 주소를, 토스는 토스 앱에서 열리는 공유 링크(intoss://)를 쓴다.

@@ -1,4 +1,5 @@
-import { useEffect, useMemo } from 'react';
+import { Fragment, useEffect, useMemo } from 'react';
+import { AdBanner } from '../components/AdBanner';
 import { AppBar } from '../components/AppBar';
 import { Icon } from '../components/Icon';
 import { PlaceCard } from '../components/PlaceCard';
@@ -14,6 +15,8 @@ interface Props {
   content: Content;
   query: URLSearchParams;
 }
+
+const AD_AFTER = 5;
 
 // 필터 상태는 URL(#/?city=&hood=&tag=&from=&to=&c=)에만 있다. 진입 링크가 곧 필터다.
 export function Discover({ content, query }: Props) {
@@ -55,12 +58,20 @@ export function Discover({ content, query }: Props) {
   const pairName = (v: PlaceView) =>
     v.take?.pairWith ? content.places.find((p) => p.id === v.take!.pairWith)?.name.ko : undefined;
 
-  const list = (items: PlaceView[]) => (
+  // 배너는 다섯 번째 카드 뒤에 한 번만 — 새 소식이 다섯 곳 이상이면 거기, 아니면 편집 추천에 (토스 채널만, components/AdBanner.tsx).
+  const list = (items: PlaceView[], withAd = false) => (
     <ul className="place-list">
-      {items.map((v) => (
-        <li key={v.place.id}>
-          <PlaceCard view={v} today={today} trip={trip} pairName={pairName(v)} />
-        </li>
+      {items.map((v, i) => (
+        <Fragment key={v.place.id}>
+          <li>
+            <PlaceCard view={v} today={today} trip={trip} pairName={pairName(v)} />
+          </li>
+          {withAd && i === AD_AFTER - 1 && (
+            <li>
+              <AdBanner slot="discover" />
+            </li>
+          )}
+        </Fragment>
       ))}
     </ul>
   );
@@ -136,7 +147,7 @@ export function Discover({ content, query }: Props) {
               {trip ? '여행 기간 중 새 소식' : '지금 새 소식'}
               <small>{fresh.length}곳</small>
             </h2>
-            {list(fresh)}
+            {list(fresh, fresh.length >= AD_AFTER)}
           </>
         )}
 
@@ -145,7 +156,7 @@ export function Discover({ content, query }: Props) {
             <h2 className="list-header">
               편집 추천<small>{editorial.length}곳</small>
             </h2>
-            {list(editorial)}
+            {list(editorial, fresh.length < AD_AFTER)}
           </>
         )}
       </section>
