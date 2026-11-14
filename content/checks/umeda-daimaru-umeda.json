@@ -1,0 +1,18 @@
+{
+  "placeId": "umeda-daimaru-umeda",
+  "checkedAt": "2026-11-14",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-30",
+  "uncertain": [
+    "다이마루 우메다점 공식 사이트(11/14)엔 개점 게시 없음 — 운영사(大丸松坂屋百貨店) 보도자료 기준",
+    "지하 1층 영업시간은 따로 없고 전관 10:00~20:00만 게시됨",
+    "La Maison du R OSAKA 바스크 치즈케이크 가격은 보도자료에 없음"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000004032.000025003.html",
+    "https://www.daimaru.co.jp/umedamise/",
+    "https://www.daimaru.co.jp/umedamise/hours.html",
+    "https://www.daimaru.co.jp/umedamise/floor/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}
