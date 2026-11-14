@@ -50,7 +50,7 @@
 
 - [ ] 실제 iPhone Safari·Android Chrome에서 한 손가락 이동, 두 손가락 확대, 카드 옆으로 넘기기.
 - [ ] 실제 위치 권한 창(허용·거부)과 현장 위치.
-- [ ] 앱인토스 샌드박스: `tiles.openfreemap.org` 타일·글꼴 로딩, WebGL, `navigator.geolocation`(안 되면 `lib/channel.ts`의 `getPosition`을 SDK로), 바깥 링크 열기.
+- [ ] 앱인토스 샌드박스: `tiles.openfreemap.org` 타일·글꼴 로딩, WebGL, SDK 위치(`Device.getLocation`, 권한 창 허용·거부), 바깥 링크 열기(`Device.openURL`).
 - [ ] 미리보기 카드가 지도 출처 표시를 덮지 않는지.
 
 ## 6. 하지 않는 것

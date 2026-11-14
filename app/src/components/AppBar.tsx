@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
-import { SHOW_WORDMARK_ICON } from '../lib/channel';
+import { SHOW_IN_APP_BACK, SHOW_WORDMARK_ICON } from '../lib/channel';
 import { goBack } from '../lib/router';
 import { Icon } from './Icon';
 
 // SEED App Bar. 뒤로 가기는 앱 안에서 온 경우 history.back, 링크로 바로 들어온 경우 발견으로.
-export function AppBar({ title, back, right }: { title?: ReactNode; back?: boolean; right?: ReactNode }) {
+// 앱인토스는 토스 상단 바의 뒤로 가기를 쓰므로 화면 안 버튼을 그리지 않는다 (lib/channel.ts setupChannel).
+export function AppBar({ title, back: wantBack, right }: { title?: ReactNode; back?: boolean; right?: ReactNode }) {
+  const back = wantBack && SHOW_IN_APP_BACK;
   return (
     <header className={`app-bar${back ? ' with-back' : ''}`}>
       {back && (

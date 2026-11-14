@@ -29,9 +29,9 @@ const POSTHOG_KEY: string = 'phc_qxHLfFwvHdAHgu6fAc74JLtJUMFbp2icRhydhQYEyBf5';
 const POSTHOG_HOST = 'https://us.i.posthog.com';
 const ANON_ID = 'tsugi:aid';
 
-// 통계를 실제로 보내는 채널인지. 설정의 「이용 통계」 항목을 보일지 정한다.
-// TODO(D8): 토스는 앱인토스 SDK 이벤트로 연결.
-export const ANALYTICS_ENABLED = CHANNEL === 'web' && POSTHOG_KEY !== '';
+// 통계를 실제로 보내는지. 설정의 「이용 통계」 항목을 보일지 정한다.
+// 웹·토스 모두 같은 PostHog 프로젝트로 보내고 channel 속성으로 나눈다. 토스 SDK 분석(Analytics.log)은 쓰지 않는다.
+export const ANALYTICS_ENABLED = POSTHOG_KEY !== '';
 
 // 기기에서 만든 무작위 ID. 이름·연락처와 이어지지 않는다. 저장이 막혀 있으면 이번 방문에만 쓴다.
 let anonId: string | null = null;
