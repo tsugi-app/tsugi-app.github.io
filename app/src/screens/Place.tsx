@@ -4,7 +4,7 @@ import { Icon } from '../components/Icon';
 import { cardTypeOf, dday, SaveButton, Thumb, typeVars } from '../components/PlaceParts';
 import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
-import { googleMapsUrl, openExternal, sharePageUrl, shareOrCopy } from '../lib/channel';
+import { googleMapsUrl, openExternal, sharePlace } from '../lib/channel';
 import { type PlaceView, viewOf } from '../lib/content';
 import { daysLeft, formatDate, isUpdateActive, needsRecheck, todayTokyo } from '../lib/dates';
 import { hrefTo } from '../lib/router';
@@ -57,7 +57,7 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
   const pair = take?.pairWith ? content.places.find((p) => p.id === take.pairWith) : undefined;
 
   const share = async () => {
-    showSnackbar(await shareOrCopy(sharePageUrl(`/p/${place.id}/`), `${place.name.ko} — 츠기`));
+    showSnackbar(await sharePlace(place.id, `${place.name.ko} — 츠기`));
   };
 
   const status = (u: Update) => {

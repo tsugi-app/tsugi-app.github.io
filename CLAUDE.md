@@ -19,11 +19,11 @@
 
 ## 하지 않는 것
 - 백엔드 서버, DB, 계정, 알림을 추가하지 않는다. 저장은 `lib/storage.ts`의 localStorage뿐이다. 사파리가 7일 미방문 시 지울 수 있어서, 저장 목록은 `#/saved?keep=…` 보관 링크(`lib/savedLink.ts`)로 옮길 수 있게 한다.
-- 라이브러리를 늘리지 않는다. 허용: react, react-dom, vite, typescript, vitest. 지도는 maplibre-gl만(OpenFreeMap 타일, 2026-11-09 leaflet에서 교체 — 사용자 결정). 지도 서비스는 상업 이용 무료·한도 없음인 곳만 쓴다(docs/MAP_PLAN.md).
+- 라이브러리를 늘리지 않는다. 허용: react, react-dom, vite, typescript, vitest, `@apps-in-toss/web-framework`(앱인토스 SDK, 버전 고정 — 2026-11-14 사용자 결정. `lib/channel.ts`에서만 동적 import로 부르고 웹 번들에는 실리지 않는다). 지도는 maplibre-gl만(OpenFreeMap 타일, 2026-11-09 leaflet에서 교체 — 사용자 결정). 지도 서비스는 상업 이용 무료·한도 없음인 곳만 쓴다(docs/MAP_PLAN.md).
 - 콘텐츠의 날짜·가격·예약 조건을 출처 없이 채우지 않는다. 모르면 비우고 `checks/*.json`의 `uncertain`에 적는다.
 - 컴포넌트에 색 코드를 직접 쓰지 않는다. 색·글꼴·간격·모서리는 `app/src/styles/tokens.css`에서만, 컴포넌트는 `--color-*` 시맨틱 토큰만 쓴다. 아이콘은 `components/Icon.tsx`의 인라인 SVG.
 - 분석 호출은 `lib/analytics.ts`의 `track()`을 통해서만. 웹은 PostHog Cloud 수집 API에 직접 POST한다(SDK 없음, 쿠키 없음). 이벤트·속성이나 기기 저장 항목을 바꾸면 `screens/Privacy.tsx`(`#/privacy`)의 처리방침과 시행일도 같이 고친다. 채널 분기는 `lib/channel.ts`와 `lib/analytics.ts` 두 곳에서만.
-- 다크 모드는 웹만. 기본은 기기 설정을 따르고, 설정 화면(`#/settings`)에서 시스템·라이트·다크를 고를 수 있다(`lib/storage.ts`의 `tsugi:theme`). 앱인토스는 다크 모드를 지원하지 않아 라이트로 고정하고 설정 버튼도 숨긴다(`lib/channel.ts`의 `SUPPORTS_THEME`·`applyColorMode`). 다크 색 값은 `tokens.css`의 `[data-theme='dark']` 블록에만 쓴다.
+- 다크 모드는 웹만. 기본은 기기 설정을 따르고, 설정 화면(`#/settings`)에서 시스템·라이트·다크를 고를 수 있다(`lib/storage.ts`의 `tsugi:theme`). 앱인토스는 다크 모드를 지원하지 않아 라이트로 고정하고 설정의 테마 항목을 숨긴다(`lib/channel.ts`의 `SUPPORTS_THEME`·`applyColorMode`). 다크 색 값은 `tokens.css`의 `[data-theme='dark']` 블록에만 쓴다.
 
 ## 검사
 모든 PR은 `cd app && npm run validate && npm test && npm run build`와 `node --test scripts/*.test.mjs`가 통과해야 한다. 단위 테스트는 날짜 필터·만료·저장(보관 링크 포함) 로직과 레이더·감시 판정 규칙에만 쓴다.
@@ -49,4 +49,11 @@
 - 커밋은 사용자 본인의 git 계정(erabi-pecu)으로 한다. GitHub 예약 실행은 워크플로의 cron 줄을 마지막으로 수정한 사용자 기준으로 돌기 때문에, 리포 권한이 없는 계정(예: `noreply@anthropic.com` → `claude` 계정)으로 cron 줄을 커밋하면 레이더·재빌드가 멈춘다. `git config user.email`이 `306176449+erabi-pecu@users.noreply.github.com`인지 확인하고 시작한다.
 - 남은 작업 목록은 GitHub 이슈 `next` 라벨에 있다. 시작할 때 `gh issue list --label next`로 확인한다.
 
-작업 브랜치 → PR → CI 통과 → main 병합. main 병합이 곧 웹 배포다. 앱인토스는 `VITE_CHANNEL=toss npm run build`로 만든 번들을 콘솔에 수동 업로드한다.
+작업 브랜치 → PR → CI 통과 → main 병합. main 병합이 곧 웹 배포다. 앱인토스는 `cd app && npm run build:toss`로 만든 `app/tsugi.ait`를 콘솔에 수동 업로드한다. 카드 콘텐츠는 실행 때 Pages의 `content.json`을 받아 쓰므로 콘텐츠만 바뀌면 다시 올리지 않아도 된다.
+
+## 앱인토스 (비게임 출시 체크리스트)
+- 설정은 `app/apps-in-toss.config.ts`(`appName: tsugi`, 위치 권한). 토스 분기는 `lib/channel.ts`의 `setupChannel`·`openExternal`·`getPosition`·`sharePlace`·`SHOW_IN_APP_BACK`·`SUPPORTS_KEEP_LINK`.
+- 화면 안 뒤로 버튼은 웹만. 토스는 상단 바·시스템 뒤로가기(`backEvent`)를 받아 한 단계 뒤로, 발견 화면이면 미니앱을 닫는다.
+- 바깥 링크는 미니앱 안에서 띄우지 않고 `Device.openURL`로 기기 브라우저에 연다. `<a target="_blank">`를 새로 쓰지 않는다.
+- 공유는 `intoss://tsugi?p=<placeId>` 공유 링크. 토스 안에서 웹 주소(보관 링크 등)로 내보내지 않는다(자사 서비스 이동 유도 금지).
+- 진입 직후 바텀시트·권한 요청을 띄우지 않는다. 위치는 버튼을 누른 뒤에만 묻는다.

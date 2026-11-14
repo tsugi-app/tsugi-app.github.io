@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "npm run content && vite",
     "build": "npm run content && tsc --noEmit && vite build && node ../scripts/build-share.mjs",
+    "build:toss": "VITE_CHANNEL=toss npm run build && ait build",
     "preview": "vite preview",
     "content": "node ../scripts/build-content.mjs",
     "validate": "node ../scripts/validate.mjs",
@@ -13,6 +14,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@apps-in-toss/web-framework": "3.9.0",
     "maplibre-gl": "4.7.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

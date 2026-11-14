@@ -5,7 +5,7 @@ import { Icon } from '../components/Icon';
 import { cardTypeOf, Thumb } from '../components/PlaceParts';
 import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
-import { googleMapsUrl, openExternal, shareOrCopy, shareUrl } from '../lib/channel';
+import { googleMapsUrl, openExternal, shareOrCopy, shareUrl, SUPPORTS_KEEP_LINK } from '../lib/channel';
 import { viewOf } from '../lib/content';
 import { needsRecheck, todayTokyo } from '../lib/dates';
 import { go, hrefTo } from '../lib/router';
@@ -106,18 +106,20 @@ export function Saved({ content, query }: Props) {
         </div>
       ) : (
         <>
-          <div className="callout">
-            <Icon name="info" size={20} />
-            <div className="callout-body">
-              <p>저장은 이 기기 브라우저에만 남아요. 아이폰 사파리는 7일 넘게 열지 않으면 지울 수 있으니 링크로 보관해 두세요.</p>
-              <div className="callout-actions">
-                <button className="btn btn--sm btn--neutral-outline" onClick={keepLink}>
-                  <Icon name="link" size={16} />
-                  링크로 보관하기
-                </button>
+          {SUPPORTS_KEEP_LINK && (
+            <div className="callout">
+              <Icon name="info" size={20} />
+              <div className="callout-body">
+                <p>저장은 이 기기 브라우저에만 남아요. 아이폰 사파리는 7일 넘게 열지 않으면 지울 수 있으니 링크로 보관해 두세요.</p>
+                <div className="callout-actions">
+                  <button className="btn btn--sm btn--neutral-outline" onClick={keepLink}>
+                    <Icon name="link" size={16} />
+                    링크로 보관하기
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          )}
           <SavedList content={content} saved={saved} today={today} />
         </>
       )}

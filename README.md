@@ -3,7 +3,7 @@
 **다음 일본 여행에 넣을 한 곳.** 유명한 곳은 이미 아는 사람에게, 이번 여행에 추가할 이유가 있는 한 곳을 고르게 돕는 서비스.
 
 - 웹: https://tsugi-app.github.io
-- 앱인토스: `intoss://tsugi` (준비 중)
+- 앱인토스: `intoss://tsugi` (출시 준비 중)
 
 ## 개발
 
@@ -62,7 +62,7 @@ node --test scripts/radar.test.mjs     # 판정 규칙 테스트
 ## 배포
 
 - `main`에 병합되면 GitHub Actions가 Pages에 배포한다. 매일 03:00 KST에도 재빌드한다.
-- 앱인토스는 `VITE_CHANNEL=toss npm run build`로 만든 `.ait` 번들을 콘솔에 올린다 (SDK 연동은 D8 예정).
+- 앱인토스는 `cd app && npm run build:toss`로 만든 `app/tsugi.ait`를 콘솔에 올린다. 카드만 바뀐 경우는 다시 올리지 않아도 된다(실행 때 Pages의 `content.json`을 받는다).
 
 ## 라이선스
 

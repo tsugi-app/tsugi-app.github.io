@@ -7,7 +7,6 @@ import { TripDates } from '../components/TripDates';
 import { track } from '../lib/analytics';
 import { areaFilter, type PlaceView, viewOf } from '../lib/content';
 import { todayTokyo, type Trip } from '../lib/dates';
-import { SUPPORTS_THEME } from '../lib/channel';
 import { go, hrefTo } from '../lib/router';
 import { CITY_LABEL, type Content, HOOD_LABEL, type Tag, TAG_LABEL } from '../lib/types';
 
@@ -70,11 +69,9 @@ export function Discover({ content, query }: Props) {
     <>
       <AppBar
         right={
-          SUPPORTS_THEME && (
-            <a className="icon-btn" href={hrefTo('/settings')} aria-label="설정">
-              <Icon name="settings" />
-            </a>
-          )
+          <a className="icon-btn" href={hrefTo('/settings')} aria-label="설정">
+            <Icon name="settings" />
+          </a>
         }
       />
       <section>

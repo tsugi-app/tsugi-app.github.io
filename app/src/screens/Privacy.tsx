@@ -1,9 +1,10 @@
 import { AppBar } from '../components/AppBar';
+import { openExternal } from '../lib/channel';
 import { hrefTo } from '../lib/router';
 
 // 개인정보 처리방침. 수집 항목은 lib/analytics.ts의 이벤트·속성과, 기기 저장 항목은 lib/storage.ts와 맞춘다.
 // 둘 중 하나를 바꾸면 이 글과 시행일을 같이 고친다.
-const EFFECTIVE = '2026.11.10';
+const EFFECTIVE = '2026.11.21';
 const CONTACT_URL = 'https://github.com/tsugi-app/tsugi-app.github.io/issues';
 
 export function Privacy() {
@@ -63,7 +64,8 @@ export function Privacy() {
         <h2>5. 기기에만 두는 정보</h2>
         <p>
           저장한 곳과 방문 예정일, 화면 테마, 이용 통계 설정, 무작위 식별값은 이 기기의 브라우저 저장 공간에 있어요. 쿠키는
-          쓰지 않아요. 브라우저에서 사이트 데이터를 지우면 모두 사라져요. 내 위치는 지도에서 거리를 보여 줄 때만 쓰고
+          쓰지 않아요. 브라우저에서 사이트 데이터를 지우면 모두 사라져요. 토스 앱 안에서 쓸 때는 토스 앱의 츠기 저장 공간에
+          있고, 토스 상단 바의 더보기에서 츠기 데이터를 지우면 사라져요. 내 위치는 지도에서 거리를 보여 줄 때만 쓰고
           저장하거나 보내지 않아요.
         </p>
 
@@ -71,6 +73,7 @@ export function Privacy() {
         <p>아래 서비스에서 파일을 받아 올 때 IP 주소 같은 접속 정보가 그 서비스에 전달돼요.</p>
         <ul>
           <li>GitHub Pages — 츠기 화면과 콘텐츠</li>
+          <li>토스(주식회사 비바리퍼블리카) — 토스 앱 안에서 츠기 화면을 띄울 때</li>
           <li>OpenFreeMap — 지도</li>
           <li>jsDelivr — 글꼴</li>
         </ul>
@@ -87,7 +90,14 @@ export function Privacy() {
           개인정보 보호책임자: 츠기 운영자
           <br />
           문의:{' '}
-          <a className="link" href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
+          <a
+            className="link"
+            href={CONTACT_URL}
+            onClick={(e) => {
+              e.preventDefault();
+              openExternal(CONTACT_URL);
+            }}
+          >
             GitHub 이슈
           </a>
         </p>
