@@ -1,0 +1,17 @@
+{
+  "placeId": "namba-yori-parfait-bar",
+  "checkedAt": "2026-11-14",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-21",
+  "uncertain": [
+    "가게 공식 사이트 없음 — 운영사(INSOUホールディングス) 보도자료와 공식 인스타그램 기준. 인스타그램엔 주소 없이 「道頓堀」만 있음",
+    "보도자료 개요표는 「YORI PARFFET ＆ BAR」, 본문·인스타그램은 「PARFAIT」 — 본문 표기를 따름",
+    "파르페 6종의 개별 가격은 보도자료에 없음",
+    "주소(宗右衛門町)는 도톤보리강 북쪽 — 보도자료가 「道頓堀」로 소개해 난바 동네로 둠"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000008.000143294.html",
+    "https://www.instagram.com/yori_parfait_bar",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

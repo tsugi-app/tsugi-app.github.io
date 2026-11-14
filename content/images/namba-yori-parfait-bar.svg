@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>namba-yori-parfait-bar</title>
+<desc>
+모티프: 굽 달린 파르페 잔 하나, 층층이 쌓인 속과 위의 크림, 열매 한 알
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000008.000143294.html 파르페 전문점(take.why), category food
+피한 것: 타코야키·흑우 등 특정 메뉴, 도톤보리 간판·네온, 글자
+제작: Claude Opus 5.5 · 2026-11-14
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<defs><clipPath id="bowl"><path d="M400 280 L800 280 L690 570 L510 570 Z"/></clipPath></defs>
+<g clip-path="url(#bowl)">
+<rect x="380" y="270" width="440" height="310" fill="#c3d1ec"/>
+<rect x="380" y="360" width="440" height="80" fill="#5873b5"/>
+<rect x="380" y="440" width="440" height="60" fill="#faf8f4"/>
+<rect x="380" y="500" width="440" height="80" fill="#233c74"/>
+</g>
+<path d="M400 280 L800 280 L690 570 L510 570 Z" fill="none" stroke="#233c74" stroke-width="22" stroke-linejoin="round"/>
+<g fill="#faf8f4" stroke="#233c74" stroke-width="18"><circle cx="470" cy="262" r="58"/><circle cx="600" cy="240" r="70"/><circle cx="730" cy="262" r="58"/></g>
+<circle cx="640" cy="176" r="38" fill="#c99a2e"/>
+<rect x="580" y="570" width="40" height="130" fill="#233c74"/>
+<ellipse cx="600" cy="712" rx="150" ry="30" fill="#233c74"/>
+<rect x="150" y="740" width="900" height="24" fill="#c3d1ec"/>
+</svg>

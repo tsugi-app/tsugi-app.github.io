@@ -1,9 +1,11 @@
 {
   "placeId": "shibuya-all-day-place",
-  "checkedAt": "2026-11-12",
+  "checkedAt": "2026-11-14",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-13",
-  "uncertain": [],
+  "recheckBy": "2026-11-15",
+  "uncertain": [
+    "호텔 공식 페이지(11/14)엔 11/13~15 팝업 날짜만 있고 시간·층은 보도자료 기준"
+  ],
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000000002.000194227.html",
     "https://msearch.gsi.go.jp/address-search/AddressSearch",

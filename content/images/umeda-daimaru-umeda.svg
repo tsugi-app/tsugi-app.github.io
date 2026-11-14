@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>umeda-daimaru-umeda</title>
+<desc>
+모티프: 리본을 묶은 과자 선물 상자 하나
+근거: 공식 층 안내 https://www.daimaru.co.jp/umedamise/floor/ 지하 1층 「和菓子・洋菓子」, take.forWhom 과자 선물
+피한 것: 백화점 로고·포장지 무늬, 입점 가게의 상품·패키지, 건물 외관, 글자
+제작: Claude Opus 5.5 · 2026-11-14
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<rect x="340" y="400" width="520" height="320" fill="#233c74"/>
+<rect x="310" y="340" width="580" height="90" fill="#5873b5" stroke="#233c74" stroke-width="18" stroke-linejoin="round"/>
+<rect x="340" y="530" width="520" height="50" fill="#c3d1ec"/>
+<rect x="572" y="340" width="56" height="380" fill="#c3d1ec"/>
+<ellipse cx="525" cy="295" rx="85" ry="48" fill="none" stroke="#c99a2e" stroke-width="30"/>
+<ellipse cx="675" cy="295" rx="85" ry="48" fill="none" stroke="#c99a2e" stroke-width="30"/>
+<rect x="570" y="268" width="60" height="60" rx="10" fill="#c99a2e"/>
+<rect x="150" y="740" width="900" height="24" fill="#c3d1ec"/>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "id": "namba-yori-parfait-bar",
+  "name": {
+    "ko": "요리 파르페 앤 바",
+    "ja": "YORI PARFAIT & BAR"
+  },
+  "hood": "namba",
+  "category": "food",
+  "tags": [
+    "food"
+  ],
+  "geo": {
+    "lat": 34.66942,
+    "lng": 135.50201
+  },
+  "address": "大阪府大阪市中央区宗右衛門町7-8 無双ビル1F",
+  "official": "https://www.instagram.com/yori_parfait_bar",
+  "image": {
+    "file": "namba-yori-parfait-bar.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

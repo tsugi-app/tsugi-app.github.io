@@ -1,0 +1,23 @@
+{
+  "id": "umeda-daimaru-umeda",
+  "name": {
+    "ko": "다이마루 우메다점",
+    "ja": "大丸梅田店"
+  },
+  "hood": "umeda",
+  "category": "mall",
+  "tags": [
+    "food"
+  ],
+  "geo": {
+    "lat": 34.70188,
+    "lng": 135.49634
+  },
+  "address": "大阪府大阪市北区梅田3-1-1",
+  "official": "https://www.daimaru.co.jp/umedamise/",
+  "image": {
+    "file": "umeda-daimaru-umeda.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
