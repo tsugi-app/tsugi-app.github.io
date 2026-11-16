@@ -1,0 +1,16 @@
+{
+  "placeId": "shibuya-zerobase",
+  "checkedAt": "2026-11-17",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-20",
+  "uncertain": [
+    "회장(ZeroBase渋谷) 공식 페이지를 찾지 못하고 SUBU 10주년 사이트도 본문을 읽지 못해 대조 못 함 — 브랜드 운영사(イデアポート) 보도자료 기준",
+    "입장료·휴무일·층 표기 없음",
+    "한정 아이템 가격 표기 없음(「会場で確かめてください」)"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000078.000150214.html",
+    "https://subu2016-10th.com/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

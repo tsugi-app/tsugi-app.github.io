@@ -1,0 +1,24 @@
+{
+  "id": "shibuya-zerobase",
+  "name": {
+    "ko": "제로베이스 시부야",
+    "ja": "ZeroBase渋谷"
+  },
+  "hood": "shibuya",
+  "category": "goods",
+  "tags": [
+    "goods",
+    "design"
+  ],
+  "geo": {
+    "lat": 35.65936,
+    "lng": 139.6994
+  },
+  "address": "東京都渋谷区道玄坂2-5-8",
+  "official": null,
+  "image": {
+    "file": "shibuya-zerobase.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
