@@ -1,9 +1,11 @@
 {
   "placeId": "omotesando-hills",
-  "checkedAt": "2026-11-10",
+  "checkedAt": "2026-11-17",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-21",
-  "uncertain": [],
+  "recheckBy": "2026-11-26",
+  "uncertain": [
+    "표참도 힐즈 이벤트 페이지 홍보 문구는 입장 19시까지(29일 16시)로 표 안 「폐점 60분 전」과 같지만, 29일 종료 시간은 표의 17시를 따름"
+  ],
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000004588.000018505.html",
     "https://www.omotesandohills.com/events/event/2026/010718.html",

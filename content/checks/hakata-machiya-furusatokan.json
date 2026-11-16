@@ -1,18 +1,21 @@
 {
   "placeId": "hakata-machiya-furusatokan",
-  "checkedAt": "2026-11-12",
+  "checkedAt": "2026-11-17",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-20",
+  "recheckBy": "2026-12-01",
   "uncertain": [
     "hakatakara 카페·판매 코너 영업시간",
     "무료 동네 투어 시간·집합 장소",
-    "収蔵品展 전시 내용"
+    "収蔵品展 전시 내용",
+    "11/23 収蔵品展 뒤 다음 전시는 공식 일정에 아직 없음(11/17 기준)",
+    "연말연시 휴관 공식 페이지에 없음"
   ],
   "sources": [
     "https://hakatamachiya.com/",
     "https://hakatamachiya.com/news/260913/",
     "https://hakatamachiya.com/access/",
     "https://hakatamachiya.com/facility/",
-    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+    "https://msearch.gsi.go.jp/address-search/AddressSearch",
+    "https://hakatamachiya.com/schedule/"
   ]
 }
