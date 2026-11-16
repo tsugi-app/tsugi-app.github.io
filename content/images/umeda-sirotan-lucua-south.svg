@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>umeda-sirotan-lucua-south</title>
+<desc>
+모티프: 부드러운 물결 무늬가 든 토트백 하나와 거품 한 알
+근거: update.note 오사카 한정 디자인 토트백, place.category goods(가게가 실제로 파는 물건 하나), 매장 이름 「ふんわり」
+피한 것: 캐릭터 시로탄과 친구들(상표·캐릭터), 타코야키·믹스주스 디자인(기간 한정 상품), 얼굴
+제작: Claude Opus 5.5 · 2026-11-17
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<path d="M486 372 L486 300 Q486 222 566 222 L634 222 Q714 222 714 300 L714 372" fill="none" stroke="#233c74" stroke-width="30" stroke-linecap="round"/>
+<rect x="376" y="356" width="448" height="390" rx="18" fill="#233c74"/>
+<path d="M376 610 Q432 566 488 610 T600 610 T712 610 T824 610 L824 680 L376 680 Z" fill="#c3d1ec"/>
+<path d="M376 680 Q432 646 488 680 T600 680 T712 680 T824 680 L824 712 L376 712 Z" fill="#5873b5"/>
+<circle cx="700" cy="462" r="30" fill="#c99a2e"/>
+<circle cx="640" cy="512" r="18" fill="#faf8f4"/>
+</svg>

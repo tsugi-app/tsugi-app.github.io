@@ -1,0 +1,15 @@
+{
+  "placeId": "shibuya-parco-yen-town-market",
+  "checkedAt": "2026-11-17",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-19",
+  "uncertain": [
+    "파르코 매장 페이지(11/17)엔 「YEN TOWN MARKET® TOKYO」로만 있고 리뉴얼 소식·층·매장 영업시간이 없음 — 운영사(STARBASE) 보도자료 기준"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000001842.000011969.html",
+    "https://shibuya.parco.jp/shop/detail/?cd=031579",
+    "https://shibuya.parco.jp/shop/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

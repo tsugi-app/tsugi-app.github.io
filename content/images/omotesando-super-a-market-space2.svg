@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>omotesando-super-a-market-space2</title>
+<desc>
+모티프: 낮은 나무 진열대 위에 개어 둔 천과 그릇 하나
+근거: update.note 생활용품·작가 도자기·CABaN 의류, take.why 「생활용품 팝업」, place.category goods
+피한 것: 리스·오너먼트(기간 한정 크리스마스 상품), 로고·브랜드 포장, 건물 외관
+제작: Claude Opus 5.5 · 2026-11-17
+</desc>
+<rect width="1200" height="900" fill="#ece5da"/>
+<line x1="344" y1="500" x2="296" y2="752" stroke="#233c74" stroke-width="26" stroke-linecap="round"/>
+<line x1="344" y1="500" x2="392" y2="752" stroke="#233c74" stroke-width="26" stroke-linecap="round"/>
+<line x1="856" y1="500" x2="808" y2="752" stroke="#233c74" stroke-width="26" stroke-linecap="round"/>
+<line x1="856" y1="500" x2="904" y2="752" stroke="#233c74" stroke-width="26" stroke-linecap="round"/>
+<rect x="250" y="470" width="700" height="44" rx="6" fill="#233c74"/>
+<rect x="380" y="380" width="280" height="90" rx="8" fill="#5873b5"/>
+<rect x="400" y="314" width="240" height="66" rx="8" fill="#c3d1ec"/>
+<rect x="420" y="290" width="200" height="28" rx="6" fill="#faf8f4"/>
+<path d="M712 384 L872 384 Q864 470 792 470 Q720 470 712 384 Z" fill="#c99a2e"/>
+</svg>

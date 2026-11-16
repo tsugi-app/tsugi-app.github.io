@@ -1,0 +1,16 @@
+{
+  "placeId": "umeda-sirotan-lucua-south",
+  "checkedAt": "2026-11-17",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-23",
+  "uncertain": [
+    "휴무일 표기 없음",
+    "루쿠아 공식 페이지엔 매장 단위 정리권 안내 없이 「혼잡 시 입장 제한」만 있음 — 정리권은 운영사(クリエイティブヨーコ) 보도자료 기준"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000167.000045781.html",
+    "https://www.lucua.jp/special/south-open/",
+    "https://www.lucua.jp/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

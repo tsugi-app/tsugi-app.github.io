@@ -1,0 +1,23 @@
+{
+  "id": "shibuya-parco-yen-town-market",
+  "name": {
+    "ko": "옌 타운 마켓 시부야",
+    "ja": "YEN TOWN MARKET 渋谷"
+  },
+  "hood": "shibuya",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.66221,
+    "lng": 139.6992
+  },
+  "address": "東京都渋谷区宇田川町15-1 渋谷PARCO 5F",
+  "official": "https://shibuya.parco.jp/shop/detail/?cd=031579",
+  "image": {
+    "file": "shibuya-parco-yen-town-market.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

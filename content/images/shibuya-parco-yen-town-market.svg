@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-parco-yen-town-market</title>
+<desc>
+모티프: 옷걸이에 걸린 누빔 점퍼 한 벌
+근거: update.note 오리지널 상품·다운 캡슐(다운재킷), take.forWhom 「오리지널 옷과 잡화」, place.category goods
+피한 것: 벚꽃·「大変よくできました」 도장 모티프(가게 상징이자 일본 일반 상징), 로고·앨범 아트·포스터(상표·실존 작품)
+제작: Claude Opus 5.5 · 2026-11-17
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<path d="M600 214 L600 182 Q600 146 634 146 Q666 146 666 176" fill="none" stroke="#233c74" stroke-width="20" stroke-linecap="round"/>
+<path d="M600 210 L420 292 L780 292 Z" fill="none" stroke="#233c74" stroke-width="20" stroke-linejoin="round"/>
+<path d="M400 330 L300 384 L282 704 L362 704 L400 470 Z" fill="#5873b5"/>
+<path d="M800 330 L900 384 L918 704 L838 704 L800 470 Z" fill="#5873b5"/>
+<path d="M432 292 L768 292 L800 332 L800 742 L400 742 L400 332 Z" fill="#233c74" stroke-linejoin="round"/>
+<line x1="400" y1="430" x2="800" y2="430" stroke="#5873b5" stroke-width="18"/>
+<line x1="400" y1="530" x2="800" y2="530" stroke="#5873b5" stroke-width="18"/>
+<line x1="400" y1="630" x2="800" y2="630" stroke="#5873b5" stroke-width="18"/>
+<line x1="296" y1="520" x2="398" y2="520" stroke="#233c74" stroke-width="18"/>
+<line x1="802" y1="520" x2="904" y2="520" stroke="#233c74" stroke-width="18"/>
+<path d="M536 292 L600 366 L664 292 Z" fill="#faf8f4"/>
+<line x1="600" y1="370" x2="600" y2="742" stroke="#c99a2e" stroke-width="18"/>
+</svg>
