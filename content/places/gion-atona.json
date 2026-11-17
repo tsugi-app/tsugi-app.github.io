@@ -1,0 +1,23 @@
+{
+  "id": "gion-atona",
+  "name": {
+    "ko": "갓포 아토나·바 아자",
+    "ja": "割烹 吾汝・吾座"
+  },
+  "hood": "gion",
+  "category": "food",
+  "tags": [
+    "food"
+  ],
+  "geo": {
+    "lat": 35.00631,
+    "lng": 135.77699
+  },
+  "address": "京都府京都市東山区梅本町249-1",
+  "official": "https://www.atona.co/ja/gion-kyoto",
+  "image": {
+    "file": "gion-atona.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

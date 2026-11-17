@@ -1,0 +1,17 @@
+{
+  "placeId": "gion-atona",
+  "checkedAt": "2026-11-17",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-10",
+  "uncertain": [
+    "공식 사이트엔 주소·예약 링크·콘셉트만 있고 개업일·영업시간·가격은 운영사(Atona) 보도자료 기준",
+    "좌석 수·셰프 이름 표기 없음"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000001.000192463.html",
+    "https://www.atona.co/ja/gion-kyoto",
+    "https://www.tablecheck.com/shops/kappo-atona/reserve",
+    "https://www.tablecheck.com/shops/bar-aza/reserve",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

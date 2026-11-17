@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>gion-atona</title>
+<desc>
+모티프: 카운터 위에 놓인 뚜껑 덮은 국그릇 하나와 김 한 줄기
+근거: take.why 「오마카세를 카운터에서」, update.note 갓포 코스, 보도자료 https://prtimes.jp/main/html/rd/p/000000001.000192463.html 오픈 키친 카운터, place.category food
+피한 것: 실제 요리·메뉴 재현(보도자료에 품목 없음), 시라카와 거리 풍경·건물 외관, 로고
+제작: Claude Opus 5.5 · 2026-11-17
+</desc>
+<rect width="1200" height="900" fill="#e8e4d8"/>
+<rect x="150" y="600" width="900" height="56" fill="#5873b5"/>
+<rect x="150" y="656" width="900" height="108" fill="#c3d1ec"/>
+<path d="M600 180 Q560 230 600 280 Q640 330 600 380" fill="none" stroke="#5873b5" stroke-width="22" stroke-linecap="round"/>
+<path d="M420 470 L780 470 Q770 590 600 600 Q430 590 420 470 Z" fill="#233c74"/>
+<path d="M440 470 Q450 400 600 396 Q750 400 760 470 Z" fill="#233c74"/>
+<rect x="566" y="372" width="68" height="30" rx="8" fill="#233c74"/>
+<rect x="420" y="462" width="360" height="20" fill="#c99a2e"/>
+<rect x="540" y="590" width="120" height="14" fill="#233c74"/>
+</svg>
