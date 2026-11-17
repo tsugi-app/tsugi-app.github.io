@@ -500,6 +500,25 @@ p {
   pointer-events: auto;
 }
 
+/* ── 광고 (토스 채널 배너, components/AdBanner.tsx) ── */
+.ad-slot {
+  padding: 0 var(--space-gutter);
+}
+.ad-slot.is-shown {
+  padding: var(--x3) var(--space-gutter);
+  border-bottom: 1px solid var(--color-stroke-neutral-muted);
+}
+article > .ad-slot.is-shown {
+  border-top: 1px solid var(--color-stroke-neutral-muted);
+  border-bottom: 0;
+}
+.ad-slot-label {
+  margin: 0 0 var(--x1);
+  font-size: var(--fs-t1);
+  line-height: var(--lh-t1);
+  color: var(--color-fg-neutral-subtle);
+}
+
 /* ── Callout ─────────────────────────────── */
 .callout {
   display: flex;
