@@ -32,7 +32,7 @@
 - place마다 check(확인일)가 있어야 발행된다. 없으면 빌드 실패.
 - `limited` 소식은 `end` 필수. 종료된 소식은 클라이언트에서 자동으로 피드에서 빠진다.
 - `new`·`changed` 소식에 `end`가 없으면 시작 후 60일(`FRESH_DAYS`)까지만 새 소식이다. 그 뒤엔 take에 `evergreen: true`가 있으면 편집 추천으로 남고, 없으면 피드에서 빠진다. 계속 영업하는 가게는 `evergreen: true`.
-- Claude가 쓰고 검토한 카드는 check의 `checkedBy`를 `claude`로 둔다. 검토 전이면 `claude-draft`로 두고 병합하지 않는다. 편집자가 직접 다시 확인하면 자기 이름과 날짜로 바꾼다. 화면에는 `checkedBy`를 표시하지 않는다.
+- Claude가 쓰고 검토한 카드는 check의 `checkedBy`를 `claude`로 둔다. 검토 전이면 `claude-draft`로 두고 병합하지 않는다. 편집자가 직접 다시 확인하면 자기 이름과 날짜로 바꾼다. `checks/`(확인일·`recheckBy`·`uncertain`·`checkedBy`)는 편집자만 보는 내부 기록이다. 화면·`content.json`·공유 페이지에 싣지 않는다(`build-content.mjs`는 옛 .ait 호환용 빈 `checks: []`만 낸다). 재확인은 `recheck.yml` 이슈로만 알린다.
 - Claude 카드 검토 (병합 전에 모두 확인):
   1. update의 `start`·`end`와 장소 주소가 공식 출처에 있다. 주최 측이나 장소 운영사가 직접 낸 보도자료는 공식 출처로 본다. 장소 공식 페이지에도 게시돼 있으면 함께 대조하고, 둘이 다르면 장소 공식 페이지를 따르고 `uncertain`에 적는다. 장소 쪽에 아직 없으면 그 사실을 `uncertain`에 적는다.
   2. note·take에 쓴 가격·시간·예약 조건은 출처에 그대로 있는 값이다. 출처에 없으면 쓰지 않고 `uncertain`에 적는다.

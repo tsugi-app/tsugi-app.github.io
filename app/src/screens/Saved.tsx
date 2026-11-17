@@ -7,7 +7,7 @@ import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
 import { googleMapsUrl, openExternal, shareOrCopy, shareUrl, SUPPORTS_KEEP_LINK } from '../lib/channel';
 import { viewOf } from '../lib/content';
-import { needsRecheck, todayTokyo } from '../lib/dates';
+import { todayTokyo } from '../lib/dates';
 import { go, hrefTo } from '../lib/router';
 import { countNew, encodeKeep, parseKeep } from '../lib/savedLink';
 import { importKeep, setVisitDate, toggleSaved, useSaved } from '../lib/storage';
@@ -165,17 +165,15 @@ function SavedList({ content, saved, today }: { content: Content; saved: SavedIt
                 );
               }
               const { type, ended } = cardTypeOf(v, today);
-              const recheck = needsRecheck(v.check, today);
               return (
                 <li key={s.placeId}>
                   <div className={`place-item${ended ? ' ended' : ''}`}>
                     <a className="place-item-link" href={hrefTo(`/p/${v.place.id}`)} aria-label={`${v.place.name.ko} 자세히 보기`} />
                     <Thumb place={v.place} type={type} variant="mini" ended={ended} />
                     <div className="place-item-body">
-                      {(ended || recheck) && (
+                      {ended && (
                         <div className="badges">
-                          {ended && <span className="badge badge--neutral">종료됨</span>}
-                          {recheck && <span className="badge badge--warning">재확인 필요</span>}
+                          <span className="badge badge--neutral">종료됨</span>
                         </div>
                       )}
                       <h3 className="place-name">{v.place.name.ko}</h3>

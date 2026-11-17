@@ -6,7 +6,7 @@ import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
 import { googleMapsUrl, openExternal, sharePlace } from '../lib/channel';
 import { type PlaceView, viewOf } from '../lib/content';
-import { daysLeft, formatDate, isUpdateActive, needsRecheck, todayTokyo } from '../lib/dates';
+import { daysLeft, formatDate, isUpdateActive, todayTokyo } from '../lib/dates';
 import { hrefTo } from '../lib/router';
 import { areaLabel, type Content, HOOD_LABEL, TAG_LABEL, TYPE_LABEL, type Update } from '../lib/types';
 
@@ -15,7 +15,7 @@ interface Props {
   id: string;
 }
 
-// 상세는 기획안의 6블록 순서를 그대로 따른다. 빈 블록은 숨기지 않고 "확인 중"으로 보인다.
+// 상세는 기획안의 5블록 순서를 그대로 따른다. 빈 블록은 숨기지 않고 "확인 중"으로 보인다.
 export function Place({ content, id }: Props) {
   const view = viewOf(content, id);
   useEffect(() => {
@@ -50,7 +50,7 @@ function Block({ title, children }: { title: string; children?: ReactNode }) {
 
 function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
   const today = todayTokyo();
-  const { place, take, check } = view;
+  const { place, take } = view;
   const { type } = cardTypeOf(view, today);
   // 끝나지 않은 소식을 시작일 순으로 모두 보여 준다 (예: 지금 전시 + 다음 전시).
   const current = view.updates.filter((u) => isUpdateActive(u, today)).sort((a, b) => a.start.localeCompare(b.start));
@@ -108,7 +108,6 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
             <span className="badge" style={typeVars(type)}>
               {TYPE_LABEL[type]}
             </span>
-            {needsRecheck(check, today) && <span className="badge badge--warning">재확인 필요</span>}
             <span className="meta">
               {areaLabel(place)}
               {place.tags.map((t) => (
@@ -124,6 +123,21 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
               {place.name.ja}
               {place.name.ja && place.address && <br />}
               {place.address}
+            </p>
+          )}
+          {place.official && (
+            <p className="detail-sub">
+              <a
+                className="link"
+                href={place.official}
+                onClick={(e) => {
+                  e.preventDefault();
+                  track('source_opened', { placeId: place.id });
+                  openExternal(place.official!);
+                }}
+              >
+                공식 출처 보기
+              </a>
             </p>
           )}
         </header>
@@ -149,29 +163,6 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
               </span>
               <Icon name="forward" size={20} />
             </a>
-          )}
-        </Block>
-        <Block title="무엇을 확인했을까">
-          {check && (
-            <>
-              {check.checkedAt.replace(/-/g, '.')}에 확인했어요.
-              {check.uncertain?.length ? <p className="block-note">아직 불확실 · {check.uncertain.join(', ')}</p> : null}
-              {place.official && (
-                <p className="block-note">
-                  <a
-                    className="link"
-                    href={place.official}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      track('source_opened', { placeId: place.id });
-                      openExternal(place.official!);
-                    }}
-                  >
-                    공식 출처 보기
-                  </a>
-                </p>
-              )}
-            </>
           )}
         </Block>
       </article>

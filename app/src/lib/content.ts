@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import bundled from '../../public/content.json';
 import { CONTENT_URL } from './channel';
 import {
-  type Check,
   type City,
   type Content,
   type Hood,
@@ -38,7 +37,6 @@ export interface PlaceView {
   place: Place;
   updates: Update[];
   take?: Take;
-  check?: Check;
 }
 
 export function viewOf(c: Content, placeId: string): PlaceView | undefined {
@@ -48,7 +46,6 @@ export function viewOf(c: Content, placeId: string): PlaceView | undefined {
     place,
     updates: c.updates.filter((u) => u.placeId === placeId),
     take: c.takes.find((t) => t.placeId === placeId),
-    check: c.checks.find((k) => k.placeId === placeId),
   };
 }
 
