@@ -1,4 +1,4 @@
-import type { Check, Update } from './types';
+import type { Update } from './types';
 
 // 모든 날짜 비교는 Asia/Tokyo 기준의 YYYY-MM-DD 문자열로 한다.
 export function todayTokyo(now: Date = new Date()): string {
@@ -43,10 +43,6 @@ export function activeUpdate(updates: Update[], today: string, trip?: Trip): Upd
 
 export function isUpdateEnded(u: Update, today: string): boolean {
   return effectiveEnd(u) < today;
-}
-
-export function needsRecheck(c: Check | undefined, today: string): boolean {
-  return !!c?.recheckBy && c.recheckBy < today;
 }
 
 // 종료까지 남은 일수. end가 없으면 null.

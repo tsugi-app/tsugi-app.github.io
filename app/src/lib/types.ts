@@ -41,21 +41,11 @@ export interface Take {
   evergreen?: boolean;
 }
 
-export interface Check {
-  placeId: string;
-  checkedAt: string;
-  checkedBy: string;
-  recheckBy?: string;
-  uncertain?: string[];
-  sources?: string[];
-}
-
 export interface Content {
   builtAt: string;
   places: Place[];
   updates: Update[];
   takes: Take[];
-  checks: Check[];
 }
 
 export interface Saved {

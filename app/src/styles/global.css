@@ -296,10 +296,6 @@ p {
   color: var(--type-fg, var(--color-fg-neutral-muted));
   white-space: nowrap;
 }
-.badge--warning {
-  --type-bg: var(--color-warning-bg);
-  --type-fg: var(--color-warning-fg);
-}
 .badge--neutral {
   --type-bg: var(--color-bg-neutral-weak);
   --type-fg: var(--color-fg-neutral-muted);

@@ -1,6 +1,6 @@
 import { track } from '../lib/analytics';
 import type { PlaceView } from '../lib/content';
-import { needsRecheck, type Trip } from '../lib/dates';
+import type { Trip } from '../lib/dates';
 import { hrefTo } from '../lib/router';
 import { HOOD_LABEL } from '../lib/types';
 import { cardTypeOf, conditionText, SaveButton, Thumb, TypeBadge } from './PlaceParts';
@@ -14,7 +14,7 @@ interface Props {
 
 // 장소 리스트 아이템 — docs/DESIGN.md §2.1
 export function PlaceCard({ view, today, trip, pairName }: Props) {
-  const { place, take, check } = view;
+  const { place, take } = view;
   const { type, ended, update } = cardTypeOf(view, today, trip);
 
   return (
@@ -30,7 +30,6 @@ export function PlaceCard({ view, today, trip, pairName }: Props) {
         <div className="place-item-meta-top">
           <TypeBadge type={type} update={update} today={today} ended={ended} />
           {ended && <span className="badge badge--neutral">종료됨</span>}
-          {needsRecheck(check, today) && <span className="badge badge--warning">재확인 필요</span>}
           <span>{HOOD_LABEL[place.hood]}</span>
         </div>
         <h3 className="place-name">{place.name.ko}</h3>

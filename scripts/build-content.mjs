@@ -11,7 +11,8 @@ const content = {
   places: readDir('places').map((x) => strip(x.data)),
   updates: readDir('updates').map((x) => strip(x.data)),
   takes: readDir('takes').map((x) => strip(x.data)),
-  checks: readDir('checks').map((x) => strip(x.data)),
+  // checks/는 편집용 내부 기록이라 공개 파일에 싣지 않는다. 빈 배열은 옛 .ait(c.checks.find 호출) 호환용.
+  checks: [],
 };
 
 mkdirSync(APP_PUBLIC, { recursive: true });
