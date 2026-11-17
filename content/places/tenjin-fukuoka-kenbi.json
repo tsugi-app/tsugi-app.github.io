@@ -19,5 +19,28 @@
     "file": "tenjin-fukuoka-kenbi.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/freedomvoyage/224465375041",
+      "title": "후쿠오카 현립미술관",
+      "author": "자유항로",
+      "date": "2026-11-12"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/rudnfdkdl55/224276063884",
+      "title": "[일본 여행] 후쿠오카 현립미술관, 호빵맨의 아버지 '야나세 다카시'를 만나다",
+      "author": "소소한 인생 갤러리",
+      "date": "2026-05-06"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/thdud8578/223757934202",
+      "title": "후쿠오카 현립미술관 : 久留米かすり(쿠루메카스리) 특별전시회",
+      "author": "소이",
+      "date": "2025-02-12"
+    }
+  ]
 }

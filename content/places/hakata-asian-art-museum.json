@@ -19,5 +19,28 @@
     "file": "hakata-asian-art-museum.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/m_marigold/224479188401",
+      "title": "후쿠오카 여행 가볼만한곳 '후쿠오카 아시아 미술관'(Fukuoka Asian Art Museum)",
+      "author": "메리",
+      "date": "2026-11-16"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/soso_hoon/224408381206",
+      "title": "후쿠오카 아시아 미술관 방문기",
+      "author": "후니강",
+      "date": "2026-09-11"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/jimi7308/224388122194",
+      "title": "후쿠오카 잠시 쉴 곳 아시아 미술관",
+      "author": "디얼스윗",
+      "date": "2026-08-24"
+    }
+  ]
 }

@@ -19,5 +19,21 @@
     "file": "tenjin-manucoffee-daimyo.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/k_kang_2/224438013674",
+      "title": "[후쿠오카/텐진] 텐진 로컬 카페 마누 커피 다이묘점 manu coffee Daimyo Ten",
+      "author": "김치맛와플",
+      "date": "2026-10-11"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/projsh77/224405142235",
+      "title": "후쿠오카 카페 추천 마누커피 텐진 다이묘거리에 분위기 좋은 커피 맛집",
+      "author": "귀욤서나",
+      "date": "2026-09-08"
+    }
+  ]
 }

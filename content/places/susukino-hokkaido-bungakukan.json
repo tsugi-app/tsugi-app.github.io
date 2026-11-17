@@ -19,5 +19,14 @@
     "file": "susukino-hokkaido-bungakukan.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/hrsmomjs/223973654356",
+      "title": "(삿포로)나카지마공원과 홋카이도립 문학관",
+      "author": "하츠코이",
+      "date": "2025-08-17"
+    }
+  ]
 }

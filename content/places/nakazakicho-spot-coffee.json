@@ -19,5 +19,21 @@
     "file": "nakazakicho-spot-coffee.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/sjeun9708/224395426498",
+      "title": "나카자키초 카페거리 위치 Spot 카페 후기, 우메다 감성 디저트 카페 추천",
+      "author": "지은",
+      "date": "2026-08-30"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/merrydew79/224382282167",
+      "title": "오사카 우메다 나카자키초 카페거리, SPOT 스팟 메뉴 가격 디저트 웨이팅",
+      "author": "정민",
+      "date": "2026-08-20"
+    }
+  ]
 }

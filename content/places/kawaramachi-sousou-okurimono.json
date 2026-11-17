@@ -20,5 +20,28 @@
     "file": "kawaramachi-sousou-okurimono.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/sumsumlife_/224419636517",
+      "title": "교토 소우소우 거리 쇼핑 후기｜SOU・SOU 매장별 구경 & 텍스프리",
+      "author": "숨",
+      "date": "2026-09-22"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/chu-itt/224426826173",
+      "title": "교토 SOU・SOU 쇼핑 : 가와라마치 본점 거리부터 이토켄 소우소우 청수점까지 (핸드폰케이스, 타비 양말, 가방 착샷)",
+      "author": "먹두주이",
+      "date": "2026-09-30"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/zadojado/224342617345",
+      "title": "교토 쇼핑 리스트 소우소우 가방 타비양말 매장 4곳 위치 가격 총정리",
+      "author": "zado",
+      "date": "2026-07-10"
+    }
+  ]
 }

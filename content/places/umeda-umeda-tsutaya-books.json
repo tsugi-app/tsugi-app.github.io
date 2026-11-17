@@ -20,5 +20,21 @@
     "file": "umeda-umeda-tsutaya-books.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/a828/224429638959",
+      "title": "오사카 우메다 츠타야 서점｜로프트와 오사카역 정원까지",
+      "author": "행복나침반",
+      "date": "2026-10-16"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/elsie06/224423360110",
+      "title": "🇯🇵 오사카 혼여행 기록 - 2일차",
+      "author": "INA",
+      "date": "2026-09-26"
+    }
+  ]
 }

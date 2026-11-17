@@ -19,5 +19,28 @@
     "file": "namba-yasaka-jinja.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/foodie_arch/224465268412",
+      "title": "오사카 난바 야사카 신사 거대한 사자전 보고 오미쿠지 운세뽑기 체험까지!",
+      "author": "아치",
+      "date": "2026-11-04"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/gotohomeplz/224463297842",
+      "title": "[후기] 일본 오사카 난바역 근처 신사 - 난바 야사카 신사",
+      "author": "양지민",
+      "date": "2026-11-03"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/moonjain/224458773302",
+      "title": "[오사카 여행] 언니와 함께 다녀온 난바 야사카 신사! 거대한 사자전 & 귀여운 키티부적 후기",
+      "author": "뿌까가루맘",
+      "date": "2026-10-30"
+    }
+  ]
 }

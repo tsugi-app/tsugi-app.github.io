@@ -19,5 +19,28 @@
     "file": "okazaki-momak.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/domado1201/224451574850",
+      "title": "교토국립근대미술관 소장품전 & 일본 근대 서양화가 아사이 추 특별전 / 교토국립근대미술관",
+      "author": "나우",
+      "date": "2026-10-23"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/goodyou60/224430956127",
+      "title": "[일본] 2일차(교토-국립근대미술관, 산주산겐도)",
+      "author": "수산나",
+      "date": "2026-10-04"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/jmi200/224427621777",
+      "title": "일본 교토 교토국립근대미술관 폰타네시 전시 이탈리아의 빛, 마음의 풍경 그리고 그의 놀라운 영향",
+      "author": "까비",
+      "date": "2026-09-30"
+    }
+  ]
 }

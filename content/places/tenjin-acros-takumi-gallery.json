@@ -20,5 +20,14 @@
     "file": "tenjin-acros-takumi-gallery.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/naneknanek/223838523844",
+      "title": "후쿠오카 여행 아크로스 빌딩의 갤러리 구경 + 시로 에서 화이트 티 향수 사기",
+      "author": "sweetiyou",
+      "date": "2025-04-18"
+    }
+  ]
 }
