@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect } from 'react';
 import { AppBar } from '../components/AppBar';
-import { Icon } from '../components/Icon';
+import { Icon, type IconName } from '../components/Icon';
 import { cardTypeOf, dday, SaveButton, Thumb, typeVars } from '../components/PlaceParts';
 import { showSnackbar } from '../components/Snackbar';
 import { track } from '../lib/analytics';
@@ -8,7 +8,18 @@ import { googleMapsUrl, openExternal, sharePlace } from '../lib/channel';
 import { type PlaceView, viewOf } from '../lib/content';
 import { daysLeft, formatDate, isUpdateActive, todayTokyo } from '../lib/dates';
 import { hrefTo } from '../lib/router';
-import { areaLabel, type Content, HOOD_LABEL, TAG_LABEL, TYPE_LABEL, type Update } from '../lib/types';
+import {
+  areaLabel,
+  type Content,
+  HOOD_LABEL,
+  type Media,
+  MEDIA_LABEL,
+  type MediaKind,
+  type Place as PlaceData,
+  TAG_LABEL,
+  TYPE_LABEL,
+  type Update,
+} from '../lib/types';
 
 interface Props {
   content: Content;
@@ -165,6 +176,7 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
             </a>
           )}
         </Block>
+        {place.media && place.media.length > 0 && <MediaBlock place={place} media={place.media} />}
       </article>
 
       <div className="action-bar">
@@ -184,5 +196,44 @@ function PlaceDetail({ view, content }: { view: PlaceView; content: Content }) {
         </div>
       </div>
     </>
+  );
+}
+
+const MEDIA_ICON: Record<MediaKind, IconName> = { youtube: 'video', instagram: 'photo', blog: 'article' };
+
+// 다른 사람이 올린 영상·글. 퍼오지 않고 링크 카드로만 보여 준다 (외부 서비스를 불러오지 않는다).
+// 콘텐츠가 있을 때만 나오는 블록이라 "확인 중"을 쓰지 않는다.
+function MediaBlock({ place, media }: { place: PlaceData; media: Media[] }) {
+  return (
+    <section className="block">
+      <h2 className="block-title">영상·글로 미리 보기</h2>
+      <ul className="media-list">
+        {media.map((m) => (
+          <li key={m.url}>
+            <a
+              className="media-link"
+              href={m.url}
+              onClick={(e) => {
+                e.preventDefault();
+                track('media_opened', { placeId: place.id, kind: m.kind });
+                openExternal(m.url);
+              }}
+            >
+              <span className="media-link-icon">
+                <Icon name={MEDIA_ICON[m.kind]} size={20} />
+              </span>
+              <span className="media-link-text">
+                <b>{m.title}</b>
+                <span className="meta">
+                  {MEDIA_LABEL[m.kind]} · {m.author} · {m.date.replaceAll('-', '.')}
+                </span>
+              </span>
+              <Icon name="forward" size={20} />
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="block-note">다른 사람이 올린 글이에요. 누르면 해당 사이트로 이동해요</p>
+    </section>
   );
 }

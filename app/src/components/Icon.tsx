@@ -19,7 +19,10 @@ export type IconName =
   | 'settings'
   | 'calendar'
   | 'close'
-  | 'locate';
+  | 'locate'
+  | 'video'
+  | 'photo'
+  | 'article';
 
 const PATHS: Record<IconName, JSX.Element> = {
   discover: (
@@ -122,6 +125,25 @@ const PATHS: Record<IconName, JSX.Element> = {
       <circle cx="12" cy="12" r="6.5" />
       <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
       <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" />
+    </>
+  ),
+  video: (
+    <>
+      <rect x="3" y="5.5" width="18" height="13" rx="3" />
+      <path d="m10.5 9.5 4 2.5-4 2.5z" />
+    </>
+  ),
+  photo: (
+    <>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+      <circle cx="12" cy="12" r="3.8" />
+      <path d="M16.8 7.2v.1" />
+    </>
+  ),
+  article: (
+    <>
+      <path d="M6.5 3.5h8l3 3v14h-11z" />
+      <path d="M9 11h6M9 14.5h6M9 18h3.5" />
     </>
   ),
 };

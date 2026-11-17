@@ -19,7 +19,21 @@ export interface Place {
   address?: string;
   official?: string;
   image?: { file: string; credit: string; license: string };
+  /** 관련 영상·글. 링크 카드로만 보여 준다 (퍼오지 않는다). 최대 3개. */
+  media?: Media[];
 }
+
+export type MediaKind = 'youtube' | 'instagram' | 'blog';
+
+export interface Media {
+  kind: MediaKind;
+  url: string;
+  title: string;
+  author: string;
+  date: string; // 게시일 YYYY-MM-DD
+}
+
+export const MEDIA_LABEL: Record<MediaKind, string> = { youtube: '유튜브', instagram: '인스타그램', blog: '네이버 블로그' };
 
 export interface Update {
   id: string;

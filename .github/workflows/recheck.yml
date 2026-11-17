@@ -23,6 +23,7 @@ jobs:
         run: |
           node scripts/validate.mjs 2> warnings.txt || true
           grep '재확인 필요' warnings.txt > due.txt || true
+          node scripts/check-media.mjs >> due.txt || true
           echo "count=$(wc -l < due.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
       - name: 이슈 생성
         if: steps.list.outputs.count != '0'

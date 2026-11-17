@@ -20,5 +20,21 @@
     "file": "gion-kenninji.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/localguidek/224385737388",
+      "title": "[교토 여행] 풍신뇌신도와 쌍룡도, 겐닌지가 숨겨온 교토의 품격",
+      "author": "초지일관localguidek",
+      "date": "2026-08-23"
+    },
+    {
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=Fsq_J3dt5B0",
+      "title": "겐닌지 l 교토 여행에서 만난 고려팔만대장경과 일본 걸작 그림들",
+      "author": "kimirang",
+      "date": "2026-08-02"
+    }
+  ]
 }

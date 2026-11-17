@@ -20,5 +20,28 @@
     "file": "aoyama-nezu-museum.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/chel9271/224464031773",
+      "title": "[도쿄 미술관] 네즈 미술관, 오모테산도 쇼핑 후 워크인 후기",
+      "author": "진진",
+      "date": "2026-11-03"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/horizon40075/224479547691",
+      "title": "도쿄 네즈미술관｜구마 겐고의 건축과 도심 속 일본식 정원",
+      "author": "호라이즌",
+      "date": "2026-11-16"
+    },
+    {
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=MJvlGAxojJM",
+      "title": "🗼오모테산도 특집｜숨겨두고 싶은 힐링스팟 대방출｜네즈 미술관, 부활한 소죠 커피, 스파이럴 마켓｜비 오는 날 더 좋은 코스",
+      "author": "오하도쿄 OHHA TOKYO",
+      "date": "2026-09-25"
+    }
+  ]
 }

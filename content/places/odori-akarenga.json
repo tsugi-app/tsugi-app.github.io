@@ -19,5 +19,21 @@
     "file": "odori-akarenga.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/djmanul/224443119468",
+      "title": "삿포로 붉은벽돌청사 리뉴얼 후기 | 6년 만에 돌아온 홋카이도청 구본청사(赤れんが庁舎) - 2025년 9월 삿포로여행 16",
+      "author": "마늘",
+      "date": "2026-10-15"
+    },
+    {
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=ZFO2_HAt3_s",
+      "title": "SAPPORO VLOG | 일본 삿포로 여행 - 니조시장 카이센동, 아카렌가 청사, 삿포로 시계탑, 치이카와랜드 그리고 편의점 먹방",
+      "author": "밀피유",
+      "date": "2026-11-09"
+    }
+  ]
 }
