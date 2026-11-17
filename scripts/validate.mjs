@@ -19,6 +19,14 @@ const BANNED = ['핫한', '인생', '현지인만'];
 const HAEYO_FIELDS = ['why', 'notFor', 'differsFrom'];
 const endOf = (s) => s.trim().replace(/\s*\([^()]*\)$/, '');
 
+// 관련 영상·글 (place.media). 링크 카드로만 보여 주므로 주소가 플랫폼의 게시물 주소인지만 본다.
+const MEDIA_MAX = 3;
+const MEDIA_URL = {
+  youtube: /^https:\/\/(www\.youtube\.com\/(watch\?v=|shorts\/)|youtu\.be\/)[\w-]{11}\b/,
+  instagram: /^https:\/\/www\.instagram\.com\/(p|reel)\/[\w-]+\/?$/,
+  blog: /^https:\/\/(m\.)?blog\.naver\.com\/[\w-]+\/\d+$/,
+};
+
 // 대표 이미지 SVG 규칙 (docs/IMAGES.md 3장)
 const SVG_PALETTE = ['#e3e6ec', '#e2e9de', '#ece5da', '#e9e2e0', '#dfe7e7', '#e8e4d8', '#e4e6ee', '#233c74', '#5873b5', '#c3d1ec', '#faf8f4', '#c99a2e'];
 const SVG_BANNED = ['text', 'image', 'script', 'foreignObject', 'style', 'filter', 'linearGradient', 'radialGradient', 'mask', 'font'];
@@ -53,6 +61,23 @@ for (const { file, data: p } of places) {
     if (!p.image.credit || !p.image.license) err(file, 'image.credit·license 필요');
     const path = p.image.file && join(CONTENT, 'images', p.image.file);
     if (path && /\.svg$/i.test(path) && existsSync(path)) for (const m of svgProblems(path)) err(file, `${p.image.file}: ${m}`);
+  }
+  if (p.media !== undefined) {
+    if (!Array.isArray(p.media) || p.media.length > MEDIA_MAX) err(file, `media는 ${MEDIA_MAX}개 이하 배열`);
+    else {
+      const urls = new Set();
+      for (const [i, m] of p.media.entries()) {
+        const at = `media[${i}]`;
+        if (!MEDIA_URL[m.kind]) err(file, `${at}.kind는 ${Object.keys(MEDIA_URL).join('|')} 중 하나`);
+        else if (!MEDIA_URL[m.kind].test(m.url ?? '')) err(file, `${at}.url이 ${m.kind} 게시물 주소가 아니다: ${m.url}`);
+        if (!m.title) err(file, `${at}.title 필요`);
+        if (!m.author) err(file, `${at}.author 필요`);
+        if (!isDate(m.date)) err(file, `${at}.date(게시일)는 YYYY-MM-DD`);
+        else if (m.date > todayTokyo()) err(file, `${at}.date가 미래다`);
+        if (urls.has(m.url)) err(file, `${at}.url 중복`);
+        urls.add(m.url);
+      }
+    }
   }
   if (!checks.some((c) => c.data.placeId === p.id)) err(file, 'check(확인 기록) 없음 — 확인일 없는 카드는 발행 불가');
   if (!takes.some((t) => t.data.placeId === p.id)) warn(file, 'take(편집 판단) 없음 — 카드에 추천 이유가 비어 보인다');

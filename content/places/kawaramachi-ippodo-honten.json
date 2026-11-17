@@ -20,5 +20,28 @@
     "file": "kawaramachi-ippodo-honten.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/3345/223868450939",
+      "title": "[교토 여행] 잇포도 차호 교토 본점 | 一保堂茶舗 京都本店",
+      "author": "3345",
+      "date": "2025-05-17"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/hanisaje/223895845578",
+      "title": "교토, 잇포도차호(一保堂茶舗) 본점(京都本店)",
+      "author": "Jermy",
+      "date": "2025-06-11"
+    },
+    {
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=QOnHAPYt-Nc",
+      "title": "교토일상vlog l 티타임과 흘러가는 교토의 여름 l 잇포도 본점 카보쿠 l 아라비카 커피 l 장보기 l 도미 카르파쵸 만들기 l 일본직장인의 평범한 주말일상",
+      "author": "heenihome kyoto | VLOG",
+      "date": "2025-08-21"
+    }
+  ]
 }

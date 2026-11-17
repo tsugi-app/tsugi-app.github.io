@@ -19,5 +19,28 @@
     "file": "okazaki-kyoto-city-kyocera-museum.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/ha_rang5/224468975003",
+      "title": "교토 가볼만한곳 교세라미술관 위치 나선형계단 옥상정원",
+      "author": "아영",
+      "date": "2026-11-08"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/hsleeep/224423346743",
+      "title": "교토 교세라 미술관, Kyocera museum of art.",
+      "author": "스리씨",
+      "date": "2026-09-26"
+    },
+    {
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=fK2JTnXv0ac",
+      "title": "교토 여행 ep.2 | 교세라 미술관, 아라시야마 코스, 가모강 bye !",
+      "author": "우의미 woouimi",
+      "date": "2026-05-22"
+    }
+  ]
 }

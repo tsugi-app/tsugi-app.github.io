@@ -20,5 +20,21 @@
     "file": "kawaramachi-nishiki-market.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/twobulls_snc/224466845933",
+      "title": "교토 니시키시장 먹거리 쇼핑 구경",
+      "author": "투블스",
+      "date": "2026-11-06"
+    },
+    {
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=ToFrBc7OM0s",
+      "title": "단 하루, 교토 혼자 여행 | 교토 브이로그 | 니시키 시장 · 가모강 · 기온 · 가와라마치 | 교토 카페 · 맛집 추천",
+      "author": "문방구석 Stationery Corner",
+      "date": "2026-09-08"
+    }
+  ]
 }

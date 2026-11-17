@@ -8,6 +8,7 @@ export type EventName =
   | 'place_saved'
   | 'map_opened'
   | 'source_opened'
+  | 'media_opened'
   | 'saved_list_revisited';
 
 type Params = Record<string, string | number | boolean | undefined>;
