@@ -19,5 +19,14 @@
     "file": "okazaki-hosomi-museum.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/budsprout/223847879301",
+      "title": "호소미 미술관",
+      "author": "budsprout",
+      "date": "2025-04-27"
+    }
+  ]
 }

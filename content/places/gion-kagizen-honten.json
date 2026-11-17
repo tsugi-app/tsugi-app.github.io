@@ -19,5 +19,21 @@
     "file": "gion-kagizen-honten.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/luv240211/224457129942",
+      "title": "맛집_일본 교토_300년전통 별미 디저트_카기젠요시후사 시조본점 (쿠즈키리(흑, 백), 화과자 + 티 세트, 와라비모치 후기)",
+      "author": "츠니뎡이",
+      "date": "2026-10-29"
+    },
+    {
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=wiCUgEg1u2U",
+      "title": "[교토 여행] 친구들과 교토/오사카 3박,  ARCHI coffee, 스시 사카바, 도쿠라 교토, 기요미즈데라, 교토 교세라 미술관, 쿄 우나와, 카기젠 요시후사, 오하기노탄바야",
+      "author": "민트연희",
+      "date": "2026-08-02"
+    }
+  ]
 }

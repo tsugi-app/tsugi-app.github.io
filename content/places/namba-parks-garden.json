@@ -19,5 +19,14 @@
     "file": "namba-parks-garden.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=Fc_Gz5j3zCk",
+      "title": "일본 도시개발 사례 - 오사카 난바 파크스 (Namba Parks, なんばパークス)",
+      "author": "김주일 교수 도시탐험",
+      "date": "2026-10-11"
+    }
+  ]
 }

@@ -19,5 +19,21 @@
     "file": "shinsaibashi-lilo-coffee-roasters.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/mihaengnote/224446690113",
+      "title": "[오사카] 오사카 현지인 카페 신사이바시 릴로 커피 로스터즈",
+      "author": "미행",
+      "date": "2026-10-19"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/luvgyamitomjerry/224385051088",
+      "title": "도톤보리 카페 릴로 커피 로스터즈 잠시 쉬어가기 좋은 곳",
+      "author": "전낭만",
+      "date": "2026-08-21"
+    }
+  ]
 }

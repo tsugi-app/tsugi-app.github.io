@@ -20,5 +20,14 @@
     "file": "hakata-machiya-furusatokan.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/rorosd/223993895098",
+      "title": "후쿠오카 가족여행 코스 하카타마치야 후루사토관",
+      "author": "로로스",
+      "date": "2025-09-03"
+    }
+  ]
 }

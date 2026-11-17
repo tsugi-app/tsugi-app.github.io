@@ -19,5 +19,28 @@
     "file": "harajuku-ota-memorial-museum.svg",
     "credit": "츠기 일러스트 (Claude Opus 제작)",
     "license": "츠기 자체 제작"
-  }
+  },
+  "media": [
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/ruy19/224401420566",
+      "title": "[도쿄 여행 2일차] 오타기념미술관 (우키요에) / 도토루 커피 / 키노쿠니야서점 시부야 도겐자카점",
+      "author": "화인",
+      "date": "2026-09-05"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/sooparkeg/224265556454",
+      "title": "[도쿄] 오타우키요에 미술관 (오타기념미술관), 도쿄 시부야구에 있는 우키요에 미술관",
+      "author": "박슈",
+      "date": "2026-04-26"
+    },
+    {
+      "kind": "blog",
+      "url": "https://blog.naver.com/mane_nunc/224152821858",
+      "title": "[도쿄 미술관 산책 #2] 에도의 '힙'한 감성과 마주하다, 오타 기념 미술관(Ota Memorial Museum of Art)",
+      "author": "담미재",
+      "date": "2026-01-20"
+    }
+  ]
 }
