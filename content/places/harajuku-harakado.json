@@ -1,0 +1,23 @@
+{
+  "id": "harajuku-harakado",
+  "name": {
+    "ko": "하라카도",
+    "ja": "東急プラザ原宿「ハラカド」"
+  },
+  "hood": "harajuku",
+  "category": "mall",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.66852,
+    "lng": 139.70497
+  },
+  "address": "東京都渋谷区神宮前6-31-21 原宿スクエア内",
+  "official": "https://harakado.tokyu-plaza.com/",
+  "image": {
+    "file": "harajuku-harakado.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

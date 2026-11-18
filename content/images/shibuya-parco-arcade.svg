@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-parco-arcade</title>
+<desc>
+모티프: 빈 벽 앞에 놓인 바퀴 달린 행거와 빈 옷걸이 하나
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000002.000188525.html 「渋谷PARCO 1F ポップアップスペース ARCADE」 — 브랜드가 바뀌어 들어오는 팝업 공간, place.category goods
+피한 것: SANDY LIANG 로고·후디·토트(기간 한정 행사·상표), 파르코 건물 외관, 글자
+제작: Claude Fable 5.2 · 2026-11-19
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<rect x="230" y="150" width="740" height="560" fill="#c3d1ec"/>
+<rect x="150" y="744" width="900" height="20" fill="#5873b5"/>
+<rect x="330" y="236" width="30" height="470" fill="#233c74"/>
+<rect x="840" y="236" width="30" height="470" fill="#233c74"/>
+<rect x="290" y="226" width="620" height="32" rx="16" fill="#233c74"/>
+<rect x="290" y="690" width="620" height="28" rx="14" fill="#233c74"/>
+<circle cx="345" cy="734" r="24" fill="#233c74"/>
+<circle cx="855" cy="734" r="24" fill="#233c74"/>
+<path d="M600 258 L600 310" stroke="#c99a2e" stroke-width="22" stroke-linecap="round"/>
+<path d="M600 310 L460 410 L740 410 Z" fill="none" stroke="#c99a2e" stroke-width="22" stroke-linejoin="round"/>
+</svg>

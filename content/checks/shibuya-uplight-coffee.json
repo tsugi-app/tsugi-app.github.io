@@ -1,0 +1,16 @@
+{
+  "placeId": "shibuya-uplight-coffee",
+  "checkedAt": "2026-11-19",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-26",
+  "uncertain": [
+    "UPLIGHT COFFEE 공식 페이지를 찾지 못함 — 번지 주소·평소 영업시간·휴무 미확인. 보도자료는 「渋谷駅 B7出口 直結 東口地下広場 地下2F」만 표기(주최 Audible 보도자료 기준)",
+    "좌표는 渋谷二丁目23番 대표점(동쪽 출구 지하광장 위 근사값)",
+    "시청 작품의 언어 표기 없음 — 일본 오디블(audible.co.jp) 행사, 「ハリー・ポッター」 시리즈·韓国コンテンツ 언급만 있음",
+    "오리지널 굿즈 수량 표기 없음(없어지면 종료)"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000358.000036126.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

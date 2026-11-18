@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>umeda-hanshin-umeda-honten</title>
+<desc>
+모티프: 과자가 놓인 유리 진열장 하나
+근거: update.note 「지하 1층 スイーツギャラリー」(보도자료 https://prtimes.jp/main/html/rd/p/000000807.000041274.html), place.tags food
+피한 것: 구미첼 모양·칸로 패키지(기간 한정 행사·상표), 백화점 로고·외관, 글자
+제작: Claude Fable 5.2 · 2026-11-19
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<rect x="150" y="724" width="900" height="24" fill="#c3d1ec"/>
+<rect x="250" y="540" width="700" height="184" fill="#233c74"/>
+<rect x="261" y="231" width="678" height="320" rx="10" fill="#c3d1ec" stroke="#233c74" stroke-width="22" stroke-linejoin="round"/>
+<rect x="261" y="384" width="678" height="20" fill="#233c74"/>
+<circle cx="420" cy="346" r="38" fill="#5873b5"/>
+<circle cx="540" cy="346" r="38" fill="#5873b5"/>
+<rect x="680" y="312" width="150" height="72" rx="14" fill="#233c74"/>
+<rect x="350" y="468" width="150" height="72" rx="14" fill="#5873b5"/>
+<circle cx="640" cy="502" r="38" fill="#c99a2e"/>
+<circle cx="770" cy="502" r="38" fill="#5873b5"/>
+<rect x="250" y="610" width="700" height="26" fill="#5873b5"/>
+</svg>

@@ -1,0 +1,18 @@
+{
+  "placeId": "umeda-rohto-heart-square",
+  "checkedAt": "2026-11-19",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-09",
+  "uncertain": [
+    "うめきた公園(umekita.com) 쪽 행사 게시는 확인 못 함 — 주최(ぴあ·日販セグモ) 보도자료와 주최 공식 사이트(pannofes.jp)는 기간·시간·입장료 일치",
+    "좌표는 大深町 대표점(サウスパーク 안 정확한 위치 아님)",
+    "시간은 「予定」 표기, 우천 시 운영 표기 없음",
+    "가게별 출점일·판매 상품은 공식 사이트에서 순차 발표"
+  ],
+  "sources": [
+    "https://pannofes.jp/event/umekitakouen2026/",
+    "https://prtimes.jp/main/html/rd/p/000004483.000011710.html",
+    "https://umekita.com/ad/event/rohto_heartsquare/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

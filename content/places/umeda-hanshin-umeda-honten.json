@@ -1,0 +1,23 @@
+{
+  "id": "umeda-hanshin-umeda-honten",
+  "name": {
+    "ko": "한신 우메다 본점",
+    "ja": "阪神梅田本店"
+  },
+  "hood": "umeda",
+  "category": "mall",
+  "tags": [
+    "food"
+  ],
+  "geo": {
+    "lat": 34.70069,
+    "lng": 135.49753
+  },
+  "address": "大阪府大阪市北区梅田1-13-13",
+  "official": "https://www.hanshin-dept.jp/hshonten/",
+  "image": {
+    "file": "umeda-hanshin-umeda-honten.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
