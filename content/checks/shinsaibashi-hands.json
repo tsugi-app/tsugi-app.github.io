@@ -1,0 +1,17 @@
+{
+  "placeId": "shinsaibashi-hands",
+  "checkedAt": "2026-11-19",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-09",
+  "uncertain": [
+    "ハンズ心斎橋店 공식 페이지(11/19)에서 행사 게시를 찾지 못함 — 주최(CRAZY BUMP) 보도자료 기준",
+    "신사이바시 회장의 행사 시간 표기 없음(매장 영업 10:00~20:00은 ハンズ 공식 페이지 값), 연말연시 휴무·단축 영업 미확인",
+    "보도자료 본문 한 곳에 12/10(水) 표기 — 개요란은 12/10(木), 2026-12-10은 목요일",
+    "「入場料 無料」는 개요란 끝(모리구치 회장 뒤)에 한 번만 적혀 있음"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000706.000073415.html",
+    "https://store.hands.net/shinsaibashi/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

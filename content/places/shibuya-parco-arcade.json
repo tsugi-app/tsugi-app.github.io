@@ -1,0 +1,23 @@
+{
+  "id": "shibuya-parco-arcade",
+  "name": {
+    "ko": "시부야 파르코 아케이드",
+    "ja": "渋谷PARCO 1F ARCADE"
+  },
+  "hood": "shibuya",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.66221,
+    "lng": 139.6992
+  },
+  "address": "東京都渋谷区宇田川町15-1 渋谷PARCO 1F",
+  "official": "https://shibuya.parco.jp/",
+  "image": {
+    "file": "shibuya-parco-arcade.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

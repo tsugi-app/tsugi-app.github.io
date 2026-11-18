@@ -1,0 +1,16 @@
+{
+  "placeId": "umeda-hanshin-umeda-honten",
+  "checkedAt": "2026-11-19",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-01",
+  "uncertain": [
+    "阪神梅田本店 공식 사이트(11/19)에서 ヒトツブカンロ 행사 게시를 찾지 못함 — 운영사(カンロ) 보도자료 기준",
+    "정리권 운영 여부 표기 없음(보도자료의 디지털 정리권 안내는 グランスタ東京店 것)",
+    "취급 상품은 「一部」 표기 — 전체 목록 미확인"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000807.000041274.html",
+    "https://www.hanshin-dept.jp/hshonten/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

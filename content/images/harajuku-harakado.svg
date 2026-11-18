@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>harajuku-harakado</title>
+<desc>
+모티프: 네 단을 올라 닿는 계단과 맨 위 층의 문 하나
+근거: update.note 「4층 MAZE」(보도자료 https://prtimes.jp/main/html/rd/p/000000115.000090124.html 「東急プラザ原宿「ハラカド」4F MAZE」), place.category mall 기본 어휘(계단)
+피한 것: 조 말론 로고·타탄 무늬·향수병(기간 한정 행사·상표), 건물 외관 재현, 글자
+제작: Claude Fable 5.2 · 2026-11-19
+</desc>
+<rect width="1200" height="900" fill="#e2e9de"/>
+<rect x="840" y="150" width="120" height="120" fill="#c3d1ec"/>
+<path d="M200 744 L200 624 L400 624 L400 504 L600 504 L600 384 L800 384 L800 264 L1000 264 L1000 744 Z" fill="#233c74"/>
+<rect x="200" y="624" width="200" height="28" fill="#5873b5"/>
+<rect x="400" y="504" width="200" height="28" fill="#5873b5"/>
+<rect x="600" y="384" width="200" height="28" fill="#5873b5"/>
+<rect x="800" y="264" width="200" height="30" fill="#c99a2e"/>
+<path d="M230 520 L770 196" stroke="#5873b5" stroke-width="22" stroke-linecap="round"/>
+</svg>

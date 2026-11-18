@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-uplight-coffee</title>
+<desc>
+모티프: 내려오는 계단 끝에 놓인 김 나는 커피잔 하나
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000358.000036126.html 「UPLIGHT COFFEE（渋谷駅 B7出口 直結 東口地下広場 地下2F）」 — 역 지하광장의 카페, place.category cafe
+피한 것: Audible 로고·타일·헤드폰(기간 한정 행사·상표), 콜라보 음료, 역 출구 번호·글자
+제작: Claude Fable 5.2 · 2026-11-19
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<path d="M1040 196 L940 196 L940 306 L840 306 L840 416 L740 416 L740 526" fill="none" stroke="#5873b5" stroke-width="28" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="150" y="744" width="900" height="20" fill="#5873b5"/>
+<g fill="none" stroke="#c3d1ec" stroke-width="26" stroke-linecap="round"><path d="M310 370 C276 320 344 286 310 236"/><path d="M430 370 C396 320 464 286 430 236"/></g>
+<circle cx="560" cy="536" r="66" fill="none" stroke="#233c74" stroke-width="36"/>
+<path d="M190 420 L550 420 L530 640 C524 690 492 716 444 716 L296 716 C248 716 216 690 210 640 Z" fill="#233c74"/>
+<rect x="170" y="716" width="400" height="28" rx="14" fill="#c99a2e"/>
+</svg>

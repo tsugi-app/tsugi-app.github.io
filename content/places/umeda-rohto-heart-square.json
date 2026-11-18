@@ -1,0 +1,24 @@
+{
+  "id": "umeda-rohto-heart-square",
+  "name": {
+    "ko": "로토 하트 스퀘어 우메키타",
+    "ja": "ロートハートスクエアうめきた"
+  },
+  "hood": "umeda",
+  "category": "walk",
+  "tags": [
+    "food",
+    "walk"
+  ],
+  "geo": {
+    "lat": 34.70476,
+    "lng": 135.49437
+  },
+  "address": "大阪府大阪市北区大深町5番 グラングリーン大阪 うめきた公園 サウスパーク",
+  "official": "https://umekita.com/ad/event/rohto_heartsquare/",
+  "image": {
+    "file": "umeda-rohto-heart-square.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

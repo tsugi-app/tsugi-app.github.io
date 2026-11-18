@@ -1,0 +1,16 @@
+{
+  "placeId": "shibuya-parco-arcade",
+  "checkedAt": "2026-11-19",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-24",
+  "uncertain": [
+    "渋谷PARCO 공식 이벤트 페이지(11/19)에서 SANDY LIANG 게시를 찾지 못함 — 일본 판매사(三喜商事ファッションカンパニー) 보도자료 기준. FASHIONSNAP 기사와 기간·시간·가격 일치",
+    "노벨티 수량·소진 여부 표기 없음",
+    "좌표는 渋谷PARCO 건물 기준(다른 파르코 카드와 같음)"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000002.000188525.html",
+    "https://www.fashionsnap.com/article/2026-11-13/sandy-liang-popup-shibuya/",
+    "https://shibuya.parco.jp/event/"
+  ]
+}

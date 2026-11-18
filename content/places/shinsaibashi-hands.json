@@ -1,0 +1,23 @@
+{
+  "id": "shinsaibashi-hands",
+  "name": {
+    "ko": "핸즈 신사이바시점",
+    "ja": "ハンズ心斎橋店"
+  },
+  "hood": "shinsaibashi",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 34.67404,
+    "lng": 135.50131
+  },
+  "address": "大阪府大阪市中央区心斎橋筋1-8-3 心斎橋パルコ 9〜11F",
+  "official": "https://store.hands.net/shinsaibashi/",
+  "image": {
+    "file": "shinsaibashi-hands.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "placeId": "harajuku-harakado",
+  "checkedAt": "2026-11-19",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-10",
+  "uncertain": [
+    "ジョー マローン ロンドン 공식 행사 페이지(jomalone.jp/christmas2026-popupevent)가 403으로 열리지 않아 대조 못 함 — 운영사(ELCジャパン) 보도자료 기준. 예약 페이지 내용(예약 단위·마감)도 미확인",
+    "ハラカド 공식 이벤트 페이지(11/19)에서 행사 게시를 찾지 못함",
+    "구매 특전은 수량 한정, 향 선택 불가"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000115.000090124.html",
+    "https://tokyu-plaza.com/harakado/access/",
+    "https://tokyu-plaza.com/harakado/event/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}
