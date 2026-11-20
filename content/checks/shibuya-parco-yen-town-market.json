@@ -1,10 +1,12 @@
 {
   "placeId": "shibuya-parco-yen-town-market",
-  "checkedAt": "2026-11-17",
+  "checkedAt": "2026-11-20",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-19",
+  "recheckBy": "2026-12-18",
   "uncertain": [
-    "파르코 매장 페이지(11/17)엔 「YEN TOWN MARKET® TOKYO」로만 있고 리뉴얼 소식·층·매장 영업시간이 없음 — 운영사(STARBASE) 보도자료 기준"
+    "파르코 매장 페이지(11/20)엔 「YEN TOWN MARKETⓇ TOKYO」 5F·전화번호만 있고 리뉴얼 게시·매장별 영업시간이 없음(건물 영업 11:00~21:00) — 운영사(STARBASE) 보도자료 기준",
+    "매장 이름 표기가 보도자료 「YEN TOWN MARKET 渋谷」와 파르코 「YEN TOWN MARKETⓇ TOKYO」로 다름",
+    "NANGA×Nujabes 재발매 수량·포스터 수량 표기 없음"
   ],
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000001842.000011969.html",
