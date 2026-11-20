@@ -1,0 +1,23 @@
+{
+  "id": "shibuya-puppet-sunsun-store",
+  "name": {
+    "ko": "파페트 슨슨 스토어 시부야 히카리에점",
+    "ja": "PUPPET SUNSUN STORE 渋谷ヒカリエ内ShinQs店"
+  },
+  "hood": "shibuya",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.65927,
+    "lng": 139.70396
+  },
+  "address": "東京都渋谷区渋谷2-21-1 渋谷ヒカリエ ShinQs 2F",
+  "official": "https://shop.chocolate-inc.com/pages/puppet-sunsun-store",
+  "image": {
+    "file": "shibuya-puppet-sunsun-store.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

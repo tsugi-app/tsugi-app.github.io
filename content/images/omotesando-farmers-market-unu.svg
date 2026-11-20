@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>omotesando-farmers-market-unu</title>
+<desc>
+모티프: 둥근 채소와 잎채소가 담긴 나무 상자 하나
+근거: 공식 사이트 https://farmersmarkets.jp/concept/ 「農家さんを中心に、全国から出店者さんが集い」「毎週末土日」 — 농가 직거래 장터, place.tags food·walk
+피한 것: 출점자 로고·간판, 기획 행사(와인·발효·조미료 부스), 국제연합대학 건물 외관, 글자
+제작: Claude Opus 5.5 · 2026-11-20
+</desc>
+<rect width="1200" height="900" fill="#ece5da"/>
+<rect x="150" y="744" width="900" height="20" fill="#c3d1ec"/>
+<path d="M610 420 C560 300 600 210 680 180 C700 260 680 360 640 430 Z" fill="#5873b5"/>
+<path d="M650 430 C680 320 760 270 840 280 C800 350 740 410 680 440 Z" fill="#c3d1ec"/>
+<circle cx="420" cy="430" r="96" fill="#5873b5"/>
+<circle cx="560" cy="452" r="74" fill="#c99a2e"/>
+<circle cx="790" cy="440" r="88" fill="#c3d1ec"/>
+<rect x="290" y="450" width="620" height="280" rx="12" fill="#233c74"/>
+<rect x="290" y="534" width="620" height="22" fill="#5873b5"/>
+<rect x="290" y="626" width="620" height="22" fill="#5873b5"/>
+<rect x="290" y="450" width="620" height="34" rx="10" fill="#5873b5"/>
+</svg>

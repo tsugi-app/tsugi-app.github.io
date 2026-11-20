@@ -1,0 +1,17 @@
+{
+  "placeId": "omotesando-farmers-market-unu",
+  "checkedAt": "2026-11-20",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-28",
+  "uncertain": [
+    "평소 시간은 공식 사이트에 없음 — 이번 주(11/21~23) 공식 게시는 10~17시, 유키 식품 보도자료는 10:00~16:00로 달라 공식 사이트 값을 따름",
+    "정기 개최는 공식 사이트 소개(「毎週末土日、年間ほぼ休むことなく開催」) 기준 — 휴장일 목록은 없음",
+    "출점자·기획은 주마다 바뀜"
+  ],
+  "sources": [
+    "https://farmersmarkets.jp/",
+    "https://farmersmarkets.jp/concept/",
+    "https://prtimes.jp/main/html/rd/p/000000055.000065636.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

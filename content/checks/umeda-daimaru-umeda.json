@@ -1,6 +1,6 @@
 {
   "placeId": "umeda-daimaru-umeda",
-  "checkedAt": "2026-11-14",
+  "checkedAt": "2026-11-20",
   "checkedBy": "claude",
   "recheckBy": "2026-11-30",
   "uncertain": [
@@ -13,6 +13,8 @@
     "https://www.daimaru.co.jp/umedamise/",
     "https://www.daimaru.co.jp/umedamise/hours.html",
     "https://www.daimaru.co.jp/umedamise/floor/",
-    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+    "https://msearch.gsi.go.jp/address-search/AddressSearch",
+    "https://www.daimaru.co.jp/umedamise/okashinaparade/",
+    "https://prtimes.jp/main/html/rd/p/000004067.000025003.html"
   ]
 }

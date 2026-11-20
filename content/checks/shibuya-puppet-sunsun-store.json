@@ -1,0 +1,17 @@
+{
+  "placeId": "shibuya-puppet-sunsun-store",
+  "checkedAt": "2026-11-20",
+  "checkedBy": "claude",
+  "recheckBy": "2026-11-28",
+  "uncertain": [
+    "11/30 이후 입장 방법은 미정(매장 X에서 안내 예정)",
+    "스토어 한정 상품(티셔츠·에코백·스티커 등)은 「一部ストア限定」 표기 — 어느 매장 한정인지 상품별로 확인 못 함",
+    "渋谷ヒカリエ ShinQs 공식 페이지와는 대조하지 않음 — 운영사(CHOCOLATE Inc.) 보도자료와 매장 공식 페이지 기준"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000581.000024007.html",
+    "https://shop.chocolate-inc.com/pages/puppet-sunsun-store",
+    "https://shop.chocolate-inc.com/blogs/puppet-sunsun-store-news/20261118-2",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "placeId": "omotesando-francais",
+  "checkedAt": "2026-11-20",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-05",
+  "uncertain": [
+    "브랜드 공식 사이트(sucreyshopping.jp/francais) 매장 페이지에서 본점 정보를 읽지 못함 — 운영사(シュクレイ) 보도자료 기준",
+    "정기 휴무 표기 없음",
+    "좌표는 南青山五丁目6番 블록 기준"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000001824.000016051.html",
+    "https://sucreyshopping.jp/francais",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

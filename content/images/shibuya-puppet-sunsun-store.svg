@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-puppet-sunsun-store</title>
+<desc>
+모티프: 다리 달린 옛 텔레비전 하나와 그 앞에 핀 꽃 세 송이
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000581.000024007.html 「エントランスには…映像が流れるテレビ」「お花畑をイメージしたお花」, place.category goods
+피한 것: 파페트 슨슨·노논 등 캐릭터 모습(상표·작품), 상품 패키지, 히카리에 건물 외관, 글자
+제작: Claude Opus 5.5 · 2026-11-20
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<rect x="150" y="744" width="900" height="20" fill="#5873b5"/>
+<path d="M560 210 L500 140 M640 210 L700 140" stroke="#233c74" stroke-width="20" stroke-linecap="round"/>
+<rect x="380" y="210" width="440" height="340" rx="40" fill="#233c74"/>
+<rect x="424" y="254" width="300" height="252" rx="30" fill="#c3d1ec"/>
+<circle cx="770" cy="300" r="22" fill="#c99a2e"/>
+<circle cx="770" cy="372" r="22" fill="#5873b5"/>
+<path d="M440 550 L410 640 M760 550 L790 640" stroke="#233c74" stroke-width="22" stroke-linecap="round"/>
+<g stroke="#5873b5" stroke-width="18" stroke-linecap="round"><line x1="300" y1="744" x2="300" y2="620"/><line x1="600" y1="744" x2="600" y2="660"/><line x1="900" y1="744" x2="900" y2="610"/></g>
+<g fill="#5873b5"><circle cx="300" cy="590" r="46"/><circle cx="900" cy="580" r="46"/></g>
+<circle cx="600" cy="634" r="40" fill="#c99a2e"/>
+<g fill="#faf8f4"><circle cx="300" cy="590" r="16"/><circle cx="900" cy="580" r="16"/></g>
+</svg>

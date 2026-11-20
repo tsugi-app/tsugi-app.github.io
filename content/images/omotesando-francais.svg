@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>omotesando-francais</title>
+<desc>
+모티프: 작은 유리 조각을 이어 붙인 아치형 스테인드글라스 창 하나
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000001824.000016051.html 「職人によって一枚一枚つなぎ合わされたステンドグラスに彩られ、空間をあざやかに光で満たします」, take.differsFrom
+피한 것: 과자·노엘 피스타시(기간 한정), 브랜드 로고·패키지, 건물 외관, 글자
+제작: Claude Opus 5.5 · 2026-11-20
+</desc>
+<defs><clipPath id="arch"><path d="M380 744 L380 380 A220 220 0 0 1 820 380 L820 744 Z"/></clipPath></defs>
+<rect width="1200" height="900" fill="#ece5da"/>
+<path d="M350 764 L350 380 A250 250 0 0 1 850 380 L850 764 Z" fill="#233c74"/>
+<g clip-path="url(#arch)">
+<rect x="380" y="150" width="440" height="600" fill="#c3d1ec"/>
+<rect x="380" y="150" width="146" height="250" fill="#5873b5"/>
+<rect x="673" y="400" width="147" height="180" fill="#5873b5"/>
+<rect x="526" y="580" width="147" height="170" fill="#5873b5"/>
+<rect x="526" y="230" width="147" height="170" fill="#c99a2e"/>
+<rect x="380" y="580" width="146" height="170" fill="#faf8f4"/>
+<g stroke="#233c74" stroke-width="20"><line x1="526" y1="150" x2="526" y2="750"/><line x1="673" y1="150" x2="673" y2="750"/><line x1="380" y1="400" x2="820" y2="400"/><line x1="380" y1="580" x2="820" y2="580"/></g>
+</g>
+<rect x="150" y="744" width="900" height="20" fill="#5873b5"/>
+</svg>

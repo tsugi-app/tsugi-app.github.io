@@ -1,0 +1,23 @@
+{
+  "id": "namba-junkudo-namba",
+  "name": {
+    "ko": "준쿠도 서점 난바점",
+    "ja": "ジュンク堂書店 難波店"
+  },
+  "hood": "namba",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 34.66698,
+    "lng": 135.49678
+  },
+  "address": "大阪府大阪市浪速区湊町1-2-3 マルイト難波ビル3F",
+  "official": "https://honto.jp/store/detail_1570052_14HB320.html",
+  "image": {
+    "file": "namba-junkudo-namba.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
