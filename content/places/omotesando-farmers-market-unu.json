@@ -1,0 +1,24 @@
+{
+  "id": "omotesando-farmers-market-unu",
+  "name": {
+    "ko": "파머스 마켓 @UNU",
+    "ja": "Farmers Market @UNU"
+  },
+  "hood": "omotesando",
+  "category": "walk",
+  "tags": [
+    "food",
+    "walk"
+  ],
+  "geo": {
+    "lat": 35.66222,
+    "lng": 139.70848
+  },
+  "address": "東京都渋谷区神宮前5-53-70 国際連合大学前広場",
+  "official": "https://farmersmarkets.jp/",
+  "image": {
+    "file": "omotesando-farmers-market-unu.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

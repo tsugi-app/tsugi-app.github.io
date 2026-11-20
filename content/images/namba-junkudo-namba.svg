@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>namba-junkudo-namba</title>
+<desc>
+모티프: 책장 한 칸에 꽂힌 책들과 비스듬히 기댄 책 한 권
+근거: place 「ジュンク堂書店 難波店」(서점), 보도자료 https://prtimes.jp/main/html/rd/p/000000148.000027516.html 「ジュンク堂書店 難波店内」, place.category goods
+피한 것: 시카반초 캐릭터·캡틴스태그 로고·캠핑 장비(기간 한정 팝업·상표), 건물 외관, 책 제목 글자
+제작: Claude Opus 5.5 · 2026-11-20
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<rect x="230" y="190" width="740" height="574" fill="#233c74"/>
+<rect x="266" y="226" width="668" height="502" fill="#c3d1ec"/>
+<g fill="#5873b5"><rect x="300" y="330" width="70" height="398"/><rect x="384" y="290" width="58" height="438"/><rect x="590" y="350" width="64" height="378"/><rect x="668" y="300" width="80" height="428"/></g>
+<rect x="456" y="370" width="56" height="358" fill="#233c74"/>
+<rect x="526" y="320" width="50" height="408" fill="#c99a2e"/>
+<path d="M770 728 L900 420 L960 444 L834 728 Z" fill="#233c74"/>
+<g fill="#faf8f4"><rect x="300" y="390" width="70" height="20"/><rect x="668" y="360" width="80" height="20"/></g>
+</svg>

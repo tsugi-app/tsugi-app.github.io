@@ -1,0 +1,16 @@
+{
+  "placeId": "namba-junkudo-namba",
+  "checkedAt": "2026-11-20",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-08",
+  "uncertain": [
+    "서점 공식 페이지(honto.jp)가 403으로 열리지 않아 대조 못 함 — 운영사(丸善ジュンク堂書店) 보도자료 기준",
+    "종료일은 「2027年3月終了予定」뿐이라 limited 대신 new로 둠",
+    "한정 티셔츠 가격 표기 없음"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000148.000027516.html",
+    "https://honto.jp/store/detail_1570052_14HB320.html",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

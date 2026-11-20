@@ -1,0 +1,24 @@
+{
+  "id": "omotesando-francais",
+  "name": {
+    "ko": "프랑세 오모테산도 본점",
+    "ja": "フランセ 表参道本店"
+  },
+  "hood": "omotesando",
+  "category": "cafe",
+  "tags": [
+    "cafe",
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.66357,
+    "lng": 139.71194
+  },
+  "address": "東京都港区南青山5-6-3 メーゾンブランシュII 2F",
+  "official": "https://sucreyshopping.jp/francais",
+  "image": {
+    "file": "omotesando-francais.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
