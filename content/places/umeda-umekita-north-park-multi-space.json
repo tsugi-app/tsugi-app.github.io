@@ -1,0 +1,24 @@
+{
+  "id": "umeda-umekita-north-park-multi-space",
+  "name": {
+    "ko": "우메키타 공원 노스파크 멀티 스페이스",
+    "ja": "グラングリーン大阪 うめきた公園ノースパーク MULTI SPACE"
+  },
+  "hood": "umeda",
+  "category": "goods",
+  "tags": [
+    "goods",
+    "design"
+  ],
+  "geo": {
+    "lat": 34.70476,
+    "lng": 135.49437
+  },
+  "address": "大阪府大阪市北区大深町6番 グラングリーン大阪 うめきた公園 ノースパーク",
+  "official": "https://subu2016-10th.com/",
+  "image": {
+    "file": "umeda-umekita-north-park-multi-space.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

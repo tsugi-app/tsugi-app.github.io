@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>umeda-umekita-north-park-multi-space</title>
+<desc>
+모티프: 잔디 위에 선 넓은 평지붕 행사 공간 하나와 옆의 둥근 나무
+근거: SUBU 10주년 특설 사이트 https://subu2016-10th.com/ 「グラングリーン大阪 うめきた公園ノースパーク MULTI SPACE」 — 공원 안 행사 공간, place.category goods
+피한 것: SUBU 샌들·로고·10주년 한자 그래픽(기간 한정 행사·상표), 사진 부스, 주변 고층 빌딩, 글자
+제작: Claude Opus 5.5 · 2026-11-22
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<path d="M150 700 Q600 640 1050 700 L1050 764 L150 764 Z" fill="#c3d1ec"/>
+<rect x="250" y="300" width="560" height="44" rx="10" fill="#233c74"/>
+<rect x="280" y="344" width="500" height="26" fill="#5873b5"/>
+<g fill="#233c74"><rect x="290" y="370" width="30" height="330"/><rect x="740" y="370" width="30" height="330"/></g>
+<rect x="320" y="420" width="420" height="280" fill="#c3d1ec"/>
+<g fill="#5873b5"><rect x="320" y="420" width="18" height="280"/><rect x="460" y="420" width="18" height="280"/><rect x="600" y="420" width="18" height="280"/></g>
+<rect x="500" y="560" width="80" height="140" fill="#c99a2e"/>
+<rect x="912" y="480" width="32" height="220" rx="10" fill="#233c74"/>
+<circle cx="928" cy="430" r="110" fill="#5873b5"/>
+</svg>

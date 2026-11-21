@@ -1,14 +1,15 @@
 {
   "placeId": "harajuku-mil-gallery-jingumae",
-  "checkedAt": "2026-11-17",
+  "checkedAt": "2026-11-22",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-21",
+  "recheckBy": "2026-11-23",
   "uncertain": [
-    "갤러리 공식 사이트를 찾지 못해 대조 못 함 — 주최사(요크모크) 보도자료 기준",
-    "입장료 표기가 없음(무료 여부 미확인)"
+    "갤러리 공식 사이트는 찾지 못함 — 주최(ヨックモック) 공식 사이트 행사 안내와 보도자료가 기간·시간·회장 주소·특전 모두 일치",
+    "입장료 표기 없음(무료 여부 미확인), 시간은 「変更になる可能性」 있음"
   ],
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000000440.000012005.html",
+    "https://yokumoku.co.jp/blogs/news/bs_261112_event_dag",
     "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]
 }

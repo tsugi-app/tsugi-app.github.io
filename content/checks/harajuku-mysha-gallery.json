@@ -1,10 +1,10 @@
 {
   "placeId": "harajuku-mysha-gallery",
-  "checkedAt": "2026-11-17",
+  "checkedAt": "2026-11-22",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-21",
+  "recheckBy": "2026-11-22",
   "uncertain": [
-    "갤러리는 공식 사이트 없이 인스타그램만 운영 — 대조 못 함, 브랜드 운영사(Ninevation) 보도자료 기준",
+    "갤러리는 공식 사이트 없이 인스타그램만 운영 — 11/22 재확인 때도 로그인 없이 게시를 읽지 못해 대조 못 함, 브랜드 운영사(Ninevation) 보도자료 기준",
     "달 아트 체험 예약 잔여 미확인"
   ],
   "sources": [
