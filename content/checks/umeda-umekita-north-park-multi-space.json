@@ -1,0 +1,19 @@
+{
+  "placeId": "umeda-umekita-north-park-multi-space",
+  "checkedAt": "2026-11-22",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-03",
+  "uncertain": [
+    "SUBU 10주년 특설 사이트는 회장 정보를 그림으로만 보여 줌 — 브라우저로 열어 「大阪/梅田 2026年12月4日(金)–12月27日(日) 11:00–19:00 グラングリーン大阪 うめきた公園ノースパーク MULTI SPACE」를 읽음",
+    "MULTI SPACE의 번지·정확한 위치는 출처에 없음 — 주소는 노스파크(大深町6番, umekita.com 이용 안내), 좌표는 大深町 대표점",
+    "오사카 회장 전시 내용은 도쿄 보도자료의 「どの会場にも、SUBUの10年分を持ち込みます」「会場ごとに異なる空間」 기준, 오사카만의 구성은 미발표",
+    "umekita.com 행사 목록에서 SUBU 게시는 확인 못 함"
+  ],
+  "sources": [
+    "https://subu2016-10th.com/",
+    "https://prtimes.jp/main/html/rd/p/000000239.000132579.html",
+    "https://prtimes.jp/main/html/rd/p/000000078.000150214.html",
+    "https://umekita.com/ad/event/rohto_heartsquare/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

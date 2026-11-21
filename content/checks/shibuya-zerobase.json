@@ -1,6 +1,6 @@
 {
   "placeId": "shibuya-zerobase",
-  "checkedAt": "2026-11-20",
+  "checkedAt": "2026-11-22",
   "checkedBy": "claude",
   "recheckBy": "2026-12-12",
   "uncertain": [
@@ -12,6 +12,7 @@
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000000078.000150214.html",
     "https://prtimes.jp/main/html/rd/p/000000083.000150214.html",
+    "https://prtimes.jp/main/html/rd/p/000000239.000132579.html",
     "https://subu2016-10th.com/",
     "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]

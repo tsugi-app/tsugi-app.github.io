@@ -1,14 +1,15 @@
 {
   "placeId": "omotesando-super-a-market-space2",
-  "checkedAt": "2026-11-17",
+  "checkedAt": "2026-11-22",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-20",
+  "recheckBy": "2026-12-03",
   "uncertain": [
-    "투모로우랜드 공식 사이트에서 행사 게시를 찾지 못하고 SUPER A MARKET 사이트는 접속되지 않음 — 운영사(トゥモローランド) 보도자료 기준",
+    "SUPER A MARKET 사이트는 접속되지 않음 — 운영사(トゥモローランド) 공식 뉴스와 보도자료가 기간·주소·영업시간·화요일 휴무 모두 일치",
     "상품 가격 표기 없음"
   ],
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000001000.000050309.html",
+    "https://store.tomorrowland.co.jp/news/detail/?article_id=1152170",
     "https://www.tomorrowland.co.jp/",
     "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]
