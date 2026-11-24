@@ -1,0 +1,23 @@
+{
+  "id": "tenjin-shimamura-fukuoka-tenjin",
+  "name": {
+    "ko": "시마무라 후쿠오카 텐진",
+    "ja": "しまむらFUKUOKA TENJIN"
+  },
+  "hood": "tenjin",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 33.58698,
+    "lng": 130.39711
+  },
+  "address": "福岡県福岡市中央区大名1-15-1 天神西通りスクエア 2・3F",
+  "official": "https://www.shimamura.gr.jp/",
+  "image": {
+    "file": "tenjin-shimamura-fukuoka-tenjin.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

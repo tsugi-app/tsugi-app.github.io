@@ -1,0 +1,16 @@
+{
+  "placeId": "tenjin-shimamura-fukuoka-tenjin",
+  "checkedAt": "2026-11-25",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-03",
+  "uncertain": [
+    "시마무라 그룹 공식 사이트(점포 검색·뉴스)가 403으로 열리지 않아 대조 못 함 — 운영사(しまむら) 보도자료 기준",
+    "면세 대응 여부 미확인 — 보도자료는 면세 매장 목록 링크만 있고 이 매장이 면세인지 적혀 있지 않음",
+    "좌표는 大名一丁目15番1号 대표점"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000508.000066095.html",
+    "https://www.shimamura.gr.jp/shop/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}
