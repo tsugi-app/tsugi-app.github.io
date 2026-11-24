@@ -1,16 +1,18 @@
 {
   "placeId": "umeda-sirotan-lucua-south",
-  "checkedAt": "2026-11-17",
+  "checkedAt": "2026-11-25",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-23",
+  "recheckBy": "2026-12-10",
   "uncertain": [
-    "휴무일 표기 없음",
-    "루쿠아 공식 페이지엔 매장 단위 정리권 안내 없이 「혼잡 시 입장 제한」만 있음 — 정리권은 운영사(クリエイティブヨーコ) 보도자료 기준"
+    "루쿠아 공식 입장 안내(11/25): 날에 따라 10~13층 「LUCUA キャラクターズワールド」는 당일 아침 8시부터 웹(Airウェイト)에서 선착순으로 받는 입장 정리권이 있어야 들어갈 수 있고, 날에 따라 건물 입장 자체도 정리권제. 날짜별 실시 여부는 공식 「実施カレンダー」",
+    "루쿠아 입장 안내의 매장 정리권 목록에 「しろたんふんわりストア」(WEB) 있음 — 매장 정리권 일정은 운영사(クリエイティブヨーコ) 보도자료 기준",
+    "휴무일 표기 없음"
   ],
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000000167.000045781.html",
     "https://www.lucua.jp/special/south-open/",
     "https://www.lucua.jp/",
+    "https://www.lucua.jp/south-entry/",
     "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]
 }
