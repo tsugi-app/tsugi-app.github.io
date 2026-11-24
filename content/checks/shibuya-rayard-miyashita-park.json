@@ -1,0 +1,17 @@
+{
+  "placeId": "shibuya-rayard-miyashita-park",
+  "checkedAt": "2026-11-25",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-10",
+  "uncertain": [
+    "RAYARD MIYASHITA PARK 공식 사이트·미쓰이 쇼핑파크 뉴스(11/25)에 행사 게시가 아직 없음 — 라이선스 보유사(プラザスタイル カンパニー) 보도자료 기준",
+    "좌표는 神宮前六丁目20番10号 대표점(South 동 정확한 위치 아님)",
+    "노벨티·정리권 수량은 「数量限定」「予定」 표기"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000001105.000003436.html",
+    "https://www.miyashita-park.tokyo/",
+    "https://mitsui-shopping-park.com/urban/miyashita/event/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

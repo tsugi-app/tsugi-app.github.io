@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-rayard-miyashita-park</title>
+<desc>
+모티프: 건물 2층으로 이어지는 보행자 다리 하나와 계단
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000001105.000003436.html 「South 2F 歩道橋スペース」「South 2F 吹き抜け広場」, place.category mall 기본 어휘(계단·다리)
+피한 것: 케어베어 캐릭터·무지개 배(상표·기간 한정 행사), 건물 외관 재현, 글자
+제작: Claude Opus 5.5 · 2026-11-25
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<rect x="150" y="744" width="900" height="20" fill="#5873b5"/>
+<rect x="700" y="200" width="330" height="544" fill="#233c74"/>
+<rect x="740" y="250" width="250" height="150" fill="#c3d1ec"/>
+<rect x="740" y="470" width="250" height="110" fill="#5873b5"/>
+<rect x="400" y="420" width="330" height="50" rx="8" fill="#5873b5"/>
+<g stroke="#233c74" stroke-width="20" stroke-linecap="round"><line x1="410" y1="360" x2="710" y2="360"/><line x1="440" y1="360" x2="440" y2="420"/><line x1="560" y1="360" x2="560" y2="420"/><line x1="680" y1="360" x2="680" y2="420"/></g>
+<rect x="600" y="470" width="34" height="274" fill="#233c74"/>
+<path d="M170 744 L170 690 L230 690 L230 636 L290 636 L290 582 L350 582 L350 528 L410 528 L410 470 L440 470 L440 744 Z" fill="#c3d1ec"/>
+<rect x="820" y="580" width="90" height="164" fill="#c99a2e"/>
+</svg>

@@ -1,14 +1,19 @@
 {
   "placeId": "omotesando-hills",
-  "checkedAt": "2026-11-17",
+  "checkedAt": "2026-11-25",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-26",
+  "recheckBy": "2026-12-03",
   "uncertain": [
-    "표참도 힐즈 이벤트 페이지 홍보 문구는 입장 19시까지(29일 16시)로 표 안 「폐점 60분 전」과 같지만, 29일 종료 시간은 표의 17시를 따름"
+    "표참도 힐즈 이벤트 페이지 홍보 문구는 입장 19시까지(29일 16시)로 표 안 「폐점 60분 전」과 같지만, 29일 종료 시간은 표의 17시를 따름",
+    "표참도 힐즈 이벤트 목록(11/25)엔 AMUSÉUM 게시가 아직 없음 — 주최 공식 사이트(amuseum-official.com)와 보도자료 기준, 둘은 회장·시작일 일치",
+    "AMUSÉUM 영업시간은 보도자료 표기(11:00~20:00, 12/1~12/27 21:00까지 등) — 건물 연장 영업 기간과 겹쳐 회장도 같은지 미확인"
   ],
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000004588.000018505.html",
     "https://www.omotesandohills.com/events/event/2026/010718.html",
+    "https://amuseum-official.com/",
+    "https://prtimes.jp/main/html/rd/p/000000102.000016382.html",
+    "https://www.omotesandohills.com/events/",
     "https://msearch.gsi.go.jp/address-search/AddressSearch"
   ]
 }

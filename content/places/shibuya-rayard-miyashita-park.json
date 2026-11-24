@@ -1,0 +1,23 @@
+{
+  "id": "shibuya-rayard-miyashita-park",
+  "name": {
+    "ko": "레이야드 미야시타 파크",
+    "ja": "RAYARD MIYASHITA PARK"
+  },
+  "hood": "shibuya",
+  "category": "mall",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.66238,
+    "lng": 139.70201
+  },
+  "address": "東京都渋谷区神宮前6-20-10",
+  "official": "https://www.miyashita-park.tokyo/",
+  "image": {
+    "file": "shibuya-rayard-miyashita-park.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>tenjin-shimamura-fukuoka-tenjin</title>
+<desc>
+모티프: 개켜 쌓은 옷 세 장과 그 옆의 작은 아기 신발 한 짝
+근거: 보도자료 https://prtimes.jp/main/html/rd/p/000000508.000066095.html 「しまむら・カジュアル＆シューズアベイル・ベビー・子供用品バースデイ」 세 브랜드 상품을 함께 파는 매장, place.category goods
+피한 것: 브랜드 로고·쇼핑백 디자인, 드래곤 퀘스트 쇼퍼(상표·기간 한정 특전), 건물 외관, 글자
+제작: Claude Opus 5.5 · 2026-11-25
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<rect x="150" y="744" width="900" height="20" fill="#c3d1ec"/>
+<rect x="300" y="610" width="460" height="134" rx="18" fill="#233c74"/>
+<rect x="320" y="480" width="420" height="130" rx="18" fill="#5873b5"/>
+<rect x="340" y="350" width="380" height="130" rx="18" fill="#c3d1ec"/>
+<path d="M470 350 L530 300 L590 350 Z" fill="#233c74"/>
+<rect x="300" y="660" width="460" height="18" fill="#5873b5"/>
+<rect x="320" y="530" width="420" height="18" fill="#233c74"/>
+<path d="M820 744 L820 620 Q820 590 850 590 L900 590 Q930 590 930 620 L930 660 L990 680 Q1030 692 1030 744 Z" fill="#c99a2e"/>
+<rect x="820" y="726" width="210" height="18" fill="#233c74"/>
+</svg>
