@@ -1,0 +1,19 @@
+{
+  "placeId": "namba-hmv-books-namba",
+  "checkedAt": "2026-11-25",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-01",
+  "uncertain": [
+    "HMV&BOOKS NAMBA 매장 페이지(11/25)에 ART OF MIKU 팝업 게시가 아직 없음 — 주최사(W.creation) 보도자료 기준",
+    "ART OF MIKU 행사 페이지(artofmiku.com/exhibition/pus_hmv2026)는 스크립트로만 그려져 본문을 대조 못 함",
+    "caseplay 케이스 말고는 굿즈 품목·가격이 보도자료에 없음, 구매 수량 제한·정리권 여부도 적혀 있지 않음",
+    "휴무일은 매장 페이지에 없음(영업시간 11:00~20:00만 게시)",
+    "좌표는 難波三丁目8番9号 대표점"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000014.000170915.html",
+    "https://artofmiku.com/exhibition/pus_hmv2026",
+    "https://www.hmv.co.jp/fl/34/73/1/",
+    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+  ]
+}

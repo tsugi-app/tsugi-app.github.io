@@ -1,0 +1,23 @@
+{
+  "id": "namba-hmv-books-namba",
+  "name": {
+    "ko": "HMV&BOOKS 난바",
+    "ja": "HMV&BOOKS NAMBA"
+  },
+  "hood": "namba",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 34.66536,
+    "lng": 135.50111
+  },
+  "address": "大阪府大阪市中央区難波3-8-9 なんばマルイ 7F",
+  "official": "https://www.hmv.co.jp/fl/34/73/1/",
+  "image": {
+    "file": "namba-hmv-books-namba.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

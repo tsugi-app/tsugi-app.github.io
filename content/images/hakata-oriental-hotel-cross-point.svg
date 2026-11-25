@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>hakata-oriental-hotel-cross-point</title>
+<desc>
+모티프: 받침 접시 위 찻잔 하나와 위로 오르는 김 한 줄기
+근거: 공식 페이지 https://fukuoka-orientalhotel.com/cafe/crosspoint/ 「Cafe&amp;Bar CROSS POINT」(카페&amp;바, 10:00~23:00), place.category cafe
+피한 것: 딸기 케이크·하이티 메뉴(기간 한정 행사), 호텔 로고·건물 외관, 글자
+제작: Claude Opus 5.5 · 2026-11-25
+</desc>
+<rect width="1200" height="900" fill="#dfe7e7"/>
+<rect x="150" y="744" width="900" height="20" fill="#c3d1ec"/>
+<ellipse cx="600" cy="700" rx="330" ry="44" fill="#5873b5"/>
+<path d="M360 430 L840 430 L810 600 Q790 680 700 680 L500 680 Q410 680 390 600 Z" fill="#233c74"/>
+<path d="M830 470 Q950 470 950 550 Q950 630 820 630 L826 590 Q900 590 900 550 Q900 512 822 512 Z" fill="#233c74"/>
+<rect x="360" y="430" width="480" height="36" fill="#c3d1ec"/>
+<rect x="430" y="520" width="340" height="26" fill="#c99a2e"/>
+<path d="M600 400 Q560 340 600 290 Q640 240 600 180" fill="none" stroke="#5873b5" stroke-width="28" stroke-linecap="round"/>
+</svg>
