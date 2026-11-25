@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>harajuku-casio-store</title>
+<desc>
+모티프: 정면에서 본 이름 없는 손목시계 하나(각진 케이스와 위아래로 뻗은 줄)
+근거: update.note·보도자료 "CASIO WATCHを中心に展開する" 시계 직영점, place.category goods
+피한 것: 지-쇼크 로고·특정 모델 디자인·숫자, 니고 캐릭터, 매장 외관
+제작: Claude Opus 5.5 · 2026-11-25
+</desc>
+<rect width="1200" height="900" fill="#e2e9de"/>
+<rect x="500" y="136" width="200" height="628" rx="40" fill="#5873b5"/>
+<g stroke="#233c74" stroke-width="18"><line x1="520" y1="200" x2="680" y2="200"/><line x1="520" y1="260" x2="680" y2="260"/><line x1="520" y1="640" x2="680" y2="640"/><line x1="520" y1="700" x2="680" y2="700"/></g>
+<rect x="420" y="290" width="360" height="320" rx="70" fill="#233c74"/>
+<rect x="480" y="350" width="240" height="200" rx="30" fill="#c3d1ec"/>
+<g stroke="#233c74" stroke-width="20" stroke-linecap="round"><line x1="600" y1="450" x2="600" y2="380"/><line x1="600" y1="450" x2="660" y2="480"/></g>
+<rect x="780" y="420" width="44" height="60" rx="10" fill="#c99a2e"/>
+<rect x="356" y="420" width="44" height="60" rx="10" fill="#5873b5"/>
+</svg>

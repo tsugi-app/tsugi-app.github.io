@@ -1,11 +1,12 @@
 {
   "placeId": "omotesando-prada-beauty-tokyo",
-  "checkedAt": "2026-11-12",
+  "checkedAt": "2026-11-25",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-26",
+  "recheckBy": "2026-11-27",
   "uncertain": [
     "프라다 공식 매장 찾기에서 이 매장을 찾지 못해 대조 못 함 — 브랜드 보도자료 기준",
-    "특전 내용은 보도자료에 없음"
+    "특전 내용은 보도자료에 없음",
+    "프라다 뷰티 공식 사이트(pradabeauty.com)는 11/25 재확인 때 작업 환경 네트워크에서 막혀 열지 못함 — 편집자가 직접 열어 볼 곳"
   ],
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000000085.000090819.html",
