@@ -28,8 +28,8 @@ export const TOSS_APP_NAME = 'tsugi';
 // 광고 그룹 ID는 앱인토스 콘솔 → 인앱 광고에서 발급. 비어 있으면 그 자리는 아무것도 그리지 않는다.
 export type AdSlot = 'discover' | 'place';
 const AD_GROUP_ID: Record<AdSlot, string> = {
-  discover: '', // 발견목록_배너
-  place: '', // 장소상세_배너
+  discover: 'ait.v2.live.8f075f068cbc4a2e', // 발견목록_배너
+  place: 'ait.v2.live.ce328e6539fb453c', // 장소상세_배너
 };
 export const SHOW_ADS = CHANNEL === 'toss';
 
