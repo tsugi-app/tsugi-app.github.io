@@ -1,4 +1,4 @@
-import { CHANNEL } from './channel';
+import { CHANNEL, logTossEvent } from './channel';
 import { getAnalyticsOff } from './storage';
 
 // 기획안의 최소 이벤트 6개. 다른 곳에서 직접 분석 SDK를 부르지 않는다.
@@ -31,8 +31,12 @@ const POSTHOG_HOST = 'https://us.i.posthog.com';
 const ANON_ID = 'tsugi:aid';
 
 // 통계를 실제로 보내는지. 설정의 「이용 통계」 항목을 보일지 정한다.
-// 웹·토스 모두 같은 PostHog 프로젝트로 보내고 channel 속성으로 나눈다. 토스 SDK 분석(Analytics.log)은 쓰지 않는다.
+// 웹·토스 모두 같은 PostHog 프로젝트로 보내고 channel 속성으로 나눈다.
+// 토스는 콘솔 전환 지표용으로 TOSS_EVENTS만 토스 SDK 분석(Analytics.log)에도 보낸다.
 export const ANALYTICS_ENABLED = POSTHOG_KEY !== '';
+
+// 앱인토스 콘솔 핵심 지표의 전환 이벤트. 바꾸면 콘솔 지표와 screens/Privacy.tsx도 같이 고친다.
+const TOSS_EVENTS: ReadonlySet<EventName> = new Set(['place_saved', 'map_opened']);
 
 // 기기에서 만든 무작위 ID. 이름·연락처와 이어지지 않는다. 저장이 막혀 있으면 이번 방문에만 쓴다.
 let anonId: string | null = null;
@@ -67,7 +71,9 @@ export function track(name: EventName, params: Params = {}): void {
     console.debug('[track]', name, payload);
     return;
   }
-  if (!ANALYTICS_ENABLED || getAnalyticsOff()) return;
+  if (getAnalyticsOff()) return;
+  if (TOSS_EVENTS.has(name)) logTossEvent(name, { placeId: params.placeId, from: params.from });
+  if (!ANALYTICS_ENABLED) return;
   try {
     void fetch(`${POSTHOG_HOST}/i/v0/e/`, {
       method: 'POST',

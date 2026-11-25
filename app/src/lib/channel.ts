@@ -161,6 +161,15 @@ export function attachAdBanner(slot: AdSlot, el: HTMLElement, onShown: () => voi
   };
 }
 
+// 토스 채널의 핵심 행동 기록. 앱인토스 콘솔의 전환 지표(핵심 지표)가 이 이벤트로 계산된다.
+// 보내는 값은 이벤트 이름과 장소 id·화면뿐이다. 웹은 아무것도 하지 않는다.
+export function logTossEvent(name: string, params: Record<string, string | number | boolean | undefined>): void {
+  if (CHANNEL !== 'toss') return;
+  void toss()
+    .then(({ Analytics }) => Analytics.log({ log_name: name, log_type: 'event', params }))
+    .catch(() => {});
+}
+
 // 장소 공유. 웹은 미리보기가 붙는 정적 페이지 주소를, 토스는 토스 앱에서 열리는 공유 링크(intoss://)를 쓴다.
 export async function sharePlace(placeId: string, title: string): Promise<string> {
   if (CHANNEL !== 'toss') return shareOrCopy(sharePageUrl(`/p/${placeId}/`), title);

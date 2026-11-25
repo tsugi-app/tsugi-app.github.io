@@ -4,7 +4,7 @@ import { hrefTo } from '../lib/router';
 
 // 개인정보 처리방침. 수집 항목은 lib/analytics.ts의 이벤트·속성과, 기기 저장 항목은 lib/storage.ts와 맞춘다.
 // 둘 중 하나를 바꾸면 이 글과 시행일을 같이 고친다.
-const EFFECTIVE = '2026.11.25';
+const EFFECTIVE = '2026.12.02';
 const CONTACT_URL = 'https://github.com/tsugi-app/tsugi-app.github.io/issues';
 
 export function Privacy() {
@@ -56,6 +56,11 @@ export function Privacy() {
           <li>때와 방법: 화면을 쓰는 그때, 암호화된 통신(HTTPS)으로 전송</li>
           <li>목적과 보관 기간: 이용 통계 분석, 위 3과 같음</li>
         </ul>
+        <p>
+          토스 앱 안에서 쓸 때는 장소를 저장한 것과 지도를 연 것(어느 장소인지, 어느 화면에서인지)을 토스(주식회사
+          비바리퍼블리카)의 앱 분석 기능에도 보내요. 토스가 미니앱 노출과 추천을 정하는 데 쓰이고, 보관과 처리는 토스의
+          방침을 따라요.
+        </p>
         <p>
           원하지 않으면 <a className="link" href={hrefTo('/settings')}>설정</a>의 「이용 통계」에서 「보내지 않기」를 골라
           주세요. 꺼도 츠기는 그대로 쓸 수 있어요.
