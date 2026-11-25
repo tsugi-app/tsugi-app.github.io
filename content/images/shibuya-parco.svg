@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-parco</title>
+<desc>
+모티프: 옆에서 본 층층이 쌓인 바닥판과 그 사이를 비스듬히 잇는 에스컬레이터
+근거: place.category mall, take.why "6층과 8층에 함께" (여러 층을 오가는 건물)
+피한 것: MOTHER 캐릭터·게임 화면(기간 한정 행사, 상표), 파르코 로고·건물 외관
+제작: Claude Opus 5.5 · 2026-11-25
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<rect x="200" y="150" width="800" height="600" fill="#c3d1ec"/>
+<g fill="#233c74">
+<rect x="200" y="150" width="800" height="40"/>
+<rect x="200" y="350" width="800" height="40"/>
+<rect x="200" y="550" width="800" height="40"/>
+<rect x="200" y="720" width="800" height="40"/>
+</g>
+<path d="M330 720 L330 680 L600 390 L640 390 L640 430 L370 720 Z" fill="#5873b5"/>
+<path d="M560 550 L560 510 L830 190 L870 190 L870 230 L600 550 Z" fill="#5873b5"/>
+<g stroke="#233c74" stroke-width="18" stroke-linecap="round">
+<line x1="318" y1="650" x2="590" y2="358"/>
+<line x1="548" y1="480" x2="820" y2="160"/>
+</g>
+<rect x="760" y="420" width="140" height="110" fill="#c99a2e"/>
+<rect x="250" y="230" width="160" height="100" fill="#faf8f4"/>
+</svg>

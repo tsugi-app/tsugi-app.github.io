@@ -1,0 +1,23 @@
+{
+  "id": "harajuku-casio-store",
+  "name": {
+    "ko": "카시오 스토어 하라주쿠",
+    "ja": "CASIO STORE HARAJUKU"
+  },
+  "hood": "harajuku",
+  "category": "goods",
+  "tags": [
+    "goods"
+  ],
+  "geo": {
+    "lat": 35.66933,
+    "lng": 139.70773
+  },
+  "address": "東京都渋谷区神宮前4-26-2",
+  "official": null,
+  "image": {
+    "file": "harajuku-casio-store.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

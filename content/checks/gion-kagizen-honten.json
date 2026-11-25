@@ -1,16 +1,17 @@
 {
   "placeId": "gion-kagizen-honten",
-  "checkedAt": "2026-11-12",
+  "checkedAt": "2026-11-25",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-25",
+  "recheckBy": "2026-12-15",
   "uncertain": [
     "찻집 메뉴·가격(PDF 메뉴 미확인)",
     "생과자 이트인이 본점 찻집에서 되는지(공지에 장소 명시 없음)",
-    "판매 기간은 '예정'"
+    "12월 생과자 기간은 공식 공지에 「予定」, 본점 월요일 휴무(祝休日이면 다음 평일)"
   ],
   "sources": [
     "https://www.kagizen.co.jp/pages/shops-honten",
     "https://www.kagizen.co.jp/blogs/news/11%E6%9C%881%E6%97%A5%E6%97%A5-11%E6%9C%8830%E6%97%A5%E6%97%A5-%E8%B2%A9%E5%A3%B2%E3%81%AE%E7%94%9F%E8%8F%93%E5%AD%90%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
-    "https://msearch.gsi.go.jp/address-search/AddressSearch"
+    "https://msearch.gsi.go.jp/address-search/AddressSearch",
+    "https://www.kagizen.co.jp/blogs/news/12%E6%9C%881%E6%97%A5%E7%81%AB-12%E6%9C%8826%E6%97%A5%E5%9C%9F-%E8%B2%A9%E5%A3%B2%E3%81%AE%E7%94%9F%E8%8F%93%E5%AD%90%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-1"
   ]
 }

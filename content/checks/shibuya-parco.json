@@ -1,0 +1,17 @@
+{
+  "placeId": "shibuya-parco",
+  "checkedAt": "2026-11-25",
+  "checkedBy": "claude",
+  "recheckBy": "2026-12-08",
+  "uncertain": [
+    "시부야 파르코 공식 사이트(shibuya.parco.jp)는 11/25 작업 환경 네트워크에서 막혀 열지 못함 — 주최(ほぼ日) 보도자료 기준, 편집자가 직접 열어 볼 곳",
+    "예약 방법은 보도자료가 「イベントページ」로 안내하지만 2026년 행사 페이지를 찾지 못함(검색엔 2025년 행사만)",
+    "8층 회장 이름은 「おくじょう(옥상)」지만 보도자료상 장소는 8층",
+    "상품·음료 가격은 보도자료에 없음",
+    "좌표는 같은 건물 다른 카드(shibuya-parco-root)와 같은 값"
+  ],
+  "sources": [
+    "https://prtimes.jp/main/html/rd/p/000000522.000043019.html",
+    "https://shibuya.parco.jp/"
+  ]
+}

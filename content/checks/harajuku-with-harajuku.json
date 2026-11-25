@@ -1,12 +1,12 @@
 {
   "placeId": "harajuku-with-harajuku",
-  "checkedAt": "2026-11-10",
+  "checkedAt": "2026-11-25",
   "checkedBy": "claude",
-  "recheckBy": "2026-11-26",
+  "recheckBy": "2026-11-28",
   "uncertain": [
-    "WITH HARAJUKU 공식 NEWS & EVENTS엔 아직 게시 전(11/10 기준) — 주최사 보도자료 기준",
+    "WITH HARAJUKU 공식 NEWS & EVENTS(11/25 기준 첫 페이지)에 아직 게시 없음 — 주최사 보도자료 기준",
     "무료 제공 수량과 소진 시각",
-    "번지(1-14-30)는 보도자료 기준, 시설 공식 사이트에서는 神宮前1까지만 확인"
+    "혼잡하면 입장 제한할 수 있음(보도자료)"
   ],
   "sources": [
     "https://prtimes.jp/main/html/rd/p/000000023.000080247.html",
