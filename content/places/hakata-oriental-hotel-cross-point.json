@@ -1,0 +1,23 @@
+{
+  "id": "hakata-oriental-hotel-cross-point",
+  "name": {
+    "ko": "오리엔탈 호텔 후쿠오카 하카타 스테이션 카페&바 크로스 포인트",
+    "ja": "オリエンタルホテル福岡 博多ステーション Cafe&Bar CROSS POINT"
+  },
+  "hood": "hakata",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 33.59057,
+    "lng": 130.42195
+  },
+  "address": "福岡県福岡市博多区博多駅中央街4-23 2F",
+  "official": "https://fukuoka-orientalhotel.com/cafe/crosspoint/",
+  "image": {
+    "file": "hakata-oriental-hotel-cross-point.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}
