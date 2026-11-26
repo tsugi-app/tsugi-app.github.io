@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>susukino-sapporo-kani-yokocho</title>
+<desc>
+모티프: 위에서 본 둥근 접시 위 게 한 마리
+근거: take.why "게 요리 가게와 식당을 층마다 모은" 건물, place.category food
+피한 것: 가게 간판·로고, 특정 메뉴 담음새(뷔페 가격 미확인), 건물 외관
+제작: Claude Opus 5.5 · 2026-11-26
+</desc>
+<rect width="1200" height="900" fill="#e4e6ee"/>
+<circle cx="600" cy="450" r="300" fill="#c3d1ec"/>
+<circle cx="600" cy="450" r="215" fill="#faf8f4"/>
+<g stroke="#233c74" stroke-width="26" stroke-linecap="round" fill="none">
+<path d="M520 470 L420 520 L380 600"/>
+<path d="M530 500 L450 580 L440 650"/>
+<path d="M680 470 L780 520 L820 600"/>
+<path d="M670 500 L750 580 L760 650"/>
+<path d="M540 400 L470 330"/>
+<path d="M660 400 L730 330"/>
+</g>
+<ellipse cx="600" cy="450" rx="130" ry="95" fill="#233c74"/>
+<path d="M440 300 L470 330 L500 300 L480 270 Z" fill="#5873b5"/>
+<path d="M760 300 L730 330 L700 300 L720 270 Z" fill="#5873b5"/>
+<circle cx="565" cy="380" r="14" fill="#c99a2e"/>
+<circle cx="635" cy="380" r="14" fill="#c99a2e"/>
+</svg>
