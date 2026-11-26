@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>umeda-gokan-parloir</title>
+<desc>
+모티프: 옆에서 본 키 큰 파르페 잔 하나와 맨 위 딸기 한 알
+근거: update.note 「苺のサンタパフェ」·「あまおう苺フェア」, place.category cafe
+피한 것: 산타 장식(기간 한정), 가게 로고·간판, 건물 외관
+제작: Claude Opus 5.5 · 2026-11-26
+</desc>
+<rect width="1200" height="900" fill="#e9e2e0"/>
+<rect x="560" y="620" width="80" height="100" fill="#233c74"/>
+<rect x="470" y="720" width="260" height="40" rx="16" fill="#233c74"/>
+<path d="M430 260 L770 260 L700 620 L500 620 Z" fill="#233c74"/>
+<path d="M455 300 L745 300 L728 390 L472 390 Z" fill="#faf8f4"/>
+<path d="M480 430 L720 430 L705 510 L495 510 Z" fill="#5873b5"/>
+<path d="M500 540 L700 540 L690 590 L510 590 Z" fill="#c3d1ec"/>
+<ellipse cx="600" cy="250" rx="170" ry="50" fill="#c3d1ec"/>
+<path d="M545 230 Q600 120 655 230 Q600 270 545 230 Z" fill="#c99a2e"/>
+<rect x="590" y="140" width="20" height="40" rx="8" fill="#5873b5"/>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "id": "shibuya-akino-table",
+  "name": {
+    "ko": "아키노 테이블",
+    "ja": "秋野テーブル"
+  },
+  "hood": "shibuya",
+  "category": "food",
+  "tags": [
+    "food"
+  ],
+  "geo": {
+    "lat": 35.65709,
+    "lng": 139.70314
+  },
+  "address": "東京都渋谷区渋谷3-21-3 渋谷ストリーム 2F",
+  "official": null,
+  "image": {
+    "file": "shibuya-akino-table.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

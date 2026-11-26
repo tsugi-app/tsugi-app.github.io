@@ -1,6 +1,7 @@
 // 후보 레이더 실행기.
 //   node scripts/radar.mjs              → 후보를 콘솔에 출력 (GitHub 토큰 없으면 항상 이 모드)
-//   node scripts/radar.mjs --issue      → 이번 주 레이더 이슈에 새 후보만 댓글로 추가
+//   node scripts/radar.mjs --issue      → 이번 주 레이더 이슈 본문 끝에 새 후보만 추가
+//                                         (댓글은 알림 메일이 가서 쓰지 않는다. 본문 수정은 알림이 없다)
 //   node scripts/radar.mjs --file x.rdf [--news y.xml] → 네트워크 대신 파일에서 읽기 (테스트용)
 import { readFileSync } from 'node:fs';
 import { ISSUE_BODY, formatComment, isoWeekTokyo, mergeItems, parseNewsSitemap, parseRdf, pickCandidates } from './radar-lib.mjs';
@@ -61,8 +62,13 @@ async function ensureWeeklyIssue(week) {
   return gh('/issues', { method: 'POST', body: JSON.stringify({ title, body: ISSUE_BODY, labels: [LABEL] }) });
 }
 
-async function linksInIssue(number) {
+// GitHub 이슈 본문 한도(65,536자)보다 조금 작게.
+const BODY_MAX = 60000;
+
+async function linksInIssue(number, body) {
   const links = new Set();
+  for (const m of (body ?? '').matchAll(/\]\((https:\/\/prtimes\.jp\/[^)\s]+)\)/g)) links.add(m[1]);
+  // 본문 방식 이전 주에 댓글로 쌓인 후보도 다시 올리지 않는다.
   for (let page = 1; page < 20; page++) {
     const comments = await gh(`/issues/${number}/comments?per_page=100&page=${page}`);
     for (const c of comments) for (const m of c.body.matchAll(/\]\((https:\/\/prtimes\.jp\/[^)\s]+)\)/g)) links.add(m[1]);
@@ -83,9 +89,13 @@ if (!issueMode || !token || !repo) {
 }
 
 const issue = await ensureWeeklyIssue(isoWeekTokyo());
-for (const l of await linksInIssue(issue.number)) known.add(l);
+for (const l of await linksInIssue(issue.number, issue.body)) known.add(l);
 const cands = pickCandidates(items, known);
 console.log(`보도자료 ${items.length}건 → 새 후보 ${cands.length}건 (이슈 #${issue.number})`);
 if (cands.length > 0) {
-  await gh(`/issues/${issue.number}/comments`, { method: 'POST', body: JSON.stringify({ body: formatComment(cands) }) });
+  // 편집자가 그사이 체크한 상자를 덮어쓰지 않게 고치기 직전에 본문을 다시 읽는다.
+  const current = (await gh(`/issues/${issue.number}`)).body ?? '';
+  const next = `${current}\n\n---\n\n${formatComment(cands)}`;
+  if (next.length > BODY_MAX) console.log(`이슈 본문이 ${BODY_MAX}자를 넘어 이번 후보 ${cands.length}건은 건너뜀`);
+  else await gh(`/issues/${issue.number}`, { method: 'PATCH', body: JSON.stringify({ body: next }) });
 }

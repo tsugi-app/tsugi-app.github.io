@@ -1,0 +1,23 @@
+{
+  "id": "umeda-gokan-parloir",
+  "name": {
+    "ko": "고칸 파를루아",
+    "ja": "GOKAN PARLOIR"
+  },
+  "hood": "umeda",
+  "category": "cafe",
+  "tags": [
+    "cafe"
+  ],
+  "geo": {
+    "lat": 34.70476,
+    "lng": 135.49437
+  },
+  "address": "大阪府大阪市北区大深町5-54 グラングリーン大阪 南館2階",
+  "official": null,
+  "image": {
+    "file": "umeda-gokan-parloir.svg",
+    "credit": "츠기 일러스트 (Claude Opus 제작)",
+    "license": "츠기 자체 제작"
+  }
+}

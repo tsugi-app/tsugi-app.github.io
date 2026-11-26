@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<title>shibuya-akino-table</title>
+<desc>
+모티프: 옆에서 본 식탁 위 뚜껑 덮인 냄비 하나와 김 한 줄기
+근거: take.why "제철 재료 요리", place.category food, 상호의 「テーブル」
+피한 것: 수프 스톡 도쿄 로고·컵, 특정 메뉴(메뉴가 계절마다 바뀜), 건물 외관
+제작: Claude Opus 5.5 · 2026-11-26
+</desc>
+<rect width="1200" height="900" fill="#e3e6ec"/>
+<rect x="200" y="600" width="800" height="50" fill="#233c74"/>
+<rect x="260" y="650" width="40" height="114" fill="#233c74"/>
+<rect x="900" y="650" width="40" height="114" fill="#233c74"/>
+<rect x="420" y="420" width="360" height="180" rx="30" fill="#5873b5"/>
+<rect x="380" y="440" width="50" height="30" rx="10" fill="#233c74"/>
+<rect x="770" y="440" width="50" height="30" rx="10" fill="#233c74"/>
+<path d="M400 420 Q600 330 800 420 Z" fill="#233c74"/>
+<rect x="570" y="340" width="60" height="30" rx="12" fill="#c99a2e"/>
+<path d="M600 300 C560 260 640 220 600 170" stroke="#c3d1ec" stroke-width="22" stroke-linecap="round" fill="none"/>
+<rect x="460" y="480" width="280" height="24" rx="10" fill="#c3d1ec"/>
+</svg>
